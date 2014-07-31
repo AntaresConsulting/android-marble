@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/RelativeLayout1"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <TextView
+        android:id="@+id/nombreProd"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="false"
+        android:layout_margin="10dp"
+        android:text="TextView"
+        android:textSize="22sp" />
+
+    <TextView
+        android:id="@+id/titleCant"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/cantPlacaUtil"
+        android:layout_marginBottom="5dp"
+        android:layout_marginTop="5dp"
+        android:layout_toRightOf="@id/nombreProd"
+        android:text="@string/listitem_quantity"
+        android:textAppearance="?android:attr/textAppearanceSmall" />
+
+    <TextView
+        android:id="@+id/cantidadProducto"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/titleCant"
+        android:layout_below="@+id/titleCant"
+        android:layout_marginLeft="20dp"
+        android:text="999"
+        android:textAppearance="?android:attr/textAppearanceSmall" />
+
+    <TextView
+        android:id="@+id/unidades"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@id/cantidadProducto"
+        android:layout_marginLeft="5dp"
+        android:layout_toRightOf="@id/cantidadProducto"
+        android:text="@string/lbl_unidades"
+        android:textAppearance="?android:attr/textAppearanceSmall" />
+    <RelativeLayout
+        android:id="@+id/bachaDataContainer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@id/titleCant"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="10dp"        
+        android:layout_toRightOf="@id/unidades" >
+
+        <TextView
+            android:id="@+id/titleMarca"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/listitem_marca_bacha"
+            android:layout_marginBottom="5dp"
+            android:textAppearance="?android:attr/textAppearanceSmall" />
+
+        <TextView
+            android:id="@+id/marcaBacha"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@id/titleMarca"
+            android:layout_marginLeft="10dp"
+            android:layout_toRightOf="@id/titleMarca"
+            android:text="Marca"
+            android:textAppearance="?android:attr/textAppearanceSmall" />
+
+        <TextView
+            android:id="@+id/titleTipo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/titleMarca"
+            android:layout_alignLeft="@id/titleMarca"
+            android:text="@string/listitem_tipo_bacha"
+            android:textAppearance="?android:attr/textAppearanceSmall" />
+
+        <TextView
+            android:id="@+id/tipoBacha"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@id/titleTipo"
+            android:layout_marginLeft="10dp"
+            android:layout_toRightOf="@id/titleTipo"
+            android:text="Small Text"
+            android:textAppearance="?android:attr/textAppearanceSmall" />
+        
+    </RelativeLayout>
+
+</RelativeLayout>

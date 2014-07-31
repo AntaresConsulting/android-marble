@@ -1,0 +1,95 @@
+<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/container"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center_vertical|center_horizontal"
+    tools:context="ar.com.antaresconsulting.antonstockapp.AntonLauncherActivity"
+    tools:ignore="MergeRootFrame" >
+
+    <TableRow
+        android:id="@+id/tableRow1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" >
+
+        <ImageButton
+            android:id="@+id/prodButton"
+            style="?android:attr/borderlessButtonStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:contentDescription="@string/main_products_desc"
+            android:onClick="getProducts"
+            android:src="@drawable/ic_main_prodducts" />
+
+        <ImageButton
+            android:id="@+id/partnerButton"
+            style="?android:attr/borderlessButtonStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:contentDescription="@string/main_partners_desc"
+            android:onClick="getPartners"
+            android:src="@drawable/ic_main_partners" />
+
+        <ImageButton
+            android:id="@+id/incomeButton"
+            style="?android:attr/borderlessButtonStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:contentDescription="@string/main_income_desc"
+            android:onClick="getInCome"
+            android:src="@drawable/ic_main_income" />
+        
+        <ImageButton
+            android:id="@+id/reincomeButton"
+            style="?android:attr/borderlessButtonStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:contentDescription="@string/main_reingreso_desc"
+            android:onClick="getRInCome"
+            android:src="@drawable/ic_main_reingreso" />
+        
+        <ImageButton
+            android:id="@+id/productionButton"
+            style="?android:attr/borderlessButtonStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:contentDescription="@string/main_outcome_desc"
+            android:onClick="getOutCome"
+            android:src="@drawable/ic_main_outcome" />
+
+        <ImageButton
+            android:id="@+id/remitoButton"
+            style="?android:attr/borderlessButtonStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:contentDescription="@string/main_remito_desc"
+            android:onClick="getDispatch"
+            android:src="@drawable/ic_main_remito" />
+        <ImageButton
+            android:id="@+id/genPMButton"
+            style="?android:attr/borderlessButtonStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:contentDescription="@string/main_genpm_desc"
+            android:onClick="genPM"
+            android:src="@drawable/ic_main_genpm" />
+        <ImageButton
+            android:id="@+id/genOEButton"
+            style="?android:attr/borderlessButtonStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:contentDescription="@string/main_genoe_desc"
+            android:onClick="genOE"
+            android:src="@drawable/ic_main_genoe" />
+        <ImageButton
+            android:id="@+id/insumoButton"
+            style="?android:attr/borderlessButtonStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:contentDescription="@string/main_insumos_desc"
+            android:onClick="getInsumos"
+            android:src="@drawable/ic_main_insumo" />                        
+
+    </TableRow>
+
+</TableLayout>

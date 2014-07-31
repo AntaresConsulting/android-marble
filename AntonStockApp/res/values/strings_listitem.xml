@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="listitem_dimensions"><u><b>Dimensiones</b></u></string>
+    <string name="listitem_superficie"><u><b>Superficie = </b></u></string>
+    <string name="listitem_quantity"><u><b>Cantidades</b></u></string>
+    <string name="listitem_quantity_plaques"><u><b>Cantidades de Placas</b></u></string>
+    <string name="listitem_area_total"><u><b>Superficie Total =</b></u></string>    
+    <string name="listitem_quantity_plaques_produce"><u><b>Cantidades de Unidades a Producir</b></u></string>
+    <string name="listitem_can_other"><u><b>Cantidad</b></u></string>
+    <string name="listitem_marca_bacha"><u><b>Marca</b></u></string>
+    <string name="listitem_tipo_bacha"><u><b>Tipo Material</b></u></string>
+    <string name="listitem_quantity_units"><u><b>Cantidad de Unidades</b></u></string>
+    <string name="listitem_mp_units"><u><b>m2</b></u></string>
+  	<string name="listitem_placa_selec"><u><b>Placa Seleccionada</b></u></string>
+  	<string name="listitem_dimensiones"><u><b>Dimensiones Seleccionadas</b></u></string>
+  	
+    
+</resources>

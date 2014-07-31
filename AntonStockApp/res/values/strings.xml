@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Anton Stock</string>
+    <string name="title_recorditem_detail">RecordItem Detail</string>
+    <string name="sConnecting">Conectando</string>
+    <string name="title_forstock">Materias Primas</string>
+    <string name="title_expenses">Insumos</string>
+    <string name="title_bachas">Bachas</string>
+    <string name="title_services">Servicios</string>
+    <string name="title_clientes">Clientes</string>
+    <string name="title_suppliers">Proveedores</string>
+    <string name="title_add_products">Ingresar Productos</string>
+    <string name="title_sub_products">Restar Productos</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="sFailTitle">No se ha podido conectar</string>
+    <string name="sCheckSettings">Los datos ingresado no son validos.</string>
+    <string name="sYes">Si</string>
+    <string name="sNo">No</string>
+    <string name="sCloseQ">Esta seguro que desea salir?</string>
+    <string name="sCreate">Create</string>
+    <string name="sLogout">Salir?</string>
+    <string name="sExit">Exit</string>
+    <string name="sSave">Save</string>
+    <string name="sDiscard">Do you want to discard changes?</string>
+    <string name="save_btn">Guardar</string>
+    <string name="cancel_btn">Cancelar</string>
+    <string name="exit_btn">Salir</string>
+    <string name="login_btn">Ingresar</string>
+    <string name="title_salir">Salir</string>
+    <string name="preference_setting">preference_setting</string>
+    <string name="saved_mp_search">saved_mp_search</string>
+    <string name="saved_bacha_search">saved_bacha_search</string>
+    <string name="saved_insumo_search">saved_insumo_search</string>
+    <string name="saved_servicios_search">saved_servicios_search</string>
+    <string name="title_partner_list">Partners</string>
+    <string name="title_partner_detail">Partner Detail</string>
+    <string name="title_product_list">Products</string>
+    <string name="title_product_detail">Product Detail</string>
+    <string name="title_activity_in_products">Ingresar Productos</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="action_income_save">Confirmar</string>
+    <string name="action_submit">Remitir</string>
+    <string name="action_add_product_save">Guardar Producto</string>
+    <string name="title_activity_out_products">OutProducts</string>
+    <string name="title_activity_launcher">Anton Stock Principal</string>
+    <string name="title_action_add_mp">Agregar Materia Prima</string>
+    <string name="title_action_add_bacha">Agregar Bacha</string>
+    <string name="title_action_add_insumo">Agregar Insumo</string>
+    <string name="title_action_del">Borrar</string>
+    <string name="title_action_edit">Editar</string>
+    <string name="main_income_desc">Ingreso de Mercaderia</string>
+    <string name="main_outcome_desc">Egreso de Mercaderia</string>
+    <string name="main_reingreso_desc">Reingreso de Mercaderia</string>
+    <string name="main_remito_desc">Remitos</string>
+    <string name="main_products_desc">Productos</string>
+    <string name="main_partners_desc">Empresas</string>
+    <string name="main_genpm_desc">Gen PM</string>
+    <string name="main_genoe_desc">Gen OE</string>
+    <string name="main_insumos_desc">Insumos</string>
+    <!-- String Action Items Commons -->
+    <string name="action_exit">Salir</string>
+    <string name="action_user_info">Info</string>
+    <string name="lbl_unidades"><b>Unidades</b></string>
+    <string name="title_activity_add_product">Alta de Producto</string>
+    <string name="action_settings">Settings</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="title_activity_consumo_insumo">ConsumoInsumo</string>
+
+</resources>

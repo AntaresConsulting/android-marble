@@ -1,0 +1,161 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/RelativeLayout1"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="ar.com.antaresconsulting.antonstockapp.ProductDetailActivity" >
+
+    <FrameLayout
+        android:id="@+id/photoContainer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" >
+
+        <ImageView
+            android:id="@+id/productImg"
+            android:layout_width="250dp"
+            android:layout_height="250dp"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:src="@drawable/ic_no_photo" />
+
+        <Button
+            android:id="@+id/takePhotoBtn"
+            android:layout_width="match_parent"
+            android:layout_height="70dp"
+            android:layout_marginTop="250dp"
+            android:drawableLeft="@drawable/ic_take_photo"
+            android:onClick="takePhoto"
+            android:text="Sacar Foto" />
+    </FrameLayout>
+
+    <View
+        android:id="@+id/sepProdThumb"
+        android:layout_width="4dp"
+        android:layout_height="250dp"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="30dp"
+        android:layout_toRightOf="@id/photoContainer"
+        android:background="@color/actionbar_theme_color" />
+
+    <TextView
+        android:id="@+id/nombreProd"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_marginBottom="30dp"
+        android:layout_toRightOf="@+id/sepProdThumb"
+        android:text="Nombre_Producto"
+        android:textSize="30sp" />
+
+    <RelativeLayout
+        android:id="@+id/baseDetail"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/nombreProd"
+        android:layout_marginBottom="15dp"
+        android:layout_marginLeft="15dp"
+        android:layout_toRightOf="@id/sepProdThumb" >
+
+        <TextView
+            android:id="@+id/codeProd"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="15dp"
+            android:shadowColor="@color/abc_search_url_text_normal"
+            android:text="@string/lbl_prod_codigo"
+            android:textSize="25sp" />
+
+        <TextView
+            android:id="@+id/priceProd"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_below="@id/codeProd"
+            android:layout_marginBottom="15dp"
+            android:shadowColor="@color/abc_search_url_text_normal"
+            android:text="@string/lbl_prod_precio"
+            android:textSize="25sp" />
+
+        <TextView
+            android:id="@+id/stockProd"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_below="@id/priceProd"
+            android:layout_marginBottom="15dp"
+            android:shadowColor="@color/abc_search_url_text_normal"
+            android:text="@string/lbl_prod_stock"
+            android:textSize="25sp" />
+
+        <TextView
+            android:id="@+id/ean13"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_below="@id/stockProd"
+            android:layout_marginBottom="15dp"
+            android:shadowColor="@color/abc_search_url_text_normal"
+            android:text="@string/lbl_prod_ean13"
+            android:textSize="25sp" />
+
+        <TextView
+            android:id="@+id/stockVal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@+id/stockProd"
+            android:layout_alignBottom="@+id/stockProd"
+            android:layout_marginLeft="25dp"
+            android:layout_toRightOf="@+id/codeProd"
+            android:shadowColor="@color/abc_search_url_text_normal"
+            android:text="Stock Prod"
+            android:textSize="25sp" />
+
+        <TextView
+            android:id="@+id/codigoVal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@+id/codeProd"
+            android:layout_alignBottom="@+id/codeProd"
+            android:layout_marginLeft="25dp"
+            android:layout_toRightOf="@+id/codeProd"
+            android:shadowColor="@color/abc_search_url_text_normal"
+            android:text="Codigo"
+            android:textSize="25sp" />
+
+        <TextView
+            android:id="@+id/precioVal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@+id/priceProd"
+            android:layout_alignBottom="@+id/priceProd"
+            android:layout_marginLeft="25dp"
+            android:layout_toRightOf="@+id/codeProd"
+            android:shadowColor="@color/abc_search_url_text_normal"
+            android:text="Precio"
+            android:textSize="25sp" />
+
+        <TextView
+            android:id="@+id/eanVal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@+id/ean13"
+            android:layout_alignBottom="@+id/ean13"
+            android:layout_marginLeft="25dp"
+            android:layout_toRightOf="@+id/codeProd"
+            android:shadowColor="@color/abc_search_url_text_normal"
+            android:text="EAN13"
+            android:textSize="25sp" />
+    </RelativeLayout>
+
+    <FrameLayout
+        android:id="@+id/productDetail"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/baseDetail"
+        android:layout_below="@+id/baseDetail"
+        >
+    </FrameLayout>
+
+</RelativeLayout>

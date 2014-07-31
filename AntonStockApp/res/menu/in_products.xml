@@ -1,0 +1,14 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="ar.com.antaresconsulting.antonstockapp.InProducts" >
+
+    <item
+        android:id="@+id/save_incoming"
+        android:orderInCategory="100"
+        android:title="@string/action_income_save"
+        android:icon="@drawable/ic_common_save"
+        android:onClick="closeIncome"
+        android:showAsAction="always|withText"/>
+
+</menu>

@@ -1,0 +1,22 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="ar.com.antaresconsulting.antonstockapp.AddProductActivity" >
+
+    <item
+        android:id="@+id/scann_insumo"
+        android:orderInCategory="100"
+        android:title="@string/ci_escanear"
+        android:icon="@drawable/ic_common_scanner"
+        android:onClick="scannProduct"
+        app:showAsAction="always|withText"/>   
+    <item
+        android:id="@+id/deliver_insumo"
+        android:orderInCategory="100"
+        android:title="@string/ci_entregar_bt"
+        android:icon="@drawable/ic_common_save"
+        android:onClick="deliverInsumo"
+        app:showAsAction="always|withText"/>
+ 
+
+</menu>

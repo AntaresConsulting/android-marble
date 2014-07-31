@@ -1,0 +1,91 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/container"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_margin="20dp"
+    android:baselineAligned="false"
+    tools:context="ar.com.antaresconsulting.antonstockapp.InProducts"
+    tools:ignore="MergeRootFrame" >
+
+    <LinearLayout
+        android:id="@+id/LinearLayout1"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="3.8"
+        android:orientation="vertical" >
+
+        <TextView
+            android:id="@+id/titleCant"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/add_oe_prod_disponibles"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:textSize="30sp" />
+
+        <ListView
+            android:id="@+id/productosDispo"
+            android:layout_width="match_parent"
+            android:layout_height="313dp"
+            android:layout_weight="4.65" >
+        </ListView>
+
+        <View
+            android:layout_width="wrap_content"
+            android:layout_height="4dp"
+            android:layout_marginBottom="10dp"
+            android:layout_marginTop="10dp"
+            android:background="@color/actionbar_theme_color" />
+
+        <RelativeLayout
+            android:id="@+id/cliData"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" >
+
+            <TextView
+                android:id="@+id/clienteLbl"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="20dp"
+                android:text="@string/action_add_oe_cliente"
+                android:textAppearance="?android:attr/textAppearanceMedium" />
+
+            <Spinner
+                android:id="@+id/clienteCombo"
+                android:layout_width="match_parent"
+                android:layout_toRightOf="@+id/clienteLbl"
+                android:layout_height="wrap_content"
+                 />
+        </RelativeLayout>
+
+        <FrameLayout
+            android:id="@+id/addProductContainer"
+            android:layout_width="match_parent"
+            android:layout_height="fill_parent">
+        </FrameLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/LinearLayout2"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="4"
+        android:orientation="vertical" >
+
+        <TextView
+            android:id="@+id/dimW"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/add_oe_title_productos"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:textSize="30sp" />
+
+        <ListView
+            android:id="@+id/productosPedido"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" >
+        </ListView>
+    </LinearLayout>
+
+</LinearLayout>

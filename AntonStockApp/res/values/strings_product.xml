@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="lbl_prod_nombre">Nombre del Producto :</string>
+    <string name="lbl_prod_codigo">Codigo :</string>
+    <string name="lbl_prod_ean13">EAN13 :</string>
+    <string name="lbl_prod_uom">Tipo de Unidad :</string>
+    <string name="lbl_prod_precio">Precio :</string>
+    <string name="lbl_prod_stock">Stock :</string>
+    <string name="lbl_prod_tipo_material">Tipo de Material :</string>
+    <string name="lbl_prod_acabado">Acabado :</string>
+    <string name="lbl_prod_espesor">Espesor :</string>
+    <string name="lbl_prod_color">Color :</string>
+    <string name="lbl_prod_marca">Marca :</string>
+    
+    
+    <string-array name="tipoMaterial">
+        <item></item>
+        <item>Marmol</item>
+        <item>Granito</item>
+        <item>Quarzo</item>
+    </string-array>		
+    <string-array name="color">
+        <item></item>
+        <item>Blanco</item>
+        <item>Negro</item>
+        <item>Rosa</item>
+		<item>Verde</item>
+		<item>Azul</item>
+		<item>Celeste</item>
+		<item>Lila</item>
+		<item>Amarillo</item>        
+		<item>Rojo</item>
+		<item>Gris</item>
+		<item>Beige</item>    
+    </string-array>		
+    <string-array name="terminaciones">
+        <item></item>
+        <item>Lustrado</item>
+        <item>Aponazado</item>
+        <item>Flameado</item>
+        <item>Rustico</item>
+        <item>Leather</item>
+    </string-array>	
+
+</resources>
