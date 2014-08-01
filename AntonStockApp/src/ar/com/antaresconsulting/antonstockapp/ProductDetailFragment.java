@@ -116,14 +116,14 @@ public class ProductDetailFragment extends Fragment   implements MateriaPrimaDAO
 			switch (this.tProd) {
 			case AntonConstants.MATERIA_PRIMA:
 				MateriaPrima prod = (MateriaPrima) this.pData;
-				View.inflate(getActivity(), R.layout.fragment_mp_detail, (ViewGroup) getActivity().findViewById(R.id.productDetail));
+				View.inflate(getActivity(), R.layout.fragment_detail_mp, (ViewGroup) getActivity().findViewById(R.id.productDetail));
 				((TextView) view.findViewById(R.id.material)).setText(prod.getMaterial().getName());
 				((TextView) view.findViewById(R.id.color)).setText(prod.getColor().getName());
 				((TextView) view.findViewById(R.id.acabado)).setText(prod.getFinished().getName());				
 				break;
 			case AntonConstants.BACHAS:
 				Bacha bacha = (Bacha) this.pData;
-				View.inflate(getActivity(), R.layout.fragment_bacha_detail, (ViewGroup) getActivity().findViewById(R.id.productDetail));
+				View.inflate(getActivity(), R.layout.fragment_detail_bacha, (ViewGroup) getActivity().findViewById(R.id.productDetail));
 				((TextView) view.findViewById(R.id.material)).setText(bacha.getTipoMaterial().getName());
 				((TextView) view.findViewById(R.id.marca)).setText(bacha.getMarca().getName());
 				break;
@@ -138,7 +138,7 @@ public class ProductDetailFragment extends Fragment   implements MateriaPrimaDAO
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
-		View rootView = inflater.inflate(R.layout.fragment_product_detail,	container, false);
+		View rootView = inflater.inflate(R.layout.fragment_detail_product,	container, false);
 		
 		return rootView;
 	}
