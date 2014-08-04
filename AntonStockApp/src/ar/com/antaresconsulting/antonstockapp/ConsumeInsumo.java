@@ -23,24 +23,28 @@ import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 import android.widget.AdapterView.OnItemClickListener;
 import ar.com.antaresconsulting.antonstockapp.adapters.BaseProductAdapter;
+import ar.com.antaresconsulting.antonstockapp.adapters.EmpleadosAdapter;
 import ar.com.antaresconsulting.antonstockapp.adapters.InsumoAdapter;
 import ar.com.antaresconsulting.antonstockapp.listener.SwipeDismissListViewTouchListener;
 import ar.com.antaresconsulting.antonstockapp.model.BaseProduct;
 import ar.com.antaresconsulting.antonstockapp.model.Dimension;
 import ar.com.antaresconsulting.antonstockapp.model.Insumo;
 import ar.com.antaresconsulting.antonstockapp.model.PickingMove;
+import ar.com.antaresconsulting.antonstockapp.model.dao.EmpleadoDAO;
 import ar.com.antaresconsulting.antonstockapp.model.dao.InsumosDAO;
 
-public class ConsumeInsumo extends ActionBarActivity implements InsumosDAO.InsumosCallbacks{
+public class ConsumeInsumo extends ActionBarActivity implements EmpleadoDAO.EmpleCallbacks, InsumosDAO.InsumosCallbacks{
 
 	private InsumosDAO insuDao;
+	private EmpleadoDAO empleDao;
 	private ListView productos;
 	private AutoCompleteTextView prodBuscador;
 	private ArrayAdapter<Insumo> prodBuscaAdapter;
 	private EditText cantPlacasUtil;
-	private Spinner empleados;
+	private ListView empleados;
 	protected int productoSelecPos;
 	private CreateMovesAsyncTask saveData;
 
@@ -55,7 +59,11 @@ public class ConsumeInsumo extends ActionBarActivity implements InsumosDAO.Insum
 		this.prodBuscador = (AutoCompleteTextView) findViewById(R.id.productoNombreBuscar);
 		this.prodBuscaAdapter = new ArrayAdapter<Insumo>(this,android.R.layout.simple_list_item_1);
 		this.cantPlacasUtil = (EditText) findViewById(R.id.cantPlacaUtil);
-		this.empleados = (Spinner) findViewById(R.id.empleCombo);
+		this.empleados = (ListView) findViewById(R.id.empleList);
+		this.empleados.setChoiceMode(ListView.CHOICE_MODE_SINGLE);
+		this.empleados.setAdapter(new EmpleadosAdapter(this));
+		this.empleDao = new EmpleadoDAO(this);
+		this.empleDao.getAll();
 		this.prodBuscador.setOnItemClickListener(new OnItemClickListener() {
 			public void onItemClick(AdapterView<?> parent, View arg1, int pos,
 					long id) {
@@ -191,10 +199,16 @@ public class ConsumeInsumo extends ActionBarActivity implements InsumosDAO.Insum
 			this.cantPlacasUtil.setError(getString(R.string.error_field_required));
 			this.cantPlacasUtil.requestFocus();
 		}		
-		InsumoAdapter adapter = (InsumoAdapter) this.productos.getAdapter();
-		Insumo prod = (Insumo) this.prodBuscador.getAdapter().getItem(this.productoSelecPos);
-		prod.setCantidad(Double.parseDouble(this.cantPlacasUtil.getText().toString()));
-		adapter.addProduct(prod);
-		adapter.notifyDataSetChanged();
+		(Toast.makeText(getBaseContext(), "----------"+new Integer(this.empleados.getCheckedItemPosition()), Toast.LENGTH_SHORT)).show();;
+//		InsumoAdapter adapter = (InsumoAdapter) this.productos.getAdapter();
+//		Insumo prod = (Insumo) this.prodBuscador.getAdapter().getItem(this.productoSelecPos);
+//		prod.setCantidad(Double.parseDouble(this.cantPlacasUtil.getText().toString()));
+//		adapter.addProduct(prod);
+//		adapter.notifyDataSetChanged();
+	}
+
+	@Override
+	public void setEmpleados() {
+		((EmpleadosAdapter)this.empleados.getAdapter()).addAll(this.empleDao.getEmpleList());
 	}	
 }

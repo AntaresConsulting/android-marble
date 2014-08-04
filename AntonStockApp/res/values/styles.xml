@@ -24,6 +24,7 @@
         <item name="android:padding">16dp</item>
     </style>
 
+	<color name="bg_listitem_emple">#e0ecde</color>
     <color name="bg_theme_color">#F4F4EE</color>
     <color name="actionbar_theme_color">#DC2A2A</color>
 

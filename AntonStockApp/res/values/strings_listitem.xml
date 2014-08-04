@@ -14,5 +14,12 @@
   	<string name="listitem_placa_selec"><u><b>Placa Seleccionada</b></u></string>
   	<string name="listitem_dimensiones"><u><b>Dimensiones Seleccionadas</b></u></string>
   	
+  	<string name="listitem_emple_cargo"><u><b>Cargo</b></u></string>
+  	<string name="listitem_emple_dept"><u><b>Departamento</b></u></string>
+  	
+  	<string name="listitem_emple_cargo_sd">Sin Datos</string>
+  	<string name="listitem_emple_dept_sd">Sin Datos</string>
+  	
+  	
     
 </resources>

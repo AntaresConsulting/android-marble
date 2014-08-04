@@ -7,24 +7,36 @@
     tools:context="ar.com.antaresconsulting.antonstockapp.OutProducts"
     tools:ignore="MergeRootFrame" >
 
-    <FrameLayout
+    <LinearLayout
+        android:id="@+id/LinearLayout1"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center_vertical"
-        android:layout_weight="3.8" >
+        android:layout_weight="3.8"
+        android:layout_margin="5dp"
+        android:orientation="vertical" >
+
+        <TextView
+            android:id="@+id/lblEmpleado"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:layout_marginBottom="10dp"
+            android:text="@string/ci_empleado"
+            android:textAppearance="?android:attr/textAppearanceLarge" />
+
+        <ListView
+            android:id="@+id/empleList"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1" >
+        </ListView>
 
         <TableLayout
             android:layout_width="fill_parent"
             android:layout_height="match_parent"
             android:layout_gravity="center_horizontal"
             android:layout_margin="20dp" >
-
-            <TableRow
-                android:id="@+id/tableRow3"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center_horizontal" >
-            </TableRow>
 
             <TableRow
                 android:id="@+id/TableRow01"
@@ -102,13 +114,14 @@
                     android:src="@drawable/ic_common_add" />
             </TableRow>
         </TableLayout>
-    </FrameLayout>
+    </LinearLayout>
 
     <LinearLayout
         android:id="@+id/LinearLayout1"
         android:layout_width="0dp"
         android:layout_height="match_parent"
         android:layout_weight="4"
+        android:layout_margin="5dp"        
         android:orientation="vertical" >
 
         <TextView
@@ -124,37 +137,6 @@
             android:layout_width="match_parent"
             android:layout_height="404dp" >
         </ListView>
-
-        <View
-            android:layout_width="wrap_content"
-            android:layout_height="4dp"
-            android:layout_marginBottom="10dp"
-            android:layout_marginTop="10dp"
-            android:layout_span="2"
-            android:background="@color/actionbar_theme_color" />
-
-        <RelativeLayout
-            android:id="@+id/bindEmployee"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" >
-
-            <TextView
-                android:id="@+id/lblEmpleado"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/ci_empleado"
-                android:gravity="center_vertical"
-                android:layout_centerVertical="true"
-                android:textAppearance="?android:attr/textAppearanceMedium" />
-
-            <Spinner
-                android:id="@+id/empleCombo"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:layout_toRightOf="@+id/lblEmpleado"
-                android:entries="@array/empleados" />
-
-        </RelativeLayout>
     </LinearLayout>
 
 </LinearLayout>
