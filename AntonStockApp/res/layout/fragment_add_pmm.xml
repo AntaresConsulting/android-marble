@@ -99,7 +99,7 @@
                     android:id="@+id/lblPicking"
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
-                    android:text="@string/add_pm_picking"
+                    android:text="@string/add_pm_compra"
                     android:textAppearance="?android:attr/textAppearanceMedium" />
 
                 <EditText

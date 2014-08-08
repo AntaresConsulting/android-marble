@@ -47,6 +47,7 @@
     <string name="title_activity_launcher">Anton Stock Principal</string>
     <string name="title_action_add_mp">Agregar Materia Prima</string>
     <string name="title_action_add_bacha">Agregar Bacha</string>
+	<string name="title_action_add_servicio">Agregar Servicio</string>    
     <string name="title_action_add_insumo">Agregar Insumo</string>
     <string name="title_action_del">Borrar</string>
     <string name="title_action_edit">Editar</string>

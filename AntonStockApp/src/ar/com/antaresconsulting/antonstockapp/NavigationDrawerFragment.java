@@ -78,8 +78,6 @@ public class NavigationDrawerFragment extends Fragment {
             mFromSavedInstanceState = true;
         }
 
-        // Select either the default item (0) or the last selected item.
-       //selectItem(mCurrentSelectedPosition);
     }
 
     @Override
@@ -87,6 +85,8 @@ public class NavigationDrawerFragment extends Fragment {
         super.onActivityCreated(savedInstanceState);
         // Indicate that this fragment would like to influence the set of actions in the action bar.
         setHasOptionsMenu(true);
+        // Select either the default item (0) or the last selected item.
+       //selectItem(mCurrentSelectedPosition);
     }
 
     @Override
@@ -105,7 +105,6 @@ public class NavigationDrawerFragment extends Fragment {
         if(actAux  instanceof PartnerListActivity){
         	 dataList.add(new DrawerItem(getString(R.string.title_clientes), R.drawable.ic_menu_partner));
         	 dataList.add(new DrawerItem(getString(R.string.title_suppliers), R.drawable.ic_menu_partner));
-             //dataList.add(new DrawerItem(getString(R.string.title_salir), R.drawable.ic_menu_exit));
         }
         
         if(actAux  instanceof ProductListActivity){
@@ -113,7 +112,6 @@ public class NavigationDrawerFragment extends Fragment {
              dataList.add(new DrawerItem(getString(R.string.title_expenses), R.drawable.ic_menu_product));
              dataList.add(new DrawerItem(getString(R.string.title_bachas), R.drawable.ic_menu_product));
              dataList.add(new DrawerItem(getString(R.string.title_services), R.drawable.ic_menu_product));
-             //dataList.add(new DrawerItem(getString(R.string.title_salir), R.drawable.ic_menu_exit));
         }
         
        

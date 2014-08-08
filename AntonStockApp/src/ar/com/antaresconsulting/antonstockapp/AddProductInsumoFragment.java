@@ -8,6 +8,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.EditText;
 import android.widget.Spinner;
 import ar.com.antaresconsulting.antonstockapp.model.Bacha;
 import ar.com.antaresconsulting.antonstockapp.model.BaseProduct;
@@ -23,6 +24,7 @@ import ar.com.antaresconsulting.antonstockapp.model.dao.ProductDAO;
 public class AddProductInsumoFragment extends Fragment implements AddProductInterface,ProductDAO.UomsCallbacks{
 	private ProductDAO prodDao;
 	private Spinner uoms;
+	private EditText desc;
 	private static final String ARG_PARAM1 = "param1";
 
 	
@@ -49,6 +51,7 @@ public class AddProductInsumoFragment extends Fragment implements AddProductInte
 			Bundle savedInstanceState) {
 		View rootView = inflater.inflate(R.layout.fragment_add_product_insumo, container,	false);
 		uoms = (Spinner) rootView.findViewById(R.id.uomVal);
+		desc = (EditText) rootView.findViewById(R.id.insuDesc);
 		prodDao = new ProductDAO(this);
 		prodDao.getUOMS();
 		return rootView;
@@ -65,6 +68,7 @@ public class AddProductInsumoFragment extends Fragment implements AddProductInte
 			params.put("uom_po_id", ((SelectionObject)uoms.getSelectedItem()).getId());
 			params.put("categ_id", AntonConstants.CATEGORY_INSUMO);
 		}
+		params.put("description", this.desc.getText().toString());
 		return params;
 		
 	}

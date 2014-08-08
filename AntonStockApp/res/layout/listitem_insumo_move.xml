@@ -42,7 +42,28 @@
         android:layout_alignBottom="@id/cantidadProducto"
         android:layout_marginLeft="5dp"
         android:layout_toRightOf="@id/cantidadProducto"
-        android:text="@string/lbl_unidades"
+        android:text="@string/listitem_unidades"
+        android:textAppearance="?android:attr/textAppearanceSmall" />
+
+    <TextView
+        android:id="@+id/TextView01"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/titleCant"
+        android:layout_alignBottom="@+id/titleCant"
+        android:layout_marginLeft="32dp"
+        android:layout_toRightOf="@+id/unidades"
+        android:text="@string/listitem_entregado"
+        android:textAppearance="?android:attr/textAppearanceSmall" />
+
+    <TextView
+        android:id="@+id/empleado"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/unidades"
+        android:layout_alignBottom="@+id/unidades"
+        android:layout_alignLeft="@+id/TextView01"
+        android:text="Juan Perez"
         android:textAppearance="?android:attr/textAppearanceSmall" />
 
 </RelativeLayout>

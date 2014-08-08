@@ -25,6 +25,9 @@ public class SearchBachaPopupFragment extends DialogFragment implements BachasDA
 
 	private Spinner lTipoMaterial;
 	private Spinner lMarca;
+	private Spinner lTipo;
+	private Spinner lAcero;
+	private Spinner lColocacion;	
 	private AutoCompleteTextView lNombre;
 	private BachasDAO pDao;
 	private int productoSelecPos;
@@ -50,16 +53,35 @@ public class SearchBachaPopupFragment extends DialogFragment implements BachasDA
 		String tipoMaterial = sharedPref.getString(getString(R.string.search_bacha_material),"");
 		String marca = sharedPref.getString(getString(R.string.search_bacha_marca),"");
 		String nombreProd = sharedPref.getString(getString(R.string.search_nombre),"");
+		String tbacha = sharedPref.getString(getString(R.string.search_bacha_tipo),"");
+		String acero = sharedPref.getString(getString(R.string.search_bacha_acero),"");
+		String colocacion = sharedPref.getString(getString(R.string.search_bacha_colocacion),"");
 
+		
 		lTipoMaterial = (Spinner) view.findViewById(R.id.tipoMaterial);
 		lMarca = (Spinner) view.findViewById(R.id.marca);
 		lNombreProg = (ProgressBar) view.findViewById(R.id.loading_spinner);
-
-		lMarca.setAdapter(new ArrayAdapter<SelectionObject>(this.getActivity(),android.R.layout.simple_list_item_1,SelectionObject.getMarcaData()));
+		lAcero = (Spinner) view.findViewById(R.id.aceroBacha);
+		lColocacion = (Spinner) view.findViewById(R.id.colocacionBacha);
+		lTipo = (Spinner) view.findViewById(R.id.tipoBacha);
+		
+		lAcero.setAdapter(new ArrayAdapter<SelectionObject>(this.getActivity(),android.R.layout.simple_list_item_1,SelectionObject.getAceroBachaData()));
+		lColocacion.setAdapter(new ArrayAdapter<SelectionObject>(this.getActivity(),android.R.layout.simple_list_item_1,SelectionObject.getColocacionBachaData()));
+		lTipo.setAdapter(new ArrayAdapter<SelectionObject>(this.getActivity(),android.R.layout.simple_list_item_1,SelectionObject.getTipoBachaData()));
 		lTipoMaterial.setAdapter(new ArrayAdapter<SelectionObject>(this.getActivity(),android.R.layout.simple_list_item_1,SelectionObject.getTipoBachaData()));
 		
+		if(tipoMaterial.equalsIgnoreCase(AntonConstants.ACERO)){
+			lMarca.setAdapter(new ArrayAdapter<SelectionObject>(this.getActivity(),android.R.layout.simple_list_item_1,SelectionObject.getMarcaAceroBachaData()));					
+			lMarca.setSelection(SelectionObject.getIndexInList(SelectionObject.getMarcaAceroBachaData(),marca));
+		}else{
+			lMarca.setAdapter(new ArrayAdapter<SelectionObject>(this.getActivity(),android.R.layout.simple_list_item_1,SelectionObject.getMarcaLosaBachaData()));
+			lMarca.setSelection(SelectionObject.getIndexInList(SelectionObject.getMarcaLosaBachaData(),marca));
+		}
+		
 		lTipoMaterial.setSelection(((ArrayAdapter<SelectionObject>)lTipoMaterial.getAdapter()).getPosition(SelectionObject.getBachaMaterial(tipoMaterial)));
-		lMarca.setSelection(((ArrayAdapter<SelectionObject>)lMarca.getAdapter()).getPosition(SelectionObject.getBachaMarca(marca)));
+		lAcero.setSelection(SelectionObject.getIndexInList(SelectionObject.getAceroBachaData(),acero));
+		lColocacion.setSelection(SelectionObject.getIndexInList(SelectionObject.getColocacionBachaData(),colocacion));
+		lTipo.setSelection(SelectionObject.getIndexInList(SelectionObject.getTipoBachaData(),tbacha));
 
 		lNombre = (AutoCompleteTextView) view.findViewById(R.id.nombreProd);
 
@@ -92,6 +114,9 @@ public class SearchBachaPopupFragment extends DialogFragment implements BachasDA
 				editor.putString(getString(R.string.search_bacha_material), lTipoMaterial.getSelectedItem().toString() );
 				editor.putString(getString(R.string.search_bacha_marca), lMarca.getSelectedItem().toString() );
 				editor.putString(getString(R.string.search_bacha_nombre), lNombre.getText().toString());
+				editor.putString(getString(R.string.search_bacha_acero), lAcero.getSelectedItem().toString());
+				editor.putString(getString(R.string.search_bacha_tipo), lTipo.getSelectedItem().toString());
+				editor.putString(getString(R.string.search_bacha_colocacion), lColocacion.getSelectedItem().toString());
 				
 				editor.commit();
 				Fragment parentFragment = getTargetFragment();

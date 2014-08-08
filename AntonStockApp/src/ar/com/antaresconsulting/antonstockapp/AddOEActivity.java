@@ -201,9 +201,12 @@ public class AddOEActivity extends ActionBarActivity implements ProductDAO.Servi
 		String tipo = sharedPref.getString(getString(R.string.search_bacha_material),"");
 		String marca = sharedPref.getString(getString(R.string.search_bacha_marca),"");
 		String nombreProd = sharedPref.getString(getString(R.string.search_bacha_nombre),"");
+		String tbacha = sharedPref.getString(getString(R.string.search_bacha_tipo),"");
+		String acero = sharedPref.getString(getString(R.string.search_bacha_acero),"");
+		String colocacion = sharedPref.getString(getString(R.string.search_bacha_colocacion),"");
 
 		this.baDao = new BachasDAO(this);
-		this.baDao.getBachasProducts(tipo, marca, nombreProd);				
+		this.baDao.getBachasProducts(tipo, marca, nombreProd,tbacha,acero,colocacion);		
 	}
 
 	@Override

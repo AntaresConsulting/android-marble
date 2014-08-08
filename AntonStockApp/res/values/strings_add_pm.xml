@@ -5,12 +5,12 @@
     <string name="action_add_pm_scann">Escanear</string>
     <string name="action_add_pm_save">Generar PM</string>
     <string name="add_pm_prod_dispo">Productos Disponibles</string>
-	<string name="add_pm_prod_in">Prodctos a Ingresar</string>
+	<string name="add_pm_prod_in">Productos a Ingresar</string>
 	<string name="add_pm_proveedor">Proveedor</string>
 	<string name="add_pm_prod_cant">Cantidad</string>
 	<string name="add_pm_prod_mp_unidad">m2</string>
 	<string name="add_pm_prod_bacha_unidad">Unidad</string>
-	<string name="add_pm_picking">Picking List</string>
+	<string name="add_pm_compra">Orden de Compra</string>
 	
     
 

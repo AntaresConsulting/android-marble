@@ -25,7 +25,7 @@ public class MoveProducts extends ActionBarActivity {
 
 		
 		if (savedInstanceState == null) {
-			getFragmentManager().beginTransaction().add(R.id.container, ProductTypeFragment.newInstance(true,true,false,false)).commit();
+			getFragmentManager().beginTransaction().add(R.id.container, ProductTypeFragment.newInstance(true,true,false,true)).commit();
 		}
 	}
 
@@ -93,4 +93,7 @@ public class MoveProducts extends ActionBarActivity {
 	public void setMP(View view) {
 		getFragmentManager().beginTransaction().replace(R.id.container, MoveMPFragment.newInstance(AntonConstants.MATERIA_PRIMA)).commit();
 	}
+	public void setServicios(View view) {
+		getFragmentManager().beginTransaction().replace(R.id.container, MoveServicioFragment.newInstance(AntonConstants.SERVICIOS)).commit();
+	}	
 }

@@ -29,6 +29,7 @@ public class InsumoAdapter extends BaseProductAdapter {
 	static class ViewHolder {
 		public TextView lblNombre;
 		public TextView cantidad;
+		public TextView empleado;
 	}
 	
 	public View getView(int position, View convertView, ViewGroup parent) {
@@ -43,13 +44,15 @@ public class InsumoAdapter extends BaseProductAdapter {
 
 			viewHolder.lblNombre = (TextView) rowView.findViewById(R.id.nombreProd);
 			viewHolder.cantidad = (TextView) rowView.findViewById(R.id.cantidadProducto);
-
+			viewHolder.empleado = (TextView) rowView.findViewById(R.id.empleado);
 			rowView.setTag(viewHolder);
 		}
 		ViewHolder holder = (ViewHolder) rowView.getTag();
 		Insumo registro = (Insumo) datos.get(position);
 		holder.lblNombre.setText(registro.getNombre());
 		holder.cantidad.setText(registro.getCantidad().toString());
+		holder.empleado.setText(registro.getEntregado().getNombre());
+
 		return rowView;
 
 	}

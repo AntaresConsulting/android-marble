@@ -12,6 +12,7 @@ import ar.com.antaresconsulting.antonstockapp.model.BaseProduct;
 import ar.com.antaresconsulting.antonstockapp.model.dao.BachasDAO;
 import ar.com.antaresconsulting.antonstockapp.model.dao.InsumosDAO;
 import ar.com.antaresconsulting.antonstockapp.model.dao.MateriaPrimaDAO;
+import ar.com.antaresconsulting.antonstockapp.model.dao.ProductDAO;
 
 /**
  * A list fragment representing a list of Products. This fragment also supports
@@ -22,16 +23,18 @@ import ar.com.antaresconsulting.antonstockapp.model.dao.MateriaPrimaDAO;
  * Activities containing this fragment MUST implement the {@link Callbacks}
  * interface.
  */
-public class ProductListFragment extends ListFragment  implements MateriaPrimaDAO.MateriaPrimaCallbacks,BachasDAO.BachasCallbacks,InsumosDAO.InsumosCallbacks{
+public class ProductListFragment extends ListFragment  implements ProductDAO.ServiciosCallbacks,  MateriaPrimaDAO.MateriaPrimaCallbacks,BachasDAO.BachasCallbacks,InsumosDAO.InsumosCallbacks{
 	private BaseProductAdapter mAdapter;
 	private MateriaPrimaDAO mpDao;
 	private BachasDAO baDao;
 	private InsumosDAO insuDao;
+	private ProductDAO prodDao;
+	
 	private int tProd;
 	private List<BaseProduct> mp;
 	private List<BaseProduct> bachas;
 	private List<BaseProduct> insumos;
-	//private List<Product> servicios;
+	private List<BaseProduct> servicios;
 	/**
 	 * The serialization (saved instance state) Bundle key representing the
 	 * activated item position. Only used on tablets.
@@ -205,7 +208,14 @@ public class ProductListFragment extends ListFragment  implements MateriaPrimaDA
 				this.insuDao.getInsumos();
 			}				
 			break;
-
+		case AntonConstants.SERVICIOS:
+			if(this.servicios != null){
+				this.setServicios();
+			}else{
+				this.prodDao = new ProductDAO(this);
+				this.prodDao.getServicios();
+			}				
+			break;
 		default:
 			break;
 		}
@@ -234,6 +244,14 @@ public class ProductListFragment extends ListFragment  implements MateriaPrimaDA
 			this.insumos = this.insuDao.getBaseProductsList();
 		this.mAdapter = new BaseProductAdapter(this,this.insumos);
 		setListAdapter(this.mAdapter);	
+	}
+
+	@Override
+	public void setServicios() {
+		if(this.servicios == null)
+			this.servicios = this.prodDao.getBaseProductsList();
+		this.mAdapter = new BaseProductAdapter(this,this.servicios);
+		setListAdapter(this.mAdapter);			
 	}
 
 		

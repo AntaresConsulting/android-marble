@@ -81,8 +81,9 @@
         android:layout_marginRight="26dp"
         android:gravity="center_vertical"
         android:layout_centerVertical="true"
-        android:clickable="false"
-        android:focusable="false"
+	     android:checked="false"
+	     android:focusable="false"
+	     android:clickable="false"
         android:text="" />
 
 </RelativeLayout>

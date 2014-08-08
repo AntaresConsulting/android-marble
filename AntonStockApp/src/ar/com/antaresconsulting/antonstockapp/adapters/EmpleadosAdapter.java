@@ -63,6 +63,10 @@ public class EmpleadosAdapter extends BaseAdapter {
 		return this.datos.size();
 	}
 
+	public Empleado getSelectedEmple() {
+		return this.datos.get(mSelectedVariation);
+	}
+	
 	@Override
 	public Empleado getItem(int arg0) {
 		return this.datos.get(arg0);

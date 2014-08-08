@@ -31,6 +31,7 @@ import ar.com.antaresconsulting.antonstockapp.adapters.InsumoAdapter;
 import ar.com.antaresconsulting.antonstockapp.listener.SwipeDismissListViewTouchListener;
 import ar.com.antaresconsulting.antonstockapp.model.BaseProduct;
 import ar.com.antaresconsulting.antonstockapp.model.Dimension;
+import ar.com.antaresconsulting.antonstockapp.model.Empleado;
 import ar.com.antaresconsulting.antonstockapp.model.Insumo;
 import ar.com.antaresconsulting.antonstockapp.model.PickingMove;
 import ar.com.antaresconsulting.antonstockapp.model.dao.EmpleadoDAO;
@@ -60,8 +61,8 @@ public class ConsumeInsumo extends ActionBarActivity implements EmpleadoDAO.Empl
 		this.prodBuscaAdapter = new ArrayAdapter<Insumo>(this,android.R.layout.simple_list_item_1);
 		this.cantPlacasUtil = (EditText) findViewById(R.id.cantPlacaUtil);
 		this.empleados = (ListView) findViewById(R.id.empleList);
-		this.empleados.setChoiceMode(ListView.CHOICE_MODE_SINGLE);
 		this.empleados.setAdapter(new EmpleadosAdapter(this));
+		this.empleados.setChoiceMode(ListView.CHOICE_MODE_SINGLE);		
 		this.empleDao = new EmpleadoDAO(this);
 		this.empleDao.getAll();
 		this.prodBuscador.setOnItemClickListener(new OnItemClickListener() {
@@ -158,7 +159,7 @@ public class ConsumeInsumo extends ActionBarActivity implements EmpleadoDAO.Empl
 		int maxProds = this.productos.getAdapter().getCount();
 
 		for (int i = 1; i <= maxProds; i++) {
-			BaseProduct prod = (BaseProduct) this.productos.getAdapter().getItem(i-1);
+			Insumo prod = (Insumo) this.productos.getAdapter().getItem(i-1);
 			
 			HashMap<String,Object> move = new HashMap<String,Object>();
 
@@ -178,7 +179,7 @@ public class ConsumeInsumo extends ActionBarActivity implements EmpleadoDAO.Empl
 			move.put("picking_id",false);
 			move.put("origin",false);
 			move.put("state","draft");
-			//move.put("empleado","Entregado a  "+(String)this.empleados.getSelectedItem());
+			move.put("employee",prod.getEntregado().getId());
 			move.put("name",prod.getNombre());
 			moves.add(move);
 			
@@ -199,12 +200,12 @@ public class ConsumeInsumo extends ActionBarActivity implements EmpleadoDAO.Empl
 			this.cantPlacasUtil.setError(getString(R.string.error_field_required));
 			this.cantPlacasUtil.requestFocus();
 		}		
-		(Toast.makeText(getBaseContext(), "----------"+new Integer(this.empleados.getCheckedItemPosition()), Toast.LENGTH_SHORT)).show();;
-//		InsumoAdapter adapter = (InsumoAdapter) this.productos.getAdapter();
-//		Insumo prod = (Insumo) this.prodBuscador.getAdapter().getItem(this.productoSelecPos);
-//		prod.setCantidad(Double.parseDouble(this.cantPlacasUtil.getText().toString()));
-//		adapter.addProduct(prod);
-//		adapter.notifyDataSetChanged();
+		InsumoAdapter adapter = (InsumoAdapter) this.productos.getAdapter();
+		Insumo prod = (Insumo) this.prodBuscador.getAdapter().getItem(this.productoSelecPos);
+		prod.setEntregado(((EmpleadosAdapter)this.empleados.getAdapter()).getSelectedEmple());
+		prod.setCantidad(Double.parseDouble(this.cantPlacasUtil.getText().toString()));
+		adapter.addProduct(prod);
+		adapter.notifyDataSetChanged();
 	}
 
 	@Override

@@ -4,7 +4,6 @@ import java.io.ByteArrayOutputStream;
 import java.util.HashMap;
 import java.util.List;
 
-import com.openerp.DeleteAsyncTask;
 import com.openerp.OpenErpHolder;
 import com.openerp.WriteAsyncTask;
 
@@ -20,13 +19,13 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 import ar.com.antaresconsulting.antonstockapp.model.Bacha;
 import ar.com.antaresconsulting.antonstockapp.model.BaseProduct;
 import ar.com.antaresconsulting.antonstockapp.model.Insumo;
 import ar.com.antaresconsulting.antonstockapp.model.MateriaPrima;
+import ar.com.antaresconsulting.antonstockapp.model.Servicio;
 import ar.com.antaresconsulting.antonstockapp.model.dao.BachasDAO;
 import ar.com.antaresconsulting.antonstockapp.model.dao.InsumosDAO;
 import ar.com.antaresconsulting.antonstockapp.model.dao.MateriaPrimaDAO;
@@ -37,7 +36,7 @@ import ar.com.antaresconsulting.antonstockapp.model.dao.ProductDAO;
  * either contained in a {@link ProductListActivity} in two-pane mode (on
  * tablets) or a {@link ProductDetailActivity} on handsets.
  */
-public class ProductDetailFragment extends Fragment   implements MateriaPrimaDAO.MateriaPrimaCallbacks,BachasDAO.BachasCallbacks,InsumosDAO.InsumosCallbacks{
+public class ProductDetailFragment extends Fragment   implements ProductDAO.ProductCallbacks, MateriaPrimaDAO.MateriaPrimaCallbacks,BachasDAO.BachasCallbacks,InsumosDAO.InsumosCallbacks{
 	/**
 	 * The fragment argument representing the item ID that this fragment
 	 * represents.
@@ -46,7 +45,9 @@ public class ProductDetailFragment extends Fragment   implements MateriaPrimaDAO
 	public static final String ARG_PHOTO_SAVE = "photo_saved";
 	private MateriaPrimaDAO mpDao;
 	private BachasDAO baDao;
-	private InsumosDAO insuDao;	
+	private InsumosDAO insuDao;
+	private ProductDAO prodDao;
+	
 	private BaseProduct pData;
 	private ImageView photoContainer;
 	private Bitmap savedThumb;
@@ -80,7 +81,12 @@ public class ProductDetailFragment extends Fragment   implements MateriaPrimaDAO
 					case AntonConstants.INSUMOS:
 						insuDao = new InsumosDAO(this);
 						insuDao.getProductDetail(getArguments().getString(ARG_ITEM_ID));
+						break;	
+					case AntonConstants.SERVICIOS:
+						prodDao = new ProductDAO(this);
+						prodDao.getProductDetail(getArguments().getString(ARG_ITEM_ID));
 						break;						
+						
 
 					}					
 				}
@@ -126,10 +132,26 @@ public class ProductDetailFragment extends Fragment   implements MateriaPrimaDAO
 				View.inflate(getActivity(), R.layout.fragment_detail_bacha, (ViewGroup) getActivity().findViewById(R.id.productDetail));
 				((TextView) view.findViewById(R.id.material)).setText(bacha.getTipoMaterial().getName());
 				((TextView) view.findViewById(R.id.marca)).setText(bacha.getMarca().getName());
+				if(bacha.getTipo() != null)
+					((TextView) view.findViewById(R.id.tipoBacha)).setText(bacha.getTipo().getName());
+				if(bacha.getTipo() != null)				
+					((TextView) view.findViewById(R.id.acero)).setText(bacha.getAcero().getName());
+				((TextView) view.findViewById(R.id.colocacion)).setText(bacha.getColocacion().getName());
+				((TextView) view.findViewById(R.id.bachaProf)).setText(bacha.getProfundidad().toString());
+				((TextView) view.findViewById(R.id.bachaLargo)).setText(bacha.getLargo().toString());
+				((TextView) view.findViewById(R.id.bachaAncho)).setText(bacha.getAncho().toString());
+
 				break;
 			case AntonConstants.INSUMOS:
-				
-				break;				
+				Insumo insu = (Insumo) this.pData;
+				View.inflate(getActivity(), R.layout.fragment_detail_insumo, (ViewGroup) getActivity().findViewById(R.id.productDetail));
+				((TextView) view.findViewById(R.id.insuDesc)).setText(insu.getDescription());
+				break;	
+			case AntonConstants.SERVICIOS:
+//				BaseProduct serv = (BaseProduct) this.pData;
+//				View.inflate(getActivity(), R.layout.fragment_detail_insumo, (ViewGroup) getActivity().findViewById(R.id.productDetail));
+//				((TextView) view.findViewById(R.id.insuDesc)).setText(serv.getDescription());
+				break;					
 			default:
 				break;
 			}
@@ -198,5 +220,25 @@ public class ProductDetailFragment extends Fragment   implements MateriaPrimaDAO
 	        //Bitmap imageBitmap = (Bitmap) extras.get("data");
 	    }
 	}
+
+	@Override
+	public void setProductDetail() {
+		List<Servicio> prods = this.prodDao.getServiciosList();
+		this.pData = prods.get(0);	
+		this.onViewCreated(getView(), getArguments());			
+	}
+
+	@Override
+	public void setProductOthers() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void setProductsSelection() {
+		// TODO Auto-generated method stub
+		
+	}
+
 
 }

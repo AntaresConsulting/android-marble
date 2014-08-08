@@ -7,9 +7,9 @@
     <string name="action_add_oe_save">Generar OE</string>
     <string name="add_oe_prod_disponibles">Productos Disponibles</string>
     <string name="add_oe_prod_tipo_dim">Tipo</string>
-    <string name="add_oe_prod_alto">Alto</string>
+    <string name="add_oe_prod_largo">Largo</string>
     <string name="add_oe_prod_unidad">m</string>
-    <string name="add_oe_prod_ancho">Ancho</string>
+    <string name="add_oe_prod_ancho">Alto/Ancho</string>
     <string name="add_oe_prod_espesor">Espesor</string>
     <string name="add_oe_prod_cantidad">Cantidad</string>
     <string name="add_oe_prod_btn_mas_prod">Mas Productos</string>

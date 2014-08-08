@@ -39,7 +39,7 @@
             android:layout_margin="20dp" >
 
             <TableRow
-                android:id="@+id/TableRow01"
+                android:id="@+id/TableRow05"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center_horizontal" >

@@ -31,6 +31,7 @@ public class AntonConstants {
 	public static final String CATEGORY_MP = "3";
 	public static final String CATEGORY_BACHA = "4";
 	public static final String CATEGORY_INSUMO = "6";
+	public static final String CATEGORY_SERVICIO = "5";	
 	public static final String TPROD = "tProd";
 	public static final String TPRODF = "tProdf";
 	
@@ -47,6 +48,8 @@ public class AntonConstants {
 	public static final String MARBLE_CUTTER_GROUP = "Cutter Marble";
 	public static final String MARBLE_RESP_GROUP = "Responsable Marble";
 	public static final String MARBLE_MANAGER_GROUP = "Manager Marble";
+	public static final String MARBLE_ADMIN_GROUP = "Administrador Anton";
+	
 	public static final int PEDIDOS = 1;
 	public static final int ORDENESDEENTREGA = 2;
 	public static final int PEDIDOSLINEAS = 3;
@@ -57,6 +60,11 @@ public class AntonConstants {
 	public static final String BACHA_FILTER = "bacha";
 	public static final String MP_FILTER = "raw";
 	public static final String ESTADO_FIN = "done";
+	public static final String ACERO = "ace";
+	public static final String LOSA = "los";
+	public static final String REDONDA = "red";
+	public static final String SIMPLE = "sim";
+	public static final String DOBLE = "dob";
 
 
 }

@@ -116,7 +116,7 @@
                 android:nextFocusForward="@+id/cantPlacasDispo" />
 
             <TableRow
-                android:id="@+id/TableRow01"
+                android:id="@+id/TableRow05"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" >
 

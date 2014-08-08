@@ -5,6 +5,9 @@
 	<string name="search_mp_title">Buscador de Materia Prima</string>
     <string name="search_bacha_material">Tipo de Material</string>
     <string name="search_bacha_marca">Marca</string>
+    <string name="search_bacha_acero">Acero</string>
+    <string name="search_bacha_colocacion">Colocacion</string>
+    <string name="search_bacha_tipo">Tipo</string>
     <string name="search_color">Color</string>
     <string name="search_bacha_nombre">Nombre</string>    
     <string name="search_terminado">Acabado</string>

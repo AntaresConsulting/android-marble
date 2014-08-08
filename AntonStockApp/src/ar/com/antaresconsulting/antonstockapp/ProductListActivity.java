@@ -1,5 +1,6 @@
 package ar.com.antaresconsulting.antonstockapp;
 
+import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 
@@ -61,6 +62,7 @@ NavigationDrawerFragment.NavigationDrawerCallbacks,ProductListFragment.Callbacks
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_product_list);		
 		getActionBar().setDisplayHomeAsUpEnabled(true);
+
 		if(savedInstanceState != null){
 			this.tProd = savedInstanceState.getInt(AntonConstants.TPROD);
 		}else{
@@ -146,6 +148,8 @@ NavigationDrawerFragment.NavigationDrawerCallbacks,ProductListFragment.Callbacks
 		case 3:
 			mTitle = getString(R.string.title_services);
 			this.tProd = AntonConstants.SERVICIOS;
+			if(this.myMenu != null)
+				this.myMenu.getItem(0).setTitle(getString(R.string.title_action_add_servicio));			
 			this.listFragment.refreshProducts(AntonConstants.SERVICIOS);
 			break;				
 		default:
@@ -184,9 +188,10 @@ NavigationDrawerFragment.NavigationDrawerCallbacks,ProductListFragment.Callbacks
 			toDelete[i++] = new Long(baseProduct.getId());
 		}
 		if(toDelete.length > 0){
+			//WriteAsyncTask delProd = new WriteAsyncTask(this);
 			DeleteAsyncTask delProd = new DeleteAsyncTask(this);
 			OpenErpHolder.getInstance().setmModelName(AntonConstants.PRODUCT_MODEL);
-			delProd.execute(toDelete);			
+			delProd.execute(toDelete);				
 		}
 	}
 	public void takePhoto(View view){

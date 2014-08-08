@@ -5,6 +5,7 @@
     <string name="lbl_prod_codigo">Codigo :</string>
     <string name="lbl_prod_ean13">EAN13 :</string>
     <string name="lbl_prod_uom">Tipo de Unidad :</string>
+    <string name="lbl_prod_desc">Descripcion :</string>
     <string name="lbl_prod_precio">Precio :</string>
     <string name="lbl_prod_stock">Stock :</string>
     <string name="lbl_prod_tipo_material">Tipo de Material :</string>
@@ -12,8 +13,14 @@
     <string name="lbl_prod_espesor">Espesor :</string>
     <string name="lbl_prod_color">Color :</string>
     <string name="lbl_prod_marca">Marca :</string>
-    
-    
+    <string name="lbl_prod_bacha_tipo">Tipo de Bacha :</string>
+    <string name="lbl_prod_bacha_colocacion">Tipo de Colocacion :</string>
+    <string name="lbl_prod_bacha_acero">Tipo de Acero :</string>
+    <string name="lbl_prod_bacha_ancho">Alto/Ancho :</string>
+    <string name="lbl_prod_bacha_largo">Largo :</string>
+    <string name="lbl_prod_bacha_prof">Profundidad :</string>    
+    <string name="lbl_prod_bacha_diametro">Diametro :</string>
+                    
     <string-array name="tipoMaterial">
         <item></item>
         <item>Marmol</item>
@@ -32,12 +39,13 @@
 		<item>Amarillo</item>        
 		<item>Rojo</item>
 		<item>Gris</item>
+		<item>Marron</item>
 		<item>Beige</item>    
     </string-array>		
     <string-array name="terminaciones">
         <item></item>
         <item>Lustrado</item>
-        <item>Aponazado</item>
+        <item>Apomazado</item>
         <item>Flameado</item>
         <item>Rustico</item>
         <item>Leather</item>

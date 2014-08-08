@@ -4,7 +4,6 @@ import java.io.ByteArrayOutputStream;
 import java.util.HashMap;
 
 import com.openerp.CreateAsyncTask;
-import com.openerp.CreateMovesAsyncTask;
 import com.openerp.OpenErpHolder;
 import com.openerp.WriteAsyncTask;
 
@@ -22,13 +21,8 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.Spinner;
 import android.widget.Toast;
 import ar.com.antaresconsulting.antonstockapp.model.BaseProduct;
-import ar.com.antaresconsulting.antonstockapp.model.SelectionObject;
-import ar.com.antaresconsulting.antonstockapp.model.dao.BachasDAO;
-import ar.com.antaresconsulting.antonstockapp.model.dao.InsumosDAO;
-import ar.com.antaresconsulting.antonstockapp.model.dao.MateriaPrimaDAO;
 
 public class AddProductActivity extends ActionBarActivity implements WriteAsyncTask.WriteAsyncTaskCallbacks, AddProductsCallbacks, CreateAsyncTask.CreateAsyncTaskCallbacks {
 	private Bitmap savedThumb;
@@ -60,6 +54,9 @@ public class AddProductActivity extends ActionBarActivity implements WriteAsyncT
 		case AntonConstants.INSUMOS:
 			getFragmentManager().beginTransaction().add(R.id.datailDataProduct, AddProductInsumoFragment.newInstance(idProd)).commit();
 			break;
+		case AntonConstants.SERVICIOS:
+			getFragmentManager().beginTransaction().add(R.id.datailDataProduct, AddProductServicioFragment.newInstance(idProd)).commit();
+			break;
 		default:
 			break;
 		}
@@ -80,7 +77,8 @@ public class AddProductActivity extends ActionBarActivity implements WriteAsyncT
 
 		HashMap<String, Object> dataToSave = new HashMap<String, Object>();			
 		dataToSave.put("name", ((EditText)findViewById(R.id.prodNombre)).getText().toString());
-		dataToSave.put("image_medium", this.encodedImage);
+		if(this.encodedImage != null && !this.encodedImage.trim().equalsIgnoreCase(""))
+			dataToSave.put("image_medium", this.encodedImage);
 		//dataToSave.put("ean13", ((EditText)findViewById(R.id.eanVal)).getText().toString());
 		dataToSave.put("price", ((EditText)findViewById(R.id.precioVal)).getText().toString());
 		dataToSave.put("list_price", ((EditText)findViewById(R.id.precioVal)).getText().toString());
