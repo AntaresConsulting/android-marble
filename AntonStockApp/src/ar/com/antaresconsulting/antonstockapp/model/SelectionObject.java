@@ -12,11 +12,13 @@ public class SelectionObject  implements Serializable  {
 	private static final long serialVersionUID = 4349295860326589358L;
 	private String id;
 	private String name;
-	private static SelectionObject[] marcaData = {new SelectionObject("",""),new SelectionObject("mip","Mi Pileta"),new SelectionObject("joh","Johnson Acero")};
-	private static SelectionObject[] tipoBachaData = {new SelectionObject("",""),new SelectionObject("los","Losa"),new SelectionObject("ace","Acero")};
+	private static SelectionObject[] marcaBachaAceroData = {new SelectionObject("",""),new SelectionObject("joh","Johnson Acero"),new SelectionObject("mip","Mi Pileta"),new SelectionObject("fra","Franke"),new SelectionObject("ari","Ariel Del Plata")};
+	private static SelectionObject[] marcaBachaLosaData = {new SelectionObject("",""),new SelectionObject("fer","Ferrum"),new SelectionObject("roc","Roca"),new SelectionObject("cer","Cerart"),new SelectionObject("dec","Deca Piazza")};	
+	private static SelectionObject[] tipoMaterialBachaData = {new SelectionObject("",""),new SelectionObject("los","Losa"),new SelectionObject("ace","Acero")};
 	private static SelectionObject[] dimTipoData = {new SelectionObject("pla","Placa"),new SelectionObject("lef","Recorte"),new SelectionObject("mar","Marmeta")};
-
-	
+	private static SelectionObject[] tipoBachaData = {new SelectionObject("",""),new SelectionObject("sim","Simple"),new SelectionObject("dob","Doble"),new SelectionObject("red","Redonda")};
+	private static SelectionObject[] colocacionBachaData = {new SelectionObject("",""),new SelectionObject("peg","Pegado de Abajo"),new SelectionObject("enc","Encastrado")};
+	private static SelectionObject[] aceroBachaData = {new SelectionObject("",""),new SelectionObject("304","304"),new SelectionObject("403","403")};	
 	
 	public SelectionObject(String id, String name) {
 		this.id = id;
@@ -42,26 +44,51 @@ public class SelectionObject  implements Serializable  {
 
 	
 
+	public static SelectionObject[] getTipoBachaData() {
+		return tipoBachaData;
+	}
+	public static void setTipoBachaData(SelectionObject[] tipoBachaData) {
+		SelectionObject.tipoBachaData = tipoBachaData;
+	}
+	public static SelectionObject[] getColocacionBachaData() {
+		return colocacionBachaData;
+	}
+	public static void setColocacionBachaData(SelectionObject[] colocacionBachaData) {
+		SelectionObject.colocacionBachaData = colocacionBachaData;
+	}
+	public static SelectionObject[] getAceroBachaData() {
+		return aceroBachaData;
+	}
+	public static void setAceroBachaData(SelectionObject[] aceroBachaData) {
+		SelectionObject.aceroBachaData = aceroBachaData;
+	}
 	public static SelectionObject[] getDimTipoData() {
 		return dimTipoData;
 	}
 	public static void setDimTipoData(SelectionObject[] dimTipoData) {
 		SelectionObject.dimTipoData = dimTipoData;
 	}
-	public static SelectionObject[] getMarcaData() {
-		return marcaData;
+	public static SelectionObject[] getMarcaAceroBachaData() {
+		return marcaBachaAceroData;
 	}
 	
-	public static void setMarcaData(SelectionObject[] marcaData) {
-		marcaData = marcaData;
+	public static void setMarcaAceroBachaData(SelectionObject[] marcaData) {
+		marcaBachaAceroData = marcaData;
+	}
+
+	public static SelectionObject[] getMarcaLosaBachaData() {
+		return marcaBachaLosaData;
 	}
 	
-	public static SelectionObject[] getTipoBachaData() {
-		return tipoBachaData;
+	public static void setMarcaLosaBachaData(SelectionObject[] marcaData) {
+		marcaBachaLosaData = marcaData;
+	}
+	public static SelectionObject[] getTipoMaterialBachaData() {
+		return tipoMaterialBachaData;
 	}
 	
-	public static void setTipoBachaData(SelectionObject[] tipoBachaData) {
-		tipoBachaData = tipoBachaData;
+	public static void setTipoMaterialBachaData(SelectionObject[] tipoBachaData) {
+		tipoMaterialBachaData = tipoBachaData;
 	}
 	
 	public static SelectionObject getObject(String valor, SelectionObject[] datos) {
@@ -78,21 +105,41 @@ public class SelectionObject  implements Serializable  {
 		}
 		return null;
 	}	
-	public static SelectionObject getBachaMarca(String marca) {
+	public static SelectionObject getBachaMarcaAcero(String marca) {
 		// TODO Auto-generated method stub
-		return getObject(marca,marcaData);
+		return getObject(marca,marcaBachaAceroData);
 	}
+	public static SelectionObject getBachaMarcaLosa(String marca) {
+		// TODO Auto-generated method stub
+		return getObject(marca,marcaBachaLosaData);
+	}	
 	public static SelectionObject getBachaMaterial(String tipoMaterialVal) {
 		// TODO Auto-generated method stub
-		return getObject(tipoMaterialVal,tipoBachaData);
+		return getObject(tipoMaterialVal,tipoMaterialBachaData);
 	}
-	public static SelectionObject getBachaMarcaById(String marca) {
+	public static SelectionObject getBachaMarcaAceroById(String marca) {
 		// TODO Auto-generated method stub
-		return getObjectById(marca,marcaData);
+		return getObjectById(marca,marcaBachaAceroData);
 	}
+	public static SelectionObject getBachaMarcaLosaById(String marca) {
+		// TODO Auto-generated method stub
+		return getObjectById(marca,marcaBachaLosaData);
+	}	
+	public static SelectionObject getBachaAceroById(String acero) {
+		// TODO Auto-generated method stub
+		return getObjectById(acero,aceroBachaData);
+	}	
+	public static SelectionObject getBachaColocaiconById(String colocacion) {
+		// TODO Auto-generated method stub
+		return getObjectById(colocacion,colocacionBachaData);
+	}
+	public static SelectionObject getBachaTipoById(String tipo) {
+		// TODO Auto-generated method stub
+		return getObjectById(tipo,tipoBachaData);
+	}	
 	public static SelectionObject getBachaMaterialById(String tipoMaterialVal) {
 		// TODO Auto-generated method stub
-		return getObjectById(tipoMaterialVal,tipoBachaData);
+		return getObjectById(tipoMaterialVal,tipoMaterialBachaData);
 	}	
 	public static SelectionObject getDimTipo(String tipoDim) {
 		// TODO Auto-generated method stub
