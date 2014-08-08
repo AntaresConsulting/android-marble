@@ -18,7 +18,7 @@ import com.openerp.ReadAsyncTask;
 
 public class BachasDAO extends ProductDAO {
 
-	private String[] bachFields = new String[] { "id", "name", "image_medium", "code", "list_price", "qty_available", "ean13", "uom_id","attrs_material" ,"bacha_marca", "bacha_material"};
+	private String[] bachFields = new String[] { "id", "name", "image_medium", "code", "list_price", "qty_available", "ean13", "uom_id","attrs_material" ,"bacha_marca", "bacha_material", "bacha_tipo", "bacha_acero", "bacha_colocacion", "bacha_ancho", "bacha_largo", "bacha_prof"};
 	
 	private Fragment activityPart;
 	
@@ -61,8 +61,24 @@ public class BachasDAO extends ProductDAO {
 			this.getProductsArray(obj, resp);
 			String marca = obj.get("bacha_marca") instanceof Boolean ? "": (String) obj.get("bacha_marca");
 			String material = obj.get("bacha_material") instanceof Boolean ? "": (String) obj.get("bacha_material");
+			String bacha_acero = obj.get("bacha_acero") instanceof Boolean ? "": (String) obj.get("bacha_acero");
+			String bacha_tipo = obj.get("bacha_tipo") instanceof Boolean ? "": (String) obj.get("bacha_tipo");
+			String bacha_colocacion = obj.get("bacha_colocacion") instanceof Boolean ? "": (String) obj.get("bacha_colocacion");
+			Double bacha_prof = obj.get("bacha_prof") instanceof Boolean ? new Double(0): (Double) obj.get("bacha_prof");
+			Double bacha_ancho = obj.get("bacha_ancho") instanceof Boolean ? new Double(0): (Double) obj.get("bacha_ancho");
+			Double bacha_largo = obj.get("bacha_largo") instanceof Boolean ? new Double(0): (Double) obj.get("bacha_largo");
 			resp.setTipoMaterial(SelectionObject.getBachaMaterialById(material));
-			resp.setMarca(SelectionObject.getBachaMarcaById(marca));
+			if(marca.equalsIgnoreCase(AntonConstants.ACERO))
+				resp.setMarca(SelectionObject.getBachaMarcaAceroById(marca));
+			else
+				resp.setMarca(SelectionObject.getBachaMarcaLosaById(marca));
+	
+			resp.setAcero(SelectionObject.getBachaAceroById(bacha_acero));
+			resp.setColocacion(SelectionObject.getBachaColocaiconById(bacha_colocacion));
+			resp.setTipo(SelectionObject.getBachaTipoById(bacha_tipo));
+			resp.setAncho(bacha_ancho);
+			resp.setLargo(bacha_largo);
+			resp.setProfundidad(bacha_prof);
 			datosProds.add(resp);
 		}
 		return datosProds;
@@ -86,7 +102,7 @@ public class BachasDAO extends ProductDAO {
 			((BachasCallbacks) this.activityPart).setBachas();
 	}
 	
-	public void getBachasProducts(String tipo, String marca, String nombreProd) {
+	public void getBachasProducts(String tipo, String marca, String nombreProd,String tipoBacha,String acero, String colocacion) {
 		ArrayList<Object> filtros = new ArrayList<Object>();
 		filtros.add(new Object[] { "categ_name", "ilike", "bacha" });
 		if (!tipo.equalsIgnoreCase("")) {
@@ -97,6 +113,18 @@ public class BachasDAO extends ProductDAO {
 			filtros.add(new Object[] { "bacha_marca", "ilike",
 					marca.toLowerCase().substring(0, 3) });
 		}
+		if (!tipoBacha.equalsIgnoreCase("")) {
+			filtros.add(new Object[] { "bacha_tipo", "ilike",
+					tipoBacha.toLowerCase().substring(0, 3) });
+		}
+		if (!colocacion.equalsIgnoreCase("")) {
+			filtros.add(new Object[] { "bacha_colocacion", "ilike",
+					colocacion.toLowerCase().substring(0, 3) });
+		}
+		if (!acero.equalsIgnoreCase("")) {
+			filtros.add(new Object[] { "bacha_acero", "ilike",
+					acero.toLowerCase().substring(0, 3) });
+		}		
 		if (!nombreProd.equalsIgnoreCase("")) {
 			filtros.add(new Object[] { "name", "ilike",
 					nombreProd.toLowerCase() });

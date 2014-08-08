@@ -19,7 +19,7 @@ import com.openerp.ReadAsyncTask;
 
 public class InsumosDAO extends ProductDAO {
 
-	private String[] insuFilds = new String[] { "id", "name", "image_medium", "code", "list_price", "qty_available", "ean13", "uom_id" };
+	private String[] insuFilds = new String[] { "id", "name", "image_medium", "code", "list_price", "qty_available", "ean13", "uom_id", "description" };
 	
 	private Fragment activityPart;
 	
@@ -59,7 +59,8 @@ public class InsumosDAO extends ProductDAO {
 		for (HashMap<String, Object> obj : this.mData) {
 			Insumo resp = new Insumo();
 			this.getProductsArray(obj, resp);
-
+			String description = obj.get("description") instanceof Boolean ? "": (String) obj.get("description");
+			resp.setDescription(description);
 			datosProds.add(resp);
 		}
 		return datosProds;
