@@ -254,6 +254,8 @@ public class OpenErpConnect {
             if (count) { // We just want the number of items
                 result = new Long[] { ((Integer)client.call("execute", parameters)).longValue() };
             } else { // Returning the list of matching item id's
+                HashMap<String, Object> context = new HashMap<String, Object>();
+                context.put("lang", "es_AR");
             	Object[] responseIds = (Object[])client.call("execute", mDatabase, mUserId, mPassword, model, "search", conditions);
             	//Object[] responseIds = (Object[])client.call("execute", parameters);
                 // In case no matching records were found, an empty list is returned by the ws
@@ -285,7 +287,9 @@ public class OpenErpConnect {
         List<HashMap<String, Object>> listOfFieldValues = null;
         try {
             XMLRPCClient client = new XMLRPCClient(mUrl);
-            Object[] responseFields = (Object[])client.call("execute", mDatabase, mUserId, mPassword, model, "read", ids, fields);
+            HashMap<String, Object> context = new HashMap<String, Object>();
+            context.put("lang", "es_AR");
+            Object[] responseFields = (Object[])client.call("execute", mDatabase, mUserId, mPassword, model, "read", ids, fields,context);
             listOfFieldValues = new ArrayList<HashMap<String, Object>>(responseFields.length);
             for (Object objectFields : responseFields) {
                 listOfFieldValues.add((HashMap<String, Object>)objectFields);
