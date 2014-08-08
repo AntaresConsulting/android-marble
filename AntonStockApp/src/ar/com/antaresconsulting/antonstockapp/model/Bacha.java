@@ -9,6 +9,12 @@ public class Bacha extends BaseProduct {
 	private static final long serialVersionUID = -1784651458465945902L;
 	private SelectionObject marca;
 	private SelectionObject tipoMaterial;
+	private SelectionObject acero;
+	private SelectionObject colocacion;
+	private SelectionObject tipo;
+	private Double largo;
+	private Double ancho;
+	private Double profundidad;
 	
 	public Bacha() {}
 	
@@ -32,6 +38,54 @@ public class Bacha extends BaseProduct {
 	}
 	public void setTipoMaterial(SelectionObject tipoMaterial) {
 		this.tipoMaterial = tipoMaterial;
+	}
+
+	public SelectionObject getAcero() {
+		return acero;
+	}
+
+	public void setAcero(SelectionObject acero) {
+		this.acero = acero;
+	}
+
+	public SelectionObject getColocacion() {
+		return colocacion;
+	}
+
+	public void setColocacion(SelectionObject colocacion) {
+		this.colocacion = colocacion;
+	}
+
+	public SelectionObject getTipo() {
+		return tipo;
+	}
+
+	public void setTipo(SelectionObject tipo) {
+		this.tipo = tipo;
+	}
+
+	public Double getLargo() {
+		return largo;
+	}
+
+	public void setLargo(Double largo) {
+		this.largo = largo;
+	}
+
+	public Double getAncho() {
+		return ancho;
+	}
+
+	public void setAncho(Double ancho) {
+		this.ancho = ancho;
+	}
+
+	public Double getProfundidad() {
+		return profundidad;
+	}
+
+	public void setProfundidad(Double profundidad) {
+		this.profundidad = profundidad;
 	}
 
 	

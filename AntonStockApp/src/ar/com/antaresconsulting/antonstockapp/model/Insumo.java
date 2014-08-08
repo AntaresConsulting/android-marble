@@ -8,6 +8,8 @@ public class Insumo extends BaseProduct{
 	 */
 	private static final long serialVersionUID = 8692454968701174067L;
 	private SelectionObject marca;
+	private String description;
+	private Empleado entregado;
 	
 	public Insumo() {}
 	
@@ -26,6 +28,27 @@ public class Insumo extends BaseProduct{
 	}
 	public void setMarca(SelectionObject marca) {
 		this.marca = marca;
+	}
+
+	
+
+	public String getDescription() {
+		return description;
+	}
+
+
+	public void setDescription(String description) {
+		this.description = description;
+	}
+
+
+	public Empleado getEntregado() {
+		return entregado;
+	}
+
+
+	public void setEntregado(Empleado entregado) {
+		this.entregado = entregado;
 	}
 
 
