@@ -31,10 +31,11 @@ public class ProductListFragment extends ListFragment  implements ProductDAO.Ser
 	private ProductDAO prodDao;
 	
 	private int tProd;
-	private List<BaseProduct> mp;
-	private List<BaseProduct> bachas;
-	private List<BaseProduct> insumos;
-	private List<BaseProduct> servicios;
+
+	private List mp;
+	private List bachas;
+	private List insumos;
+	private List servicios;
 	/**
 	 * The serialization (saved instance state) Bundle key representing the
 	 * activated item position. Only used on tablets.
@@ -61,7 +62,7 @@ public class ProductListFragment extends ListFragment  implements ProductDAO.Ser
 		/**
 		 * Callback for when an item has been selected.
 		 */
-		public void onItemSelected(String id);
+		public void onItemSelected(BaseProduct prod);
 	}
 
 	/**
@@ -70,7 +71,7 @@ public class ProductListFragment extends ListFragment  implements ProductDAO.Ser
 	 */
 	private static Callbacks sDummyCallbacks = new Callbacks() {
 		@Override
-		public void onItemSelected(String id) {
+		public void onItemSelected(BaseProduct id) {
 		}
 	};
 
@@ -145,7 +146,7 @@ public class ProductListFragment extends ListFragment  implements ProductDAO.Ser
 
 		// Notify the active callbacks interface (the activity, if the
 		// fragment is attached to one) that an item has been selected.
-		mCallbacks.onItemSelected(this.mAdapter.getItem(position).getId().toString());
+		mCallbacks.onItemSelected(this.mAdapter.getItem(position));
 
 	}
 
@@ -225,7 +226,7 @@ public class ProductListFragment extends ListFragment  implements ProductDAO.Ser
 	@Override
 	public void setMateriaPrima() {
 		if(this.mp == null)
-			this.mp = this.mpDao.getBaseProductsList();
+			this.mp = this.mpDao.getMateriaPrimasList();
 		this.mAdapter = new BaseProductAdapter(this,this.mp);
 		setListAdapter(this.mAdapter);		
 	}
@@ -233,7 +234,7 @@ public class ProductListFragment extends ListFragment  implements ProductDAO.Ser
 	@Override
 	public void setBachas() {
 		if(this.bachas == null)
-			this.bachas = this.baDao.getBaseProductsList();
+			this.bachas = this.baDao.getBachasList();
 		this.mAdapter = new BaseProductAdapter(this,this.bachas);
 		setListAdapter(this.mAdapter);	
 	}
@@ -241,7 +242,7 @@ public class ProductListFragment extends ListFragment  implements ProductDAO.Ser
 	@Override
 	public void setInsumos() {
 		if(this.insumos == null)
-			this.insumos = this.insuDao.getBaseProductsList();
+			this.insumos = this.insuDao.getInsumosList();
 		this.mAdapter = new BaseProductAdapter(this,this.insumos);
 		setListAdapter(this.mAdapter);	
 	}
@@ -249,10 +250,9 @@ public class ProductListFragment extends ListFragment  implements ProductDAO.Ser
 	@Override
 	public void setServicios() {
 		if(this.servicios == null)
-			this.servicios = this.prodDao.getBaseProductsList();
+			this.servicios = this.prodDao.getServiciosList();
 		this.mAdapter = new BaseProductAdapter(this,this.servicios);
 		setListAdapter(this.mAdapter);			
 	}
 
-		
 }

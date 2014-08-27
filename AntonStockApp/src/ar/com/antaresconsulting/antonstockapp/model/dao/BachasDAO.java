@@ -18,7 +18,7 @@ import com.openerp.ReadAsyncTask;
 
 public class BachasDAO extends ProductDAO {
 
-	private String[] bachFields = new String[] { "id", "name", "image_medium", "code", "list_price", "qty_available", "ean13", "uom_id","attrs_material" ,"bacha_marca", "bacha_material", "bacha_tipo", "bacha_acero", "bacha_colocacion", "bacha_ancho", "bacha_largo", "bacha_prof"};
+	private String[] bachFields = new String[] { "id", "name", "image_medium", "code", "list_price", "qty_available", "virtual_available","seller_qty","ean13", "uom_id","attrs_material" ,"bacha_marca", "bacha_material", "bacha_tipo", "bacha_acero", "bacha_colocacion", "bacha_ancho", "bacha_largo", "bacha_prof"};
 	
 	private Fragment activityPart;
 	
@@ -68,7 +68,7 @@ public class BachasDAO extends ProductDAO {
 			Double bacha_ancho = obj.get("bacha_ancho") instanceof Boolean ? new Double(0): (Double) obj.get("bacha_ancho");
 			Double bacha_largo = obj.get("bacha_largo") instanceof Boolean ? new Double(0): (Double) obj.get("bacha_largo");
 			resp.setTipoMaterial(SelectionObject.getBachaMaterialById(material));
-			if(marca.equalsIgnoreCase(AntonConstants.ACERO))
+			if(material.equalsIgnoreCase(AntonConstants.ACERO))
 				resp.setMarca(SelectionObject.getBachaMarcaAceroById(marca));
 			else
 				resp.setMarca(SelectionObject.getBachaMarcaLosaById(marca));

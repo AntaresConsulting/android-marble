@@ -163,8 +163,8 @@ public class ConsumeInsumo extends ActionBarActivity implements EmpleadoDAO.Empl
 			
 			HashMap<String,Object> move = new HashMap<String,Object>();
 
-			move.put("dimension_qty",prod.getCantidad());
-			move.put("product_uos_qty",prod.getCantidad());
+			move.put("dimension_qty",prod.getCantidadReal());
+			move.put("product_uos_qty",prod.getCantidadReal());
 			move.put("partner_id",AntonConstants.ANTON_COMPANY_ID);
 			move.put("product_id",prod.getId());
 			move.put("product_uom",prod.getUom()[0]);
@@ -173,7 +173,7 @@ public class ConsumeInsumo extends ActionBarActivity implements EmpleadoDAO.Empl
 			move.put("company_id",AntonConstants.ANTON_COMPANY_ID);
 			move.put("prodlot_id",false);
 			move.put("tracking_id",false);
-			move.put("product_qty",prod.getCantidad());
+			move.put("product_qty",prod.getCantidadReal());
 			move.put("product_uos",false);
 			move.put("type", AntonConstants.INTERNAL_PORDUCT_TYPE);
 			move.put("picking_id",false);
@@ -203,7 +203,7 @@ public class ConsumeInsumo extends ActionBarActivity implements EmpleadoDAO.Empl
 		InsumoAdapter adapter = (InsumoAdapter) this.productos.getAdapter();
 		Insumo prod = (Insumo) this.prodBuscador.getAdapter().getItem(this.productoSelecPos);
 		prod.setEntregado(((EmpleadosAdapter)this.empleados.getAdapter()).getSelectedEmple());
-		prod.setCantidad(Double.parseDouble(this.cantPlacasUtil.getText().toString()));
+		prod.setCantidadReal(Double.parseDouble(this.cantPlacasUtil.getText().toString()));
 		adapter.addProduct(prod);
 		adapter.notifyDataSetChanged();
 	}

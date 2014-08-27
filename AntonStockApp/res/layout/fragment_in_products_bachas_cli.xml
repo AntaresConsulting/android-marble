@@ -24,31 +24,7 @@
                 android:layout_height="wrap_content"
                 android:gravity="center_horizontal" >
 
-                <TextView
-                    android:id="@+id/textView1"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_vertical"
-                    android:layout_weight="2"
-                    android:gravity="center_vertical"
-                    android:text="@string/in_prod_pedido"
-                    android:textAppearance="?android:attr/textAppearanceLarge" />
-
-                <Spinner
-                    android:id="@+id/pedidosCombo"
-                    android:layout_width="fill_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="8" />
-
             </TableRow>
-
-            <View
-                android:layout_width="wrap_content"
-                android:layout_height="4dp"
-                android:layout_marginBottom="10dp"
-                android:layout_marginTop="10dp"
-                android:layout_span="2"
-                android:background="@color/actionbar_theme_color" />
 
             <TextView
                 android:id="@+id/titleCant"
@@ -62,7 +38,7 @@
                 android:id="@+id/productosDispo"
                 android:layout_width="match_parent"
                 android:layout_height="213dp"
-                android:layout_weight="0.92" >
+                android:layout_weight="2" >
             </ListView>
 
             <View
@@ -143,19 +119,18 @@
             android:id="@+id/TextView01"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/in_prod_proveedor"
+            android:text="@string/in_prod_cliente"
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:textSize="30sp" />
 
-        <TextView
-            android:id="@+id/proveedorNombre"
-            android:layout_width="wrap_content"
+        <AutoCompleteTextView android:text=""
+            android:id="@+id/clienteNombre"
+            android:layout_width="400dp"
             android:layout_height="wrap_content"
             android:layout_marginBottom="10dp"
             android:layout_marginLeft="30dp"
             android:layout_marginTop="10dp"
-            android:text="El proveedor"
-            android:textAppearance="?android:attr/textAppearanceLarge" />
+            />
 
         <TextView
             android:id="@+id/dimW"

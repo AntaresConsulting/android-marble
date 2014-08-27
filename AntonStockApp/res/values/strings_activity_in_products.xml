@@ -7,6 +7,7 @@
     <string name="in_prod_si">Si</string>
     <string name="in_prod_no">No</string>
     <string name="in_prod_proveedor">Proveedor</string>
+    <string name="in_prod_cliente">Cliente</string>
     <string name="in_prod_largo">Largo</string>
     <string name="in_prod_ancho">Alto/Ancho</string>
     <string name="in_prod_unidad">m</string>

@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
+import com.openerp.OpenErpHolder;
+
 import android.app.Activity;
 import android.app.Fragment;
 import android.graphics.Bitmap;
@@ -32,7 +34,9 @@ public class BaseProductAdapter extends BaseAdapter {
 		public TextView lblNombre;
 		public TextView lblCode;
 		public TextView lblPrice;
-		public TextView lblCant;
+		public TextView lblCantOnHand;
+		public TextView lblCantForecast;
+		public TextView lblCantIncome;
 		public ImageView imagen;
 		public CheckBox checkB;
 	}
@@ -91,7 +95,9 @@ public class BaseProductAdapter extends BaseAdapter {
 			viewHolder.lblNombre = (TextView) rowView.findViewById(R.id.nombreProd);
 			viewHolder.lblCode = (TextView) rowView.findViewById(R.id.codigoVal);
 			viewHolder.lblPrice = (TextView) rowView.findViewById(R.id.precioVal);
-			viewHolder.lblCant = (TextView) rowView.findViewById(R.id.stockVal);
+			viewHolder.lblCantOnHand = (TextView) rowView.findViewById(R.id.stockRVal);
+			viewHolder.lblCantForecast = (TextView) rowView.findViewById(R.id.stockFVal);
+			viewHolder.lblCantIncome = (TextView) rowView.findViewById(R.id.stockIVal);
 			viewHolder.imagen = (ImageView) rowView.findViewById(R.id.prodImg);
 			viewHolder.checkB = (CheckBox) rowView.findViewById(R.id.checkBox1);
 
@@ -102,8 +108,24 @@ public class BaseProductAdapter extends BaseAdapter {
 		BaseProduct prod =  datos.get(position);
 		holder.lblNombre.setText(datos.get(position).getNombre());
 		holder.lblCode.setText(datos.get(position).getCodigo());
-		holder.lblPrice.setText(datos.get(position).getPrice().toString());
-		holder.lblCant.setText(datos.get(position).getCantidad().toString());
+		if(OpenErpHolder.getInstance().getmOConn().isManager()){
+			holder.lblPrice.setText(datos.get(position).getPrice().toString());
+		}else{
+			rowView.findViewById(R.id.precioRow).setVisibility(View.GONE);
+		}
+		if(datos.get(position).getCantidadReal().doubleValue() > 0)
+			holder.lblCantOnHand.setText(datos.get(position).getCantidadReal().toString());
+		else
+			rowView.findViewById(R.id.stockRealRow).setVisibility(View.GONE);
+		if(datos.get(position).getCantidadForecast().doubleValue() > 0)
+			holder.lblCantForecast.setText(datos.get(position).getCantidadForecast().toString());
+		else
+			rowView.findViewById(R.id.stockFRow).setVisibility(View.GONE);
+		if(datos.get(position).getCantidadIncome().doubleValue() > 0)
+			holder.lblCantIncome.setText(datos.get(position).getCantidadIncome().toString());
+		else
+			rowView.findViewById(R.id.stockIRow).setVisibility(View.GONE);
+		
 		if((datos.get(position).getProductImg() != null) && (datos.get(position).getProductImg().trim() != "")){
 			byte[] decodedString = Base64.decode(datos.get(position).getProductImg().trim(), Base64.DEFAULT);
 			Bitmap decodedByte = BitmapFactory.decodeByteArray(decodedString, 0,decodedString.length);

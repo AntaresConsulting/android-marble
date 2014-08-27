@@ -15,7 +15,8 @@ import android.widget.Toast;
 public class InProducts extends Activity {
 
 	protected boolean isScanSearch = false;
-	
+	private Menu myMenu;
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -31,6 +32,7 @@ public class InProducts extends Activity {
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		getMenuInflater().inflate(R.menu.in_products, menu);
+		this.myMenu = menu;
 		return true;
 	}
 
@@ -78,8 +80,19 @@ public class InProducts extends Activity {
 		((InInsumoProductFragment) getFragmentManager().findFragmentById(	R.id.container)).addProduct(view);
 	}
 	
+	public void searchPM(MenuItem menu) {
+		((InBachaProductFragment) getFragmentManager().findFragmentById(	R.id.container)).searchProduct();		
+	}
+	
 	public void setBachas(View view) {
-		getFragmentManager().beginTransaction().replace(R.id.container, InBachaProductFragment.newInstance(AntonConstants.BACHAS)).commit();
+		getFragmentManager().beginTransaction().replace(R.id.container, new PartnerTypeFragment()).commit();
+	}
+	public void setBachasCli(View view) {
+		this.myMenu.getItem(0).setVisible(true);
+		getFragmentManager().beginTransaction().replace(R.id.container, InBachaProductFragment.newInstance(AntonConstants.BACHAS_CLI)).commit();
+	}
+	public void setBachasProv(View view) {
+		getFragmentManager().beginTransaction().replace(R.id.container, InBachaProductFragment.newInstance(AntonConstants.BACHAS_PROV)).commit();
 	}
 	public void setMP(View view) {
 		getFragmentManager().beginTransaction().replace(R.id.container, InMPProductFragment.newInstance(AntonConstants.MATERIA_PRIMA)).commit();

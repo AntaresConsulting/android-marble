@@ -43,7 +43,9 @@ public class DeleteAsyncTask extends
 	protected Boolean doInBackground(Long... values) {
 		Boolean writeOk = false;
 		loadConnection();
-		writeOk = oc.unlink(OpenErpHolder.getInstance().getmModelName(), values);
+		HashMap<String, Object> disac = new HashMap<String, Object>();
+		disac.put("active", false);
+		writeOk = oc.write(OpenErpHolder.getInstance().getmModelName(), values, disac, context);
 		return writeOk;
 
 	}

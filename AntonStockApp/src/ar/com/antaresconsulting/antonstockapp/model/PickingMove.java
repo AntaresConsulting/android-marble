@@ -16,9 +16,16 @@ public class PickingMove implements Serializable {
 	private String moveType;
 	private Pedido pedidoOut;
 	private boolean regBalanace = false;
+	private boolean confirm = false;
 	
 	
 	
+	public boolean isConfirm() {
+		return confirm;
+	}
+	public void setConfirm(boolean confirm) {
+		this.confirm = confirm;
+	}
 	public boolean isRegBalanace() {
 		return regBalanace;
 	}

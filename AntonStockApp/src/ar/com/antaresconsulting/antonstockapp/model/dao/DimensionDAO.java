@@ -25,7 +25,11 @@ public class DimensionDAO extends ReadAsyncTask {
 		this.mModel = "product.marble.dimension.balance";
 		this.mFields = new String[] { "marble_id", "dimension_id", "qty_unit", "qty_m2"};
 	}
-
+	public void getAllDims(Integer productId,boolean _extraData) {
+		this.extraData = _extraData;
+		this.setmFilters(new Object[] { new Object[] { "marble_id", "=", productId },new Object[] { "qty_unit", ">", 0 } });
+		this.execute(this.mFields);
+	}
 	public void getAllDims(Integer productId) {
 		this.setmFilters(new Object[] { new Object[] { "marble_id", "=", productId },new Object[] { "qty_unit", ">", 0 } });
 		this.execute(this.mFields);
@@ -50,7 +54,8 @@ public class DimensionDAO extends ReadAsyncTask {
 			resp.setProdId(marble_id);
 			resp.setQtyM2(qty_m2);
 			resp.setQtyUnits(qty_unit);
-			resp.setDimensionVals((HashMap<String, Object>) this.mExtraData.get(i).get("dimension_id"));
+			if(extraData)
+				resp.setDimensionVals((HashMap<String, Object>) this.mExtraData.get(i).get("dimension_id"));
 			datosProds.add(resp);
 			i++;
 		}

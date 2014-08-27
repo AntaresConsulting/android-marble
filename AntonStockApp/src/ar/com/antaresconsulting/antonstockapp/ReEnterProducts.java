@@ -142,8 +142,8 @@ public class ReEnterProducts extends Activity implements MateriaPrimaDAO.Materia
 //			if(mp.getDimension()!= null){
 //				move.put("dimension", (Dimension) prod.getDimension()[0]);
 //			}				
-			move.put("dimension_qty",prod.getCantidad());
-			move.put("product_uos_qty",prod.getCantidad());
+			move.put("dimension_qty",prod.getCantidadReal());
+			move.put("product_uos_qty",prod.getCantidadReal());
 			move.put("product_id",prod.getId());
 			move.put("product_uom",prod.getUom()[0]);
 			move.put("location_id",loc_source);
@@ -151,7 +151,7 @@ public class ReEnterProducts extends Activity implements MateriaPrimaDAO.Materia
 			move.put("company_id",AntonConstants.ANTON_COMPANY_ID);
 			move.put("prodlot_id",false);
 			move.put("tracking_id",false);
-			move.put("product_qty",prod.getCantidad());
+			move.put("product_qty",prod.getCantidadReal());
 			move.put("product_uos",false);
 			move.put("type",AntonConstants.INTERNAL_PORDUCT_TYPE);
 			move.put("origin",false);
@@ -202,7 +202,7 @@ public class ReEnterProducts extends Activity implements MateriaPrimaDAO.Materia
 		double cantP = Double.parseDouble(this.cantPlacas.getText().toString());
 		double hight = Double.parseDouble(this.dimH.getText().toString());
 		double width = Double.parseDouble(this.dimW.getText().toString());
-		if(((hight * width)* cantP) > prod.getCantidad().doubleValue()){
+		if(((hight * width)* cantP) > prod.getCantidadReal().doubleValue()){
 			Toast tt = Toast.makeText(this, "La superficie a reingresar debe ser menor a la superficie disponible", Toast.LENGTH_SHORT);
 			tt.show();
 			return;			

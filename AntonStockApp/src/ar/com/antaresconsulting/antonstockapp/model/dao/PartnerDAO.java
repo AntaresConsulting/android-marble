@@ -58,6 +58,12 @@ public class PartnerDAO extends ReadAsyncTask{
 		this.dataToSet=PartnerDAO.PARTNER_CLIENTS;
 		
 	}
+	public void getAllCompanies(String filter){
+		this.setmFilters(new Object[] {new Object[] {"customer", "=", true},new Object[] {"name", "ilike", filter+"%"}});
+		this.execute(new String[]{"id","name","image_medium","street","parent_id","phone","website","email","vat"});
+		this.dataToSet=PartnerDAO.PARTNER_CLIENTS;
+		
+	}	
 	public void getAllSuppliers(){
 		this.setmFilters(new Object[] {new Object[] {"supplier", "=", true}});
 		this.execute(new String[]{"id","name","image_medium","street","parent_id","phone","website","email","vat"});

@@ -99,13 +99,17 @@ public class CreateMovesAsyncTask extends AsyncTask<PickingMove, String, Long> {
 						}
 				}
 				Long idM = oc.create("stock.move", moves.get(j), this.context);
-				ArrayList<Long> vals = new ArrayList<Long>();
-				vals.add(idM);
-//				oc.call(this.modelStockPicking, "action_confirm", vals);				
+									
 			}
 			ArrayList<Long> vals = new ArrayList<Long>();
 			vals.add(header_picking_id);
 			oc.call(this.modelStockPicking, "draft_force_assign", vals);
+			if(values[i].isConfirm()){
+				ArrayList<Long> vals2 = new ArrayList<Long>();
+				vals2.add(header_picking_id);
+				oc.call(this.modelStockPicking, "action_move", vals);
+				oc.call(this.modelStockPicking, "action_done", vals2);
+			}			
 			if(values[i].getMoveType().equalsIgnoreCase(AntonConstants.INTERNAL_PORDUCT_TYPE)){
 				oc.call(this.modelStockPicking, "action_move", vals);
 				oc.call(this.modelStockPicking, "action_done", vals);

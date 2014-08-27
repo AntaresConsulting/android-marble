@@ -20,7 +20,7 @@ public class ProductDAO extends ReadAsyncTask {
 	private static final int UOMS = 7;
 	private static final int LOCATION = 8;
 
-	private String[] baseFields = new String[] { "id", "name", "image_medium", "code", "list_price", "qty_available", "ean13", "uom_id" ,"attrs_material" };
+	private String[] baseFields = new String[] { "id", "name", "image_medium", "code", "list_price", "qty_available", "ean13", "uom_id" ,"attrs_material","virtual_available","seller_qty" };
 
 	private int dataToSet;
 	private Fragment activityPart;
@@ -87,13 +87,17 @@ public class ProductDAO extends ReadAsyncTask {
 		String code = registro.get("code") instanceof Boolean ? "": (String) registro.get("code");
 		String ean13 = registro.get("ean13") instanceof Boolean ? "": (String) registro.get("ean13");
 		Object[] uom = registro.get("uom_id") instanceof Boolean ? new Object[0]: (Object[]) registro.get("uom_id");
-		Double cant = registro.get("qty_available") instanceof Boolean ? 0: (Double) registro.get("qty_available");
+		Double cantReal = registro.get("qty_available") instanceof Boolean ? 0: (Double) registro.get("qty_available");
+		Double cantidadForecast = registro.get("virtual_available") instanceof Boolean ? 0: (Double) registro.get("virtual_available");
+		Double cantIncome = registro.get("seller_qty") instanceof Boolean ? 0: (Double) registro.get("seller_qty");
 		String nombre = registro.get("name") instanceof Boolean ? "": (String) registro.get("name");
 		String descrAtribs = registro.get("attrs_material") instanceof Boolean ? "": (String) registro.get("attrs_material");
 
 		prod.setAtributos(descrAtribs);
 		prod.setId((Integer) registro.get("id"));
-		prod.setCantidad(cant);
+		prod.setCantidadReal(cantReal);
+		prod.setCantidadForecast(cantidadForecast);
+		prod.setCantidadIncome(cantIncome);
 		prod.setCodigo(code);
 		prod.setEan13(ean13);
 		prod.setNombre(nombre);

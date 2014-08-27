@@ -51,11 +51,11 @@
                 android:text="@string/action_add_oe_cliente"
                 android:textAppearance="?android:attr/textAppearanceMedium" />
 
-            <Spinner
+            <AutoCompleteTextView android:text=""
                 android:id="@+id/clienteCombo"
+                android:layout_height="60dp"
                 android:layout_width="match_parent"
                 android:layout_toRightOf="@+id/clienteLbl"
-                android:layout_height="wrap_content"
                  />
         </RelativeLayout>
 

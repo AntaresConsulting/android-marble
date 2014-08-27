@@ -4,18 +4,18 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="ar.com.antaresconsulting.antonstockapp.ProductListActivity" >
-<LinearLayout 
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:layout_marginLeft="16dp"
-    android:layout_marginRight="16dp"
-    android:baselineAligned="false"
-    android:divider="?android:attr/dividerHorizontal"
-    android:orientation="horizontal"
-    android:showDividers="middle"
-     >
 
-    <!--
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:baselineAligned="false"
+        android:divider="?android:attr/dividerHorizontal"
+        android:orientation="horizontal"
+        android:showDividers="middle" >
+
+        <!--
     This layout is a two-pane layout for the Products
     master/detail flow. See res/values-large/refs.xml and
     res/values-sw600dp/refs.xml for an example of layout aliases
@@ -24,27 +24,69 @@
 
     For more on layout aliases, see:
     http://developer.android.com/training/multiscreen/screensizes.html#TaskUseAliasFilters
-    -->
+        -->
 
-    <fragment
-        android:id="@+id/product_list"
-        android:name="ar.com.antaresconsulting.antonstockapp.ProductListFragment"
-        android:layout_width="0dp"
-        android:layout_height="match_parent"
-        android:layout_weight="2"
-        tools:layout="@android:layout/list_content" />
+        <fragment
+            android:id="@+id/product_list"
+            android:name="ar.com.antaresconsulting.antonstockapp.ProductListFragment"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="2"
+            tools:layout="@android:layout/list_content" />
 
-    <FrameLayout
-        android:id="@+id/product_detail_container"
-        android:layout_width="0dp"
-        android:layout_height="match_parent"
-        android:layout_weight="4" />
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="0dp"
+            android:layout_weight="4"            
+            android:layout_height="match_parent">
+            
+            <FrameLayout
+                android:id="@+id/product_detail_container"
+                android:layout_height="match_parent"                          
+                android:layout_width="match_parent"
+				android:layout_weight="0.6"                
+                 />
 
-</LinearLayout>
+            <TabHost
+                android:id="@android:id/tabhost"
+                android:layout_height="match_parent"                          
+                android:layout_width="match_parent"
+                android:layout_weight="0.4"
+                >
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical" >
+
+                    <TabWidget
+                        android:id="@android:id/tabs"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0"
+                        android:orientation="horizontal" />
+
+                    <FrameLayout
+                        android:id="@android:id/tabcontent"
+                        android:layout_width="0dp"
+                        android:layout_height="0dp"
+                        android:layout_weight="0" />
+
+                    <android.support.v4.view.ViewPager
+                        android:id="@+id/pager"
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_weight="1" />
+                </LinearLayout>
+            </TabHost>
+        </LinearLayout>
+    </LinearLayout>
+
     <fragment
         android:id="@+id/navigation_drawer"
         android:name="ar.com.antaresconsulting.antonstockapp.NavigationDrawerFragment"
         android:layout_width="@dimen/navigation_drawer_width"
         android:layout_height="match_parent"
         android:layout_gravity="start" />
+
 </android.support.v4.widget.DrawerLayout>

@@ -53,7 +53,7 @@ public class BachaAdapter extends BaseProductAdapter {
 		ViewHolder holder = (ViewHolder) rowView.getTag();
 		Bacha registro = (Bacha) datos.get(position);
 		holder.lblNombre.setText(registro.getNombre());
-		holder.cantidad.setText(registro.getCantidad().toString());
+		holder.cantidad.setText(registro.getCantidadReal().toString());
 		holder.marcaBacha.setText(registro.getMarca().getName());
 		holder.tipoBacha.setText(registro.getTipoMaterial().getName());
 

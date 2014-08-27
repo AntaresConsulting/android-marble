@@ -50,7 +50,7 @@ public class InsumoAdapter extends BaseProductAdapter {
 		ViewHolder holder = (ViewHolder) rowView.getTag();
 		Insumo registro = (Insumo) datos.get(position);
 		holder.lblNombre.setText(registro.getNombre());
-		holder.cantidad.setText(registro.getCantidad().toString());
+		holder.cantidad.setText(registro.getCantidadReal().toString());
 		holder.empleado.setText(registro.getEntregado().getNombre());
 
 		return rowView;

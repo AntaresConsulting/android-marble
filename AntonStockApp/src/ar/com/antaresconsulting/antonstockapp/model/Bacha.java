@@ -20,7 +20,7 @@ public class Bacha extends BaseProduct {
 	
 	public Bacha(BaseProduct prod) {
 		this.setNombre(prod.getNombre());
-		this.setCantidad(prod.getCantidad());
+		this.setCantidadReal(prod.getCantidadReal());
 		this.setCodigo(prod.getCodigo());
 		this.setEan13(this.getEan13());
 		this.setId(prod.getId());

@@ -14,7 +14,9 @@ public class BaseProduct implements Serializable {
 	private String codigo;
 	private String nombre;
 	private String atributos;
-	private Double cantidad;
+	private Double cantidadReal;
+	private Double cantidadForecast;
+	private Double cantidadIncome;
 	private Double price;
 	private String productImg;
 	private String ean13;
@@ -27,7 +29,9 @@ public class BaseProduct implements Serializable {
 		this.nombre = nom;
 		this.productImg = prodImg;
 		this.price = price;
-		this.cantidad = cant;
+		this.cantidadReal = cant;
+		this.cantidadForecast = cant;
+		this.cantidadIncome = cant;
 		this.ean13 = ean13;
 	}
 
@@ -72,16 +76,38 @@ public class BaseProduct implements Serializable {
 		this.nombre = nombre;
 	}
 
-	public Double getCantidad() {
+	
+	private Double formatStock(Double baseStock) {
 		DecimalFormat twoDForm = new DecimalFormat("#.##");
 		DecimalFormatSymbols dfs = new DecimalFormatSymbols();
 		dfs.setDecimalSeparator('.');
 		twoDForm.setDecimalFormatSymbols(dfs);     
-		return new Double(twoDForm.format(cantidad.doubleValue()));
+		return new Double(twoDForm.format(baseStock.doubleValue()));
 	}
 
-	public void setCantidad(Double cantidad) {
-		this.cantidad = cantidad;
+
+	public Double getCantidadReal() {
+		return formatStock(cantidadReal);
+	}
+
+	public void setCantidadReal(Double cantidadReal) {
+		this.cantidadReal = cantidadReal;
+	}
+
+	public Double getCantidadForecast() {
+		return formatStock(cantidadForecast);
+	}
+
+	public void setCantidadForecast(Double cantidadForecast) {
+		this.cantidadForecast = cantidadForecast;
+	}
+
+	public Double getCantidadIncome() {
+		return formatStock(cantidadIncome);
+	}
+
+	public void setCantidadIncome(Double cantidadIncome) {
+		this.cantidadIncome = cantidadIncome;
 	}
 
 	public String getProductImg() {
@@ -120,7 +146,7 @@ public class BaseProduct implements Serializable {
 	@Override
 	public String toString() {
 		// TODO Auto-generated method stub
-		return this.getNombre()+ " "+this.getAtributos() +" - Cant. :" +this.getCantidad()+ " "+this.getUom()[1];
+		return this.getNombre()+ " "+this.getAtributos() +" - Cant. :" +this.getCantidadReal()+ " "+this.getUom()[1];
 	}
 
 }

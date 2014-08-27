@@ -9,6 +9,9 @@ import com.openerp.OpenErpHolder;
 
 import android.support.v4.app.NavUtils;
 import android.support.v7.app.ActionBarActivity;
+import android.text.Editable;
+import android.text.TextWatcher;
+import android.app.Fragment;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -18,7 +21,9 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ArrayAdapter;
+import android.widget.AutoCompleteTextView;
 import android.widget.EditText;
 import android.widget.FrameLayout;
 import android.widget.ListView;
@@ -51,14 +56,45 @@ public class AddOEActivity extends ActionBarActivity implements ProductDAO.Servi
 	private ListView prodsDispo;
 	private ListView prodsPedido;
 	private PartnerDAO partDao;
-	private Spinner clientes;
+	private Partner selectCliente;
+	private AutoCompleteTextView clientes;
 	private CreateMovesAsyncTask saveData;
+	private boolean isExcecute=false;
+	private Fragment thisFrag;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_add_oe);
-		clientes = (Spinner) findViewById(R.id.clienteCombo);
+		clientes = (AutoCompleteTextView) findViewById(R.id.clienteCombo);
+		clientes.addTextChangedListener(new TextWatcher() {
+		    @Override
+		    public void afterTextChanged(Editable editable) {
+		    }
+		    @Override
+		    public void beforeTextChanged(CharSequence charSequence, int arg1, int arg2, int arg3) {
+		    }
+
+		    @Override
+		    public void onTextChanged(CharSequence charSequence, int start, int before, int count) {
+		        String text=charSequence.toString();
+		        if(!clientes.isPopupShowing()){
+			        if(isExcecute)
+			        	return ;
+			        if (text.length() > 3) {
+			        	isExcecute = true;
+			        	partDao = new PartnerDAO(thisFrag);
+			        	partDao.getAllCompanies(text);
+			        }
+		        }
+		    }
+		});		
+		clientes.setOnItemClickListener(new OnItemClickListener() {
+			public void onItemClick(AdapterView<?> arg0, View arg1, int arg2,
+					long arg3) {
+				selectCliente = (Partner) arg0.getItemAtPosition(arg2);
+			}
+		});		
 		prodsDispo = (ListView) findViewById(R.id.productosDispo);
 		prodsPedido = (ListView) findViewById(R.id.productosPedido);
 		prodsPedido.setAdapter(new PedidoLineaAdapter(this));
@@ -119,7 +155,7 @@ public class AddOEActivity extends ActionBarActivity implements ProductDAO.Servi
 		PickingMove[] values = new PickingMove[1];
 		values[0] = new PickingMove();
 
-		Partner cliente = (Partner) this.clientes.getSelectedItem();
+		Partner cliente = this.selectCliente;
 		HashMap<String, Object> headerPicking = new HashMap<String, Object>();
 		String loc_source;
 		String loc_destination;
@@ -268,8 +304,11 @@ public class AddOEActivity extends ActionBarActivity implements ProductDAO.Servi
 
 	@Override
 	public void setClients() {
-		clientes.setAdapter(new ArrayAdapter<Partner>(this,android.R.layout.simple_list_item_1,this.partDao.getPartnersArray()));		
-	}
+		ArrayAdapter<Partner> adapter = new ArrayAdapter<Partner>(this, android.R.layout.simple_list_item_1, this.partDao.getPartnersArray());
+		this.clientes.setAdapter(adapter);
+		adapter.notifyDataSetChanged();
+		this.clientes.showDropDown();
+		isExcecute= false;	}
 
 	@Override
 	public void setClientDetail() {

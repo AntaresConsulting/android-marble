@@ -65,6 +65,8 @@ public class AntonConstants {
 	public static final String REDONDA = "red";
 	public static final String SIMPLE = "sim";
 	public static final String DOBLE = "dob";
+	public static final int BACHAS_CLI = 1;
+	public static final int BACHAS_PROV = 2;
 
 
 }
