@@ -67,6 +67,7 @@ public class AntonConstants {
 	public static final String DOBLE = "dob";
 	public static final int BACHAS_CLI = 1;
 	public static final int BACHAS_PROV = 2;
+	public static final int MIN_CHAR_LENGTH = 1;
 
 
 }

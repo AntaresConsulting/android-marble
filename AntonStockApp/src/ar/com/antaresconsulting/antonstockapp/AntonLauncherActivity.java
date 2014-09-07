@@ -54,7 +54,7 @@ public class AntonLauncherActivity extends BaseActivity {
 	}
 
 	public void getProducts(View v) {
-		Intent inProds = new Intent(this, ProductListActivity.class);
+		Intent inProds = new Intent(this, ProductTypeActivity.class);
 		startActivity(inProds);		
 	}
 	

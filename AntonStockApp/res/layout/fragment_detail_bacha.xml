@@ -110,18 +110,10 @@
                 android:textSize="25sp" />
         </TableRow>
     </TableLayout>
-    <View
-        android:id="@+id/sepProdThumb"
-        android:layout_width="4dp"
-        android:layout_height="match_parent"
-        android:layout_alignParentTop="true"
-        android:layout_marginLeft="15dp"
-        android:layout_marginRight="15dp"
-        android:layout_toRightOf="@id/photoContainer"
-        android:background="@color/actionbar_theme_color" />
     <TableLayout
         android:layout_width="wrap_content"
         android:layout_height="match_parent" 
+        android:layout_marginLeft="50dp"
         android:layout_marginTop="30dp" >
 
         <TableRow

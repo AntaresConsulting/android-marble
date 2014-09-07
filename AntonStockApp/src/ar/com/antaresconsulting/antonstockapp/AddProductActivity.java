@@ -8,6 +8,7 @@ import com.openerp.OpenErpHolder;
 import com.openerp.WriteAsyncTask;
 
 import android.support.v4.app.NavUtils;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarActivity;
 import android.app.Activity;
 import android.content.Intent;
@@ -30,7 +31,8 @@ public class AddProductActivity extends ActionBarActivity implements WriteAsyncT
 	private String encodedImage;
 	private CreateAsyncTask saveData;
 	private WriteAsyncTask updateData;
-	private BaseProduct idProd = null; 
+	private BaseProduct idProd = null;
+	private String mTitle; 
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -46,15 +48,19 @@ public class AddProductActivity extends ActionBarActivity implements WriteAsyncT
 
 		switch (tprod) {
 		case AntonConstants.MATERIA_PRIMA:
+			this.mTitle = getString(R.string.title_add_forstock);
 			getFragmentManager().beginTransaction().add(R.id.datailDataProduct, AddProductMPFragment.newInstance(idProd)).commit();	
 			break;
 		case AntonConstants.BACHAS:
+			this.mTitle = getString(R.string.title_add_bachas);
 			getFragmentManager().beginTransaction().add(R.id.datailDataProduct, AddProductBachaFragment.newInstance(idProd)).commit();
 			break;
 		case AntonConstants.INSUMOS:
+			this.mTitle = getString(R.string.title_add_expenses);
 			getFragmentManager().beginTransaction().add(R.id.datailDataProduct, AddProductInsumoFragment.newInstance(idProd)).commit();
 			break;
 		case AntonConstants.SERVICIOS:
+			this.mTitle = getString(R.string.title_add_services);
 			getFragmentManager().beginTransaction().add(R.id.datailDataProduct, AddProductServicioFragment.newInstance(idProd)).commit();
 			break;
 		default:
@@ -69,6 +75,7 @@ public class AddProductActivity extends ActionBarActivity implements WriteAsyncT
 
 		// Inflate the menu; this adds items to the action bar if it is present.
 		getMenuInflater().inflate(R.menu.add_product, menu);
+		restoreActionBar();
 		return true;
 	}
 	public void addProductSave(MenuItem view) {
@@ -154,6 +161,13 @@ public class AddProductActivity extends ActionBarActivity implements WriteAsyncT
 		Toast tt =Toast.makeText(getApplicationContext(), "Se ha actualizado el producto en forma satisfactoria ", Toast.LENGTH_SHORT);
 		tt.show();
 		finish();		
+	}
+	
+	public void restoreActionBar() {
+		ActionBar actionBar = getSupportActionBar();
+		actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_STANDARD);
+		actionBar.setDisplayShowTitleEnabled(true);
+		actionBar.setTitle(mTitle);
 	}
 }
 

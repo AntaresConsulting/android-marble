@@ -30,7 +30,7 @@ public class ProductListFragment extends ListFragment  implements ProductDAO.Ser
 	private InsumosDAO insuDao;
 	private ProductDAO prodDao;
 	
-	private int tProd;
+	private int tProd = -1;
 
 	private List mp;
 	private List bachas;
@@ -99,8 +99,6 @@ public class ProductListFragment extends ListFragment  implements ProductDAO.Ser
 		super.onCreate(savedInstanceState);
 		if(savedInstanceState != null){
 			this.tProd = savedInstanceState.getInt(AntonConstants.TPRODF);
-		}else{
-			this.tProd = AntonConstants.MATERIA_PRIMA;
 		}
         setRetainInstance(true);
 	}
@@ -115,7 +113,8 @@ public class ProductListFragment extends ListFragment  implements ProductDAO.Ser
 			setActivatedPosition(savedInstanceState
 					.getInt(STATE_ACTIVATED_POSITION));
 		}
-		refreshProducts(this.tProd);
+		if(this.tProd != -1)
+			refreshProducts(this.tProd);
 	}
 
 	@Override

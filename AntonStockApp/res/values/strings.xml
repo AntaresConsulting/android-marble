@@ -4,14 +4,6 @@
     <string name="app_name">Anton Stock</string>
     <string name="title_recorditem_detail">RecordItem Detail</string>
     <string name="sConnecting">Conectando</string>
-    <string name="title_forstock">Materias Primas</string>
-    <string name="title_expenses">Insumos</string>
-    <string name="title_bachas">Bachas</string>
-    <string name="title_services">Servicios</string>
-    <string name="title_clientes">Clientes</string>
-    <string name="title_suppliers">Proveedores</string>
-    <string name="title_add_products">Ingresar Productos</string>
-    <string name="title_sub_products">Restar Productos</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
     <string name="sFailTitle">No se ha podido conectar</string>
@@ -47,7 +39,7 @@
     <string name="title_activity_launcher">Anton Stock Principal</string>
     <string name="title_action_add_mp">Agregar Materia Prima</string>
     <string name="title_action_add_bacha">Agregar Bacha</string>
-	<string name="title_action_add_servicio">Agregar Servicio</string>    
+    <string name="title_action_add_servicio">Agregar Servicio</string>
     <string name="title_action_add_insumo">Agregar Insumo</string>
     <string name="title_action_del">Borrar</string>
     <string name="title_action_edit">Editar</string>
@@ -68,5 +60,6 @@
     <string name="action_settings">Settings</string>
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="title_activity_consumo_insumo">ConsumoInsumo</string>
+    <string name="title_activity_product_type">ProductTypeActivity</string>
 
 </resources>

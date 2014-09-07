@@ -126,7 +126,7 @@ public class InBachaProductFragment extends Fragment implements  SearchBachaPopu
 			        if(!cliente.isPopupShowing()){
 				        if(isExcecute)
 				        	return ;
-				        if (text.length() > 3) {
+				        if (text.length() > AntonConstants.MIN_CHAR_LENGTH) {
 				        	isExcecute = true;
 				        	partDao = new PartnerDAO(thisFrag);
 				        	partDao.getAllCompanies(text);

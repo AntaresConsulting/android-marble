@@ -38,8 +38,10 @@ import ar.com.antaresconsulting.antonstockapp.model.BaseProduct;
  * This activity also implements the required {@link ItemListFragment.Callbacks}
  * interface to listen for item selections.
  */
-public class ProductListActivity extends ActionBarActivity implements WriteAsyncTask.WriteAsyncTaskCallbacks,
-NavigationDrawerFragment.NavigationDrawerCallbacks,ProductListFragment.Callbacks {
+public class ProductListActivity extends ActionBarActivity implements
+		WriteAsyncTask.WriteAsyncTaskCallbacks,
+		NavigationDrawerFragment.NavigationDrawerCallbacks,
+		ProductListFragment.Callbacks {
 
 	/**
 	 * Whether or not the activity is in two-pane mode, i.e. running on a tablet
@@ -53,53 +55,82 @@ NavigationDrawerFragment.NavigationDrawerCallbacks,ProductListFragment.Callbacks
 	private int tProd;
 	private Menu myMenu;
 
-    private TabHost mTabHost;
-    private ViewPager mViewPager;
-    private TabsAdapter mTabsAdapter;
-        
+	private TabHost mTabHost;
+	private ViewPager mViewPager;
+	private TabsAdapter mTabsAdapter;
+
 	@Override
-	public void onSaveInstanceState(Bundle savedInstanceState){
-		super.onSaveInstanceState(savedInstanceState);		
+	public void onSaveInstanceState(Bundle savedInstanceState) {
+		super.onSaveInstanceState(savedInstanceState);
 		savedInstanceState.putInt(AntonConstants.TPROD, this.tProd);
-	} 
+	}
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_product_list);		
-
-		if(savedInstanceState != null){
-			this.tProd = savedInstanceState.getInt(AntonConstants.TPROD);
+		setContentView(R.layout.activity_product_list);
+		Bundle params = getIntent().getExtras();
+		if(params != null){
+			this.tProd = params.getInt(AntonConstants.TPROD);
 		}else{
-			this.tProd = AntonConstants.MATERIA_PRIMA;
+			if (savedInstanceState != null) {
+				this.tProd = savedInstanceState.getInt(AntonConstants.TPROD);
+			} else {
+				this.tProd = AntonConstants.MATERIA_PRIMA;
+			}	
 		}
-
+			
 		
-        mTabHost = (TabHost)findViewById(android.R.id.tabhost);
-        mTabHost.setup();
 
-        mViewPager = (ViewPager)findViewById(R.id.pager);
+		mTabHost = (TabHost) findViewById(android.R.id.tabhost);
+		mTabHost.setup();
+			
+		mViewPager = (ViewPager) findViewById(R.id.pager);
 
-		mNavigationDrawerFragment = (NavigationDrawerFragment) getSupportFragmentManager().findFragmentById(R.id.navigation_drawer);
-		listFragment = (ProductListFragment) getFragmentManager().findFragmentById(R.id.product_list);
-		mTitle = getString(R.string.title_forstock);
+		mNavigationDrawerFragment = (NavigationDrawerFragment) getSupportFragmentManager()
+				.findFragmentById(R.id.navigation_drawer);
+		listFragment = (ProductListFragment) getFragmentManager()
+				.findFragmentById(R.id.product_list);
+		mTitle = this.getTitle(this.tProd);
 		// Set up the drawer.
-		mNavigationDrawerFragment.setUp(R.id.navigation_drawer,	(DrawerLayout) findViewById(R.id.drawer_layout));
+		mNavigationDrawerFragment.setUp(R.id.navigation_drawer,
+				(DrawerLayout) findViewById(R.id.drawer_layout));
 
 		if (findViewById(R.id.product_detail_container) != null) {
 			mTwoPane = true;
-			((ProductListFragment) getFragmentManager().findFragmentById(R.id.product_list)).setActivateOnItemClick(true);
+			((ProductListFragment) getFragmentManager().findFragmentById(
+					R.id.product_list)).setActivateOnItemClick(true);
 		}
+		this.listFragment.refreshProducts(this.tProd);
+
 	}
 
+	private String getTitle(int valP){
+		String stringVal = "";
+		switch (valP) {
+		case AntonConstants.MATERIA_PRIMA:
+			stringVal = getString(R.string.title_forstock);
+			break;
+		case AntonConstants.INSUMOS:
+			stringVal = getString(R.string.title_expenses);
+			break;
+		case AntonConstants.SERVICIOS:
+			stringVal = getString(R.string.title_services);
+			break;
+		case AntonConstants.BACHAS:
+			stringVal = getString(R.string.title_bachas);
+			break;
+
+		default:
+			break;
+		}
+		return stringVal;
+	}
+	
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		if (!mNavigationDrawerFragment.isDrawerOpen()) {
-			// Only show items in the action bar relevant to this screen
-			// if the drawer is not showing. Otherwise, let the drawer
-			// decide what to show in the action bar.
-			// Inflate the menu; this adds items to the action bar if it is present.
-			if(OpenErpHolder.getInstance().getmOConn().isManager()){
+			if (OpenErpHolder.getInstance().getmOConn().isManager()) {
 				getMenuInflater().inflate(R.menu.list_products, menu);
 				this.myMenu = menu;
 			}
@@ -108,7 +139,6 @@ NavigationDrawerFragment.NavigationDrawerCallbacks,ProductListFragment.Callbacks
 		}
 		return super.onCreateOptionsMenu(menu);
 	}
-
 
 	/**
 	 * Callback method from {@link ItemListFragment.Callbacks} indicating that
@@ -122,16 +152,22 @@ NavigationDrawerFragment.NavigationDrawerCallbacks,ProductListFragment.Callbacks
 			arguments.putInt(AntonConstants.TPROD, this.tProd);
 			fragment = new ProductDetailFragment();
 			fragment.setArguments(arguments);
-			
-			getFragmentManager().beginTransaction().replace(R.id.product_detail_container, fragment).commit();
-			
+
+			getFragmentManager().beginTransaction()
+					.replace(R.id.product_detail_container, fragment).commit();
+
 			mTabHost.clearAllTabs();
-		
+
 			mTabsAdapter = new TabsAdapter(this, mTabHost, mViewPager);
-			mTabsAdapter.addTab(mTabHost.newTabSpec("detailExtra").setIndicator("Atributos del Producto"), ProductDetailExtraFragment.class, arguments);
-			//mTabsAdapter.addTab(mTabHost.newTabSpec("proveedor").setIndicator("Prodveedores"), PartnerListFragment.class, arguments);
-			if(tProd == AntonConstants.MATERIA_PRIMA)
-				mTabsAdapter.addTab(mTabHost.newTabSpec("dimensiones").setIndicator("Dimensiones"), DimensionsFragment.class, arguments);	
+			mTabsAdapter.addTab(mTabHost.newTabSpec("detailExtra")
+					.setIndicator("Atributos del Producto"),
+					ProductDetailExtraFragment.class, arguments);
+			// mTabsAdapter.addTab(mTabHost.newTabSpec("proveedor").setIndicator("Prodveedores"),
+			// PartnerListFragment.class, arguments);
+			if (tProd == AntonConstants.MATERIA_PRIMA)
+				mTabsAdapter.addTab(mTabHost.newTabSpec("dimensiones")
+						.setIndicator("Dimensiones"), DimensionsFragment.class,
+						arguments);
 			mTabsAdapter.notifyDataSetChanged();
 		} else {
 			// In single-pane mode, simply start the detail activity
@@ -148,91 +184,101 @@ NavigationDrawerFragment.NavigationDrawerCallbacks,ProductListFragment.Callbacks
 		actionBar.setDisplayShowTitleEnabled(true);
 		actionBar.setTitle(mTitle);
 	}
+
 	@Override
 	public void onNavigationDrawerItemSelected(int position) {
 		switch (position) {
 		case 0:
 			mTitle = getString(R.string.title_forstock);
 			this.tProd = AntonConstants.MATERIA_PRIMA;
-			if(this.myMenu != null)
-				this.myMenu.getItem(0).setTitle(getString(R.string.title_action_add_mp));
+			// if(this.myMenu != null)
+			// this.myMenu.getItem(0).setTitle(getString(R.string.title_action_add_mp));
 			this.listFragment.refreshProducts(AntonConstants.MATERIA_PRIMA);
-			break;	
+			break;
 		case 1:
 			mTitle = getString(R.string.title_expenses);
 			this.tProd = AntonConstants.INSUMOS;
-			if(this.myMenu != null)
-				this.myMenu.getItem(0).setTitle(getString(R.string.title_action_add_insumo));
+			// if(this.myMenu != null)
+			// this.myMenu.getItem(0).setTitle(getString(R.string.title_action_add_insumo));
 			this.listFragment.refreshProducts(AntonConstants.INSUMOS);
-			break;	
+			break;
 		case 2:
 			mTitle = getString(R.string.title_bachas);
 			this.tProd = AntonConstants.BACHAS;
-			if(this.myMenu != null)
-				this.myMenu.getItem(0).setTitle(getString(R.string.title_action_add_bacha));
+			// if(this.myMenu != null)
+			// this.myMenu.getItem(0).setTitle(getString(R.string.title_action_add_bacha));
 			this.listFragment.refreshProducts(AntonConstants.BACHAS);
-			break;	
+			break;
 		case 3:
 			mTitle = getString(R.string.title_services);
 			this.tProd = AntonConstants.SERVICIOS;
-			if(this.myMenu != null)
-				this.myMenu.getItem(0).setTitle(getString(R.string.title_action_add_servicio));			
+			// if(this.myMenu != null)
+			// this.myMenu.getItem(0).setTitle(getString(R.string.title_action_add_servicio));
 			this.listFragment.refreshProducts(AntonConstants.SERVICIOS);
-			break;				
+			break;
 		default:
 			finish();
-			break;			
+			break;
 		}
 
 		restoreActionBar();
 	}
-	
+
 	public boolean onOptionsItemSelected(MenuItem item) {
 		return super.onOptionsItemSelected(item);
-	}	
-	
-	public void editProduct(MenuItem view){
+	}
+
+	public void editProduct(MenuItem view) {
 		Intent addProds = new Intent(this, AddProductActivity.class);
 		Bundle b = new Bundle();
-		b.putInt(AntonConstants.TPROD, this.tProd); //Your id
-		ProductDetailFragment prodDet = (ProductDetailFragment) getFragmentManager().findFragmentById(R.id.product_detail_container);
-		if(prodDet != null){
-			b.putSerializable(AntonConstants.ARG_ITEM_ID, prodDet.getProductSelected()); //Your id
-			addProds.putExtras(b); 		
-			startActivity(addProds);			
+		b.putInt(AntonConstants.TPROD, this.tProd); // Your id
+		ProductDetailFragment prodDet = (ProductDetailFragment) getFragmentManager()
+				.findFragmentById(R.id.product_detail_container);
+		if (prodDet != null) {
+			b.putSerializable(AntonConstants.ARG_ITEM_ID,
+					prodDet.getProductSelected()); // Your id
+			addProds.putExtras(b);
+			startActivity(addProds);
 		}
 	}
-	
-	public void delProduct(MenuItem view){
-		List<BaseProduct> checked = ((BaseProductAdapter)this.listFragment.getListView().getAdapter()).getCheckedItems();
+
+	public void delProduct(MenuItem view) {
+		List<BaseProduct> checked = ((BaseProductAdapter) this.listFragment
+				.getListView().getAdapter()).getCheckedItems();
 		Long[] toDelete = new Long[checked.size()];
 		int i = 0;
-		for (Iterator<BaseProduct> iterator = checked.iterator(); iterator.hasNext();) {
+		for (Iterator<BaseProduct> iterator = checked.iterator(); iterator
+				.hasNext();) {
 			BaseProduct baseProduct = (BaseProduct) iterator.next();
 			toDelete[i++] = new Long(baseProduct.getId());
 		}
-		if(toDelete.length > 0){
-			//WriteAsyncTask delProd = new WriteAsyncTask(this);
+		if (toDelete.length > 0) {
+			// WriteAsyncTask delProd = new WriteAsyncTask(this);
 			DeleteAsyncTask delProd = new DeleteAsyncTask(this);
-			OpenErpHolder.getInstance().setmModelName(AntonConstants.PRODUCT_MODEL);
-			delProd.execute(toDelete);				
+			OpenErpHolder.getInstance().setmModelName(
+					AntonConstants.PRODUCT_MODEL);
+			delProd.execute(toDelete);
 		}
 	}
-	public void takePhoto(View view){
+
+	public void takePhoto(View view) {
 		this.fragment.takePhoto();
 	}
-	public void addProduct(MenuItem view){
+
+	public void addProduct(MenuItem view) {
 		Intent addProds = new Intent(this, AddProductActivity.class);
 		Bundle b = new Bundle();
-		b.putInt(AntonConstants.TPROD, this.tProd); //Your id
-		addProds.putExtras(b); 		
-		startActivity(addProds);		
+		b.putInt(AntonConstants.TPROD, this.tProd); // Your id
+		addProds.putExtras(b);
+		startActivity(addProds);
 	}
 
 	@Override
 	public void setResultCreate(Boolean res) {
-		Toast tt =Toast.makeText(getApplicationContext(), "Se ha guardado la foto en forma correcta!.", Toast.LENGTH_SHORT);
+		Toast tt = Toast.makeText(getApplicationContext(),
+				"Se ha guardado la foto en forma correcta!.",
+				Toast.LENGTH_SHORT);
 		tt.show();
 		this.onNavigationDrawerItemSelected(this.tProd);
-	}	
+	}
 }

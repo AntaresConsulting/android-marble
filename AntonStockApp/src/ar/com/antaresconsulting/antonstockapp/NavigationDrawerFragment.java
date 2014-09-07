@@ -108,10 +108,10 @@ public class NavigationDrawerFragment extends Fragment {
         }
         
         if(actAux  instanceof ProductListActivity){
-             dataList.add(new DrawerItem(getString(R.string.title_forstock), R.drawable.ic_menu_product));
-             dataList.add(new DrawerItem(getString(R.string.title_expenses), R.drawable.ic_menu_product));
-             dataList.add(new DrawerItem(getString(R.string.title_bachas), R.drawable.ic_menu_product));
-             dataList.add(new DrawerItem(getString(R.string.title_services), R.drawable.ic_menu_product));
+             dataList.add(new DrawerItem(getString(R.string.title_menu_forstock), R.drawable.ic_menu_product));
+             dataList.add(new DrawerItem(getString(R.string.title_menu_expenses), R.drawable.ic_menu_product));
+             dataList.add(new DrawerItem(getString(R.string.title_menu_bachas), R.drawable.ic_menu_product));
+             dataList.add(new DrawerItem(getString(R.string.title_menu_services), R.drawable.ic_menu_product));
         }
         
        

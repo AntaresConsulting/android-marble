@@ -22,6 +22,22 @@
     <string name="lbl_prod_bacha_largo">Largo :</string>
     <string name="lbl_prod_bacha_prof">Profundidad :</string>    
     <string name="lbl_prod_bacha_diametro">Diametro :</string>
+    <string name="title_forstock">Producto Materias Primas</string>
+    <string name="title_expenses">Producto Insumos</string>
+    <string name="title_bachas">Producto Bachas</string>
+    <string name="title_services">Servicios</string>
+	<string name="title_add_forstock">Alta de  Materias Prima</string>
+    <string name="title_add_expenses">Alta de  Insumo</string>
+    <string name="title_add_bachas">Alta de Bacha</string>
+    <string name="title_add_services">Alta de Servicio</string>    
+    <string name="title_menu_forstock">Materias Primas</string>
+    <string name="title_menu_expenses">Insumos</string>
+    <string name="title_menu_bachas">Bachas</string>
+    <string name="title_menu_services">Servicios</string>    
+    <string name="title_clientes">Clientes</string>
+    <string name="title_suppliers">Proveedores</string>
+    <string name="title_add_products">Ingresar Productos</string>
+    <string name="title_sub_products">Restar Productos</string>    
                     
     <string-array name="tipoMaterial">
         <item></item>
