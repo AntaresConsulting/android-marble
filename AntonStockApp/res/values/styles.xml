@@ -44,5 +44,8 @@
 	    <item name="android:windowActionBar">false</item>
 	    <item name="android:windowNoTitle">true</item>
 	</style>     
-	
+  	<style name="PopupWindowAnimation">
+                 <item name="android:windowEnterAnimation">@anim/fade_in</item>
+                  <item name="android:windowExitAnimation">@anim/fade_out</item>
+    </style>	
 </resources>

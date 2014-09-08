@@ -1,6 +1,10 @@
 package ar.com.antaresconsulting.antonstockapp;
 
 import java.io.ByteArrayOutputStream;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.InputStream;
 import java.util.HashMap;
 
 import com.openerp.OpenErpHolder;
@@ -11,7 +15,9 @@ import android.app.Fragment;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.net.Uri;
 import android.os.Bundle;
+import android.os.Environment;
 import android.provider.MediaStore;
 import android.util.Base64;
 import android.view.LayoutInflater;
@@ -40,6 +46,7 @@ public class ProductDetailFragment extends Fragment {
 	private Bitmap savedThumb;
 	private WriteAsyncTask saveData;
 	private int tProd;
+	private String _path;
 
 
 	/**
@@ -51,8 +58,8 @@ public class ProductDetailFragment extends Fragment {
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
-		super.onCreate(savedInstanceState);	
-
+		super.onCreate(savedInstanceState);
+		_path = Environment.getExternalStorageDirectory()+"/temp_photo.jpg";
 		if (getArguments().containsKey(ARG_ITEM_ID)) {
 				if(!getArguments().containsKey("savedObject") || (getArguments().containsKey("savedObject") && ((BaseProduct)getArguments().getSerializable("savedObject")).getId().intValue() != ((BaseProduct)getArguments().getSerializable(ARG_ITEM_ID)).getId().intValue())){					
 					this.tProd = getArguments().getInt(AntonConstants.TPROD);
@@ -121,6 +128,9 @@ public class ProductDetailFragment extends Fragment {
 		getArguments().putSerializable("savedObject", this.pData);
 	    Intent takePictureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
 	    if (takePictureIntent.resolveActivity(getActivity().getPackageManager()) != null) {
+			File file = new File(Environment.getExternalStorageDirectory(), "temp_photo.jpg");
+	    	Uri outputFileUri = Uri.fromFile( file );
+	    	takePictureIntent.putExtra( MediaStore.EXTRA_OUTPUT, outputFileUri );
 	        startActivityForResult(takePictureIntent, AntonConstants.REQUEST_IMAGE_CAPTURE);
 	    }			
 	}
@@ -131,8 +141,15 @@ public class ProductDetailFragment extends Fragment {
 	@Override
 	public void onActivityResult(int requestCode, int resultCode, Intent data) {
 	    if (requestCode == AntonConstants.REQUEST_IMAGE_CAPTURE && resultCode == Activity.RESULT_OK) {
-	        Bundle extras = data.getExtras();
-	        this.savedThumb = (Bitmap) extras.get("data");
+	       
+	        BitmapFactory.Options options = new BitmapFactory.Options();
+	        //options.inSampleSize = 4;
+	        	
+	        Bitmap bitmap = BitmapFactory.decodeFile( _path, options );
+
+	        //        Bundle extras = data.getExtras();
+	        //this.savedThumb = (Bitmap) extras.get("data");
+	        this.savedThumb = bitmap;
 	        this.saveData = new WriteAsyncTask(this.getActivity());
 	        OpenErpHolder.getInstance().setmModelName("product.product");
 	        HashMap[] values = new HashMap[2];

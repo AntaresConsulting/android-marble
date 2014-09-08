@@ -7,16 +7,29 @@ import com.openerp.DeleteAsyncTask;
 import com.openerp.WriteAsyncTask;
 import com.openerp.OpenErpHolder;
 
+import android.app.ActionBar.LayoutParams;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.Color;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.ColorDrawable;
+import android.graphics.drawable.ShapeDrawable;
 import android.os.Bundle;
+import android.os.Environment;
 import android.support.v4.app.NavUtils;
 import android.support.v4.view.ViewPager;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarActivity;
+import android.util.Base64;
+import android.view.Gravity;
+import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ImageView;
+import android.widget.PopupWindow;
 import android.widget.TabHost;
 import android.widget.Toast;
 import ar.com.antaresconsulting.antonstockapp.adapters.BaseProductAdapter;
@@ -70,21 +83,19 @@ public class ProductListActivity extends ActionBarActivity implements
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_product_list);
 		Bundle params = getIntent().getExtras();
-		if(params != null){
+		if (params != null) {
 			this.tProd = params.getInt(AntonConstants.TPROD);
-		}else{
+		} else {
 			if (savedInstanceState != null) {
 				this.tProd = savedInstanceState.getInt(AntonConstants.TPROD);
 			} else {
 				this.tProd = AntonConstants.MATERIA_PRIMA;
-			}	
+			}
 		}
-			
-		
 
 		mTabHost = (TabHost) findViewById(android.R.id.tabhost);
 		mTabHost.setup();
-			
+
 		mViewPager = (ViewPager) findViewById(R.id.pager);
 
 		mNavigationDrawerFragment = (NavigationDrawerFragment) getSupportFragmentManager()
@@ -105,7 +116,7 @@ public class ProductListActivity extends ActionBarActivity implements
 
 	}
 
-	private String getTitle(int valP){
+	private String getTitle(int valP) {
 		String stringVal = "";
 		switch (valP) {
 		case AntonConstants.MATERIA_PRIMA:
@@ -126,7 +137,7 @@ public class ProductListActivity extends ActionBarActivity implements
 		}
 		return stringVal;
 	}
-	
+
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		if (!mNavigationDrawerFragment.isDrawerOpen()) {
@@ -280,5 +291,26 @@ public class ProductListActivity extends ActionBarActivity implements
 				Toast.LENGTH_SHORT);
 		tt.show();
 		this.onNavigationDrawerItemSelected(this.tProd);
+	}
+
+	public void zoomPhoto(View view) {
+		LayoutInflater layoutInflater = (LayoutInflater) getBaseContext().getSystemService(LAYOUT_INFLATER_SERVICE);
+		View popupView = layoutInflater.inflate(R.layout.solo_photo, null);
+		ProductDetailFragment prodDet = (ProductDetailFragment) getFragmentManager().findFragmentById(R.id.product_detail_container);
+		BaseProduct prod = prodDet.getProductSelected();
+		
+		byte[] decodedString = Base64.decode(prod.getProductImg().trim(), Base64.DEFAULT);
+		Bitmap decodedByte = BitmapFactory.decodeByteArray(decodedString, 0,decodedString.length);
+		
+//		_path = Environment.getExternalStorageDirectory()+"/temp_photo.jpg";
+
+		((ImageView)popupView.findViewById(R.id.imageContainer)).setImageBitmap(decodedByte);
+		
+		final PopupWindow popupWindow = new PopupWindow(popupView,LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT,true);
+//		popupWindow.setAnimationStyle(R.style.PopupWindowAnimation);
+		popupWindow.setOutsideTouchable(true);
+		popupWindow.setTouchable(true);
+		popupWindow.setBackgroundDrawable(new ColorDrawable(android.graphics.Color.TRANSPARENT));
+		popupWindow.showAtLocation(popupView, Gravity.CENTER, 0, 0);
 	}
 }

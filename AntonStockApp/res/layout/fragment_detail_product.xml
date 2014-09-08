@@ -17,6 +17,7 @@
             android:layout_height="200dp"
             android:layout_alignParentLeft="true"
             android:layout_alignParentTop="true"
+            android:onClick="zoomPhoto"
             android:src="@drawable/ic_no_photo" />
 
         <Button
