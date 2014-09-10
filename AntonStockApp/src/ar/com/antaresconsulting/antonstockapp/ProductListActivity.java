@@ -1,5 +1,8 @@
 package ar.com.antaresconsulting.antonstockapp;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.util.Iterator;
 import java.util.List;
 
@@ -66,7 +69,7 @@ public class ProductListActivity extends ActionBarActivity implements
 	private ProductListFragment listFragment;
 	private ProductDetailFragment fragment;
 	private int tProd;
-	private Menu myMenu;
+	private Menu myMenu = null;
 
 	private TabHost mTabHost;
 	private ViewPager mViewPager;
@@ -140,15 +143,22 @@ public class ProductListActivity extends ActionBarActivity implements
 
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
-		if (!mNavigationDrawerFragment.isDrawerOpen()) {
-			if (OpenErpHolder.getInstance().getmOConn().isManager()) {
-				getMenuInflater().inflate(R.menu.list_products, menu);
-				this.myMenu = menu;
-			}
-			restoreActionBar();
-			return true;
-		}
-		return super.onCreateOptionsMenu(menu);
+	
+			super.onCreateOptionsMenu(menu);
+			getMenuInflater().inflate(R.menu.list_products, menu);
+			this.myMenu = menu;			
+		
+//		if (mNavigationDrawerFragment.isDrawerOpen()) {
+//			if (OpenErpHolder.getInstance().getmOConn().isManager()) {
+//				getMenuInflater().inflate(R.menu.list_products, menu);
+//			}
+//			//return true;
+//			this.myMenu = menu;
+//		}
+		
+		//return super.onCreateOptionsMenu(menu);
+//		restoreActionBar();
+		return true;
 	}
 
 	/**
@@ -173,8 +183,8 @@ public class ProductListActivity extends ActionBarActivity implements
 			mTabsAdapter.addTab(mTabHost.newTabSpec("detailExtra")
 					.setIndicator("Atributos del Producto"),
 					ProductDetailExtraFragment.class, arguments);
-			// mTabsAdapter.addTab(mTabHost.newTabSpec("proveedor").setIndicator("Prodveedores"),
-			// PartnerListFragment.class, arguments);
+			mTabsAdapter.addTab(mTabHost.newTabSpec("proveedor").setIndicator("Prodveedores"),
+			PartnerListFragment.class, arguments);
 			if (tProd == AntonConstants.MATERIA_PRIMA)
 				mTabsAdapter.addTab(mTabHost.newTabSpec("dimensiones")
 						.setIndicator("Dimensiones"), DimensionsFragment.class,
@@ -202,29 +212,29 @@ public class ProductListActivity extends ActionBarActivity implements
 		case 0:
 			mTitle = getString(R.string.title_forstock);
 			this.tProd = AntonConstants.MATERIA_PRIMA;
-			// if(this.myMenu != null)
-			// this.myMenu.getItem(0).setTitle(getString(R.string.title_action_add_mp));
+			 if(this.myMenu != null)
+			 this.myMenu.getItem(0).setTitle(getString(R.string.title_action_add_mp));
 			this.listFragment.refreshProducts(AntonConstants.MATERIA_PRIMA);
 			break;
 		case 1:
 			mTitle = getString(R.string.title_expenses);
 			this.tProd = AntonConstants.INSUMOS;
-			// if(this.myMenu != null)
-			// this.myMenu.getItem(0).setTitle(getString(R.string.title_action_add_insumo));
+			 if(this.myMenu != null)
+			 this.myMenu.getItem(0).setTitle(getString(R.string.title_action_add_insumo));
 			this.listFragment.refreshProducts(AntonConstants.INSUMOS);
 			break;
 		case 2:
 			mTitle = getString(R.string.title_bachas);
 			this.tProd = AntonConstants.BACHAS;
-			// if(this.myMenu != null)
-			// this.myMenu.getItem(0).setTitle(getString(R.string.title_action_add_bacha));
+			if(this.myMenu != null)
+			 this.myMenu.getItem(0).setTitle(getString(R.string.title_action_add_bacha));
 			this.listFragment.refreshProducts(AntonConstants.BACHAS);
 			break;
 		case 3:
 			mTitle = getString(R.string.title_services);
 			this.tProd = AntonConstants.SERVICIOS;
-			// if(this.myMenu != null)
-			// this.myMenu.getItem(0).setTitle(getString(R.string.title_action_add_servicio));
+			if(this.myMenu != null)
+			 this.myMenu.getItem(0).setTitle(getString(R.string.title_action_add_servicio));
 			this.listFragment.refreshProducts(AntonConstants.SERVICIOS);
 			break;
 		default:
@@ -299,18 +309,17 @@ public class ProductListActivity extends ActionBarActivity implements
 		ProductDetailFragment prodDet = (ProductDetailFragment) getFragmentManager().findFragmentById(R.id.product_detail_container);
 		BaseProduct prod = prodDet.getProductSelected();
 		
-		byte[] decodedString = Base64.decode(prod.getProductImg().trim(), Base64.DEFAULT);
+		byte[] decodedString = Base64.decode(prod.getProductBig().trim(), Base64.DEFAULT);
 		Bitmap decodedByte = BitmapFactory.decodeByteArray(decodedString, 0,decodedString.length);
-		
-//		_path = Environment.getExternalStorageDirectory()+"/temp_photo.jpg";
-
+	        
 		((ImageView)popupView.findViewById(R.id.imageContainer)).setImageBitmap(decodedByte);
 		
 		final PopupWindow popupWindow = new PopupWindow(popupView,LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT,true);
-//		popupWindow.setAnimationStyle(R.style.PopupWindowAnimation);
+		popupWindow.setAnimationStyle(R.style.PopupWindowAnimation);
 		popupWindow.setOutsideTouchable(true);
 		popupWindow.setTouchable(true);
 		popupWindow.setBackgroundDrawable(new ColorDrawable(android.graphics.Color.TRANSPARENT));
 		popupWindow.showAtLocation(popupView, Gravity.CENTER, 0, 0);
 	}
+
 }

@@ -143,7 +143,7 @@ public class ProductDetailFragment extends Fragment {
 	    if (requestCode == AntonConstants.REQUEST_IMAGE_CAPTURE && resultCode == Activity.RESULT_OK) {
 	       
 	        BitmapFactory.Options options = new BitmapFactory.Options();
-	        //options.inSampleSize = 4;
+	        options.inSampleSize = 2;
 	        	
 	        Bitmap bitmap = BitmapFactory.decodeFile( _path, options );
 
@@ -157,7 +157,7 @@ public class ProductDetailFragment extends Fragment {
 	        values[0].put("id",((BaseProduct)getArguments().getSerializable(ARG_ITEM_ID)).getId().toString());
 	        values[1] = new HashMap<String, Object>();
 	        ByteArrayOutputStream baos=new  ByteArrayOutputStream();
-	        this.savedThumb.compress(Bitmap.CompressFormat.PNG,100, baos);
+	        this.savedThumb.compress(Bitmap.CompressFormat.JPEG,100, baos);
             byte [] b=baos.toByteArray();
             String encodedBitmap=Base64.encodeToString(b, Base64.DEFAULT);
 

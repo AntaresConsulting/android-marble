@@ -19,21 +19,35 @@ public class BaseProduct implements Serializable {
 	private Double cantidadIncome;
 	private Double price;
 	private String productImg;
+	private String productBig;	
 	private String ean13;
 	private Object[] uom;
 
 	public BaseProduct(Integer id, String cod, String nom, String prodImg,
-			Double price, Double cant, String ean13) {
+			Double price, Double cant, String ean13,String prodBig) {
 		this.codigo = cod;
 		this.id = id;
 		this.nombre = nom;
 		this.productImg = prodImg;
+		this.productBig = prodBig;
 		this.price = price;
 		this.cantidadReal = cant;
 		this.cantidadForecast = cant;
 		this.cantidadIncome = cant;
 		this.ean13 = ean13;
+		
 	}
+
+	
+	public String getProductBig() {
+		return productBig;
+	}
+
+
+	public void setProductBig(String productBig) {
+		this.productBig = productBig;
+	}
+
 
 	public String getEan13() {
 		return ean13;

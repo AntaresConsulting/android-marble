@@ -19,7 +19,7 @@ import com.openerp.ReadAsyncTask;
 
 public class InsumosDAO extends ProductDAO {
 
-	private String[] insuFilds = new String[] { "id", "name", "image_medium", "code", "list_price", "qty_available","virtual_available","seller_qty", "ean13", "uom_id", "description" };
+	private String[] insuFilds = new String[] { "id", "name", "image_medium", "image", "code", "list_price", "qty_available","virtual_available","seller_qty", "ean13", "uom_id", "description" };
 	
 	private Fragment activityPart;
 	

@@ -20,7 +20,7 @@ public class ProductDAO extends ReadAsyncTask {
 	private static final int UOMS = 7;
 	private static final int LOCATION = 8;
 
-	private String[] baseFields = new String[] { "id", "name", "image_medium", "code", "list_price", "qty_available", "ean13", "uom_id" ,"attrs_material","virtual_available","seller_qty" };
+	private String[] baseFields = new String[] { "id", "name", "image_medium", "image", "code", "list_price", "qty_available", "ean13", "uom_id" ,"attrs_material","virtual_available","seller_qty" };
 
 	private int dataToSet;
 	private Fragment activityPart;
@@ -83,6 +83,8 @@ public class ProductDAO extends ReadAsyncTask {
 			BaseProduct prod) {
 
 		String imageResp = registro.get("image_medium") instanceof Boolean ? "": (String) registro.get("image_medium");
+		String imageBig = registro.get("image") instanceof Boolean ? "": (String) registro.get("image");
+
 		Double price = ((registro.get("list_price") instanceof Boolean) ? 0: (Double) registro.get("list_price"));
 		String code = registro.get("code") instanceof Boolean ? "": (String) registro.get("code");
 		String ean13 = registro.get("ean13") instanceof Boolean ? "": (String) registro.get("ean13");
@@ -103,6 +105,7 @@ public class ProductDAO extends ReadAsyncTask {
 		prod.setNombre(nombre);
 		prod.setPrice(price);
 		prod.setProductImg(imageResp);
+		prod.setProductBig(imageBig);
 		prod.setUom(uom);
 	}
 

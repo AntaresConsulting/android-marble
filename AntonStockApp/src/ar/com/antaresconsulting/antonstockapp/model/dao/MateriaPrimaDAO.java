@@ -19,7 +19,7 @@ import com.openerp.ReadAsyncTask;
 
 public class MateriaPrimaDAO extends ProductDAO  {
 
-	private String[] mpFields = new String[] { "id", "name", "image_medium", "code", "list_price", "qty_available","virtual_available","seller_qty", "ean13", "uom_id", "attrs_material","color","finished","material" };
+	private String[] mpFields = new String[] { "id", "name", "image_medium", "image", "code", "list_price", "qty_available","virtual_available","seller_qty", "ean13", "uom_id", "attrs_material","color","finished","material" };
 	
 	private Fragment activityPart;
 
