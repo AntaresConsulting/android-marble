@@ -20,15 +20,18 @@ import android.widget.BaseAdapter;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 import ar.com.antaresconsulting.antonstockapp.adapters.BaseProductAdapter;
 import ar.com.antaresconsulting.antonstockapp.adapters.PedidoLineaAdapter;
 import ar.com.antaresconsulting.antonstockapp.listener.SwipeDismissListViewTouchListener;
 import ar.com.antaresconsulting.antonstockapp.model.BaseProduct;
+import ar.com.antaresconsulting.antonstockapp.model.Dimension;
 import ar.com.antaresconsulting.antonstockapp.model.MateriaPrima;
 import ar.com.antaresconsulting.antonstockapp.model.Partner;
 import ar.com.antaresconsulting.antonstockapp.model.PedidoLinea;
 import ar.com.antaresconsulting.antonstockapp.model.PickingMove;
+import ar.com.antaresconsulting.antonstockapp.model.SelectionObject;
 import ar.com.antaresconsulting.antonstockapp.model.dao.MateriaPrimaDAO;
 import ar.com.antaresconsulting.antonstockapp.model.dao.PartnerDAO;
 
@@ -42,8 +45,14 @@ public class AddPMMPFragment extends Fragment implements PartnerDAO.SuppliersCal
 	private MateriaPrimaDAO mpDao;
 	private PartnerDAO partDao;
 
-	private EditText cant;
 	private EditText pl;
+	
+	private EditText cantPlacas;
+	private EditText dimH;
+	private EditText dimW;
+	private Spinner dimT;
+	private Spinner dimTipo;
+
 	private Spinner proveedor;
 	private ListView prodsPedido;
 	private ListView prodsDispo;
@@ -71,7 +80,6 @@ public class AddPMMPFragment extends Fragment implements PartnerDAO.SuppliersCal
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
 		View root = inflater.inflate(R.layout.fragment_add_pmm, container, false);
-		cant = (EditText) root.findViewById(R.id.cantidadProducto);
 		pl = (EditText) root.findViewById(R.id.pickingList);
 		proveedor = (Spinner) root.findViewById(R.id.proveedorList);
 		prodsPedido = (ListView) root.findViewById(R.id.productosPedido);
@@ -79,6 +87,13 @@ public class AddPMMPFragment extends Fragment implements PartnerDAO.SuppliersCal
 		prodsDispo = (ListView) root.findViewById(R.id.productosDispo);
 		prodsDispo.setChoiceMode(ListView.CHOICE_MODE_SINGLE);
 		prodsDispo.setAdapter(new ArrayAdapter<MateriaPrima>(this.getActivity(),android.R.layout.simple_list_item_single_choice));
+		cantPlacas = (EditText) root.findViewById(R.id.cantidadPlacas);
+		dimH = (EditText) root.findViewById(R.id.altoPlaca);
+		dimW = (EditText) root.findViewById(R.id.anchoPlaca);
+		dimT = (Spinner) root.findViewById(R.id.espesorPlaca);
+		dimTipo = (Spinner) root.findViewById(R.id.tipoDim);
+		dimTipo.setAdapter(new ArrayAdapter<SelectionObject>(this.getActivity(),android.R.layout.simple_list_item_1,SelectionObject.getDimTipoData()));
+	
 		partDao = new PartnerDAO(this);
 		partDao.getAllSuppliers();
 		SwipeDismissListViewTouchListener touchListener = new SwipeDismissListViewTouchListener(
@@ -147,6 +162,8 @@ public class AddPMMPFragment extends Fragment implements PartnerDAO.SuppliersCal
 		for (int i = 0; i < maxProds; i++) {
 			PedidoLinea prod = (PedidoLinea) this.prodsPedido.getAdapter().getItem(i);
 			HashMap<String,Object> move = new HashMap<String,Object>();
+			move.put("dimension",prod.getDimension()[0]);
+			move.put("dimension_qty",prod.getCantDim());
 			move.put("product_uos_qty",prod.getCant());
 			move.put("product_id",((MateriaPrima)prod.getProduct()[0]).getId());
 			move.put("product_uom",prod.getUom()[0]);
@@ -197,6 +214,8 @@ public class AddPMMPFragment extends Fragment implements PartnerDAO.SuppliersCal
 
 	@Override
 	public void setLineaPedido() {
+		boolean cancel = false;
+		View focus = null; 
 		PedidoLineaAdapter adapt =  (PedidoLineaAdapter) prodsPedido.getAdapter();
 		int position =  prodsDispo.getCheckedItemPosition();
 		if(position == AdapterView.INVALID_POSITION){
@@ -204,22 +223,43 @@ public class AddPMMPFragment extends Fragment implements PartnerDAO.SuppliersCal
 			tt.show();
 			return;
 		}
-		boolean cancel = false;
-		View focus = null; 
-		if(this.cant.getText().toString().trim().equalsIgnoreCase("")){
-			this.cant.setError(getString(R.string.error_field_required));
+
+		if(this.cantPlacas.getText().toString().trim().equalsIgnoreCase("")){
+			this.cantPlacas.setError(getString(R.string.error_field_required));
 			cancel = true;
-			focus = this.cant;
+			focus = this.cantPlacas;
 		}
+
+		if(this.dimW.getText().toString().trim().equalsIgnoreCase("")){
+			this.dimW.setError(getString(R.string.error_field_required));
+			cancel = true;
+			focus = this.dimW;
+		}
+		if(this.dimH.getText().toString().trim().equalsIgnoreCase("")){
+			this.dimH.setError(getString(R.string.error_field_required));
+			cancel = true;
+			focus = this.dimH;
+		}
+
 		if(cancel){
 			focus.requestFocus();
 			return;
-		}		
+		}
 		MateriaPrima prod = (MateriaPrima) this.prodsDispo.getAdapter().getItem(this.prodsDispo.getCheckedItemPosition());
+		
+		Dimension dim = new Dimension();
+		dim.setDimH(this.dimH.getText().toString());
+		dim.setDimT((String)this.dimT.getSelectedItem());
+		dim.setDimW(this.dimW.getText().toString());
+		dim.setDimTipo((SelectionObject) this.dimTipo.getSelectedItem());
+		
 		PedidoLinea linea = new PedidoLinea();
-		linea.setCant(Double.valueOf(cant.getText().toString()));
 		linea.setNombre(prod.getNombre());
 		linea.setUom(prod.getUom());
+		linea.setDimension(dim);
+		linea.setCant(Double.parseDouble(this.dimH.getText().toString())*Double.parseDouble(this.dimW.getText().toString())*Double.parseDouble(this.cantPlacas.getText().toString()));
+		linea.setCantDim(Integer.parseInt(this.cantPlacas.getText().toString()));
+
 		Object[] prodData=new Object[1];
 		prodData[0] = prod;
 		linea.setProduct(prodData);

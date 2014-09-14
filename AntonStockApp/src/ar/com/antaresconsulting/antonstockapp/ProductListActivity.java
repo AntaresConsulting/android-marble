@@ -144,9 +144,10 @@ public class ProductListActivity extends ActionBarActivity implements
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 	
-			super.onCreateOptionsMenu(menu);
-			getMenuInflater().inflate(R.menu.list_products, menu);
-			this.myMenu = menu;			
+				super.onCreateOptionsMenu(menu);
+				getMenuInflater().inflate(R.menu.list_products, menu);
+				this.myMenu = menu;			
+		
 		
 //		if (mNavigationDrawerFragment.isDrawerOpen()) {
 //			if (OpenErpHolder.getInstance().getmOConn().isManager()) {
