@@ -73,7 +73,7 @@ public class AddProductServicioFragment extends Fragment implements AddProductIn
 			params.put("type", "service");
 			params.put("uom_id", ((SelectionObject)uoms.getSelectedItem()).getId());
 			params.put("uom_po_id", ((SelectionObject)uoms.getSelectedItem()).getId());
-			params.put("categ_id", AntonConstants.CATEGORY_SERVICIO);
+			params.put("movile_categ_name", AntonConstants.CATEGORY_SERVICIO);
 		}
 		return params;
 		

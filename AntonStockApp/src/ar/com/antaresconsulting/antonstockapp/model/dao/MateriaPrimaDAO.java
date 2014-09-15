@@ -19,7 +19,7 @@ import com.openerp.ReadAsyncTask;
 
 public class MateriaPrimaDAO extends ProductDAO  {
 
-	private String[] mpFields = new String[] { "id", "name", "image_medium", "image", "code", "list_price", "qty_available","virtual_available","seller_qty", "ean13", "uom_id", "attrs_material","color","finished","material" };
+	private String[] mpFields = new String[] { "id", "name", "image_medium", "image", "code", "list_price", "qty_available","virtual_available","seller_qty", "ean13", "uom_id", "attrs_material","raw_color","raw_finished","raw_material" };
 	
 	private Fragment activityPart;
 
@@ -63,15 +63,15 @@ public class MateriaPrimaDAO extends ProductDAO  {
 		ArrayList<Object> filtros = new ArrayList<Object>();
 		filtros.add(new Object[] { "categ_name", "ilike", "raw" });
 		if (!tm.equalsIgnoreCase("")) {
-			filtros.add(new Object[] { "material", "ilike",
+			filtros.add(new Object[] { "raw_material", "ilike",
 					tm.toLowerCase().substring(0, 3) });
 		}
 		if (!color.equalsIgnoreCase("")) {
-			filtros.add(new Object[] { "color", "ilike",
+			filtros.add(new Object[] { "raw_color", "ilike",
 					color.toLowerCase().substring(0, 3) });
 		}
 		if (!acabado.equalsIgnoreCase("")) {
-			filtros.add(new Object[] { "finished", "ilike",
+			filtros.add(new Object[] { "raw_finished", "ilike",
 					acabado.toLowerCase().substring(0, 3) });
 		}
 		if (!nombreProd.equalsIgnoreCase("")) {
@@ -89,9 +89,9 @@ public class MateriaPrimaDAO extends ProductDAO  {
 		for (HashMap<String, Object> obj : this.mData) {
 			MateriaPrima resp = new MateriaPrima();
 			this.getProductsArray(obj, resp);
-			String material = obj.get("material") instanceof Boolean ? "": (String) obj.get("material");
-			String color = obj.get("color") instanceof Boolean ? "": (String) obj.get("color");
-			String finished = obj.get("finished") instanceof Boolean ? "": (String) obj.get("finished");
+			String material = obj.get("raw_material") instanceof Boolean ? "": (String) obj.get("raw_material");
+			String color = obj.get("raw_color") instanceof Boolean ? "": (String) obj.get("raw_color");
+			String finished = obj.get("raw_finished") instanceof Boolean ? "": (String) obj.get("raw_finished");
 			resp.setColor(SelectionObject.getColorMPById(color));
 			resp.setMaterial(SelectionObject.getMaterialMPById(material));
 			resp.setFinished(SelectionObject.getFinishedMPById(finished));			
@@ -106,9 +106,9 @@ public class MateriaPrimaDAO extends ProductDAO  {
 		for (HashMap<String, Object> obj : this.mData) {
 			MateriaPrimaOut resp = new MateriaPrimaOut();
 			this.getProductsArray(obj, resp);
-			String material = obj.get("material") instanceof Boolean ? "": (String) obj.get("material");
-			String color = obj.get("color") instanceof Boolean ? "": (String) obj.get("color");
-			String finished = obj.get("finished") instanceof Boolean ? "": (String) obj.get("finished");
+			String material = obj.get("raw_material") instanceof Boolean ? "": (String) obj.get("raw_material");
+			String color = obj.get("raw_color") instanceof Boolean ? "": (String) obj.get("raw_color");
+			String finished = obj.get("raw_finished") instanceof Boolean ? "": (String) obj.get("raw_finished");
 			resp.setColor(SelectionObject.getColorMPById(color));
 			resp.setMaterial(SelectionObject.getMaterialMPById(material));
 			resp.setFinished(SelectionObject.getFinishedMPById(finished));

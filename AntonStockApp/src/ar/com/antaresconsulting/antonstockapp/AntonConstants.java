@@ -28,10 +28,10 @@ public class AntonConstants {
 	public static final int REQUEST_IMAGE_CAPTURE = 1;
 	public static final String UOM_MP = "12";
 	public static final String UOM_BACHA = "1";
-	public static final String CATEGORY_MP = "3";
-	public static final String CATEGORY_BACHA = "4";
-	public static final String CATEGORY_INSUMO = "6";
-	public static final String CATEGORY_SERVICIO = "5";	
+	public static final String CATEGORY_MP = "raw";
+	public static final String CATEGORY_BACHA = "bachas";
+	public static final String CATEGORY_INSUMO = "inputs";
+	public static final String CATEGORY_SERVICIO = "services";	
 	public static final String TPROD = "tProd";
 	public static final String TPRODF = "tProdf";
 	

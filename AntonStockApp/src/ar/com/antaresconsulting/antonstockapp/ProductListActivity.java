@@ -115,7 +115,7 @@ public class ProductListActivity extends ActionBarActivity implements
 			((ProductListFragment) getFragmentManager().findFragmentById(
 					R.id.product_list)).setActivateOnItemClick(true);
 		}
-		this.listFragment.refreshProducts(this.tProd);
+		//this.listFragment.refreshProducts(this.tProd);
 
 	}
 
@@ -170,7 +170,7 @@ public class ProductListActivity extends ActionBarActivity implements
 	public void onItemSelected(BaseProduct prod) {
 		if (mTwoPane) {
 			Bundle arguments = new Bundle();
-			arguments.putSerializable(PartnerDetailFragment.ARG_ITEM_ID, prod);
+			arguments.putSerializable(ProductDetailFragment.ARG_ITEM_ID, prod);
 			arguments.putInt(AntonConstants.TPROD, this.tProd);
 			fragment = new ProductDetailFragment();
 			fragment.setArguments(arguments);
@@ -184,8 +184,7 @@ public class ProductListActivity extends ActionBarActivity implements
 			mTabsAdapter.addTab(mTabHost.newTabSpec("detailExtra")
 					.setIndicator("Atributos del Producto"),
 					ProductDetailExtraFragment.class, arguments);
-			mTabsAdapter.addTab(mTabHost.newTabSpec("proveedor").setIndicator("Prodveedores"),
-			PartnerListFragment.class, arguments);
+			//mTabsAdapter.addTab(mTabHost.newTabSpec("proveedor").setIndicator("Prodveedores"),PartnerListFragment.class, arguments);
 			if (tProd == AntonConstants.MATERIA_PRIMA)
 				mTabsAdapter.addTab(mTabHost.newTabSpec("dimensiones")
 						.setIndicator("Dimensiones"), DimensionsFragment.class,

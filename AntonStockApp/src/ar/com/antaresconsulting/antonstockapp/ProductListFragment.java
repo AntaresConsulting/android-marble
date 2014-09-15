@@ -41,6 +41,7 @@ public class ProductListFragment extends ListFragment  implements ProductDAO.Ser
 	 * activated item position. Only used on tablets.
 	 */
 	private static final String STATE_ACTIVATED_POSITION = "activated_position";
+	public static final String ARG_ITEM_ID = null;
 
 	/**
 	 * The fragment's current callback object, which is notified of list item

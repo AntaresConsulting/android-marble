@@ -66,7 +66,7 @@ public class AddProductInsumoFragment extends Fragment implements AddProductInte
 			params.put("type", "consu");
 			params.put("uom_id", ((SelectionObject)uoms.getSelectedItem()).getId());
 			params.put("uom_po_id", ((SelectionObject)uoms.getSelectedItem()).getId());
-			params.put("categ_id", AntonConstants.CATEGORY_INSUMO);
+			params.put("movile_categ_name", AntonConstants.CATEGORY_INSUMO);
 		}
 		params.put("description", this.desc.getText().toString());
 		return params;

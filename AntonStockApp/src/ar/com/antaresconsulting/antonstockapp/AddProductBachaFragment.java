@@ -120,7 +120,7 @@ public class AddProductBachaFragment extends Fragment implements OnItemSelectedL
 		if(idProd == null){		
 			params.put("uom_id", AntonConstants.UOM_BACHA);
 			params.put("uom_po_id", AntonConstants.UOM_BACHA);		
-			params.put("categ_id", AntonConstants.CATEGORY_BACHA);
+			params.put("movile_categ_name", AntonConstants.CATEGORY_BACHA);
 		}
 		return params;
 		
