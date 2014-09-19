@@ -13,9 +13,11 @@
     <string name="search_terminado">Acabado</string>
     <string name="search_nombre">Nombre</string>
     <string name="search_espesor">Espesor</string>
-    <string name="search_tipo">Tipo de Material</string>
+    <string name="search_tipo">Tipo de Material</string>    
     <string name="search_btn">Buscar</string>
     <string name="search_product_type">Seleccionar Tipo de Producto a Buscar</string>
     
-	   
+	<string name="update_cant">Cantidad a Actualizar</string>
+	<string name="update_stock_title">Ajuste de stock</string>
+	<string name="update_btn">Actualizar</string>
 </resources>
