@@ -1,5 +1,6 @@
 package ar.com.antaresconsulting.antonstockapp;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import android.app.Activity;
@@ -114,8 +115,8 @@ public class ProductListFragment extends ListFragment  implements ProductDAO.Ser
 			setActivatedPosition(savedInstanceState
 					.getInt(STATE_ACTIVATED_POSITION));
 		}
-		if(this.tProd != -1)
-			refreshProducts(this.tProd);
+			this.mAdapter = new BaseProductAdapter(this,new ArrayList<BaseProduct>());
+			setListAdapter(this.mAdapter);				
 	}
 
 	@Override

@@ -82,7 +82,7 @@ public class ReEnterProducts extends Activity implements MateriaPrimaDAO.Materia
 		this.productos.setOnTouchListener(touchListener);
 		this.productos.setOnScrollListener(touchListener.makeScrollListener());
 		this.prodDao = new MateriaPrimaDAO(this);
-		this.prodDao.getMateriaPrimaInProduction(AntonConstants.OUT_PORDUCT_LOCATION_PROD);
+		this.prodDao.getMateriaPrimaInProduction(AntonConstants.PORDUCT_LOCATION_PRODUCTION);
 
 	}
 
@@ -117,8 +117,8 @@ public class ReEnterProducts extends Activity implements MateriaPrimaDAO.Materia
 
 		headerPicking.put("partner_id", AntonConstants.ANTON_COMPANY_ID);
 		this.saveData.setModelStockPicking("stock.picking");
-		loc_source = AntonConstants.OUT_PORDUCT_LOCATION_PROD;
-		loc_destination = AntonConstants.OUT_PORDUCT_LOCATION_STOCK;			
+		loc_source = AntonConstants.PORDUCT_LOCATION_PRODUCTION;
+		loc_destination = AntonConstants.PORDUCT_LOCATION_STOCK;			
 
 
 		headerPicking.put("type", AntonConstants.INTERNAL_PORDUCT_TYPE);

@@ -33,6 +33,8 @@ public class AddProductActivity extends ActionBarActivity implements WriteAsyncT
 	private WriteAsyncTask updateData;
 	private BaseProduct idProd = null;
 	private String mTitle; 
+	private int tprod; 
+
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -41,7 +43,7 @@ public class AddProductActivity extends ActionBarActivity implements WriteAsyncT
 		getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
 		Bundle b = getIntent().getExtras();
-		int tprod = b.getInt(AntonConstants.TPROD);
+		tprod = b.getInt(AntonConstants.TPROD);
 		idProd = (BaseProduct) b.getSerializable(AntonConstants.ARG_ITEM_ID);
 
 		this.containerPhoto = (ImageView) findViewById(R.id.productImg);
@@ -160,6 +162,9 @@ public class AddProductActivity extends ActionBarActivity implements WriteAsyncT
 	public void setResultCreate(Boolean res) {
 		Toast tt =Toast.makeText(getApplicationContext(), "Se ha actualizado el producto en forma satisfactoria ", Toast.LENGTH_SHORT);
 		tt.show();
+		Intent output = new Intent();
+		output.putExtra("aaa", this.tprod);
+		setResult(RESULT_OK, output);		
 		finish();		
 	}
 	

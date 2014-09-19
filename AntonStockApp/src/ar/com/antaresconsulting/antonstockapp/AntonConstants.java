@@ -4,12 +4,11 @@ public class AntonConstants {
 	public static final String IN_PORDUCT_TYPE = "in";
 	public static final String OUT_PORDUCT_TYPE = "out";
 	public static final String INTERNAL_PORDUCT_TYPE = "internal";
-	public static final String IN_PORDUCT_LOCATION_SOURCE = "8";
-	public static final String IN_PORDUCT_LOCATION_DESTINATION = "12";
-	public static final String OUT_PORDUCT_LOCATION_STOCK = "12";
-	public static final String OUT_PORDUCT_LOCATION_OUTPUT = "11";
-	public static final String OUT_PORDUCT_LOCATION_PROD = "7";
-	public static final String OUT_PORDUCT_LOCATION_CUSTOMER = "9";
+	public static final String PORDUCT_LOCATION_SUPPLIER = "8";
+	public static final String PORDUCT_LOCATION_STOCK = "12";
+	public static final String PORDUCT_LOCATION_OUTPUT = "18";
+	public static final String PORDUCT_LOCATION_PRODUCTION = "7";
+	public static final String PORDUCT_LOCATION_CUSTOMER = "9";
 	public static final String ANTON_COMPANY_ID = "1";
 	public static final String DELIVERY_METHOD = "one";
 	public static final String DIRECT_METHOD = "direct";
@@ -26,7 +25,7 @@ public class AntonConstants {
 	public static final int INSUMOS = 3;
 	public static final int SERVICIOS = 4;
 	public static final int REQUEST_IMAGE_CAPTURE = 1;
-	public static final String UOM_MP = "12";
+	public static final String UOM_MP = "20";
 	public static final String UOM_BACHA = "1";
 	public static final String CATEGORY_MP = "raw";
 	public static final String CATEGORY_BACHA = "bachas";
@@ -68,6 +67,7 @@ public class AntonConstants {
 	public static final int BACHAS_CLI = 1;
 	public static final int BACHAS_PROV = 2;
 	public static final int MIN_CHAR_LENGTH = 1;
+	public static final String PRODUCT_CHANGE_MODEL = "stock.change.product.qty";
 
 
 }

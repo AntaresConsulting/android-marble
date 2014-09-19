@@ -71,9 +71,6 @@ public class AddProductMPFragment extends Fragment implements AddProductInterfac
 		params.put("raw_finished",((String)finished.getSelectedItem()).toLowerCase().substring(0, 3));
 		BaseProduct idProd = (BaseProduct) getArguments().getSerializable(ARG_PARAM1);		
 		if(idProd == null){
-			params.put("type", "product");			
-			params.put("uom_id", AntonConstants.UOM_MP);
-			params.put("uom_po_id", AntonConstants.UOM_MP);		
 			params.put("movile_categ_name", AntonConstants.CATEGORY_MP);			
 		}
 		return params;

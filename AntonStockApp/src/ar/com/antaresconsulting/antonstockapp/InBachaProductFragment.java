@@ -250,8 +250,8 @@ public class InBachaProductFragment extends Fragment implements  SearchBachaPopu
 
 			headerPicking.put("partner_id", proveedor.getId());
 			this.saveData.setModelStockPicking("stock.picking.in");
-			loc_source = AntonConstants.IN_PORDUCT_LOCATION_SOURCE;
-			loc_destination = AntonConstants.IN_PORDUCT_LOCATION_DESTINATION;			
+			loc_source = AntonConstants.PORDUCT_LOCATION_SUPPLIER;
+			loc_destination = AntonConstants.PORDUCT_LOCATION_STOCK;			
 
 
 			headerPicking.put("type", AntonConstants.IN_PORDUCT_TYPE);

@@ -2,9 +2,6 @@ package ar.com.antaresconsulting.antonstockapp;
 
 import java.io.ByteArrayOutputStream;
 import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.io.InputStream;
 import java.util.HashMap;
 
 import com.openerp.OpenErpHolder;
@@ -90,7 +87,7 @@ public class ProductDetailFragment extends Fragment {
 			if(this.pData.getCantidadReal().doubleValue() > 0)
 				((TextView) view.findViewById(R.id.stockRVal)).setText(this.pData.getCantidadReal().toString());
 			else
-				view.findViewById(R.id.stockRealRow).setVisibility(View.GONE);
+				((TextView) view.findViewById(R.id.stockRVal)).setText("0");
 			
 			if(this.pData.getCantidadForecast().doubleValue() > 0)
 				((TextView) view.findViewById(R.id.stockFVal)).setText(this.pData.getCantidadForecast().toString());

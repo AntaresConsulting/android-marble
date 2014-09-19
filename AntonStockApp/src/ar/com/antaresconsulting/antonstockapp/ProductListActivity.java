@@ -1,12 +1,11 @@
 package ar.com.antaresconsulting.antonstockapp;
 
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
+import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 
 import com.openerp.DeleteAsyncTask;
+import com.openerp.UpdateStockAsyncTask;
 import com.openerp.WriteAsyncTask;
 import com.openerp.OpenErpHolder;
 
@@ -14,13 +13,8 @@ import android.app.ActionBar.LayoutParams;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.graphics.Color;
-import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.ColorDrawable;
-import android.graphics.drawable.ShapeDrawable;
 import android.os.Bundle;
-import android.os.Environment;
-import android.support.v4.app.NavUtils;
 import android.support.v4.view.ViewPager;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBar;
@@ -57,6 +51,7 @@ import ar.com.antaresconsulting.antonstockapp.model.BaseProduct;
 public class ProductListActivity extends ActionBarActivity implements
 		WriteAsyncTask.WriteAsyncTaskCallbacks,
 		NavigationDrawerFragment.NavigationDrawerCallbacks,
+		UpdateStockPopupFragment.UpdateStockListener,
 		ProductListFragment.Callbacks {
 
 	/**
@@ -115,7 +110,7 @@ public class ProductListActivity extends ActionBarActivity implements
 			((ProductListFragment) getFragmentManager().findFragmentById(
 					R.id.product_list)).setActivateOnItemClick(true);
 		}
-		//this.listFragment.refreshProducts(this.tProd);
+		this.listFragment.refreshProducts(this.tProd);
 
 	}
 
@@ -143,22 +138,30 @@ public class ProductListActivity extends ActionBarActivity implements
 
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
-	
-				super.onCreateOptionsMenu(menu);
-				getMenuInflater().inflate(R.menu.list_products, menu);
-				this.myMenu = menu;			
-		
-		
-//		if (mNavigationDrawerFragment.isDrawerOpen()) {
-//			if (OpenErpHolder.getInstance().getmOConn().isManager()) {
-//				getMenuInflater().inflate(R.menu.list_products, menu);
-//			}
-//			//return true;
-//			this.myMenu = menu;
-//		}
-		
-		//return super.onCreateOptionsMenu(menu);
-//		restoreActionBar();
+		super.onCreateOptionsMenu(menu);
+		getMenuInflater().inflate(R.menu.list_products, menu);
+		this.myMenu = menu;			
+		switch (this.tProd) {
+		case AntonConstants.MATERIA_PRIMA:
+			 if(this.myMenu != null && this.myMenu.size() > 0 )
+				 this.myMenu.getItem(0).setTitle(getString(R.string.title_action_add_mp));			
+			break;
+		case AntonConstants.SERVICIOS:
+			 if(this.myMenu != null && this.myMenu.size() > 0 )
+				 this.myMenu.getItem(0).setTitle(getString(R.string.title_action_add_servicio));			
+			break;
+		case AntonConstants.INSUMOS:
+			 if(this.myMenu != null && this.myMenu.size() > 0 )
+				 this.myMenu.getItem(0).setTitle(getString(R.string.title_action_add_insumo));						
+			break;
+		case AntonConstants.BACHAS:
+			 if(this.myMenu != null && this.myMenu.size() > 0 )
+				 this.myMenu.getItem(0).setTitle(getString(R.string.title_action_add_bacha));						
+			break;			
+		default:
+			break;
+		}
+		restoreActionBar();
 		return true;
 	}
 
@@ -212,29 +215,21 @@ public class ProductListActivity extends ActionBarActivity implements
 		case 0:
 			mTitle = getString(R.string.title_forstock);
 			this.tProd = AntonConstants.MATERIA_PRIMA;
-			 if(this.myMenu != null)
-			 this.myMenu.getItem(0).setTitle(getString(R.string.title_action_add_mp));
 			this.listFragment.refreshProducts(AntonConstants.MATERIA_PRIMA);
 			break;
 		case 1:
 			mTitle = getString(R.string.title_expenses);
 			this.tProd = AntonConstants.INSUMOS;
-			 if(this.myMenu != null)
-			 this.myMenu.getItem(0).setTitle(getString(R.string.title_action_add_insumo));
 			this.listFragment.refreshProducts(AntonConstants.INSUMOS);
 			break;
 		case 2:
 			mTitle = getString(R.string.title_bachas);
 			this.tProd = AntonConstants.BACHAS;
-			if(this.myMenu != null)
-			 this.myMenu.getItem(0).setTitle(getString(R.string.title_action_add_bacha));
 			this.listFragment.refreshProducts(AntonConstants.BACHAS);
 			break;
 		case 3:
 			mTitle = getString(R.string.title_services);
 			this.tProd = AntonConstants.SERVICIOS;
-			if(this.myMenu != null)
-			 this.myMenu.getItem(0).setTitle(getString(R.string.title_action_add_servicio));
 			this.listFragment.refreshProducts(AntonConstants.SERVICIOS);
 			break;
 		default:
@@ -322,4 +317,29 @@ public class ProductListActivity extends ActionBarActivity implements
 		popupWindow.showAtLocation(popupView, Gravity.CENTER, 0, 0);
 	}
 
+	@Override
+	protected void onActivityResult (int requestCode, int resultCode, Intent data){
+		super.onActivityResult(requestCode, resultCode, data);
+		if (resultCode == RESULT_OK && data != null)
+			tProd = data.getIntExtra("aaa",-1);
+		
+	}
+	
+	public void updateStock(View view) {
+		UpdateStockPopupFragment popconf = UpdateStockPopupFragment.newInstance(this.tProd);
+		popconf.show(getFragmentManager(),"Server_Search");		
+	}
+
+	@Override
+	public void updateStockAction(int cant) {
+		UpdateStockAsyncTask update = new UpdateStockAsyncTask(this);
+		HashMap<String, Object> values = new HashMap<String, Object>();
+		values.put("location_id", AntonConstants.PORDUCT_LOCATION_STOCK);
+		values.put("lot_id", false);
+		values.put("new_quantity", cant);
+		ProductDetailFragment prodDet = (ProductDetailFragment) getFragmentManager().findFragmentById(R.id.product_detail_container);
+		values.put("product_id", prodDet.getProductSelected().getId());
+		update.execute(values);
+	}
+	
 }

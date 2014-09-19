@@ -136,7 +136,7 @@ public class ConsumeInsumo extends ActionBarActivity implements EmpleadoDAO.Empl
 			this.saveData.setModelStockPicking("stock.picking");		
 			PickingMove[] values;
 			values = new PickingMove[1];
-			values[0] = regMove(AntonConstants.OUT_PORDUCT_LOCATION_STOCK,AntonConstants.OUT_PORDUCT_LOCATION_OUTPUT);
+			values[0] = regMove(AntonConstants.PORDUCT_LOCATION_STOCK,AntonConstants.PORDUCT_LOCATION_OUTPUT);
 			this.saveData.execute(values);
 		}		
 	}

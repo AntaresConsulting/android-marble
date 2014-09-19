@@ -162,8 +162,8 @@ public class AddOEActivity extends ActionBarActivity implements ProductDAO.Servi
 
 		headerPicking.put("partner_id", cliente.getId());
 		this.saveData.setModelStockPicking("stock.picking.out");
-		loc_source = AntonConstants.OUT_PORDUCT_LOCATION_OUTPUT;
-		loc_destination = AntonConstants.OUT_PORDUCT_LOCATION_CUSTOMER;			
+		loc_source = AntonConstants.PORDUCT_LOCATION_OUTPUT;
+		loc_destination = AntonConstants.PORDUCT_LOCATION_CUSTOMER;			
 
 		String origin = "";
 

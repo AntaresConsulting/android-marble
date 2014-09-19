@@ -118,8 +118,6 @@ public class AddProductBachaFragment extends Fragment implements OnItemSelectedL
 		BaseProduct idProd = (BaseProduct) getArguments().getSerializable(ARG_PARAM1);
 		
 		if(idProd == null){		
-			params.put("uom_id", AntonConstants.UOM_BACHA);
-			params.put("uom_po_id", AntonConstants.UOM_BACHA);		
 			params.put("movile_categ_name", AntonConstants.CATEGORY_BACHA);
 		}
 		return params;
