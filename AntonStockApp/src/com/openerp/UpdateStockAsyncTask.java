@@ -50,7 +50,11 @@ public class UpdateStockAsyncTask extends AsyncTask<HashMap<String, Object>, Str
 			
 		}
 		values[0].remove("is_raw");
-		return oc.create(AntonConstants.PRODUCT_CHANGE_MODEL, values[0], this.context);	
+		Long retVal = oc.create(AntonConstants.PRODUCT_CHANGE_MODEL, values[0], this.context);	
+				
+		oc.call(AntonConstants.PRODUCT_CHANGE_MODEL, "change_product_qty", values[0].get("product_id"));	
+		
+		return retVal;
 	}
 
 	@Override

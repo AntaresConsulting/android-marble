@@ -334,6 +334,7 @@ public class ProductListActivity extends ActionBarActivity implements
 	public void updateStockAction(int cant) {
 		UpdateStockAsyncTask update = new UpdateStockAsyncTask(this);
 		HashMap<String, Object> values = new HashMap<String, Object>();
+		values.put("is_raw", new Boolean(false));
 		values.put("location_id", AntonConstants.PORDUCT_LOCATION_STOCK);
 		values.put("lot_id", false);
 		values.put("new_quantity", cant);
