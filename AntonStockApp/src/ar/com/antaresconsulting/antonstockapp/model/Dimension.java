@@ -14,6 +14,19 @@ public class Dimension implements Serializable  {
 	private String dimT;	
 	private SelectionObject dimTipo;
 
+	public Dimension() {
+		super();
+	}
+	
+	public Dimension(String dimH, String dimW, String dimT,
+			SelectionObject dimTipo) {
+		super();
+		this.dimH = dimH;
+		this.dimW = dimW;
+		this.dimT = dimT;
+		this.dimTipo = dimTipo;
+	}
+	
 	public SelectionObject getDimTipo() {
 		return dimTipo;
 	}
@@ -38,4 +51,8 @@ public class Dimension implements Serializable  {
 	public void setDimT(String dimT) {
 		this.dimT = dimT;
 	}	
+	public double getM2(){
+		return Double.parseDouble(dimH)*Double.parseDouble(dimW);
+	}
+	
 }

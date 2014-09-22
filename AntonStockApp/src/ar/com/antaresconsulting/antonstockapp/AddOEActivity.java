@@ -376,6 +376,7 @@ public class AddOEActivity extends ActionBarActivity implements ProductDAO.Servi
 		PedidoLinea linea = new PedidoLinea();
 
 		Spinner esp = (Spinner) findViewById(R.id.espesorPlaca);
+		esp.setSelection(AntonConstants.DEFAULT_ESPESORES);	
 		Spinner tipo = (Spinner) findViewById(R.id.tipoDim);
 		linea.setCant(Double.valueOf(cant.getText().toString()));
 		linea.setNombre(prod.getNombre());

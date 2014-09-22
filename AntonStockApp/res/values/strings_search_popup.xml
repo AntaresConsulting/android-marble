@@ -18,6 +18,8 @@
     <string name="search_product_type">Seleccionar Tipo de Producto a Buscar</string>
     
 	<string name="update_cant">Cantidad a Actualizar</string>
+	<string name="update_cant_pla">Cantidad de Placas</string>
 	<string name="update_stock_title">Ajuste de stock</string>
 	<string name="update_btn">Actualizar</string>
+
 </resources>

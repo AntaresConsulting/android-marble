@@ -129,7 +129,7 @@
                                 android:layout_height="wrap_content"
                                 android:layout_weight="1"
                                 android:gravity="center_horizontal"
-                                android:text="@string/in_prod_largo"
+                                android:text="@string/lbl_prod_largo"
                                 android:textAppearance="?android:attr/textAppearanceSmall" />
 
                             <EditText
@@ -147,7 +147,7 @@
                                 android:layout_height="wrap_content"
                                 android:layout_weight="1"
                                 android:gravity="center_horizontal"
-                                android:text="@string/in_prod_unidad"
+                                android:text="@string/lbl_prod_unidad"
                                 android:textAppearance="?android:attr/textAppearanceSmall" />
 
                             <TextView
@@ -156,7 +156,7 @@
                                 android:layout_height="wrap_content"
                                 android:layout_weight="1"
                                 android:gravity="center_horizontal"
-                                android:text="@string/in_prod_ancho"
+                                android:text="@string/lbl_prod_ancho"
                                 android:textAppearance="?android:attr/textAppearanceSmall" />
 
                             <EditText
@@ -173,7 +173,7 @@
                                 android:layout_height="wrap_content"
                                 android:layout_weight="1"
                                 android:gravity="center_horizontal"
-                                android:text="@string/in_prod_unidad"
+                                android:text="@string/lbl_prod_unidad"
                                 android:textAppearance="?android:attr/textAppearanceSmall" />
                             <TextView
                                 android:id="@+id/unidades"
@@ -181,7 +181,7 @@
                                 android:layout_height="wrap_content"
                                 android:layout_weight="1"
                                 android:gravity="center_horizontal"
-                                android:text="@string/in_prod_espesor"
+                                android:text="@string/lbl_prod_espesor"
                                 android:textAppearance="?android:attr/textAppearanceSmall" />
 
                             <Spinner

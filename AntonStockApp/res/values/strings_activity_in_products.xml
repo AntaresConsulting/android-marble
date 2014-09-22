@@ -8,10 +8,6 @@
     <string name="in_prod_no">No</string>
     <string name="in_prod_proveedor">Proveedor</string>
     <string name="in_prod_cliente">Cliente</string>
-    <string name="in_prod_largo">Largo</string>
-    <string name="in_prod_ancho">Alto/Ancho</string>
-    <string name="in_prod_unidad">m</string>
-	<string name="in_prod_espesor">Espesor</string>    
     <string name="in_prod_btn_mas_prod">Agregar</string>
     <string name="in_prod_btn_cerrar_pedido">Cerrar Pedido</string>
     <string name="in_prod_title_productos">Productos a Ingresar</string>

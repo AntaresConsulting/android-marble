@@ -85,6 +85,7 @@ public class InMPProductFragment extends Fragment implements OnItemSelectedListe
 		this.dimH = (EditText) rootView.findViewById(R.id.altoPlaca);
 		this.dimW = (EditText) rootView.findViewById(R.id.anchoPlaca);
 		this.dimT = (Spinner) rootView.findViewById(R.id.espesorPlaca);
+		this.dimT.setSelection(AntonConstants.DEFAULT_ESPESORES);
 		this.dimTipo = (Spinner) rootView.findViewById(R.id.tipoDim);
 		this.dimTipo.setAdapter(new ArrayAdapter<SelectionObject>(this.getActivity(),android.R.layout.simple_list_item_1,SelectionObject.getDimTipoData()));
 		this.productos = (ListView) rootView.findViewById(R.id.productosPedido);

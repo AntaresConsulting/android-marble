@@ -91,6 +91,7 @@ public class AddPMMPFragment extends Fragment implements PartnerDAO.SuppliersCal
 		dimH = (EditText) root.findViewById(R.id.altoPlaca);
 		dimW = (EditText) root.findViewById(R.id.anchoPlaca);
 		dimT = (Spinner) root.findViewById(R.id.espesorPlaca);
+		dimT.setSelection(AntonConstants.DEFAULT_ESPESORES);
 		dimTipo = (Spinner) root.findViewById(R.id.tipoDim);
 		dimTipo.setAdapter(new ArrayAdapter<SelectionObject>(this.getActivity(),android.R.layout.simple_list_item_1,SelectionObject.getDimTipoData()));
 	

@@ -69,5 +69,5 @@ public class AntonConstants {
 	public static final int MIN_CHAR_LENGTH = 1;
 	public static final String PRODUCT_CHANGE_MODEL = "stock.change.product.qty";
 
-
+	public static final int DEFAULT_ESPESORES = 5;
 }

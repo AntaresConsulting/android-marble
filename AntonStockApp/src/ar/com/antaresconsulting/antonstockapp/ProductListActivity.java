@@ -32,6 +32,7 @@ import android.widget.Toast;
 import ar.com.antaresconsulting.antonstockapp.adapters.BaseProductAdapter;
 import ar.com.antaresconsulting.antonstockapp.adapters.TabsAdapter;
 import ar.com.antaresconsulting.antonstockapp.model.BaseProduct;
+import ar.com.antaresconsulting.antonstockapp.model.Dimension;
 
 /**
  * An activity representing a list of Items. This activity has different
@@ -331,10 +332,10 @@ public class ProductListActivity extends ActionBarActivity implements
 	}
 
 	@Override
-	public void updateStockAction(int cant) {
+	public void updateStockAction(int cant, Dimension dim) {
 		UpdateStockAsyncTask update = new UpdateStockAsyncTask(this);
 		HashMap<String, Object> values = new HashMap<String, Object>();
-		values.put("is_raw", new Boolean(false));
+		values.put("dimension", dim);
 		values.put("location_id", AntonConstants.PORDUCT_LOCATION_STOCK);
 		values.put("lot_id", false);
 		values.put("new_quantity", cant);

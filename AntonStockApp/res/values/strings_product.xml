@@ -1,6 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-
+    
+    <string name="lbl_prod_largo">Largo :</string>
+    <string name="lbl_prod_ancho">Alto/Ancho :</string>
+    <string name="lbl_prod_unidad">m</string>
+	<string name="lbl_prod_espesor">Espesor :</string>    
+    
     <string name="lbl_prod_nombre">Nombre del Producto :</string>
     <string name="lbl_prod_codigo">Codigo :</string>
     <string name="lbl_prod_ean13">EAN13 :</string>
@@ -12,7 +17,6 @@
     <string name="lbl_prod_stockI">St. Ingresando :</string>
     <string name="lbl_prod_tipo_material">Tipo de Material :</string>
     <string name="lbl_prod_acabado">Acabado :</string>
-    <string name="lbl_prod_espesor">Espesor :</string>
     <string name="lbl_prod_color">Color :</string>
     <string name="lbl_prod_marca">Marca :</string>
     <string name="lbl_prod_bacha_tipo">Tipo de Bacha :</string>
