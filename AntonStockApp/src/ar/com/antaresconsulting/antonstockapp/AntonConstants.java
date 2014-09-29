@@ -4,11 +4,12 @@ public class AntonConstants {
 	public static final String IN_PORDUCT_TYPE = "in";
 	public static final String OUT_PORDUCT_TYPE = "out";
 	public static final String INTERNAL_PORDUCT_TYPE = "internal";
-	public static final String PORDUCT_LOCATION_SUPPLIER = "8";
-	public static final String PORDUCT_LOCATION_STOCK = "12";
-	public static final String PORDUCT_LOCATION_OUTPUT = "18";
-	public static final String PORDUCT_LOCATION_PRODUCTION = "7";
-	public static final String PORDUCT_LOCATION_CUSTOMER = "9";
+	public static final String PRODUCT_LOCATION_SUPPLIER = "8";
+	public static final String PRODUCT_LOCATION_STOCK = "12";
+	public static final String PRODUCT_LOCATION_OUTPUT = "18";
+	public static final String PRODUCT_LOCATION_PRODUCTION = "7";
+	public static final String PRODUCT_LOCATION_CUSTOMER = "9";
+	public static final String PRODUCT_LOCATION_INIT = "5";	
 	public static final String ANTON_COMPANY_ID = "1";
 	public static final String DELIVERY_METHOD = "one";
 	public static final String DIRECT_METHOD = "direct";

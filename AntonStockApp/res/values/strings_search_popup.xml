@@ -21,5 +21,6 @@
 	<string name="update_cant_pla">Cantidad de Placas</string>
 	<string name="update_stock_title">Ajuste de stock</string>
 	<string name="update_btn">Actualizar</string>
-
+    <string name="search_db_list">Seleccionar la base a utilizar</string>
+	
 </resources>

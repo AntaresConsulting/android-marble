@@ -194,6 +194,23 @@ public class OpenErpConnect {
 		}
         return connection;
     }
+    
+    public static Object[] list_db(String server, Integer port) {
+    	Object[]  res = null;
+        try {
+            URL loginUrl = new URL("http", server, port, "/xmlrpc/db");
+            XMLRPCClient client = new XMLRPCClient(loginUrl);
+            HashMap<String, Object> params = new HashMap<String, Object>();
+            res = (Object[])client.call("list", params);
+        } catch (XMLRPCException e) {
+            Log.d(CONNECTOR_NAME, e.toString());
+        } catch (MalformedURLException e) {
+            Log.d(CONNECTOR_NAME, e.toString());
+        } catch (ClassCastException e) {
+        	Log.d(CONNECTOR_NAME, e.toString()); //Bad login
+		}
+		return res;
+    }
 
     /**
      * Creates a new record for the given model width the values supplied, if

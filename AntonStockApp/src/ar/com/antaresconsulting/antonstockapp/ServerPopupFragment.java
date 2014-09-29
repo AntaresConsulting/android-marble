@@ -1,5 +1,7 @@
 package ar.com.antaresconsulting.antonstockapp;
 
+import com.openerp.DBAsyncTask;
+
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.app.DialogFragment;
@@ -9,13 +11,15 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.EditText;
+import android.widget.Spinner;
 
-public class ServerPopupFragment extends DialogFragment {
+public class ServerPopupFragment extends DialogFragment implements LoginActivityInterface {
 	
 	private EditText mURL;
 	private EditText mpuerto;
-	private EditText mdbname;
+	private Spinner mdbname;
 	
 	private View view;
     public Dialog onCreateDialog(Bundle savedInstanceState) {
@@ -34,9 +38,8 @@ public class ServerPopupFragment extends DialogFragment {
 	    mURL.setText(urlSet);
 	    mpuerto = (EditText) view.findViewById(R.id.puertodb);
 	    mpuerto.setText(puertoSet);
-	    mdbname = (EditText) view.findViewById(R.id.nombredb);
-	    mdbname.setText(dbSet);
-	    
+	    mdbname = (Spinner) view.findViewById(R.id.nombredb);
+
 	    // Inflate and set the layout for the dialog
 	    // Pass null as the parent view because its going in the dialog layout
 	    builder.setView(view)
@@ -45,14 +48,14 @@ public class ServerPopupFragment extends DialogFragment {
 	               @Override
 	               public void onClick(DialogInterface dialog, int id) {
 	            	   mURL = (EditText) view.findViewById(R.id.url);
-	            	   mdbname = (EditText) view.findViewById(R.id.nombredb);
+	            	   mdbname = (Spinner) view.findViewById(R.id.nombredb);
 	           	       mpuerto = (EditText) view.findViewById(R.id.puertodb);
 
 	            	   SharedPreferences sharedPref = getActivity().getSharedPreferences(getString(R.string.preference_setting),Context.MODE_PRIVATE);
 	            	   SharedPreferences.Editor editor = sharedPref.edit();
 	            	   editor.putString(getString(R.string.server_url), mURL.getText().toString());
 	            	   editor.putString(getString(R.string.server_port), mpuerto.getText().toString());
-	            	   editor.putString(getString(R.string.server_db), mdbname.getText().toString());
+	            	   editor.putString(getString(R.string.server_db), mdbname.getSelectedItem().toString());
 	            	   editor.commit();
 	               }
 	           })
@@ -63,5 +66,28 @@ public class ServerPopupFragment extends DialogFragment {
 	           });      
 	    return builder.create();
     }
+    
+	public void searchDBs(View view) {
+		DBAsyncTask dbproc = new DBAsyncTask(getActivity());
+		String[] params = new String[]{mURL.getText().toString(),mpuerto.getText().toString()};
+		dbproc.execute(params);
+	}
 
+	@Override
+	public void connectionResolved(Boolean result) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void dbList(Object[] dbs) {
+	    ArrayAdapter<Object> dataAdapter = new ArrayAdapter<Object>(this.getActivity(), android.R.layout.simple_spinner_item,dbs);
+	    mdbname.setAdapter(dataAdapter);		
+	}
+
+	@Override
+	public void setActivities() {
+		// TODO Auto-generated method stub
+		
+	}
 }

@@ -1,12 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-  android:layout_width="fill_parent"
+    android:layout_width="fill_parent"
     android:layout_height="fill_parent"
+    android:background="@android:color/background_light"
     android:orientation="vertical"
-    android:padding="20dp"
-        android:background="@android:color/background_light">
-    
-     
+    android:padding="20dp" >
 
     <TextView
         android:layout_width="wrap_content"
@@ -14,13 +12,13 @@
         android:text="@string/server_url" />
 
     <EditText
-        android:id="@+id/url" 
-        android:inputType="textUri"
+        android:id="@+id/url"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:ems="10" >
-   	<requestFocus />
+        android:ems="10"
+        android:inputType="textUri" >
 
+        <requestFocus />
     </EditText>
 
     <TextView
@@ -33,9 +31,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"
-        android:inputType="number" >
-
-        
+        android:inputType="number"
+        android:text="8069" >
     </EditText>
 
     <TextView
@@ -43,11 +40,33 @@
         android:layout_height="wrap_content"
         android:text="@string/server_db" />
 
-    <EditText
-        android:id="@+id/nombredb"
+    <TableLayout
+        android:id="@+id/DBTBL"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:inputType="text" />
+        android:layout_height="wrap_content" >
+
+        <TableRow
+            android:id="@+id/DBROW"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" >
+
+            <Spinner
+                android:id="@+id/nombredb"
+                android:layout_width="300dp"
+                android:prompt="@string/search_db_list"
+                android:layout_height="wrap_content"
+                />
+
+            <Button
+                android:id="@+id/button2"
+                style="?android:attr/buttonStyleSmall"
+                android:layout_width="170dp"
+                android:layout_height="wrap_content"
+                android:drawableLeft="@drawable/ic_action_search"
+                android:onClick="searchDBs"
+                android:text="Buscar" />
+
+        </TableRow>
+    </TableLayout>
 
 </LinearLayout>

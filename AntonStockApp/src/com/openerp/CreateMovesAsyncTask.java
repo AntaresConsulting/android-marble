@@ -87,16 +87,16 @@ public class CreateMovesAsyncTask extends AsyncTask<PickingMove, String, Long> {
 						}else{
 							moves.get(j).put("dimension_id", res[0]);
 						}
-						if(values[i].isRegBalanace()){
-							HashMap<String, Object> vals3 = new HashMap<String, Object>();
-							vals3.put("prod_id", (Integer) moves.get(j).get("product_id"));
-							vals3.put("dim_id",(Long) moves.get(j).get("dimension_id"));
-							vals3.put("dimension_qty",(Integer) moves.get(j).get("dimension_qty"));
-							vals3.put("dimension_m2",(Double) moves.get(j).get("product_qty"));										
-							vals3.put("typeMove",moves.get(j).get("balance_type"));			
-							oc.call("product.marble.dimension.balance", "register_balance", vals3);		
-							moves.get(j).remove("balance_type");
-						}
+//						if(values[i].isRegBalanace()){
+//							HashMap<String, Object> vals3 = new HashMap<String, Object>();
+//							vals3.put("prod_id", (Integer) moves.get(j).get("product_id"));
+//							vals3.put("dim_id",(Long) moves.get(j).get("dimension_id"));
+//							vals3.put("dimension_qty",(Integer) moves.get(j).get("dimension_qty"));
+//							vals3.put("dimension_m2",(Double) moves.get(j).get("product_qty"));										
+//							vals3.put("typeMove",moves.get(j).get("balance_type"));			
+//							oc.call("product.marble.dimension.balance", "register_balance", vals3);		
+//							moves.get(j).remove("balance_type");
+//						}
 				}
 				Long idM = oc.create("stock.move", moves.get(j), this.context);
 									

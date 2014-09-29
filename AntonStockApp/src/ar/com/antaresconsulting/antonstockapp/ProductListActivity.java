@@ -33,6 +33,7 @@ import ar.com.antaresconsulting.antonstockapp.adapters.BaseProductAdapter;
 import ar.com.antaresconsulting.antonstockapp.adapters.TabsAdapter;
 import ar.com.antaresconsulting.antonstockapp.model.BaseProduct;
 import ar.com.antaresconsulting.antonstockapp.model.Dimension;
+import ar.com.antaresconsulting.antonstockapp.model.MateriaPrima;
 
 /**
  * An activity representing a list of Items. This activity has different
@@ -336,10 +337,11 @@ public class ProductListActivity extends ActionBarActivity implements
 		UpdateStockAsyncTask update = new UpdateStockAsyncTask(this);
 		HashMap<String, Object> values = new HashMap<String, Object>();
 		values.put("dimension", dim);
-		values.put("location_id", AntonConstants.PORDUCT_LOCATION_STOCK);
 		values.put("lot_id", false);
 		values.put("new_quantity", cant);
 		ProductDetailFragment prodDet = (ProductDetailFragment) getFragmentManager().findFragmentById(R.id.product_detail_container);
+		BaseProduct prod = prodDet.getProductSelected();	
+		values.put("product",prod);
 		values.put("product_id", prodDet.getProductSelected().getId());
 		update.execute(values);
 	}

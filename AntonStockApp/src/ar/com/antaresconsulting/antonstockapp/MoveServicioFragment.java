@@ -141,8 +141,8 @@ ProductDAO.ServiciosCallbacks, MoveProductActions,PedidoDAO.OrdenesDeEntregaCall
 		String loc_destination;
 
 		this.saveData.setModelStockPicking("stock.picking");
-		loc_source = AntonConstants.PORDUCT_LOCATION_STOCK;
-		loc_destination = AntonConstants.PORDUCT_LOCATION_OUTPUT;			
+		loc_source = AntonConstants.PRODUCT_LOCATION_STOCK;
+		loc_destination = AntonConstants.PRODUCT_LOCATION_OUTPUT;			
 		String origin = selectPed.getNombre();
 		values[0].setPedidoOut(selectPed);
 		headerPicking.put("type", AntonConstants.INTERNAL_PORDUCT_TYPE);

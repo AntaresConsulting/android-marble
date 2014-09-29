@@ -179,7 +179,7 @@ public class ProductDAO extends ReadAsyncTask {
 	public void getProductsToSubmit() {
 		this.customSearchMethod = "get_prod_by_location";
 		this.isCustomSearch = true;
-		this.setmFilters(new Object[] { new Object[] {Integer.parseInt(AntonConstants.PORDUCT_LOCATION_OUTPUT) } });
+		this.setmFilters(new Object[] { new Object[] {Integer.parseInt(AntonConstants.PRODUCT_LOCATION_OUTPUT) } });
 		this.execute(this.baseFields);
 		this.dataToSet = ProductDAO.LOCATION;			
 	}

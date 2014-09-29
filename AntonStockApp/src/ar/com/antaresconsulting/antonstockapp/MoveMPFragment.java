@@ -142,8 +142,8 @@ public class MoveMPFragment extends Fragment implements OnItemSelectedListener,M
 		this.saveData.setModelStockPicking("stock.picking");		
 		PickingMove[] values;
 		values = new PickingMove[2];		
-		values[0] = regMove1(AntonConstants.PORDUCT_LOCATION_STOCK,AntonConstants.PORDUCT_LOCATION_PRODUCTION);
-		values[1] = regMove2(AntonConstants.PORDUCT_LOCATION_PRODUCTION,AntonConstants.PORDUCT_LOCATION_OUTPUT);
+		values[0] = regMove1(AntonConstants.PRODUCT_LOCATION_STOCK,AntonConstants.PRODUCT_LOCATION_PRODUCTION);
+		values[1] = regMove2(AntonConstants.PRODUCT_LOCATION_PRODUCTION,AntonConstants.PRODUCT_LOCATION_OUTPUT);
 		this.saveData.execute(values);	
 	}
 

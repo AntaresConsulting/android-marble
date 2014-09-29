@@ -38,6 +38,7 @@ public class LoginActivity extends Activity implements LoginActivityInterface {
 	// UI references.
 	private EditText mEmailView;
 	private EditText mPasswordView;
+	private ServerPopupFragment popconf;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -142,7 +143,7 @@ public class LoginActivity extends Activity implements LoginActivityInterface {
 	}
 
 	public void showPopup(MenuItem v) {
-		ServerPopupFragment popconf = new ServerPopupFragment();
+		popconf = new ServerPopupFragment();
 		popconf.show(getFragmentManager(),"Server_Config");
 	}
 
@@ -246,5 +247,14 @@ public class LoginActivity extends Activity implements LoginActivityInterface {
 	@Override
 	public void setActivities() {
 		OpenErpHolder.getInstance().setMainClass(AntonLauncherActivity.class);
+	}
+
+	@Override
+	public void dbList(Object[] dbs) {
+		popconf.dbList(dbs);
+		
+	}
+	public void searchDBs(View view) {
+		popconf.searchDBs(view);
 	}
 }

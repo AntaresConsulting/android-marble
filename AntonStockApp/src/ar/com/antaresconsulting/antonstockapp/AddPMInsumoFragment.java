@@ -137,8 +137,8 @@ public class AddPMInsumoFragment extends Fragment implements AddPMActions,Insumo
 
 		headerPicking.put("partner_id", proveedor.getId());
 		this.saveData.setModelStockPicking("stock.picking.in");
-		loc_source = AntonConstants.PORDUCT_LOCATION_SUPPLIER;
-		loc_destination = AntonConstants.PORDUCT_LOCATION_STOCK;			
+		loc_source = AntonConstants.PRODUCT_LOCATION_SUPPLIER;
+		loc_destination = AntonConstants.PRODUCT_LOCATION_STOCK;			
 
 		String origin = pl.getText().toString();
 
