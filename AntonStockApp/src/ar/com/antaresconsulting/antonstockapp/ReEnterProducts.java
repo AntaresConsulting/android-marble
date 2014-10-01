@@ -207,16 +207,7 @@ public class ReEnterProducts extends Activity implements MateriaPrimaDAO.Materia
 			tt.show();
 			return;			
 		}
-
-		//		MateriaPrimaAdapter adapter = (MateriaPrimaAdapter) this.productos.getAdapter();
-		//
-		//		prod.setCantidad(cantP);
-		//		prod.setDimH(String.valueOf(hight));
-		//		prod.setDimW(String.valueOf(width));
-		//		prod.setDimT(this.dimT.getSelectedItem().toString());
-		//		prod.setDimTipo((SelectionObject) this.dimTipo.getSelectedItem());
-		//		adapter.addProduct(prod);
-		//		adapter.notifyDataSetChanged();		
+	
 	}
 
 	@Override

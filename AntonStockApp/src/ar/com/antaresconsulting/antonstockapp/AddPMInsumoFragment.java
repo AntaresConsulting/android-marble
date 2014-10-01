@@ -1,12 +1,6 @@
 package ar.com.antaresconsulting.antonstockapp;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-
-import com.openerp.CreateMovesAsyncTask;
-import com.openerp.OpenErpHolder;
-
+import com.openerp.CreatePickingAsyncTask;
 import android.app.Fragment;
 import android.content.Context;
 import android.content.SharedPreferences;
@@ -27,7 +21,8 @@ import ar.com.antaresconsulting.antonstockapp.listener.SwipeDismissListViewTouch
 import ar.com.antaresconsulting.antonstockapp.model.Insumo;
 import ar.com.antaresconsulting.antonstockapp.model.Partner;
 import ar.com.antaresconsulting.antonstockapp.model.PedidoLinea;
-import ar.com.antaresconsulting.antonstockapp.model.PickingMove;
+import ar.com.antaresconsulting.antonstockapp.model.StockMove;
+import ar.com.antaresconsulting.antonstockapp.model.StockPicking;
 import ar.com.antaresconsulting.antonstockapp.model.dao.InsumosDAO;
 import ar.com.antaresconsulting.antonstockapp.model.dao.PartnerDAO;
 
@@ -48,7 +43,6 @@ public class AddPMInsumoFragment extends Fragment implements AddPMActions,Insumo
 	private ListView prodsPedido;
 	private ListView prodsDispo;
 	private TextView unidades;
-	private CreateMovesAsyncTask saveData;
 	
 	public static AddPMInsumoFragment newInstance() {
 		AddPMInsumoFragment fragment = new AddPMInsumoFragment();
@@ -124,60 +118,23 @@ public class AddPMInsumoFragment extends Fragment implements AddPMActions,Insumo
 
 	@Override
 	public void addPM() {
-		this.saveData = new CreateMovesAsyncTask(this.getActivity());
-		OpenErpHolder.getInstance().setmModelName("stock.move");
-		int maxProds = this.prodsPedido.getAdapter().getCount();
-		PickingMove[] values = new PickingMove[1];
-		values[0] = new PickingMove();
+		CreatePickingAsyncTask saveData = new CreatePickingAsyncTask(this.getActivity());
+		int maxProds = this.prodsPedido.getAdapter().getCount();		
 
 		Partner proveedor = (Partner) this.proveedor.getSelectedItem();
-		HashMap<String, Object> headerPicking = new HashMap<String, Object>();
-		String loc_source;
-		String loc_destination;
-
-		headerPicking.put("partner_id", proveedor.getId());
-		this.saveData.setModelStockPicking("stock.picking.in");
-		loc_source = AntonConstants.PRODUCT_LOCATION_SUPPLIER;
-		loc_destination = AntonConstants.PRODUCT_LOCATION_STOCK;			
-
 		String origin = pl.getText().toString();
 
-		headerPicking.put("type", AntonConstants.IN_PORDUCT_TYPE);
-		headerPicking.put("auto_picking",false);
-		headerPicking.put("company_id",AntonConstants.ANTON_COMPANY_ID);
-		headerPicking.put("move_type",AntonConstants.DELIVERY_METHOD);
-		headerPicking.put("state","draft");
-		headerPicking.put("move_prod_type",AntonConstants.INSU_PICKING);
-		headerPicking.put("origin",origin);
-		headerPicking.put("location_id",loc_source);
-		headerPicking.put("location_dest_id",loc_destination);			
-
-		values[0].setHeaderPicking(headerPicking);
-
-		List<HashMap<String,Object>> moves = new ArrayList<HashMap<String, Object>>();
+		String loc_source = AntonConstants.PRODUCT_LOCATION_SUPPLIER;
+		String loc_destination = AntonConstants.PRODUCT_LOCATION_STOCK;			
+		
+		StockPicking picking = new StockPicking(origin,AntonConstants.PICKING_TYPE_ID_IN,proveedor.getId().toString(),loc_source,loc_destination,AntonConstants.INSU_PICKING);
 
 		for (int i = 0; i < maxProds; i++) {
 			PedidoLinea prod = (PedidoLinea) this.prodsPedido.getAdapter().getItem(i);
-			HashMap<String,Object> move = new HashMap<String,Object>();
-			move.put("product_uos_qty",prod.getCant());
-			move.put("product_id",((Insumo)prod.getProduct()[0]).getId());
-			move.put("product_uom",prod.getUom()[0]);
-			move.put("location_id",loc_source);
-			move.put("location_dest_id",loc_destination);				
-			move.put("company_id",AntonConstants.ANTON_COMPANY_ID);
-			move.put("prodlot_id",false);
-			move.put("tracking_id",false);
-			move.put("product_qty",prod.getCant());
-			move.put("product_uos",prod.getUom()[0]);
-			move.put("type",AntonConstants.IN_PORDUCT_TYPE);
-			move.put("origin",origin);
-			move.put("state","draft");
-			move.put("name",prod.getNombre());
-			moves.add(move);
+			StockMove move = new StockMove(((Insumo)prod.getProduct()[0]).getId().toString(), (String)prod.getUom()[0], loc_source, loc_destination, origin, prod.getCant().toString());				
+			picking.addMove(move);
 		}
-		values[0].setMoves(moves);
-		values[0].setMoveType(AntonConstants.IN_PORDUCT_TYPE);
-		this.saveData.execute(values);				
+		saveData.execute(picking);				
 	}
 
 	@Override

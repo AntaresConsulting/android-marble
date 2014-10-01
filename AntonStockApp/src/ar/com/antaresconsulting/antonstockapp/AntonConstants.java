@@ -35,11 +35,7 @@ public class AntonConstants {
 	public static final String TPROD = "tProd";
 	public static final String TPRODF = "tProdf";
 	
-	public static final String PRODUCT_MODEL = "product.product";
-	public static final String UOM_MODEL = "product.uom";
-	public static final String PARTNER_MODEL = "res.partner";
-	public static final String USERS_MODEL = "res.users";
-	public static final String GROUPS_MODEL = "res.groups";
+
 	public static final String BACHA_LIST = "BACHA_LIST";
 	public static final String MP_LIST = "MP_LIST";
 	public static final String INSU_LIST = "INSU_LIST";
@@ -71,4 +67,21 @@ public class AntonConstants {
 	public static final String PRODUCT_CHANGE_MODEL = "stock.change.product.qty";
 
 	public static final int DEFAULT_ESPESORES = 5;
+	
+	//ODOO Models
+	
+	public static final String PICKING_MODEL = "stock.picking";
+	public static final String MOVE_MODEL = "stock.move";
+	public static final String PRODUCT_MODEL = "product.product";
+	public static final String UOM_MODEL = "product.uom";
+	public static final String PARTNER_MODEL = "res.partner";
+	public static final String USERS_MODEL = "res.users";
+	public static final String GROUPS_MODEL = "res.groups";
+	public static final String MARBLE_DIM_MODEL = "product.marble.dimension";
+	
+	//ODOO PICKING Types
+	public static final String PICKING_TYPE_ID_IN = "";
+	public static final String PICKING_TYPE_ID_OUT = "";
+	public static final String PICKING_TYPE_ID_INTERNAL = "";
+
 }

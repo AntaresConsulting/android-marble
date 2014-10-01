@@ -449,6 +449,26 @@ public class OpenErpConnect {
         }
         return response;
     }
+   
+    public Object call(String model, String method, Object parameter) {
+        Object response = null;
+        try {
+
+            List<Object> paramsList = new ArrayList<Object>(6);
+            paramsList.add(mDatabase);
+            paramsList.add(mUserId);
+            paramsList.add(mPassword);
+            paramsList.add(model);
+            paramsList.add(method);
+            paramsList.add(parameter);
+            
+            XMLRPCClient client = new XMLRPCClient(mUrl);
+            response = client.call("execute", paramsList);
+        } catch (XMLRPCException e) {
+            Log.d(CONNECTOR_NAME, e.toString());
+        }
+        return response;
+    }
     
     /**
      * This utility method reverses the order of the Long elements (ids) in the array. Used to implement

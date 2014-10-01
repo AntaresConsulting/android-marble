@@ -1,6 +1,9 @@
 package ar.com.antaresconsulting.antonstockapp.model;
 
 import java.io.Serializable;
+import java.util.HashMap;
+
+import ar.com.antaresconsulting.antonstockapp.AntonConstants;
 
 
 public class Dimension implements Serializable  {
@@ -9,6 +12,7 @@ public class Dimension implements Serializable  {
 	 * 
 	 */
 	private static final long serialVersionUID = 2335380404419758743L;
+	private String dimId;
 	private String dimH;
 	private String dimW;
 	private String dimT;	
@@ -54,5 +58,20 @@ public class Dimension implements Serializable  {
 	public double getM2(){
 		return Double.parseDouble(dimH)*Double.parseDouble(dimW);
 	}
-	
+
+	public String getDimId() {
+		return dimId;
+	}
+
+	public void setDimId(String dimId) {
+		this.dimId = dimId;
+	}
+	public HashMap<String, Object> getMap(){
+		HashMap<String, Object> res = new HashMap<String, Object>();
+		res.put(AntonConstants.DIMENSION_HIGHT, this.getDimH());
+		res.put(AntonConstants.DIMENSION_WIDTH, this.getDimW());
+		res.put(AntonConstants.DIMENSION_THICKNESS, this.getDimT());
+		res.put(AntonConstants.DIMENSION_TYPE, this.getDimTipo().getId());
+		return res;
+	}	
 }
