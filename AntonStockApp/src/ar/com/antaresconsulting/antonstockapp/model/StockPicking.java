@@ -20,6 +20,17 @@ public class StockPicking {
 
 	
 	public StockPicking(String origin, String type, String partnerId,
+			String locationSrc, String locationDest) {
+		super();
+		this.origin = origin;
+		this.type = type;
+		this.partnerId = partnerId;
+		this.locationSrc = locationSrc;
+		this.locationDest = locationDest;
+	}
+
+
+	public StockPicking(String origin, String type, String partnerId,
 			String locationSrc, String locationDest,String prodType) {
 		super();
 		this.origin = origin;
@@ -103,7 +114,8 @@ public class StockPicking {
 		res.put("move_type",AntonConstants.DELIVERY_METHOD);
 		res.put("state","draft");
 		res.put("origin",origin);
-		res.put("move_prod_type",this.getProdType());
+		if(this.getProdType() != null)
+			res.put("move_prod_type",this.getProdType());
 		res.put("location_id",this.getLocationSrc());
 		res.put("location_dest_id",this.getLocationDest());	
 		res.put("partner_ir",this.getPartnerId());

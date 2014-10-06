@@ -13,6 +13,7 @@ public class StockMove {
 	private String locationDest;
 	private String origin;
 	private String qty;
+	private String employee;
 	private Dimension dim;
 	
 	
@@ -37,6 +38,14 @@ public class StockMove {
 		this.origin = origin;
 		this.qty = qty;
 		this.dim = dimId;
+	}
+	
+	
+	public String getEmployee() {
+		return employee;
+	}
+	public void setEmployee(String employee) {
+		this.employee = employee;
 	}
 	public String getProductId() {
 		return productId;
@@ -107,6 +116,8 @@ public class StockMove {
 		res.put("type",AntonConstants.IN_PORDUCT_TYPE);
 		res.put("origin",this.getOrigin());
 		res.put("state","draft");
+		if(this.getEmployee() != null)
+			res.put("employee",this.getEmployee());
 		return res;
 	}
 	public boolean hasDimension() {

@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
-import com.openerp.CreateMovesAsyncTask;
+import com.openerp.CreatePickingAsyncTask;
 import com.openerp.OpenErpHolder;
 
 import android.support.v4.app.NavUtils;
@@ -26,9 +26,13 @@ import ar.com.antaresconsulting.antonstockapp.adapters.PedidoLineaMPAdapter;
 import ar.com.antaresconsulting.antonstockapp.listener.SwipeDismissListViewTouchListener;
 import ar.com.antaresconsulting.antonstockapp.model.BaseProduct;
 import ar.com.antaresconsulting.antonstockapp.model.Dimension;
+import ar.com.antaresconsulting.antonstockapp.model.Insumo;
 import ar.com.antaresconsulting.antonstockapp.model.MateriaPrima;
-import ar.com.antaresconsulting.antonstockapp.model.PickingMove;
+import ar.com.antaresconsulting.antonstockapp.model.Partner;
+import ar.com.antaresconsulting.antonstockapp.model.PedidoLinea;
 import ar.com.antaresconsulting.antonstockapp.model.SelectionObject;
+import ar.com.antaresconsulting.antonstockapp.model.StockMove;
+import ar.com.antaresconsulting.antonstockapp.model.StockPicking;
 import ar.com.antaresconsulting.antonstockapp.model.dao.MateriaPrimaDAO;
 
 public class ReEnterProducts extends Activity implements MateriaPrimaDAO.MateriaPrimaCallbacks{
@@ -41,7 +45,6 @@ public class ReEnterProducts extends Activity implements MateriaPrimaDAO.Materia
 	private EditText dimW;
 	private Spinner dimT;
 	ArrayAdapter<BaseProduct> prodBuscaAdapter;
-	private CreateMovesAsyncTask saveData;
 
 	protected boolean isScanSearch = false;
 
@@ -105,64 +108,23 @@ public class ReEnterProducts extends Activity implements MateriaPrimaDAO.Materia
 	}
 
 	public void closeIncome(MenuItem view) {
-		this.saveData = new CreateMovesAsyncTask(this);
-		OpenErpHolder.getInstance().setmModelName("stock.move");
+		CreatePickingAsyncTask saveData = new CreatePickingAsyncTask(this);
 		int maxProds = this.productos.getAdapter().getCount();
-		PickingMove[] values = new PickingMove[1];
-		values[0] = new PickingMove();
 
-		HashMap<String, Object> headerPicking = new HashMap<String, Object>();
-		String loc_source;
-		String loc_destination;
+		Partner proveedor = null;
+		String origin = "";
 
-		headerPicking.put("partner_id", AntonConstants.ANTON_COMPANY_ID);
-		this.saveData.setModelStockPicking("stock.picking");
-		loc_source = AntonConstants.PRODUCT_LOCATION_PRODUCTION;
-		loc_destination = AntonConstants.PRODUCT_LOCATION_STOCK;			
-
-
-		headerPicking.put("type", AntonConstants.INTERNAL_PORDUCT_TYPE);
-		headerPicking.put("auto_picking",true);
-		headerPicking.put("company_id",AntonConstants.ANTON_COMPANY_ID);
-		headerPicking.put("move_type",AntonConstants.DELIVERY_METHOD);
-		headerPicking.put("state","draft");
-		headerPicking.put("location_id",loc_source);
-		headerPicking.put("location_dest_id",loc_destination);			
-
-		values[0].setHeaderPicking(headerPicking);
-
-		//HashMap<String, Object>[] moves = new HashMap<String, Object>[3];
-		List<HashMap<String,Object>> moves = new ArrayList<HashMap<String, Object>>();
+		String loc_source = AntonConstants.PRODUCT_LOCATION_PRODUCTION;
+		String loc_destination = AntonConstants.PRODUCT_LOCATION_STOCK;			
+		
+		StockPicking picking = new StockPicking(origin,AntonConstants.PICKING_TYPE_ID_INTERNAL,proveedor.getId().toString(),loc_source,loc_destination,AntonConstants.RAW_PICKING);
 
 		for (int i = 0; i < maxProds; i++) {
-			BaseProduct prod = (BaseProduct) this.productos.getAdapter().getItem(i);
-			MateriaPrima mp =  (MateriaPrima) prod;
-
-			HashMap<String,Object> move = new HashMap<String,Object>();
-//			if(mp.getDimension()!= null){
-//				move.put("dimension", (Dimension) prod.getDimension()[0]);
-//			}				
-			move.put("dimension_qty",prod.getCantidadReal());
-			move.put("product_uos_qty",prod.getCantidadReal());
-			move.put("product_id",prod.getId());
-			move.put("product_uom",prod.getUom()[0]);
-			move.put("location_id",loc_source);
-			move.put("location_dest_id",loc_destination);				
-			move.put("company_id",AntonConstants.ANTON_COMPANY_ID);
-			move.put("prodlot_id",false);
-			move.put("tracking_id",false);
-			move.put("product_qty",prod.getCantidadReal());
-			move.put("product_uos",false);
-			move.put("type",AntonConstants.INTERNAL_PORDUCT_TYPE);
-			move.put("origin",false);
-			move.put("state","draft");
-			move.put("name",prod.getNombre());
-
-			moves.add(move);
+			MateriaPrima prod = (MateriaPrima) this.productos.getAdapter().getItem(i);
+			StockMove move = new StockMove(prod.getId().toString(), (String)prod.getUom()[0], loc_source, loc_destination, origin, prod.getCantidadReal().toString());				
+			picking.addMove(move);
 		}
-		values[0].setMoves(moves);
-		values[0].setMoveType(AntonConstants.INTERNAL_PORDUCT_TYPE);
-		this.saveData.execute(values);
+		saveData.execute(picking);
 	}
 
 

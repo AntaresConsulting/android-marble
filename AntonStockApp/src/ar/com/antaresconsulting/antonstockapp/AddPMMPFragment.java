@@ -132,7 +132,7 @@ public class AddPMMPFragment extends Fragment implements PartnerDAO.SuppliersCal
 
 		for (int i = 0; i < maxProds; i++) {
 			PedidoLinea prod = (PedidoLinea) this.prodsPedido.getAdapter().getItem(i);
-			StockMove move = new StockMove(((Insumo)prod.getProduct()[0]).getId().toString(), (String)prod.getUom()[0], loc_source, loc_destination, origin, prod.getCant().toString());				
+			StockMove move = new StockMove(((MateriaPrima)prod.getProduct()[0]).getId().toString(), ((Integer)prod.getUom()[0]).toString(), loc_source, loc_destination, origin, prod.getCant().toString());				
 			picking.addMove(move);
 		}
 		saveData.execute(picking);

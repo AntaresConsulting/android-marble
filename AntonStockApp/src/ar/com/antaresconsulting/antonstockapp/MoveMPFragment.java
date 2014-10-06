@@ -1,15 +1,9 @@
 package ar.com.antaresconsulting.antonstockapp;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 
-import com.openerp.CreateMovesAsyncTask;
-import com.openerp.OpenErpHolder;
-
 import android.app.Fragment;
-import android.content.Context;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.SparseBooleanArray;
 import android.view.LayoutInflater;
@@ -18,7 +12,6 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemSelectedListener;
 import android.widget.ArrayAdapter;
-import android.widget.AutoCompleteTextView;
 import android.widget.BaseAdapter;
 import android.widget.EditText;
 import android.widget.ExpandableListView;
@@ -26,19 +19,12 @@ import android.widget.ListView;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
-import ar.com.antaresconsulting.antonstockapp.adapters.BaseProductAdapter;
 import ar.com.antaresconsulting.antonstockapp.adapters.MateriaPrimaOutAdapter;
-import ar.com.antaresconsulting.antonstockapp.adapters.PedidoLineaAdapter;
 import ar.com.antaresconsulting.antonstockapp.listener.SwipeDismissListViewTouchListener;
-import ar.com.antaresconsulting.antonstockapp.model.BaseProduct;
-import ar.com.antaresconsulting.antonstockapp.model.Dimension;
 import ar.com.antaresconsulting.antonstockapp.model.DimensionBalance;
-import ar.com.antaresconsulting.antonstockapp.model.MateriaPrima;
 import ar.com.antaresconsulting.antonstockapp.model.MateriaPrimaOut;
 import ar.com.antaresconsulting.antonstockapp.model.Pedido;
 import ar.com.antaresconsulting.antonstockapp.model.PedidoLinea;
-import ar.com.antaresconsulting.antonstockapp.model.PickingMove;
-import ar.com.antaresconsulting.antonstockapp.model.SelectionObject;
 import ar.com.antaresconsulting.antonstockapp.model.dao.MateriaPrimaDAO;
 import ar.com.antaresconsulting.antonstockapp.model.dao.DimensionDAO;
 import ar.com.antaresconsulting.antonstockapp.model.dao.PedidoDAO;
@@ -63,7 +49,6 @@ public class MoveMPFragment extends Fragment implements OnItemSelectedListener,M
 	private List<PedidoLinea> pls;	
 	private MateriaPrimaOutAdapter listAdapter;
 	private static final String ARG_PARAM1 = "param1";
-	private CreateMovesAsyncTask saveData;
 
 	public MoveMPFragment() {
 
@@ -137,127 +122,127 @@ public class MoveMPFragment extends Fragment implements OnItemSelectedListener,M
 	}
 
 	public void closeMoves() {
-		this.saveData = new CreateMovesAsyncTask(this.getActivity());
-		OpenErpHolder.getInstance().setmModelName("stock.move");
-		this.saveData.setModelStockPicking("stock.picking");		
-		PickingMove[] values;
-		values = new PickingMove[2];		
-		values[0] = regMove1(AntonConstants.PRODUCT_LOCATION_STOCK,AntonConstants.PRODUCT_LOCATION_PRODUCTION);
-		values[1] = regMove2(AntonConstants.PRODUCT_LOCATION_PRODUCTION,AntonConstants.PRODUCT_LOCATION_OUTPUT);
-		this.saveData.execute(values);	
+//		this.saveData = new CreateMovesAsyncTask(this.getActivity());
+//		OpenErpHolder.getInstance().setmModelName("stock.move");
+//		this.saveData.setModelStockPicking("stock.picking");		
+//		PickingMove[] values;
+//		values = new PickingMove[2];		
+//		values[0] = regMove1(AntonConstants.PRODUCT_LOCATION_STOCK,AntonConstants.PRODUCT_LOCATION_PRODUCTION);
+//		values[1] = regMove2(AntonConstants.PRODUCT_LOCATION_PRODUCTION,AntonConstants.PRODUCT_LOCATION_OUTPUT);
+//		this.saveData.execute(values);	
 	}
 
-	private PickingMove regMove1(String loc_source,String loc_des){
-		PickingMove pm = new PickingMove();
-		HashMap<String, Object> headerPicking = new HashMap<String, Object>(); 
-
-		headerPicking.put("partner_id", AntonConstants.ANTON_COMPANY_ID);
-		headerPicking.put("type", AntonConstants.INTERNAL_PORDUCT_TYPE);
-		headerPicking.put("auto_picking",true);
-		headerPicking.put("company_id",AntonConstants.ANTON_COMPANY_ID);
-		headerPicking.put("move_type",AntonConstants.DELIVERY_METHOD);
-		headerPicking.put("state","draft");
-		headerPicking.put("location_id", loc_source);
-		headerPicking.put("location_dest_id", loc_des);			
-		pm.setHeaderPicking(headerPicking);
-
-		List<HashMap<String,Object>> moves = new ArrayList<HashMap<String, Object>>();
-		int cantDims = this.listAdapter.getGroupCount();
-		for (int i = 0; i < cantDims; i++) {
-			MateriaPrimaOut mpo = (MateriaPrimaOut) this.listAdapter.getGroup(i);
-			HashMap<String,Object> move = new HashMap<String,Object>();
-			DimensionBalance dimb = mpo.getDim();
-			Dimension dim = new Dimension();
-			dim.setDimH(((Double)dimb.getDimensionVals().get(AntonConstants.DIMENSION_HIGHT)).toString());
-			dim.setDimW(((Double) dimb.getDimensionVals().get(AntonConstants.DIMENSION_WIDTH)).toString());
-			dim.setDimT(((Double) dimb.getDimensionVals().get(AntonConstants.DIMENSION_THICKNESS)).toString());
-			dim.setDimTipo(SelectionObject.getDimTipoById((String)dimb.getDimensionVals().get(AntonConstants.DIMENSION_TYPE)));
-
-			double width = Double.valueOf(dim.getDimW());
-			double height = Double.valueOf(dim.getDimH());
-			int cant = mpo.getCant().intValue();
-			double cantM2 = width*cant*height;
-			move.put("dimension", dim);
-			move.put("dimension_qty",mpo.getCant());
-			move.put("balance_type","out");
-
-			move.put("product_uos_qty",cantM2);
-			move.put("product_qty",new Double(cantM2));
-
-			move.put("partner_id",AntonConstants.ANTON_COMPANY_ID);
-			move.put("product_id",mpo.getId());
-			move.put("product_uom",mpo.getUom()[0]);
-			move.put("location_id", loc_source);
-			move.put("location_dest_id", loc_des);			
-			move.put("company_id",AntonConstants.ANTON_COMPANY_ID);
-//			move.put("prodlot_id",false);
-//			move.put("tracking_id",false);
-//			move.put("product_uos",false);
-			move.put("type", AntonConstants.INTERNAL_PORDUCT_TYPE);
-			move.put("picking_id",false);
-			move.put("origin",false);
-//			move.put("state","draft");
-			move.put("name",mpo.getNombre());
-			moves.add(move);
-
-		}
-		pm.setMoves(moves);
-		pm.setPedidoOut(this.selectPed);
-		pm.setMoveType(AntonConstants.INTERNAL_PORDUCT_TYPE);
-		pm.setRegBalanace(true);
-		return pm;
-	}
-
-	private PickingMove regMove2(String loc_source,String loc_des){
-		PickingMove pm = new PickingMove();
-		HashMap<String, Object> headerPicking = new HashMap<String, Object>(); 
-
-		headerPicking.put("partner_id", AntonConstants.ANTON_COMPANY_ID);
-		headerPicking.put("type", AntonConstants.INTERNAL_PORDUCT_TYPE);
-		headerPicking.put("auto_picking",true);
-		headerPicking.put("company_id",AntonConstants.ANTON_COMPANY_ID);
-		headerPicking.put("move_type",AntonConstants.DELIVERY_METHOD);
-		headerPicking.put("state","draft");
-		headerPicking.put("location_id", loc_source);
-		headerPicking.put("location_dest_id", loc_des);			
-		pm.setHeaderPicking(headerPicking);
-
-		List<HashMap<String,Object>> moves = new ArrayList<HashMap<String, Object>>();
-		int cantDims = this.listAdapter.getGroupCount();
-		for (int i = 0; i < cantDims; i++) {
-			MateriaPrimaOut mpo = (MateriaPrimaOut) this.listAdapter.getGroup(i);
-			List<PedidoLinea> pls = mpo.getPl();
-			double totalPl = 0;
-			for (PedidoLinea pedidoLinea : pls) {
-				totalPl += pedidoLinea.getCant().doubleValue();
-			}
-			
-			HashMap<String,Object> move = new HashMap<String,Object>();
-
-			move.put("product_uos_qty",totalPl);
-			move.put("product_qty",totalPl);
-
-			move.put("partner_id",AntonConstants.ANTON_COMPANY_ID);
-			move.put("product_id",mpo.getId());
-			move.put("product_uom",mpo.getUom()[0]);
-			move.put("location_id", loc_source);
-			move.put("location_dest_id", loc_des);			
-			move.put("company_id",AntonConstants.ANTON_COMPANY_ID);
-//			move.put("prodlot_id",false);
-//			move.put("tracking_id",false);
-//			move.put("product_uos",false);
-			move.put("type", AntonConstants.INTERNAL_PORDUCT_TYPE);
-			move.put("picking_id",false);
-			move.put("origin",false);
-//			move.put("state","done");
-			move.put("name",mpo.getNombre());
-			moves.add(move);
-		}
-		pm.setMoves(moves);
-		pm.setMoveType(AntonConstants.INTERNAL_PORDUCT_TYPE);
-		pm.setRegBalanace(false);		
-		return pm;
-	}
+//	private PickingMove regMove1(String loc_source,String loc_des){
+//		PickingMove pm = new PickingMove();
+//		HashMap<String, Object> headerPicking = new HashMap<String, Object>(); 
+//
+//		headerPicking.put("partner_id", AntonConstants.ANTON_COMPANY_ID);
+//		headerPicking.put("type", AntonConstants.INTERNAL_PORDUCT_TYPE);
+//		headerPicking.put("auto_picking",true);
+//		headerPicking.put("company_id",AntonConstants.ANTON_COMPANY_ID);
+//		headerPicking.put("move_type",AntonConstants.DELIVERY_METHOD);
+//		headerPicking.put("state","draft");
+//		headerPicking.put("location_id", loc_source);
+//		headerPicking.put("location_dest_id", loc_des);			
+//		pm.setHeaderPicking(headerPicking);
+//
+//		List<HashMap<String,Object>> moves = new ArrayList<HashMap<String, Object>>();
+//		int cantDims = this.listAdapter.getGroupCount();
+//		for (int i = 0; i < cantDims; i++) {
+//			MateriaPrimaOut mpo = (MateriaPrimaOut) this.listAdapter.getGroup(i);
+//			HashMap<String,Object> move = new HashMap<String,Object>();
+//			DimensionBalance dimb = mpo.getDim();
+//			Dimension dim = new Dimension();
+//			dim.setDimH(((Double)dimb.getDimensionVals().get(AntonConstants.DIMENSION_HIGHT)).toString());
+//			dim.setDimW(((Double) dimb.getDimensionVals().get(AntonConstants.DIMENSION_WIDTH)).toString());
+//			dim.setDimT(((Double) dimb.getDimensionVals().get(AntonConstants.DIMENSION_THICKNESS)).toString());
+//			dim.setDimTipo(SelectionObject.getDimTipoById((String)dimb.getDimensionVals().get(AntonConstants.DIMENSION_TYPE)));
+//
+//			double width = Double.valueOf(dim.getDimW());
+//			double height = Double.valueOf(dim.getDimH());
+//			int cant = mpo.getCant().intValue();
+//			double cantM2 = width*cant*height;
+//			move.put("dimension", dim);
+//			move.put("dimension_qty",mpo.getCant());
+//			move.put("balance_type","out");
+//
+//			move.put("product_uos_qty",cantM2);
+//			move.put("product_qty",new Double(cantM2));
+//
+//			move.put("partner_id",AntonConstants.ANTON_COMPANY_ID);
+//			move.put("product_id",mpo.getId());
+//			move.put("product_uom",mpo.getUom()[0]);
+//			move.put("location_id", loc_source);
+//			move.put("location_dest_id", loc_des);			
+//			move.put("company_id",AntonConstants.ANTON_COMPANY_ID);
+////			move.put("prodlot_id",false);
+////			move.put("tracking_id",false);
+////			move.put("product_uos",false);
+//			move.put("type", AntonConstants.INTERNAL_PORDUCT_TYPE);
+//			move.put("picking_id",false);
+//			move.put("origin",false);
+////			move.put("state","draft");
+//			move.put("name",mpo.getNombre());
+//			moves.add(move);
+//
+//		}
+//		pm.setMoves(moves);
+//		pm.setPedidoOut(this.selectPed);
+//		pm.setMoveType(AntonConstants.INTERNAL_PORDUCT_TYPE);
+//		pm.setRegBalanace(true);
+//		return pm;
+//	}
+//
+//	private PickingMove regMove2(String loc_source,String loc_des){
+//		PickingMove pm = new PickingMove();
+//		HashMap<String, Object> headerPicking = new HashMap<String, Object>(); 
+//
+//		headerPicking.put("partner_id", AntonConstants.ANTON_COMPANY_ID);
+//		headerPicking.put("type", AntonConstants.INTERNAL_PORDUCT_TYPE);
+//		headerPicking.put("auto_picking",true);
+//		headerPicking.put("company_id",AntonConstants.ANTON_COMPANY_ID);
+//		headerPicking.put("move_type",AntonConstants.DELIVERY_METHOD);
+//		headerPicking.put("state","draft");
+//		headerPicking.put("location_id", loc_source);
+//		headerPicking.put("location_dest_id", loc_des);			
+//		pm.setHeaderPicking(headerPicking);
+//
+//		List<HashMap<String,Object>> moves = new ArrayList<HashMap<String, Object>>();
+//		int cantDims = this.listAdapter.getGroupCount();
+//		for (int i = 0; i < cantDims; i++) {
+//			MateriaPrimaOut mpo = (MateriaPrimaOut) this.listAdapter.getGroup(i);
+//			List<PedidoLinea> pls = mpo.getPl();
+//			double totalPl = 0;
+//			for (PedidoLinea pedidoLinea : pls) {
+//				totalPl += pedidoLinea.getCant().doubleValue();
+//			}
+//			
+//			HashMap<String,Object> move = new HashMap<String,Object>();
+//
+//			move.put("product_uos_qty",totalPl);
+//			move.put("product_qty",totalPl);
+//
+//			move.put("partner_id",AntonConstants.ANTON_COMPANY_ID);
+//			move.put("product_id",mpo.getId());
+//			move.put("product_uom",mpo.getUom()[0]);
+//			move.put("location_id", loc_source);
+//			move.put("location_dest_id", loc_des);			
+//			move.put("company_id",AntonConstants.ANTON_COMPANY_ID);
+////			move.put("prodlot_id",false);
+////			move.put("tracking_id",false);
+////			move.put("product_uos",false);
+//			move.put("type", AntonConstants.INTERNAL_PORDUCT_TYPE);
+//			move.put("picking_id",false);
+//			move.put("origin",false);
+////			move.put("state","done");
+//			move.put("name",mpo.getNombre());
+//			moves.add(move);
+//		}
+//		pm.setMoves(moves);
+//		pm.setMoveType(AntonConstants.INTERNAL_PORDUCT_TYPE);
+//		pm.setRegBalanace(false);		
+//		return pm;
+//	}
 
 	public void addProductMP(View view) {
 

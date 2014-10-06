@@ -1,7 +1,6 @@
 package ar.com.antaresconsulting.antonstockapp;
 
 import com.openerp.ConfirmMovesAsyncTask;
-import com.openerp.CreateMovesAsyncTask;
 
 import android.app.Fragment;
 import android.os.Bundle;
@@ -39,7 +38,6 @@ public class InInsumoProductFragment extends Fragment implements OnItemSelectedL
 	private EditText cantPlacas;
 	private TextView provee;
 
-	private CreateMovesAsyncTask saveData;
 
 
 	private static final String ARG_PARAM1 = "param1";
