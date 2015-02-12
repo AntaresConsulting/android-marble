@@ -25,6 +25,7 @@
     </style>
 
     <color name="bg_theme_color">#F4F4EE</color>
+    <color name="bg_atribs">#CC99FF</color>
     <color name="actionbar_theme_color">#DC2A2A</color>
 
     <style name="AntonTheme" parent="Theme.AppCompat.Light">

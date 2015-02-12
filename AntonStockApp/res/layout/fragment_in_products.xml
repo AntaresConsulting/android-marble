@@ -49,21 +49,21 @@
                 android:layout_margin="10dp" >
 
                 <TextView
-                    android:id="@+id/clienteLbl"
+                    android:id="@+id/proveedorLbl"
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
                     android:layout_weight="1"
-                    android:text="@string/out_prod_clientes"
+                    android:text="@string/in_prod_proveedor"
                     android:textAppearance="?android:attr/textAppearanceLarge" />
 
                 <TextView
-                    android:id="@+id/clienteVal"
+                    android:id="@+id/proveedorNombre"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
                     android:layout_weight="3"
-                    android:text=""
+                    android:text=" --- Proveedor --- "
                     android:textAppearance="?android:attr/textAppearanceLarge" />
             </TableRow>
 
@@ -80,7 +80,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_span="2"
-                android:text="@string/sub_prod_title_productos"
+                android:text="@string/in_prod_title_productos"
                 android:textAppearance="?android:attr/textAppearanceLarge" />
 
             <ListView

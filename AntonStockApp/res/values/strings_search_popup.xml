@@ -16,6 +16,7 @@
     <string name="search_tipo">Tipo de Material</string>    
     <string name="search_btn">Buscar</string>
     <string name="search_product_type">Seleccionar Tipo de Producto a Buscar</string>
+    <string name="search_supplier">Buscar Proveedor</string>
     
 	<string name="update_cant">Cantidad a Actualizar</string>
 	<string name="update_cant_pla">Cantidad de Placas</string>
@@ -23,4 +24,7 @@
 	<string name="update_btn">Actualizar</string>
     <string name="search_db_list">Seleccionar la base a utilizar</string>
 	
+    <string name="stock_min_qty">Cantidad minima</string>
+    <string name="stock_max_qty">Cantidad maxima</string>
+    
 </resources>

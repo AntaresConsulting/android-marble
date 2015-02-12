@@ -1,10 +1,10 @@
 <TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
-  android:layout_width="fill_parent"
+    android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    android:orientation="vertical"
-    android:padding="40dp"
+    android:background="@android:color/background_light"
     android:gravity="center_vertical|center_horizontal"
-    android:background="@android:color/background_light" >
+    android:orientation="vertical"
+    android:padding="40dp" >
 
     <TableRow
         android:id="@+id/provRow"
@@ -15,15 +15,16 @@
             android:id="@+id/dimT"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/update_cant"
+            android:text="@string/search_supplier"
             android:textAppearance="?android:attr/textAppearanceLarge" />
 
-        <EditText
-            android:id="@+id/cantUStock"
-            android:layout_width="300dp"
+        <AutoCompleteTextView
+            android:id="@+id/nombreSupp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="30dp"
-            android:textAppearance="?android:attr/textAppearanceSmall" />
+            android:ems="10"
+            android:text="Proveedor...."
+             />
     </TableRow>
 
 </TableLayout>

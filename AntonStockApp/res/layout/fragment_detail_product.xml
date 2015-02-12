@@ -50,6 +50,19 @@
         android:layout_toRightOf="@+id/sepProdThumb"
         android:text="Nombre_Producto"
         android:textSize="30sp" />
+    <TextView
+        android:id="@+id/atribsProd"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+		android:layout_alignBaseline="@+id/nombreProd"
+        android:layout_marginBottom="20dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="10dp"
+        android:padding="7dp"
+        android:layout_toRightOf="@+id/nombreProd"
+        android:text="Atributos"
+        android:background="@drawable/shape"
+        android:textSize="20sp" />
 
     <FrameLayout
         android:id="@+id/productDetail"
@@ -108,6 +121,54 @@
                 android:text="Precio"
                 android:textSize="25sp" />
         </TableRow>
+    </TableLayout>
+
+    <TableLayout
+        android:layout_width="wrap_content"
+        android:layout_toRightOf="@+id/stockData"
+        android:layout_below="@+id/nombreProd"
+        android:layout_marginLeft="10dp"
+        android:layout_height="wrap_content" >
+
+        <TableRow
+            android:id="@+id/tableRow1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" >
+
+            <Button
+                android:id="@+id/button1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="updateStock"
+            	android:drawableLeft="@drawable/ic_action_stock"                
+                android:text="@string/lbl_prod_stock_adjust" />
+
+        </TableRow>
+
+        <TableRow
+            android:id="@+id/tableRow2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" >
+			<Button
+                android:id="@+id/button2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="asignSupp"
+            	android:drawableLeft="@drawable/ic_action_assign"                                
+                android:text="@string/lbl_prod_stock_prov" />            
+        </TableRow>
+        <TableRow
+            android:id="@+id/tableRow3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" >
+			<Button
+                android:id="@+id/button3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="stockRule"
+            	android:drawableLeft="@drawable/ic_action_rule"                                
+                android:text="@string/lbl_prod_stock_rule" />            
+        </TableRow>        
     </TableLayout>
 
     <TableLayout
@@ -179,20 +240,6 @@
                 android:layout_height="wrap_content"
                 android:text="Cantidad"
                 android:textSize="25sp" />
-        </TableRow>
-
-        <TableRow
-            android:id="@+id/tableRow1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" >
-
-            <Button
-                android:id="@+id/button1"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:onClick="updateStock"
-                android:text="@string/lbl_prod_stock_adjust" />
-
         </TableRow>
 
     </TableLayout>

@@ -27,6 +27,8 @@
     <string name="lbl_prod_bacha_prof">Profundidad :</string>    
     <string name="lbl_prod_bacha_diametro">Diametro :</string>
     <string name="lbl_prod_stock_adjust">Ajustar Stock</string>
+    <string name="lbl_prod_stock_prov">Asignar Proveedor</string>
+	<string name="lbl_prod_stock_rule">Regla de Stock</string>    
     <string name="title_forstock">Producto Materias Primas</string>
     <string name="title_expenses">Producto Insumos</string>
     <string name="title_bachas">Producto Bachas</string>
