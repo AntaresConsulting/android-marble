@@ -14,6 +14,7 @@ public class StockPicking {
 	private String locationSrc;
 	private String locationDest;
 	private String prodType;
+	private boolean actionDone = false;
 	private List<StockMove> moves;
 
 
@@ -106,19 +107,30 @@ public class StockPicking {
 		this.moves.add(move);
 	}
 	
+	
+	
+	public boolean isActionDone() {
+		return actionDone;
+	}
+
+
+	public void setActionDone(boolean actionDone) {
+		this.actionDone = actionDone;
+	}
+
+
 	public HashMap<String, Object> getMap(){
 		HashMap<String, Object> res = new HashMap<String, Object>();
-		res.put("type", AntonConstants.IN_PORDUCT_TYPE);
-		res.put("auto_picking",false);
+		res.put("picking_type_id", Integer.parseInt(this.getType()));
 		res.put("company_id",AntonConstants.ANTON_COMPANY_ID);
-		res.put("move_type",AntonConstants.DELIVERY_METHOD);
+		res.put("move_type",AntonConstants.DIRECT_METHOD);
 		res.put("state","draft");
 		res.put("origin",origin);
 		if(this.getProdType() != null)
 			res.put("move_prod_type",this.getProdType());
 		res.put("location_id",this.getLocationSrc());
 		res.put("location_dest_id",this.getLocationDest());	
-		res.put("partner_ir",this.getPartnerId());
+		res.put("partner_id",this.getPartnerId());
 		return res;
 	}
 

@@ -1,5 +1,6 @@
 package ar.com.antaresconsulting.antonstockapp;
 
+import java.io.Serializable;
 import java.util.List;
 
 import android.app.ActionBar.LayoutParams;
@@ -37,7 +38,7 @@ public class DimensionsFragment extends Fragment implements DimensionDAO.DimsCal
 	// TODO: Rename and change types of parameters
 	private int tProd;
 	private BaseProduct idProd;
-
+	List<DimensionBalance> dimensions;
 
 	/**
 	 * Use this factory method to create a new instance of this fragment using
@@ -68,10 +69,15 @@ public class DimensionsFragment extends Fragment implements DimensionDAO.DimsCal
 		super.onCreate(savedInstanceState);
 		if (getArguments() != null) {
 			tProd = getArguments().getInt(ARG_TPROD_ID);
-			idProd = (BaseProduct) getArguments().getSerializable(ARG_ITEM_ID);
+			idProd = (BaseProduct) getArguments().getSerializable(AntonConstants.PRODUCT_SELECTED);
 		}
-		dimDao = new DimensionDAO(this);
-		dimDao.getAllDims(idProd.getId(),false);
+		if(savedInstanceState!=null){
+			List dims = (List) savedInstanceState.getSerializable(AntonConstants.DIMENSIONS_LIST);
+			this.dimensions = dims;
+		}else{
+			dimDao = new DimensionDAO(this);
+			dimDao.getAllDims(idProd.getId(),false);
+		}
 	}
 
 	@Override
@@ -107,15 +113,12 @@ public class DimensionsFragment extends Fragment implements DimensionDAO.DimsCal
 		// TODO: Update argument type and name
 		public void onFragmentInteraction(Uri uri);
 	}
-
-	@Override
-	public void setDimensions() {
-		List<DimensionBalance> dimensions = this.dimDao.getDimensionList();
-		
+	
+	public void getViewList() {
 	    TableRow row;
         TextView t1, t2, t3;
 
-        for (int current = 0; current < dimensions.size(); current++) {
+        for (int current = 0; current < this.dimensions.size(); current++) {
             row = new TableRow(this.getActivity());
  
             t1 = new TextView(this.getActivity());
@@ -144,11 +147,23 @@ public class DimensionsFragment extends Fragment implements DimensionDAO.DimsCal
             row.addView(t1);
             row.addView(t2);
             row.addView(t3);
- 
-            dimsTable.addView(row, new TableLayout.LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT));
- 
+        
+            dimsTable.addView(row, new TableLayout.LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT));		
         }
-		
 	}
+	
+        @Override
+	public void setDimensions() {
+		this.dimensions = this.dimDao.getDimensionList(); 
+    }
+
+		@Override
+		public void onSaveInstanceState(Bundle outState) {
+			// TODO Auto-generated method stub
+			super.onSaveInstanceState(outState);
+			outState.putSerializable(AntonConstants.DIMENSIONS_LIST, (Serializable) this.dimensions);
+		}
+		
+	
 
 }

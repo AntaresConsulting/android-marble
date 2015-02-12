@@ -32,8 +32,8 @@ public class ProductDetailActivity extends FragmentActivity {
 			// Create the detail fragment and add it to the activity
 			// using a fragment transaction.
 			Bundle arguments = new Bundle();
-			arguments.putString(ProductDetailFragment.ARG_ITEM_ID, getIntent()
-					.getStringExtra(ProductDetailFragment.ARG_ITEM_ID));
+			arguments.putString(AntonConstants.PRODUCT_SELECTED, getIntent()
+					.getStringExtra(AntonConstants.PRODUCT_SELECTED));
 			fragment = new ProductDetailFragment();
 			fragment.setArguments(arguments);
 			getFragmentManager().beginTransaction().add(R.id.product_detail_container, fragment).commit();

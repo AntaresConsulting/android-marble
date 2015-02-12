@@ -121,7 +121,7 @@ public class ReEnterProducts extends Activity implements MateriaPrimaDAO.Materia
 
 		for (int i = 0; i < maxProds; i++) {
 			MateriaPrima prod = (MateriaPrima) this.productos.getAdapter().getItem(i);
-			StockMove move = new StockMove(prod.getId().toString(), (String)prod.getUom()[0], loc_source, loc_destination, origin, prod.getCantidadReal().toString());				
+			StockMove move = new StockMove(prod.getNombre(), prod.getId(), (Integer)prod.getUom()[0], loc_source, loc_destination, origin, prod.getCantidadReal().toString());				
 			picking.addMove(move);
 		}
 		saveData.execute(picking);

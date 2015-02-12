@@ -26,6 +26,7 @@ import ar.com.antaresconsulting.antonstockapp.model.StockMove;
 import ar.com.antaresconsulting.antonstockapp.model.StockPicking;
 import ar.com.antaresconsulting.antonstockapp.model.dao.MateriaPrimaDAO;
 import ar.com.antaresconsulting.antonstockapp.model.dao.PartnerDAO;
+import ar.com.antaresconsulting.antonstockapp.popup.SearchMPPopupFragment;
 
 /**
  * A simple {@link android.support.v4.app.Fragment} subclass. Use the
@@ -132,7 +133,7 @@ public class AddPMMPFragment extends Fragment implements PartnerDAO.SuppliersCal
 
 		for (int i = 0; i < maxProds; i++) {
 			PedidoLinea prod = (PedidoLinea) this.prodsPedido.getAdapter().getItem(i);
-			StockMove move = new StockMove(((MateriaPrima)prod.getProduct()[0]).getId().toString(), ((Integer)prod.getUom()[0]).toString(), loc_source, loc_destination, origin, prod.getCant().toString());				
+			StockMove move = new StockMove(prod.getNombre(),((MateriaPrima)prod.getProduct()[0]).getId(), (Integer)prod.getUom()[0], loc_source, loc_destination, origin, prod.getCant().toString());				
 			picking.addMove(move);
 		}
 		saveData.execute(picking);
@@ -218,6 +219,13 @@ public class AddPMMPFragment extends Fragment implements PartnerDAO.SuppliersCal
 		linea.setProduct(prodData);
 		adapt.addLinea(linea);
 		adapt.notifyDataSetChanged();
+	}
+
+
+	@Override
+	public void setSuppliersProd() {
+		// TODO Auto-generated method stub
+		
 	}
 
 }

@@ -1,4 +1,4 @@
-package ar.com.antaresconsulting.antonstockapp;
+package ar.com.antaresconsulting.antonstockapp.popup;
 
 import com.openerp.DBAsyncTask;
 
@@ -14,6 +14,12 @@ import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.Spinner;
+import ar.com.antaresconsulting.antonstockapp.AntonConstants;
+import ar.com.antaresconsulting.antonstockapp.LoginActivityInterface;
+import ar.com.antaresconsulting.antonstockapp.R;
+import ar.com.antaresconsulting.antonstockapp.R.id;
+import ar.com.antaresconsulting.antonstockapp.R.layout;
+import ar.com.antaresconsulting.antonstockapp.R.string;
 
 public class ServerPopupFragment extends DialogFragment implements LoginActivityInterface {
 	

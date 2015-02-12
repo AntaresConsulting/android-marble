@@ -221,15 +221,12 @@ public class OpenErpConnect {
      * values.put("name", "hello"); <br>
      * values.put("number", 10); <br>
      * </code>
+     * @throws XMLRPCException 
      * */
-    public Long create(String model, HashMap<String, ?> values, HashMap<String, ?> context) {
+    public Long create(String model, HashMap<String, ?> values, HashMap<String, ?> context) throws XMLRPCException {
         Long newObjectId = null;
-        try {
-            XMLRPCClient client = new XMLRPCClient(mUrl);
-            newObjectId = ((Integer)client.call("execute", mDatabase, mUserId, mPassword, model, "create", values, context)).longValue();
-        } catch (XMLRPCException e) {
-            Log.d(CONNECTOR_NAME, e.toString());
-        }
+        XMLRPCClient client = new XMLRPCClient(mUrl);
+        newObjectId = ((Integer)client.call("execute", mDatabase, mUserId, mPassword, model, "create", values, context)).longValue();
         return newObjectId;
     }
     

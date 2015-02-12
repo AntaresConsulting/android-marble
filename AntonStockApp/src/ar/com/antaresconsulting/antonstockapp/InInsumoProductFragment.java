@@ -22,6 +22,7 @@ import ar.com.antaresconsulting.antonstockapp.model.Pedido;
 import ar.com.antaresconsulting.antonstockapp.model.PedidoLinea;
 import ar.com.antaresconsulting.antonstockapp.model.dao.InsumosDAO;
 import ar.com.antaresconsulting.antonstockapp.model.dao.PedidoDAO;
+import ar.com.antaresconsulting.antonstockapp.popup.SearchMPPopupFragment;
 
 /**
  * A placeholder fragment containing a simple view.
@@ -33,7 +34,7 @@ public class InInsumoProductFragment extends Fragment implements OnItemSelectedL
 	private Spinner pedidos;
 
 	private ListView productos;
-	private ListView productosDispo;
+	//private ListView productosDispo;
 
 	private EditText cantPlacas;
 	private TextView provee;
@@ -72,13 +73,14 @@ public class InInsumoProductFragment extends Fragment implements OnItemSelectedL
 		View rootView = null;
 		this.insuDao = new InsumosDAO(this);
 
-		rootView = inflater.inflate(R.layout.fragment_in_products_insumos,	container, false);
+		rootView = inflater.inflate(R.layout.fragment_in_products,	container, false);
 
-		this.productosDispo = (ListView) rootView.findViewById(R.id.productosDispo);
-		this.productosDispo.setChoiceMode(ListView.CHOICE_MODE_SINGLE);			
+//		this.productosDispo = (ListView) rootView.findViewById(R.id.productosDispo);
+//		this.productosDispo.setChoiceMode(ListView.CHOICE_MODE_SINGLE);			
 		this.cantPlacas = (EditText) rootView.findViewById(R.id.clientesList);
-		this.productos = (ListView) rootView.findViewById(R.id.productosPedido);
-		this.productos.setAdapter(new PedidoLineaAdapter(this.getActivity()));
+		//this.productos = (ListView) rootView.findViewById(R.id.productosPedido);
+		this.productos = (ListView) rootView.findViewById(R.id.productosDispo);
+		//this.productos.setChoiceMode(ListView.CHOICE_MODE_MULTIPLE);		
 		this.provee = (TextView) rootView.findViewById(R.id.proveedorNombre);
 		this.pedidos = (Spinner) rootView.findViewById(R.id.pedidosCombo);
 		this.pedidos.setOnItemSelectedListener(this);
@@ -86,25 +88,25 @@ public class InInsumoProductFragment extends Fragment implements OnItemSelectedL
 		this.pedDao = new PedidoDAO(this);
 		this.pedDao.getPedidosPend(AntonConstants.INSU_PICKING);
 
-		SwipeDismissListViewTouchListener touchListener = new SwipeDismissListViewTouchListener(
-				this.productos,
-				new SwipeDismissListViewTouchListener.DismissCallbacks() {
-					@Override
-					public boolean canDismiss(int position) {
-						return true;
-					}
-
-					@Override
-					public void onDismiss(ListView listView,
-							int[] reverseSortedPositions) {
-						for (int position : reverseSortedPositions) {
-							((PedidoLineaAdapter) productos.getAdapter()).delLinea((PedidoLinea) productos.getAdapter().getItem(position));
-						}
-						((PedidoLineaAdapter) productos.getAdapter()).notifyDataSetChanged();
-					}
-				});
-		this.productos.setOnTouchListener(touchListener);
-		this.productos.setOnScrollListener(touchListener.makeScrollListener());
+//		SwipeDismissListViewTouchListener touchListener = new SwipeDismissListViewTouchListener(
+//				this.productosDispo,
+//				new SwipeDismissListViewTouchListener.DismissCallbacks() {
+//					@Override
+//					public boolean canDismiss(int position) {
+//						return true;
+//					}
+//
+//					@Override
+//					public void onDismiss(ListView listView,
+//							int[] reverseSortedPositions) {
+//						for (int position : reverseSortedPositions) {
+//							((PedidoLineaAdapter) productosDispo.getAdapter()).delLinea((PedidoLinea) productosDispo.getAdapter().getItem(position));
+//						}
+//						((PedidoLineaAdapter) productosDispo.getAdapter()).notifyDataSetChanged();
+//					}
+//				});
+//		this.productosDispo.setOnTouchListener(touchListener);
+//		this.productosDispo.setOnScrollListener(touchListener.makeScrollListener());
 
 		return rootView;
 	}
@@ -118,46 +120,53 @@ public class InInsumoProductFragment extends Fragment implements OnItemSelectedL
 
 
 
-	public void addProduct(View view) {
-		boolean cancel = false;
-		View focus = null; 
-		if(this.cantPlacas.getText().toString().trim().equalsIgnoreCase("")){
-			this.cantPlacas.setError(getString(R.string.error_field_required));
-			cancel = true;
-			focus = this.cantPlacas;
-		}
-
-		if(cancel){
-			focus.requestFocus();
-			return;
-		}
-
-		PedidoLinea prod = (PedidoLinea) this.productosDispo.getAdapter().getItem(this.productosDispo.getCheckedItemPosition());
-		int position =  productosDispo.getCheckedItemPosition();
-		if(position == AdapterView.INVALID_POSITION){
-			Toast tt = Toast.makeText(this.getActivity(), "Primero debe seleccionar un producto", Toast.LENGTH_SHORT);
-			tt.show();
-			return;
-		}
-		
-		PedidoLineaAdapter adapter = (PedidoLineaAdapter) this.productos.getAdapter();		
-		prod.setCant(Double.parseDouble(this.cantPlacas.getText().toString()));
-		
-		adapter.addLinea(prod);
-		adapter.notifyDataSetChanged();
-	}
+//	public void addProduct(View view) {
+//		boolean cancel = false;
+//		View focus = null; 
+//		if(this.cantPlacas.getText().toString().trim().equalsIgnoreCase("")){
+//			this.cantPlacas.setError(getString(R.string.error_field_required));
+//			cancel = true;
+//			focus = this.cantPlacas;
+//		}
+//
+//		if(cancel){
+//			focus.requestFocus();
+//			return;
+//		}
+//
+//		PedidoLinea prod = (PedidoLinea) this.productosDispo.getAdapter().getItem(this.productosDispo.getCheckedItemPosition());
+//		int position =  productosDispo.getCheckedItemPosition();
+//		if(position == AdapterView.INVALID_POSITION){
+//			Toast tt = Toast.makeText(this.getActivity(), "Primero debe seleccionar un producto", Toast.LENGTH_SHORT);
+//			tt.show();
+//			return;
+//		}
+//		
+//		PedidoLineaAdapter adapter = (PedidoLineaAdapter) this.productos.getAdapter();		
+//		prod.setCant(Double.parseDouble(this.cantPlacas.getText().toString()));
+//		
+//		adapter.addLinea(prod);
+//		adapter.notifyDataSetChanged();
+//	}
 
 	@Override
 	public void setInsumos() {
-		this.productos.setAdapter(new ArrayAdapter<Insumo>(this.getActivity(),android.R.layout.simple_list_item_1,this.insuDao.getInsumosList()));	
+//		this.productos.setAdapter(new ArrayAdapter<Insumo>(this.getActivity(),android.R.layout.simple_list_item_1,this.insuDao.getInsumosList()));	
+		
 	}
 
 
 	public void confirmStock() {
-		PedidoLinea[] pls = new PedidoLinea[this.productos.getAdapter().getCount()];
+		PedidoLinea[] pls = new PedidoLinea[((PedidoLineaAdapter)this.productos.getAdapter()).getCantVerified()];
+		int j = 0;
 		for (int i = 0; i < this.productos.getAdapter().getCount(); i++) {
-			pls[i] =  (PedidoLinea) this.productos.getAdapter().getItem(i);
+			PedidoLinea pl = (PedidoLinea) this.productos.getAdapter().getItem(i);
+			if(pl.isVerificado()){
+				pls[j++] =  pl;
+			}
+			
 		}
+		
 		ConfirmMovesAsyncTask confAction = new ConfirmMovesAsyncTask(getActivity());
 		confAction.setMoveType("in");
 		confAction.setModelStockPicking("stock.move");
@@ -179,7 +188,7 @@ public class InInsumoProductFragment extends Fragment implements OnItemSelectedL
 	@Override
 	public void onItemSelected(AdapterView<?> arg0, View arg1, int pos,long arg3) {
 		Pedido ped = (Pedido) arg0.getItemAtPosition(pos);
-		this.provee.setText((String) ped.getPartner()[1]);
+		this.provee.setText((String) (ped.getPartner()[1]));
 		this.pedDao = new PedidoDAO(this);
 		this.pedDao.getMoveByPed(ped.getId());
 	}
@@ -192,7 +201,15 @@ public class InInsumoProductFragment extends Fragment implements OnItemSelectedL
 
 	@Override
 	public void setPedidosLineas() {
-		this.productosDispo.setAdapter(new ArrayAdapter<PedidoLinea>(this.getActivity(),android.R.layout.simple_list_item_single_choice,this.pedDao.getPedidoLineaList()));		
+		PedidoLineaAdapter pla =  new PedidoLineaAdapter(this,this.pedDao.getPedidoLineaList());
+		pla.setForCheck(true);
+		this.productos.setAdapter(pla);
+	}
+
+	@Override
+	public void addProduct(View view) {
+		// TODO Auto-generated method stub
+		
 	}
 
 }

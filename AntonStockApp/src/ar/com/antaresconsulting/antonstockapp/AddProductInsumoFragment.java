@@ -1,6 +1,7 @@
 package ar.com.antaresconsulting.antonstockapp;
 
 import java.util.HashMap;
+import java.util.List;
 
 import android.app.Fragment;
 import android.os.Bundle;
@@ -12,6 +13,7 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import ar.com.antaresconsulting.antonstockapp.model.Bacha;
 import ar.com.antaresconsulting.antonstockapp.model.BaseProduct;
+import ar.com.antaresconsulting.antonstockapp.model.Insumo;
 import ar.com.antaresconsulting.antonstockapp.model.SelectionObject;
 import ar.com.antaresconsulting.antonstockapp.model.dao.ProductDAO;
 
@@ -26,7 +28,7 @@ public class AddProductInsumoFragment extends Fragment implements AddProductInte
 	private Spinner uoms;
 	private EditText desc;
 	private static final String ARG_PARAM1 = "param1";
-
+	private Insumo idProd;
 	
 	public static AddProductInsumoFragment newInstance(BaseProduct param1) {
 		AddProductInsumoFragment fragment = new AddProductInsumoFragment();
@@ -54,6 +56,11 @@ public class AddProductInsumoFragment extends Fragment implements AddProductInte
 		desc = (EditText) rootView.findViewById(R.id.insuDesc);
 		prodDao = new ProductDAO(this);
 		prodDao.getUOMS();
+		idProd = (Insumo) getArguments().getSerializable(ARG_PARAM1);
+		if(idProd != null){
+			((AddProductsCallbacks)getActivity()).setProductDetail(idProd);			
+			desc.setText(idProd.getDescription());
+		}
 		return rootView;
 	}
 
@@ -75,7 +82,16 @@ public class AddProductInsumoFragment extends Fragment implements AddProductInte
 
 	@Override
 	public void setUoms() {
-		this.uoms.setAdapter(new ArrayAdapter<SelectionObject>(this.getActivity(),android.R.layout.simple_list_item_1,this.prodDao.getUomList()));
+		ArrayAdapter<SelectionObject> dataUoms =  new ArrayAdapter<SelectionObject>(this.getActivity(),android.R.layout.simple_list_item_1,this.prodDao.getUomList());
+		this.uoms.setAdapter(dataUoms);
+		if(idProd != null){
+			int maxUom = dataUoms.getCount();
+			for (int j = 0; j < maxUom; j++) {
+				SelectionObject objAux =  dataUoms.getItem(j);
+				if(objAux.getId().equalsIgnoreCase(idProd.getUomSO().getId()))
+					uoms.setSelection(j);
+			}	
+		}				
 	}
 
 }

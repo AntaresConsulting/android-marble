@@ -15,6 +15,7 @@ import android.widget.BaseAdapter;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 import android.widget.AdapterView.OnItemClickListener;
 import ar.com.antaresconsulting.antonstockapp.adapters.BaseProductAdapter;
 import ar.com.antaresconsulting.antonstockapp.adapters.EmpleadosAdapter;
@@ -122,14 +123,15 @@ public class ConsumeInsumo extends ActionBarActivity implements EmpleadoDAO.Empl
 		int maxProds = this.productos.getAdapter().getCount();
 
 		String loc_source = AntonConstants.PRODUCT_LOCATION_STOCK;
-		String loc_destination = AntonConstants.PRODUCT_LOCATION_OUTPUT;			
+		String loc_destination = AntonConstants.PRODUCT_LOCATION_INSUMOS;			
 		
 		StockPicking picking = new StockPicking("",AntonConstants.PICKING_TYPE_ID_INTERNAL,null,loc_source,loc_destination);
 		for (int i = 0; i < maxProds; i++) {
-			Insumo prod = (Insumo) this.productos.getAdapter().getItem(i-1);
-			StockMove move = new StockMove(prod.getId().toString(), (String)prod.getUom()[0], loc_source, loc_destination, "", prod.getCantidadReal().toString());				
+			Insumo prod = (Insumo) this.productos.getAdapter().getItem(i);
+			StockMove move = new StockMove(prod.getNombre(),prod.getId(), (Integer)prod.getUom()[0], loc_source, loc_destination, "", prod.getCantidadReal().toString());				
 			move.setEmployee(prod.getEntregado().getId().toString());
 			picking.addMove(move);
+			picking.setActionDone(true);
 		}
 		saveData.execute(picking);		
 	}
@@ -145,6 +147,9 @@ public class ConsumeInsumo extends ActionBarActivity implements EmpleadoDAO.Empl
 		if(this.cantPlacasUtil.getText().toString().trim().equalsIgnoreCase("")){
 			this.cantPlacasUtil.setError(getString(R.string.error_field_required));
 			this.cantPlacasUtil.requestFocus();
+			Toast tt = Toast.makeText(this.getApplicationContext(), "Primero debe definir la cantidad", Toast.LENGTH_SHORT);
+			tt.show();
+			return;
 		}		
 		InsumoAdapter adapter = (InsumoAdapter) this.productos.getAdapter();
 		Insumo prod = (Insumo) this.prodBuscador.getAdapter().getItem(this.productoSelecPos);

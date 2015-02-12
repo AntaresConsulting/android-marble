@@ -12,6 +12,7 @@ public class BaseProduct implements Serializable {
 	private static final long serialVersionUID = 7171920080509184313L;
 	private Integer id;
 	private String codigo;
+	private Integer templateId;
 	private String nombre;
 	private String atributos;
 	private Double cantidadReal;
@@ -140,7 +141,10 @@ public class BaseProduct implements Serializable {
 		this.price = price;
 	}
 
-
+	public SelectionObject getUomSO() {
+		return new SelectionObject(((Integer)this.uom[0]).toString(), (String)this.uom[1]);
+	}
+	
 	public Object[] getUom() {
 		return uom;
 	}
@@ -163,4 +167,15 @@ public class BaseProduct implements Serializable {
 		return this.getNombre()+ " "+this.getAtributos() +" - Cant. :" +this.getCantidadReal()+ " "+this.getUom()[1];
 	}
 
+
+	public Integer getTemplateId() {
+		return templateId;
+	}
+
+
+	public void setTemplateId(Integer template_id) {
+		this.templateId = template_id;
+	}
+
+	
 }

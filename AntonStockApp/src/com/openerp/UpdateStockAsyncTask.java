@@ -3,9 +3,12 @@ package com.openerp;
 import android.app.Activity;
 import android.app.ProgressDialog;
 import android.os.AsyncTask;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+
+import com.xmlrpc.XMLRPCException;
 
 import ar.com.antaresconsulting.antonstockapp.AntonConstants;
 import ar.com.antaresconsulting.antonstockapp.R;
@@ -19,6 +22,8 @@ public class UpdateStockAsyncTask extends AsyncTask<HashMap<String, Object>, Str
 	public ProgressDialog dialog;
 	private OpenErpConnect oc;
 	HashMap<String, String> context;
+	private String  strError;
+
 	
 	
 	public UpdateStockAsyncTask(Activity act) {
@@ -63,7 +68,12 @@ public class UpdateStockAsyncTask extends AsyncTask<HashMap<String, Object>, Str
 				dimVals.put(AntonConstants.DIMENSION_WIDTH, dim.getDimW());
 				dimVals.put(AntonConstants.DIMENSION_THICKNESS, dim.getDimT());
 				dimVals.put(AntonConstants.DIMENSION_TYPE, dim.getDimTipo().getId());
-				idDim = oc.create("product.marble.dimension", dimVals, this.context);
+				try {
+					idDim = oc.create("product.marble.dimension", dimVals, this.context);
+				} catch (XMLRPCException e) {
+					strError = e.getMessage();
+					return null;
+				}
 				ArrayList<Long> vals2 = new ArrayList<Long>();
 				vals2.add(idDim);
 				oc.call("product.marble.dimension", "action_confirm", vals2);
@@ -99,7 +109,13 @@ public class UpdateStockAsyncTask extends AsyncTask<HashMap<String, Object>, Str
 			move.put("state","draft");
 			move.put("name",prod.getNombre());	
 			
-			Long idM = oc.create("stock.move",move, this.context);
+			Long idM;
+			try {
+				idM = oc.create("stock.move",move, this.context);
+			} catch (XMLRPCException e) {
+				strError = e.getMessage();
+				return null;
+			}
 			
 			ArrayList<Long> vals2 = new ArrayList<Long>();
 			vals2.add(idM);
@@ -108,7 +124,12 @@ public class UpdateStockAsyncTask extends AsyncTask<HashMap<String, Object>, Str
 		}else{
 			values[0].remove("dimension");
 			values[0].remove("product");
-			retVal = oc.create(AntonConstants.PRODUCT_CHANGE_MODEL, values[0], this.context);	
+			try {
+				retVal = oc.create(AntonConstants.PRODUCT_CHANGE_MODEL, values[0], this.context);
+			} catch (XMLRPCException e) {
+				strError = e.getMessage();
+				return null;
+			}	
 			oc.call(AntonConstants.PRODUCT_CHANGE_MODEL, "change_product_qty", retVal);			
 		}
 		return retVal;
@@ -121,7 +142,9 @@ public class UpdateStockAsyncTask extends AsyncTask<HashMap<String, Object>, Str
             //activity.finish();
 		}
 		else{
-			
+            Toast tt = Toast.makeText(this.activity.getApplicationContext(), "Ha ocurrido un error vuelva a intentarlo!"+strError, Toast.LENGTH_LONG);
+            tt.show();
+            activity.finish();	
 		}
 		if (dialog.isShowing()) {
 			dialog.dismiss();

@@ -28,6 +28,7 @@ import ar.com.antaresconsulting.antonstockapp.model.PedidoLinea;
 import ar.com.antaresconsulting.antonstockapp.model.dao.MateriaPrimaDAO;
 import ar.com.antaresconsulting.antonstockapp.model.dao.DimensionDAO;
 import ar.com.antaresconsulting.antonstockapp.model.dao.PedidoDAO;
+import ar.com.antaresconsulting.antonstockapp.popup.SearchMPPopupFragment;
 
 /**
  * A placeholder fragment containing a simple view.

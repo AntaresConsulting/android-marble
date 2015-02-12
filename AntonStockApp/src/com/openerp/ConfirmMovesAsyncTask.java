@@ -7,6 +7,9 @@ import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+
+import com.xmlrpc.XMLRPCException;
+
 import ar.com.antaresconsulting.antonstockapp.AntonConstants;
 import ar.com.antaresconsulting.antonstockapp.R;
 import ar.com.antaresconsulting.antonstockapp.model.Dimension;
@@ -19,6 +22,8 @@ public class ConfirmMovesAsyncTask extends AsyncTask<PedidoLinea, String, Long> 
 	private String modelStockPicking;
 	private String moveType;
 	HashMap<String, String> context;
+	private String  strError;
+
 
 	public String getModelStockPicking() {
 		return modelStockPicking;
@@ -81,7 +86,13 @@ public class ConfirmMovesAsyncTask extends AsyncTask<PedidoLinea, String, Long> 
 					dimVals.put(AntonConstants.DIMENSION_WIDTH, dim.getDimW());
 					dimVals.put(AntonConstants.DIMENSION_THICKNESS, dim.getDimT());
 					dimVals.put(AntonConstants.DIMENSION_TYPE, dim.getDimTipo().getId());
-					Long idDim = oc.create("product.marble.dimension", dimVals, this.context);
+					Long idDim;
+					try {
+						idDim = oc.create("product.marble.dimension", dimVals, this.context);
+					} catch (XMLRPCException e) {
+						strError = e.getMessage();
+						return null;
+					}
 					ArrayList<Long> vals2 = new ArrayList<Long>();
 					vals2.add(idDim);
 					oc.call("product.marble.dimension", "action_confirm", vals2);
@@ -120,7 +131,9 @@ public class ConfirmMovesAsyncTask extends AsyncTask<PedidoLinea, String, Long> 
             activity.finish();
 		}
 		else{
-			
+            Toast tt = Toast.makeText(this.activity.getApplicationContext(), "Ha ocurrido un error vuelva a intentarlo!"+strError, Toast.LENGTH_LONG);
+            tt.show();
+            activity.finish();				
 		}
 		if (dialog.isShowing()) {
 			dialog.dismiss();

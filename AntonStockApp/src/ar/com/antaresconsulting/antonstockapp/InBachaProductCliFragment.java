@@ -38,16 +38,18 @@ import ar.com.antaresconsulting.antonstockapp.model.StockPicking;
 import ar.com.antaresconsulting.antonstockapp.model.dao.BachasDAO;
 import ar.com.antaresconsulting.antonstockapp.model.dao.PartnerDAO;
 import ar.com.antaresconsulting.antonstockapp.model.dao.PedidoDAO;
+import ar.com.antaresconsulting.antonstockapp.popup.SearchBachaPopupFragment;
+import ar.com.antaresconsulting.antonstockapp.popup.SearchMPPopupFragment;
 
 /**
  * A placeholder fragment containing a simple view.
  */
-public class InBachaProductFragment extends Fragment implements  SearchBachaPopupFragment.SearchProductListener, PartnerDAO.ClientsCallbacks,OnItemSelectedListener, InProductActions,BachasDAO.BachasCallbacks, PedidoDAO.PedidosCallbacks{
-	
+public class InBachaProductCliFragment extends Fragment implements  SearchBachaPopupFragment.SearchProductListener, PartnerDAO.ClientsCallbacks,OnItemSelectedListener, InProductActions,BachasDAO.BachasCallbacks, PedidoDAO.PedidosCallbacks{
+
 	private BachasDAO baDao;
 	private PedidoDAO pedDao;
 	private PartnerDAO partDao;
-	
+
 	private Spinner pedidos;
 
 	private ListView productos;
@@ -64,19 +66,19 @@ public class InBachaProductFragment extends Fragment implements  SearchBachaPopu
 
 	// TODO: Rename and change types of parameters
 	private int mParam1;
-	public InBachaProductFragment() {
+	public InBachaProductCliFragment() {
 
 	}
 
-	public static InBachaProductFragment newInstance(int param1) {
-		InBachaProductFragment fragment = new InBachaProductFragment();
+	public static InBachaProductCliFragment newInstance(int param1) {
+		InBachaProductCliFragment fragment = new InBachaProductCliFragment();
 		Bundle args = new Bundle();
 		args.putInt(ARG_PARAM1, param1);
 		fragment.setArguments(args);
 		return fragment;
 	}
 
-	
+
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -90,59 +92,49 @@ public class InBachaProductFragment extends Fragment implements  SearchBachaPopu
 			Bundle savedInstanceState) {
 		View rootView = null;
 		this.baDao = new BachasDAO(this);
-		if(mParam1 == AntonConstants.BACHAS_CLI)
-			rootView = inflater.inflate(R.layout.fragment_in_products_bachas_cli,	container, false);
-		if(mParam1 == AntonConstants.BACHAS_PROV)
-			rootView = inflater.inflate(R.layout.fragment_in_products_bachas_prov,	container, false);
+		rootView = inflater.inflate(R.layout.fragment_in_products_bachas_cli,	container, false);
+
+
+
 		this.productosDispo = (ListView) rootView.findViewById(R.id.productosDispo);
 		this.productosDispo.setChoiceMode(ListView.CHOICE_MODE_SINGLE);			
 		this.cantPlacas = (EditText) rootView.findViewById(R.id.clientesList);
 		this.productos = (ListView) rootView.findViewById(R.id.productosPedido);
 		this.productos.setAdapter(new PedidoLineaAdapter(this.getActivity()));
-	
-		if(mParam1 == AntonConstants.BACHAS_PROV){
-			this.provee = (TextView) rootView.findViewById(R.id.proveedorNombre);
-			this.pedidos = (Spinner) rootView.findViewById(R.id.pedidosCombo);
-			this.pedidos.setOnItemSelectedListener(this);
 
-			this.pedDao = new PedidoDAO(this);
-			this.pedDao.getPedidosPend(AntonConstants.BACHA_PICKING);			
-		}
-		
-		if(mParam1 == AntonConstants.BACHAS_CLI){
-			thisFrag = this;
-			this.cliente = (AutoCompleteTextView) rootView.findViewById(R.id.clienteNombre);
-			this.cliente.addTextChangedListener(new TextWatcher() {
-			    @Override
-			    public void afterTextChanged(Editable editable) {
-			    }
-			    @Override
-			    public void beforeTextChanged(CharSequence charSequence, int arg1, int arg2, int arg3) {
-			    }
+		thisFrag = this;
+		this.cliente = (AutoCompleteTextView) rootView.findViewById(R.id.clienteNombre);
+		this.cliente.addTextChangedListener(new TextWatcher() {
+			@Override
+			public void afterTextChanged(Editable editable) {
+			}
+			@Override
+			public void beforeTextChanged(CharSequence charSequence, int arg1, int arg2, int arg3) {
+			}
 
-			    @Override
-			    public void onTextChanged(CharSequence charSequence, int start, int before, int count) {
-			        String text=charSequence.toString();
-			        if(!cliente.isPopupShowing()){
-				        if(isExcecute)
-				        	return ;
-				        if (text.length() > AntonConstants.MIN_CHAR_LENGTH) {
-				        	isExcecute = true;
-				        	partDao = new PartnerDAO(thisFrag);
-				        	partDao.getAllCompanies(text);
-				        }
-			        }
-			    }
-			});			
-			this.cliente.setOnItemClickListener(new OnItemClickListener() {
-
-				public void onItemClick(AdapterView<?> arg0, View arg1, int arg2,
-						long arg3) {
-					selectCliente = (Partner) arg0.getItemAtPosition(arg2);
+			@Override
+			public void onTextChanged(CharSequence charSequence, int start, int before, int count) {
+				String text=charSequence.toString();
+				if(!cliente.isPopupShowing()){
+					if(isExcecute)
+						return ;
+					if (text.length() > AntonConstants.MIN_CHAR_LENGTH) {
+						isExcecute = true;
+						partDao = new PartnerDAO(thisFrag);
+						partDao.getAllCompanies(text);
+					}
 				}
-			});			
-		}
-		
+			}
+		});			
+		this.cliente.setOnItemClickListener(new OnItemClickListener() {
+
+			public void onItemClick(AdapterView<?> arg0, View arg1, int arg2,
+					long arg3) {
+				selectCliente = (Partner) arg0.getItemAtPosition(arg2);
+			}
+		});			
+
+
 		SwipeDismissListViewTouchListener touchListener = new SwipeDismissListViewTouchListener(
 				this.productos,
 				new SwipeDismissListViewTouchListener.DismissCallbacks() {
@@ -195,28 +187,19 @@ public class InBachaProductFragment extends Fragment implements  SearchBachaPopu
 			tt.show();
 			return;
 		}
-		if(mParam1 == AntonConstants.BACHAS_PROV){
-			PedidoLinea prod = (PedidoLinea) this.productosDispo.getAdapter().getItem(this.productosDispo.getCheckedItemPosition());
-			PedidoLineaAdapter adapter = (PedidoLineaAdapter) this.productos.getAdapter();
-			prod.setCant(Double.parseDouble(this.cantPlacas.getText().toString()));
-			
-			adapter.addLinea(prod);
-			adapter.notifyDataSetChanged();		
-		}
-		if(mParam1 == AntonConstants.BACHAS_CLI){		
-			Bacha prod = (Bacha) this.productosDispo.getAdapter().getItem(this.productosDispo.getCheckedItemPosition());
-			PedidoLineaAdapter adapter = (PedidoLineaAdapter) this.productos.getAdapter();
+		Bacha prod = (Bacha) this.productosDispo.getAdapter().getItem(this.productosDispo.getCheckedItemPosition());
+		PedidoLineaAdapter adapter = (PedidoLineaAdapter) this.productos.getAdapter();
 
-			PedidoLinea linea = new PedidoLinea();
-			linea.setCant(Double.valueOf(cantPlacas.getText().toString()));
-			linea.setNombre(prod.getNombre());
-			linea.setUom(prod.getUom());
-			Object[] prodData=new Object[1];
-			prodData[0] = prod;
-			linea.setProduct(prodData);
-			adapter.addLinea(linea);
-			adapter.notifyDataSetChanged();			
-		}
+		PedidoLinea linea = new PedidoLinea();
+		linea.setCant(Double.valueOf(cantPlacas.getText().toString()));
+		linea.setNombre(prod.getNombre());
+		linea.setUom(prod.getUom());
+		Object[] prodData=new Object[1];
+		prodData[0] = prod;
+		linea.setProduct(prodData);
+		adapter.addLinea(linea);
+		adapter.notifyDataSetChanged();			
+
 	}
 
 	@Override
@@ -226,35 +209,25 @@ public class InBachaProductFragment extends Fragment implements  SearchBachaPopu
 
 
 	public void confirmStock() {
-		if(mParam1 == AntonConstants.BACHAS_PROV){
-			PedidoLinea[] pls = new PedidoLinea[this.productos.getAdapter().getCount()];
-			for (int i = 0; i < this.productos.getAdapter().getCount(); i++) {
-				pls[i] =  (PedidoLinea) this.productos.getAdapter().getItem(i);
-			}
-			ConfirmMovesAsyncTask confAction = new ConfirmMovesAsyncTask(getActivity());
-			confAction.setMoveType("in");
-			confAction.setModelStockPicking("stock.move");
-			confAction.execute(pls);				
+
+		CreatePickingAsyncTask saveData = new CreatePickingAsyncTask(this.getActivity());
+		int maxProds = this.productos.getAdapter().getCount();
+
+		Partner proveedor = this.selectCliente;
+		String origin = "";
+
+		String loc_source = AntonConstants.PRODUCT_LOCATION_SUPPLIER;
+		String loc_destination = AntonConstants.PRODUCT_LOCATION_STOCK;			
+
+		StockPicking picking = new StockPicking(origin,AntonConstants.PICKING_TYPE_ID_IN,proveedor.getId().toString(),loc_source,loc_destination,AntonConstants.BACHA_PICKING);
+
+		for (int i = 0; i < maxProds; i++) {
+			PedidoLinea prod = (PedidoLinea) this.productos.getAdapter().getItem(i);
+			StockMove move = new StockMove(prod.getNombre(),((Bacha)prod.getProduct()[0]).getId(), (Integer)prod.getUom()[0], loc_source, loc_destination, origin, prod.getCant().toString());				
+			picking.addMove(move);
 		}
-		if(mParam1 == AntonConstants.BACHAS_CLI){
-			CreatePickingAsyncTask saveData = new CreatePickingAsyncTask(this.getActivity());
-			int maxProds = this.productos.getAdapter().getCount();
+		saveData.execute(picking);	
 
-			Partner proveedor = this.selectCliente;
-			String origin = "";
-
-			String loc_source = AntonConstants.PRODUCT_LOCATION_SUPPLIER;
-			String loc_destination = AntonConstants.PRODUCT_LOCATION_STOCK;			
-			
-			StockPicking picking = new StockPicking(origin,AntonConstants.PICKING_TYPE_ID_IN,proveedor.getId().toString(),loc_source,loc_destination,AntonConstants.BACHA_PICKING);
-
-			for (int i = 0; i < maxProds; i++) {
-				PedidoLinea prod = (PedidoLinea) this.productos.getAdapter().getItem(i);
-				StockMove move = new StockMove(((Bacha)prod.getProduct()[0]).getId().toString(), (String)prod.getUom()[0], loc_source, loc_destination, origin, prod.getCant().toString());				
-				picking.addMove(move);
-			}
-			saveData.execute(picking);	
-		}
 
 	}
 
@@ -300,7 +273,7 @@ public class InBachaProductFragment extends Fragment implements  SearchBachaPopu
 	@Override
 	public void setClientDetail() {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	public void searchProduct() {
@@ -319,9 +292,9 @@ public class InBachaProductFragment extends Fragment implements  SearchBachaPopu
 		String acero = sharedPref.getString(getString(R.string.search_bacha_acero),"");
 		String colocacion = sharedPref.getString(getString(R.string.search_bacha_colocacion),"");
 
-		
+
 		this.baDao = new BachasDAO(this);
 		this.baDao.getBachasProducts(tipo, marca, nombreProd,tbacha,acero,colocacion);			
 	}
-	
+
 }

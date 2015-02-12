@@ -12,6 +12,8 @@ public class PartnerDAO extends ReadAsyncTask{
 	private static final int PARTNER_CLIENTS = 1;
 	private static final int PARTNER_SUPPLIERS = 2;
 	private static final int PARTNER_CLIENT_DETAIL = 3;
+	private static final int PARTNER_SUPPLIERS_PROD = 4;
+
 	private int dataToSet;
 	private Fragment activityPart;
 	
@@ -21,6 +23,8 @@ public class PartnerDAO extends ReadAsyncTask{
 	}
 	public interface SuppliersCallbacks{
 		void setSuppliers();
+		void setSuppliersProd();
+
 	}	
 		
 	public PartnerDAO(Fragment frag){
@@ -34,12 +38,23 @@ public class PartnerDAO extends ReadAsyncTask{
 		this.setmModel("res.partner");
 	}
 	
+	public Partner[] getProdSupplier(){
+		
+		Partner[] datosProds = new Partner[this.mData.size()];
+		int i = 0 ;
+		for (HashMap<String, Object> obj : this.mData) {
+			Object[] supp = (Object[]) obj.get("name");
+			System.out.println("sss");
+			datosProds[i++] = new Partner((Integer)supp[0],(String)supp[1],"","","","","","");
+		}	
+		return datosProds;
+	}
+	
 	public Partner[] getPartnersArray(){
 		
 		Partner[] datosProds = new Partner[this.mData.size()];
 		int i = 0 ;
 		for (HashMap<String, Object> obj : this.mData) {
-			String company =  obj.get("parent_id") instanceof Boolean  ?"":(String)(((Object[])obj.get("parent_id"))[1]);
 			String street = obj.get("street") instanceof Boolean?"":(String)obj.get("street");
 			String imageResp = obj.get("image_medium") instanceof Boolean?"":(String)obj.get("image_medium");
 			String web = obj.get("website") instanceof Boolean?"":(String)obj.get("website");
@@ -90,7 +105,10 @@ public class PartnerDAO extends ReadAsyncTask{
 			break;
 		case PartnerDAO.PARTNER_CLIENT_DETAIL:
 			((ClientsCallbacks)this.activityPart).setClientDetail();
-			break;			
+			break;	
+		case PartnerDAO.PARTNER_SUPPLIERS_PROD:
+			((SuppliersCallbacks)this.activityPart).setSuppliersProd();
+			break;				
 		default:
 			break;
 		}
@@ -103,6 +121,13 @@ public class PartnerDAO extends ReadAsyncTask{
 			suppliers[i++] = (String)obj.get("name");
 		}	
 		return suppliers;
+	}
+
+	public void getSuppliersByProd(Integer id) {
+		this.setmFilters(new Object[] {new Object[] {"product_tmpl_id", "=", id}});
+		this.setmModel("product.supplierinfo");	
+		this.execute(new String[]{"name","min_qty","qty","product_code"});
+		this.dataToSet=PartnerDAO.PARTNER_SUPPLIERS_PROD;		
 	}
 	
 }

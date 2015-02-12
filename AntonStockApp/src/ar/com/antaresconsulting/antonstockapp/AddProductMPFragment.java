@@ -1,7 +1,6 @@
 package ar.com.antaresconsulting.antonstockapp;
 
 import java.util.HashMap;
-import com.openerp.WriteAsyncTask;
 
 import android.app.Fragment;
 import android.os.Bundle;
@@ -21,7 +20,6 @@ import ar.com.antaresconsulting.antonstockapp.model.SelectionObject;
  */
 public class AddProductMPFragment extends Fragment implements AddProductInterface {
 
-	private WriteAsyncTask saveData;
 	private Spinner color;
 	private Spinner material;
 	private Spinner finished;

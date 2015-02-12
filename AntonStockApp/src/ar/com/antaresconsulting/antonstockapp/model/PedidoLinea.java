@@ -16,6 +16,7 @@ public class PedidoLinea implements Serializable, Cloneable  {
 	private String estado;
 	private Object[] uom;
 	private Object[] dimension;
+	private boolean verificado;
 
 
 	@Override
@@ -74,6 +75,15 @@ public class PedidoLinea implements Serializable, Cloneable  {
 	}
 	public void setEstado(String estado) {
 		this.estado = estado;
+	}
+
+
+	public boolean isVerificado() {
+		return verificado;
+	}
+
+	public void setVerificado(boolean verificado) {
+		this.verificado = verificado;
 	}
 
 	@Override

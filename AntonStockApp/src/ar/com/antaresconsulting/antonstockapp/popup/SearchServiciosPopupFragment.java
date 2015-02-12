@@ -1,4 +1,4 @@
-package ar.com.antaresconsulting.antonstockapp;
+package ar.com.antaresconsulting.antonstockapp.popup;
 
 import android.app.AlertDialog;
 import android.app.Dialog;
@@ -16,6 +16,10 @@ import android.widget.AutoCompleteTextView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.AdapterView.OnItemClickListener;
+import ar.com.antaresconsulting.antonstockapp.R;
+import ar.com.antaresconsulting.antonstockapp.R.id;
+import ar.com.antaresconsulting.antonstockapp.R.layout;
+import ar.com.antaresconsulting.antonstockapp.R.string;
 import ar.com.antaresconsulting.antonstockapp.model.dao.ProductDAO;
 
 public class SearchServiciosPopupFragment extends DialogFragment implements ProductDAO.ServiciosCallbacks{

@@ -22,7 +22,6 @@ public class ProductDetailExtraFragment extends Fragment  {
 	 * The fragment argument representing the item ID that this fragment
 	 * represents.
 	 */
-	public static final String ARG_ITEM_ID = "item_id";
 	public static final String ARG_TPROD_ID = "tprod_id";
 	private int tProd;
 	
@@ -32,7 +31,7 @@ public class ProductDetailExtraFragment extends Fragment  {
 	public static ProductDetailExtraFragment newInstance(BaseProduct mp,int tprod) {
 		ProductDetailExtraFragment fragment = new ProductDetailExtraFragment();
 		Bundle args = new Bundle();
-		args.putSerializable(ARG_ITEM_ID, mp);
+		args.putSerializable(AntonConstants.PRODUCT_SELECTED, mp);
 		args.putInt(AntonConstants.TPROD, tprod);
 		fragment.setArguments(args);
 		return fragment;
@@ -49,7 +48,7 @@ public class ProductDetailExtraFragment extends Fragment  {
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);	
 		if (getArguments() != null) {
-			pData = (BaseProduct) getArguments().getSerializable(ARG_ITEM_ID);
+			pData = (BaseProduct) getArguments().getSerializable(AntonConstants.PRODUCT_SELECTED);
 			tProd = getArguments().getInt(AntonConstants.TPROD);
 		}			
 	}

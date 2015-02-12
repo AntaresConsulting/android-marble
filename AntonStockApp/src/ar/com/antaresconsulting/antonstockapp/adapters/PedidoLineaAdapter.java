@@ -9,17 +9,20 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.CheckBox;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import ar.com.antaresconsulting.antonstockapp.R;
-import ar.com.antaresconsulting.antonstockapp.model.BaseProduct;
 import ar.com.antaresconsulting.antonstockapp.model.Dimension;
-import ar.com.antaresconsulting.antonstockapp.model.MateriaPrima;
 import ar.com.antaresconsulting.antonstockapp.model.PedidoLinea;
 
 public class PedidoLineaAdapter extends BaseAdapter {
 	List<PedidoLinea> datos = new ArrayList<PedidoLinea>();
 	Activity context;	
+	int cantVerified = 0;
+	boolean forCheck = false;
 
 	static class ViewHolder {
 		public TextView lblNombre;
@@ -32,6 +35,7 @@ public class PedidoLineaAdapter extends BaseAdapter {
 		public TextView dimWidth2;
 		public TextView superficie;
 		public TextView superficieTotal;
+		public CheckBox verificado;
 		public RelativeLayout dimContainer;
 
 	}
@@ -66,14 +70,29 @@ public class PedidoLineaAdapter extends BaseAdapter {
 			viewHolder.dimThick = (TextView) rowView.findViewById(R.id.dimT);
 			viewHolder.superficie = (TextView) rowView.findViewById(R.id.superficie);
 			viewHolder.superficieTotal = (TextView) rowView.findViewById(R.id.superficieTotal);
-
+			viewHolder.verificado = (CheckBox) rowView.findViewById(R.id.prodVerificado);       
+	        if(!forCheck)
+	        	viewHolder.verificado.setVisibility(View.GONE);
 			rowView.setTag(viewHolder);
 		}
 		ViewHolder holder = (ViewHolder) rowView.getTag();
-		PedidoLinea registro = (PedidoLinea) datos.get(position);
+		final PedidoLinea registro = (PedidoLinea) datos.get(position);
 		holder.lblNombre.setText(registro.getNombre());
 		holder.cantidad.setText(String.valueOf(registro.getCant()));
 		holder.unidades.setText((String)registro.getUom()[1]);
+		holder.verificado.setOnCheckedChangeListener(new OnCheckedChangeListener()
+        {
+            @Override
+            public void onCheckedChanged(CompoundButton view, boolean isChecked)
+            {
+            	if(isChecked){
+            		cantVerified++;
+            	}else{
+            		cantVerified--;
+            	}
+            	registro.setVerificado(isChecked);
+            }
+        });		
 		if((registro.getDimension() != null) && (registro.getDimension().length > 0)){
 			holder.dimContainer.setVisibility(View.VISIBLE);
 			Dimension dim = (Dimension) registro.getDimension()[0];
@@ -124,5 +143,18 @@ public class PedidoLineaAdapter extends BaseAdapter {
 	}
 	public void delProduct(PedidoLinea item) {
 		this.datos.remove(item);
+	}
+	public int getCantVerified() {
+		return cantVerified;
+	}
+	public void setCantVerified(int cantVerified) {
+		this.cantVerified = cantVerified;
+	}
+	public boolean isForCheck() {
+		return forCheck;
+	}
+	public void setForCheck(boolean forCheck) {
+		this.forCheck = forCheck;
 	}		
+
 }

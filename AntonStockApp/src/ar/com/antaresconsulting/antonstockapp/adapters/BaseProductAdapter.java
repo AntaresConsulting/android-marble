@@ -34,6 +34,7 @@ public class BaseProductAdapter extends BaseAdapter {
 		public TextView lblNombre;
 		public TextView lblCode;
 		public TextView lblPrice;
+		public TextView lblAtribs;
 		public TextView lblCantOnHand;
 		public TextView lblCantForecast;
 		public TextView lblCantIncome;
@@ -94,6 +95,7 @@ public class BaseProductAdapter extends BaseAdapter {
 
 			viewHolder.lblNombre = (TextView) rowView.findViewById(R.id.nombreProd);
 			viewHolder.lblCode = (TextView) rowView.findViewById(R.id.codigoVal);
+			viewHolder.lblAtribs = (TextView) rowView.findViewById(R.id.atribs);
 			viewHolder.lblPrice = (TextView) rowView.findViewById(R.id.precioVal);
 			viewHolder.lblCantOnHand = (TextView) rowView.findViewById(R.id.stockRVal);
 			viewHolder.lblCantForecast = (TextView) rowView.findViewById(R.id.stockFVal);
@@ -108,6 +110,11 @@ public class BaseProductAdapter extends BaseAdapter {
 		BaseProduct prod =  datos.get(position);
 		holder.lblNombre.setText(datos.get(position).getNombre());
 		holder.lblCode.setText(datos.get(position).getCodigo());
+		if(prod.getAtributos()!= null && !prod.getAtributos().trim().equalsIgnoreCase("")){
+			holder.lblAtribs.setText(prod.getAtributos());
+		}else{
+			holder.lblAtribs.setVisibility(View.GONE);
+		}
 		if(OpenErpHolder.getInstance().getmOConn().isManager()){
 			holder.lblPrice.setText(datos.get(position).getPrice().toString());
 		}else{

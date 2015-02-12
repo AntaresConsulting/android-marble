@@ -1,9 +1,11 @@
 package ar.com.antaresconsulting.antonstockapp;
 
+import java.math.BigDecimal;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 
+import com.openerp.CreateAsyncTask;
 import com.openerp.DeleteAsyncTask;
 import com.openerp.UpdateStockAsyncTask;
 import com.openerp.WriteAsyncTask;
@@ -34,6 +36,9 @@ import ar.com.antaresconsulting.antonstockapp.adapters.TabsAdapter;
 import ar.com.antaresconsulting.antonstockapp.model.BaseProduct;
 import ar.com.antaresconsulting.antonstockapp.model.Dimension;
 import ar.com.antaresconsulting.antonstockapp.model.MateriaPrima;
+import ar.com.antaresconsulting.antonstockapp.popup.AssignSuppPopupFragment;
+import ar.com.antaresconsulting.antonstockapp.popup.OrderPointPopupFragment;
+import ar.com.antaresconsulting.antonstockapp.popup.UpdateStockPopupFragment;
 
 /**
  * An activity representing a list of Items. This activity has different
@@ -54,6 +59,10 @@ public class ProductListActivity extends ActionBarActivity implements
 		WriteAsyncTask.WriteAsyncTaskCallbacks,
 		NavigationDrawerFragment.NavigationDrawerCallbacks,
 		UpdateStockPopupFragment.UpdateStockListener,
+		OrderPointPopupFragment.OrderPointListener,		
+		AssignSuppPopupFragment.AssignSuppListener,	
+		CreateAsyncTask.CreateAsyncTaskCallbacks,
+		PartnerListFragment.Callbacks,
 		ProductListFragment.Callbacks {
 
 	/**
@@ -67,6 +76,7 @@ public class ProductListActivity extends ActionBarActivity implements
 	private ProductDetailFragment fragment;
 	private int tProd;
 	private Menu myMenu = null;
+	private BaseProduct selected = null;
 
 	private TabHost mTabHost;
 	private ViewPager mViewPager;
@@ -173,9 +183,10 @@ public class ProductListActivity extends ActionBarActivity implements
 	 */
 	@Override
 	public void onItemSelected(BaseProduct prod) {
+		this.selected  = prod;
 		if (mTwoPane) {
 			Bundle arguments = new Bundle();
-			arguments.putSerializable(ProductDetailFragment.ARG_ITEM_ID, prod);
+			arguments.putSerializable(AntonConstants.PRODUCT_SELECTED, prod);
 			arguments.putInt(AntonConstants.TPROD, this.tProd);
 			fragment = new ProductDetailFragment();
 			fragment.setArguments(arguments);
@@ -189,7 +200,9 @@ public class ProductListActivity extends ActionBarActivity implements
 			mTabsAdapter.addTab(mTabHost.newTabSpec("detailExtra")
 					.setIndicator("Atributos del Producto"),
 					ProductDetailExtraFragment.class, arguments);
-			//mTabsAdapter.addTab(mTabHost.newTabSpec("proveedor").setIndicator("Prodveedores"),PartnerListFragment.class, arguments);
+			arguments.putBoolean(AntonConstants.SET_SUPPLIER, new Boolean(true));
+
+			mTabsAdapter.addTab(mTabHost.newTabSpec("proveedor").setIndicator("Proveedores"),PartnerListFragment.class, arguments);
 			if (tProd == AntonConstants.MATERIA_PRIMA)
 				mTabsAdapter.addTab(mTabHost.newTabSpec("dimensiones")
 						.setIndicator("Dimensiones"), DimensionsFragment.class,
@@ -199,7 +212,7 @@ public class ProductListActivity extends ActionBarActivity implements
 			// In single-pane mode, simply start the detail activity
 			// for the selected item ID.
 			Intent detailIntent = new Intent(this, ProductDetailActivity.class);
-			detailIntent.putExtra(ProductDetailFragment.ARG_ITEM_ID, prod);
+			detailIntent.putExtra(AntonConstants.PRODUCT_SELECTED, prod);
 			startActivity(detailIntent);
 		}
 	}
@@ -331,7 +344,19 @@ public class ProductListActivity extends ActionBarActivity implements
 		UpdateStockPopupFragment popconf = UpdateStockPopupFragment.newInstance(this.tProd);
 		popconf.show(getFragmentManager(),"Server_Search");		
 	}
+	
+	public void asignSupp(View view) {
+		AssignSuppPopupFragment popconf = AssignSuppPopupFragment.newInstance(this.tProd);
+		popconf.show(getFragmentManager(),"Server_Search");		
+	}
+	
+	public void stockRule(View view) {
+		OrderPointPopupFragment popconf = OrderPointPopupFragment.newInstance(this.tProd);
+		popconf.show(getFragmentManager(),"Server_Search");		
+	}
 
+	
+	
 	@Override
 	public void updateStockAction(int cant, Dimension dim) {
 		UpdateStockAsyncTask update = new UpdateStockAsyncTask(this);
@@ -344,6 +369,58 @@ public class ProductListActivity extends ActionBarActivity implements
 		values.put("product",prod);
 		values.put("product_id", prodDet.getProductSelected().getId());
 		update.execute(values);
+	}
+
+	@Override
+	public void onItemSelected(String id) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void assignSupplierAction(Integer i) {
+		WriteAsyncTask aa = new WriteAsyncTask(this);
+        OpenErpHolder.getInstance().setmModelName("product.template");		
+        HashMap[] values = new HashMap[2];
+        values[0] = new HashMap<String, Object>();
+        values[0].put("id",this.selected.getTemplateId());
+        values[1] = new HashMap<String, Object>();
+        HashMap<String, Object> newRecord= new HashMap<String, Object>();
+        newRecord.put("name", new Integer(i));
+        newRecord.put("sequence", new Integer(1));
+        newRecord.put("product_code", new Boolean(false));
+        newRecord.put("product_name", new Boolean(false));
+        Integer[] tt = new Integer[0];
+        newRecord.put("pricelist_ids",tt );
+        newRecord.put("min_qty", new Integer(0));
+        newRecord.put("delay", new Integer(1));
+        newRecord.put("company_id", new Integer(1));
+        values[1].put("seller_ids", new Object[]{new Object[]{0,new Boolean(false),newRecord}});
+		aa.execute(values);
+		
+	}
+
+	@Override
+	public void setOrderRule(BigDecimal min, BigDecimal max) {
+		CreateAsyncTask aa = new CreateAsyncTask(this);
+        OpenErpHolder.getInstance().setmModelName("stock.warehouse.orderpoint");	
+        HashMap[] values = new HashMap[2];        
+        values[0] = new HashMap<String, Object>();
+        values[0].put("active", new Boolean(true));
+        values[0].put("product_id", this.selected.getId());
+        values[0].put("product_max_qty", max.doubleValue());
+        values[0].put("product_min_qty", min.doubleValue());
+
+        values[1] = new HashMap<String, Object>();
+        //values[1].put("defaults", new String[]{"product_max_qty","qty_multiple","name","company_id","location_id","qty_multiple","warehouse_id"});
+        values[1].put("defaults", new String[]{"qty_multiple","name","company_id","location_id","qty_multiple","warehouse_id"});
+		aa.execute(values);		
+	}
+
+	@Override
+	public void setResultCreate(Long res) {
+		// TODO Auto-generated method stub
+		
 	}
 	
 }

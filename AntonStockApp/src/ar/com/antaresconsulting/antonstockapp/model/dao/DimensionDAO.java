@@ -23,15 +23,15 @@ public class DimensionDAO extends ReadAsyncTask {
 		this.extraData =  true;
 		this.activityPart = frag;
 		this.mModel = "product.marble.dimension.balance";
-		this.mFields = new String[] { "marble_id", "dimension_id", "qty_unit", "qty_m2"};
+		this.mFields = new String[] { "product_id", "dimension_id", "qty_unit", "qty_m2"};
 	}
 	public void getAllDims(Integer productId,boolean _extraData) {
 		this.extraData = _extraData;
-		this.setmFilters(new Object[] { new Object[] { "marble_id", "=", productId },new Object[] { "qty_unit", ">", 0 } });
+		this.setmFilters(new Object[] { new Object[] { "product_id", "=", productId },new Object[] { "qty_unit", ">", 0 } });
 		this.execute(this.mFields);
 	}
 	public void getAllDims(Integer productId) {
-		this.setmFilters(new Object[] { new Object[] { "marble_id", "=", productId },new Object[] { "qty_unit", ">", 0 } });
+		this.setmFilters(new Object[] { new Object[] { "product_id", "=", productId },new Object[] { "qty_unit", ">", 0 } });
 		this.execute(this.mFields);
 	}
 	
@@ -45,7 +45,7 @@ public class DimensionDAO extends ReadAsyncTask {
 		int i = 0 ;
 		for (HashMap<String, Object> obj : this.mData) {
 			DimensionBalance resp = new DimensionBalance();
-			Object[] marble_id = obj.get("marble_id") instanceof Boolean ? new Object[0]: (Object[]) obj.get("marble_id");
+			Object[] marble_id = obj.get("product_id") instanceof Boolean ? new Object[0]: (Object[]) obj.get("product_id");
 			Object[] dimension_id = obj.get("dimension_id") instanceof Boolean ? new Object[0]: (Object[]) obj.get("dimension_id");
 			Double qty_unit = obj.get("qty_unit") instanceof Boolean ? 0: (Double) obj.get("qty_unit");
 			Double qty_m2 = obj.get("qty_m2") instanceof Boolean ? 0: (Double) obj.get("qty_m2");
@@ -64,7 +64,7 @@ public class DimensionDAO extends ReadAsyncTask {
 	}
 
 	public void getAllDims(Integer productId, String alto, String ancho) {
-		this.setmFilters(new Object[] { new Object[] { "marble_id", "=", productId },new Object[] { "qty_unit", ">", 0 },new Object[] { "dimension_id.hight", ">", alto },new Object[] { "dimension_id.width", ">", ancho } });
+		this.setmFilters(new Object[] { new Object[] { "product_id", "=", productId },new Object[] { "qty_unit", ">", 0 },new Object[] { "dimension_id.hight", ">", alto },new Object[] { "dimension_id.width", ">", ancho } });
 		this.execute(this.mFields);		
 	}	
 	

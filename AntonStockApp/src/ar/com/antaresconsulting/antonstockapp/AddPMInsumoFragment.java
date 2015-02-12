@@ -25,6 +25,7 @@ import ar.com.antaresconsulting.antonstockapp.model.StockMove;
 import ar.com.antaresconsulting.antonstockapp.model.StockPicking;
 import ar.com.antaresconsulting.antonstockapp.model.dao.InsumosDAO;
 import ar.com.antaresconsulting.antonstockapp.model.dao.PartnerDAO;
+import ar.com.antaresconsulting.antonstockapp.popup.SearchInsumoPopupFragment;
 
 /**
  * A simple {@link android.support.v4.app.Fragment} subclass. Use the
@@ -131,7 +132,7 @@ public class AddPMInsumoFragment extends Fragment implements AddPMActions,Insumo
 
 		for (int i = 0; i < maxProds; i++) {
 			PedidoLinea prod = (PedidoLinea) this.prodsPedido.getAdapter().getItem(i);
-			StockMove move = new StockMove(((Insumo)prod.getProduct()[0]).getId().toString(), (String)prod.getUom()[0], loc_source, loc_destination, origin, prod.getCant().toString());				
+			StockMove move = new StockMove(prod.getNombre(),((Insumo)prod.getProduct()[0]).getId(), (Integer)prod.getUom()[0], loc_source, loc_destination, origin, prod.getCant().toString());				
 			picking.addMove(move);
 		}
 		saveData.execute(picking);				
@@ -190,6 +191,12 @@ public class AddPMInsumoFragment extends Fragment implements AddPMActions,Insumo
 
 		this.insuDao = new InsumosDAO(this);
 		this.insuDao.getInsumos(nombreProd);			
+	}
+
+	@Override
+	public void setSuppliersProd() {
+		// TODO Auto-generated method stub
+		
 	}
 
 

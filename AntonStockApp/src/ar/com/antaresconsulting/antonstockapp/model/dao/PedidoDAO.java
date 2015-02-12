@@ -62,26 +62,26 @@ public class PedidoDAO extends ReadAsyncTask {
 	
 	public void getMoveByPed(Integer id) {
 		
-		this.setmFilters(new Object[] { new Object[] { "picking_id", "=",id },new Object[] { "state", "=","confirmed" } });
+		this.setmFilters(new Object[] { new Object[] { "picking_id", "=",id },new Object[] { "state", "=","assigned" } });
 		this.mModel = "stock.move";
 		this.execute(this.stockMoveFields);
 		this.dataToSet = AntonConstants.PEDIDOSLINEAS;
 	}
 	
 	public void getPedidosPend(String tPedidos) {
-		this.setmFilters(new Object[] { new Object[] { "state", "=","assigned" },new Object[] { "move_prod_type", "=",tPedidos} ,new Object[] { "type", "=",AntonConstants.IN_PORDUCT_TYPE }});
-		this.mModel = "stock.picking.in";
+		this.setmFilters(new Object[] { new Object[] { "picking_type_id.code", "=",AntonConstants.IN_PORDUCT_TYPE }, new Object[] { "state", "=","assigned" },new Object[] { "move_prod_type", "=",tPedidos} });
+		this.mModel = "stock.picking";
 		this.execute(this.baseFields);
 		this.dataToSet = AntonConstants.PEDIDOS;
 	}
 	public void getOrdenesDeEntregaPend() {
-		this.setmFilters(new Object[] { new Object[] { "state", "=","confirmed" },new Object[] { "type", "=",AntonConstants.OUT_PORDUCT_TYPE }});
-		this.mModel = "stock.picking.out";
+		this.setmFilters(new Object[] { new Object[] { "state", "=","confirmed" },new Object[] { "picking_type_id.code", "=",AntonConstants.OUT_PORDUCT_TYPE }});
+		this.mModel = "stock.picking";
 		this.execute(this.baseFields);
 		this.dataToSet = AntonConstants.ORDENESDEENTREGA;
 	}	
 	public void getOrdenesDeEntregaReady() {
-		this.setmFilters(new Object[] { new Object[] { "state", "=","assigned" },new Object[] { "type", "=",AntonConstants.OUT_PORDUCT_TYPE }});
+		this.setmFilters(new Object[] { new Object[] { "state", "=","assigned" },new Object[] { "picking_type_id.code", "=",AntonConstants.OUT_PORDUCT_TYPE }});
 		this.mModel = "stock.picking.out";
 		this.execute(this.baseFields);
 		this.dataToSet = AntonConstants.ORDENESDEENTREGA;

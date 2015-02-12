@@ -40,6 +40,10 @@ import ar.com.antaresconsulting.antonstockapp.model.dao.InsumosDAO;
 import ar.com.antaresconsulting.antonstockapp.model.dao.MateriaPrimaDAO;
 import ar.com.antaresconsulting.antonstockapp.model.dao.PartnerDAO;
 import ar.com.antaresconsulting.antonstockapp.model.dao.ProductDAO;
+import ar.com.antaresconsulting.antonstockapp.popup.SearchBachaPopupFragment;
+import ar.com.antaresconsulting.antonstockapp.popup.SearchInsumoPopupFragment;
+import ar.com.antaresconsulting.antonstockapp.popup.SearchMPPopupFragment;
+import ar.com.antaresconsulting.antonstockapp.popup.SearchServiciosPopupFragment;
 
 public class AddOEActivity extends ActionBarActivity implements ProductDAO.ServiciosCallbacks, PartnerDAO.ClientsCallbacks, MateriaPrimaDAO.MateriaPrimaCallbacks, InsumosDAO.InsumosCallbacks, BachasDAO.BachasCallbacks,SearchMPPopupFragment.SearchProductListener,SearchInsumoPopupFragment.SearchProductListener,SearchBachaPopupFragment.SearchProductListener,SearchServiciosPopupFragment.SearchProductListener{
 
@@ -156,7 +160,7 @@ public class AddOEActivity extends ActionBarActivity implements ProductDAO.Servi
 
 		for (int i = 0; i < maxProds; i++) {
 			PedidoLinea prod = (PedidoLinea) this.prodsPedido.getAdapter().getItem(i);
-			StockMove move = new StockMove(((BaseProduct)prod.getProduct()[0]).getId().toString(), (String)prod.getUom()[0], loc_source, loc_destination, origin, prod.getCant().toString());				
+			StockMove move = new StockMove(prod.getNombre(),((BaseProduct)prod.getProduct()[0]).getId(), (Integer)prod.getUom()[0], loc_source, loc_destination, origin, prod.getCant().toString());				
 			picking.addMove(move);
 		}
 		saveData.execute(picking);	

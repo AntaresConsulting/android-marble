@@ -7,6 +7,7 @@ import android.os.AsyncTask;
 import ar.com.antaresconsulting.antonstockapp.R;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
@@ -118,11 +119,18 @@ public abstract  class  ReadAsyncTask extends AsyncTask<String, String, OpenErpC
 					HashMap<String, Object> valsExtra = new HashMap<String, Object>();
 					for (int i = 0; i < this.mFields.length; i++) {
 						String fieldName = this.mFields[i];
-						if(fieldName.contains("_id")){
+						if(fieldName.contains("_id")|| fieldName.contains("_ids")){
 							if(!(dataVal.get(fieldName) instanceof Boolean)){
 								Object[] vals = (Object[]) dataVal.get(fieldName);
+								Long [] idsN = new Long[vals.length];
 								HashMap<String, Object> descField = (HashMap<String, Object>) fieldsData.get(fieldName);
-								Long [] idsN = new Long[]{new Long(((Integer) vals[0]).longValue())};
+								if(fieldName.contains("_ids")){
+									for (int j = 0; j < vals.length; j++) {
+										idsN[j] = new Long(((Integer) vals[j]).longValue());
+									}									
+								}else{
+									idsN[0] = new Long(((Integer) vals[0]).longValue());
+								}
 
 								if(!tempRegs.containsKey((String) descField.get("relation"))){
 									fieldsData2= oc.fieldsGet((String) descField.get("relation"));
@@ -133,7 +141,7 @@ public abstract  class  ReadAsyncTask extends AsyncTask<String, String, OpenErpC
 								String[] newFields = new String[fieldsData2.keySet().size()];
 								fieldsData2.keySet().toArray(newFields);
 								List<HashMap<String, Object>> resTemp = oc.read((String) descField.get("relation"),idsN,newFields);
-								valsExtra.put(fieldName, resTemp.toArray()[0]);
+								valsExtra.put(fieldName, resTemp);
 							}
 						}
 					}
@@ -145,6 +153,12 @@ public abstract  class  ReadAsyncTask extends AsyncTask<String, String, OpenErpC
 		return oc;
 	}
 
+	public static <T> T[] concat(T[] first, T[] second) {
+		  T[] result = Arrays.copyOf(first, first.length + second.length);
+		  System.arraycopy(second, 0, result, first.length, second.length);
+		  return result;
+	}
+	
 	@Override
 	protected void onPostExecute(OpenErpConnect result) {
 		// TODO Handle Read errors

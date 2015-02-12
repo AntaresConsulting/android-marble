@@ -1,8 +1,8 @@
 package ar.com.antaresconsulting.antonstockapp;
 
 public class AntonConstants {
-	public static final String IN_PORDUCT_TYPE = "in";
-	public static final String OUT_PORDUCT_TYPE = "out";
+	public static final String IN_PORDUCT_TYPE = "incoming";
+	public static final String OUT_PORDUCT_TYPE = "outgoing";
 	public static final String INTERNAL_PORDUCT_TYPE = "internal";
 	public static final String PRODUCT_LOCATION_SUPPLIER = "8";
 	public static final String PRODUCT_LOCATION_STOCK = "12";
@@ -10,6 +10,7 @@ public class AntonConstants {
 	public static final String PRODUCT_LOCATION_PRODUCTION = "7";
 	public static final String PRODUCT_LOCATION_CUSTOMER = "9";
 	public static final String PRODUCT_LOCATION_INIT = "5";	
+	public static final String PRODUCT_LOCATION_INSUMOS = "19";	
 	public static final String ANTON_COMPANY_ID = "1";
 	public static final String DELIVERY_METHOD = "one";
 	public static final String DIRECT_METHOD = "direct";
@@ -80,8 +81,11 @@ public class AntonConstants {
 	public static final String MARBLE_DIM_MODEL = "product.marble.dimension";
 	
 	//ODOO PICKING Types
-	public static final String PICKING_TYPE_ID_IN = "";
-	public static final String PICKING_TYPE_ID_OUT = "";
-	public static final String PICKING_TYPE_ID_INTERNAL = "";
+	public static final String PICKING_TYPE_ID_IN = "1";
+	public static final String PICKING_TYPE_ID_OUT = "2";
+	public static final String PICKING_TYPE_ID_INTERNAL = "3";
+	public static final String SET_SUPPLIER = "set_supplier";
+	public static final String DIMENSIONS_LIST = "dim_list";
+	public static final String PRODUCT_SELECTED = "prod_selected";
 
 }

@@ -1,4 +1,4 @@
-package ar.com.antaresconsulting.antonstockapp;
+package ar.com.antaresconsulting.antonstockapp.popup;
 
 import android.app.AlertDialog;
 import android.app.Dialog;
@@ -18,6 +18,11 @@ import android.widget.ProgressBar;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.AdapterView.OnItemClickListener;
+import ar.com.antaresconsulting.antonstockapp.AntonConstants;
+import ar.com.antaresconsulting.antonstockapp.R;
+import ar.com.antaresconsulting.antonstockapp.R.id;
+import ar.com.antaresconsulting.antonstockapp.R.layout;
+import ar.com.antaresconsulting.antonstockapp.R.string;
 import ar.com.antaresconsulting.antonstockapp.model.Dimension;
 import ar.com.antaresconsulting.antonstockapp.model.SelectionObject;
 import ar.com.antaresconsulting.antonstockapp.model.dao.MateriaPrimaDAO;
@@ -37,7 +42,7 @@ public class UpdateStockPopupFragment extends DialogFragment  {
 		void updateStockAction(int i, Dimension dim);
 	}
 
-	static UpdateStockPopupFragment newInstance(int num) {
+	public static UpdateStockPopupFragment newInstance(int num) {
 		UpdateStockPopupFragment f = new UpdateStockPopupFragment();
 	    Bundle args = new Bundle();
 	    args.putInt("tprod", num);

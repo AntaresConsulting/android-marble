@@ -20,6 +20,7 @@ import ar.com.antaresconsulting.antonstockapp.model.Pedido;
 import ar.com.antaresconsulting.antonstockapp.model.PedidoLinea;
 import ar.com.antaresconsulting.antonstockapp.model.dao.BachasDAO;
 import ar.com.antaresconsulting.antonstockapp.model.dao.PedidoDAO;
+import ar.com.antaresconsulting.antonstockapp.popup.SearchBachaPopupFragment;
 
 /**
  * A placeholder fragment containing a simple view.

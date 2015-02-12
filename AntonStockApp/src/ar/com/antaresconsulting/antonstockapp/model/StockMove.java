@@ -6,9 +6,10 @@ import ar.com.antaresconsulting.antonstockapp.AntonConstants;
 
 public class StockMove {
 
+	private String name;
 	private String pickingId;
-	private String productId;
-	private String prodUOM;
+	private Integer productId;
+	private Integer prodUOM;
 	private String locationSrc;
 	private String locationDest;
 	private String origin;
@@ -18,9 +19,10 @@ public class StockMove {
 	
 	
 	
-	public StockMove(String productId, String prodUOM, String locationSrc,
+	public StockMove(String nameStr,Integer productId, Integer prodUOM, String locationSrc,
 			String locationDest, String origin, String qty) {
 		super();
+		this.name = nameStr;
 		this.productId = productId;
 		this.prodUOM = prodUOM;
 		this.locationSrc = locationSrc;
@@ -28,9 +30,10 @@ public class StockMove {
 		this.origin = origin;
 		this.qty = qty;
 	}
-	public StockMove(String productId, String prodUOM, String locationSrc,
+	public StockMove(String nameStr,Integer productId, Integer prodUOM, String locationSrc,
 			String locationDest, String origin, String qty, Dimension dimId) {
 		super();
+		this.name = nameStr;
 		this.productId = productId;
 		this.prodUOM = prodUOM;
 		this.locationSrc = locationSrc;
@@ -41,22 +44,28 @@ public class StockMove {
 	}
 	
 	
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
+	}
 	public String getEmployee() {
 		return employee;
 	}
 	public void setEmployee(String employee) {
 		this.employee = employee;
 	}
-	public String getProductId() {
+	public Integer getProductId() {
 		return productId;
 	}
-	public void setProductId(String productId) {
+	public void setProductId(Integer productId) {
 		this.productId = productId;
 	}
-	public String getProdUOM() {
+	public Integer getProdUOM() {
 		return prodUOM;
 	}
-	public void setProdUOM(String prodUOM) {
+	public void setProdUOM(Integer prodUOM) {
 		this.prodUOM = prodUOM;
 	}
 	public String getLocationSrc() {
@@ -99,21 +108,24 @@ public class StockMove {
 	public HashMap<String, Object> getMap(){
 		HashMap<String, Object> res = new HashMap<String, Object>();
 		res.put("picking_id",this.getPickingId());
+
+		res.put("name",this.getName());
+
+		res.put("product_uos_qty",this.getQty());
 		
 		res.put("product_uos_qty",this.getQty());
 		res.put("product_uom",this.getProdUOM());
 		res.put("product_id",this.getProductId());
-		res.put("product_qty",this.getQty());
+		res.put("product_uom_qty",this.getQty());
 		res.put("product_uos",this.getProdUOM());
-		
-		res.put("dimension_id",this.getDim().getDimId());
+		if(this.getDim()!=null)
+			res.put("dimension_id",this.getDim().getDimId());
 
 		res.put("location_id",this.getLocationSrc());
 		res.put("location_dest_id",this.getLocationDest());				
 		res.put("company_id",AntonConstants.ANTON_COMPANY_ID);
 		res.put("prodlot_id",false);
-		res.put("tracking_id",false);
-		res.put("type",AntonConstants.IN_PORDUCT_TYPE);
+		res.put("tracking_id",false);		
 		res.put("origin",this.getOrigin());
 		res.put("state","draft");
 		if(this.getEmployee() != null)

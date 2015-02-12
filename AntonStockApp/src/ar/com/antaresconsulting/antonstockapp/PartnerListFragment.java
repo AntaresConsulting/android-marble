@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.ListView;
 import ar.com.antaresconsulting.antonstockapp.adapters.PartnerAdapter;
+import ar.com.antaresconsulting.antonstockapp.model.BaseProduct;
 import ar.com.antaresconsulting.antonstockapp.model.Partner;
 import ar.com.antaresconsulting.antonstockapp.model.dao.PartnerDAO;
 
@@ -83,19 +84,32 @@ public class PartnerListFragment extends ListFragment  implements PartnerDAO.Sup
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
         setRetainInstance(true);
+		Boolean listsup = null;
+		Bundle args = getArguments();
+		BaseProduct prod = null;
+		if (args != null) {
+			listsup = args.getBoolean(AntonConstants.SET_SUPPLIER);
+			prod = (BaseProduct) args.getSerializable(AntonConstants.PRODUCT_SELECTED);
+
+		}        
+		if(listsup != null && listsup.booleanValue()){
+			this.pDao.getSuppliersByProd(prod.getTemplateId());
+		}else{
+			this.pDao.getAllCompanies();	
+		}        
 	}
 
 	@Override
 	public void onViewCreated(View view, Bundle savedInstanceState) {
 		super.onViewCreated(view, savedInstanceState);
-
 		// Restore the previously serialized activated item position.
 		if (savedInstanceState != null
 				&& savedInstanceState.containsKey(STATE_ACTIVATED_POSITION)) {
 			setActivatedPosition(savedInstanceState
 					.getInt(STATE_ACTIVATED_POSITION));
 		}
-		this.pDao.getAllCompanies();
+
+		
 
 	}
 
@@ -204,6 +218,15 @@ public class PartnerListFragment extends ListFragment  implements PartnerDAO.Sup
 				this.pDao.getAllSuppliers();
 			}
 		}
+		
+	}
+
+	@Override
+	public void setSuppliersProd() {
+		if(this.suppliers == null)
+			this.suppliers = this.pDao.getProdSupplier();
+		this.mAdapter = new PartnerAdapter(this,this.suppliers);
+		setListAdapter(this.mAdapter);
 		
 	}		
 }

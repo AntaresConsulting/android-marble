@@ -74,14 +74,14 @@ public class InProducts extends Activity {
 		((InProductActions) getFragmentManager().findFragmentById(	R.id.container)).addProduct(view);
 	}
 	public void addProductBacha(View view) {
-		((InBachaProductFragment) getFragmentManager().findFragmentById(	R.id.container)).addProduct(view);
+		((InBachaProductProvFragment) getFragmentManager().findFragmentById(	R.id.container)).addProduct(view);
 	}
 	public void addProductInsumo(View view) {
 		((InInsumoProductFragment) getFragmentManager().findFragmentById(	R.id.container)).addProduct(view);
 	}
 	
 	public void searchPM(MenuItem menu) {
-		((InBachaProductFragment) getFragmentManager().findFragmentById(	R.id.container)).searchProduct();		
+		((InBachaProductCliFragment) getFragmentManager().findFragmentById(	R.id.container)).searchProduct();		
 	}
 	
 	public void setBachas(View view) {
@@ -89,10 +89,10 @@ public class InProducts extends Activity {
 	}
 	public void setBachasCli(View view) {
 		this.myMenu.getItem(0).setVisible(true);
-		getFragmentManager().beginTransaction().replace(R.id.container, InBachaProductFragment.newInstance(AntonConstants.BACHAS_CLI)).commit();
+		getFragmentManager().beginTransaction().replace(R.id.container, InBachaProductCliFragment.newInstance(AntonConstants.BACHAS_CLI)).commit();
 	}
 	public void setBachasProv(View view) {
-		getFragmentManager().beginTransaction().replace(R.id.container, InBachaProductFragment.newInstance(AntonConstants.BACHAS_PROV)).commit();
+		getFragmentManager().beginTransaction().replace(R.id.container, InBachaProductProvFragment.newInstance(AntonConstants.BACHAS_PROV)).commit();
 	}
 	public void setMP(View view) {
 		getFragmentManager().beginTransaction().replace(R.id.container, InMPProductFragment.newInstance(AntonConstants.MATERIA_PRIMA)).commit();

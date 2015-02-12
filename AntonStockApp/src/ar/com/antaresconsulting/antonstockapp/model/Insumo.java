@@ -51,12 +51,14 @@ public class Insumo extends BaseProduct{
 		this.entregado = entregado;
 	}
 
-
 	@Override
 	public String toString() {
-		// TODO Auto-generated method stub
 		return this.getNombre();
 	}
+
+
+
+
 	
 	
 

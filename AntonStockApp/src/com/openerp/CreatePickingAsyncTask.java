@@ -8,6 +8,8 @@ import android.widget.Toast;
 import java.util.HashMap;
 import java.util.List;
 
+import com.xmlrpc.XMLRPCException;
+
 import ar.com.antaresconsulting.antonstockapp.AntonConstants;
 import ar.com.antaresconsulting.antonstockapp.R;
 import ar.com.antaresconsulting.antonstockapp.model.StockMove;
@@ -17,6 +19,7 @@ public class CreatePickingAsyncTask extends AsyncTask<StockPicking, String, Long
 	private Activity activity;
 	public ProgressDialog dialog;
 	private OpenErpConnect oc;
+	private String  strError;
 
 	HashMap<String, String> context;
 	
@@ -52,7 +55,13 @@ public class CreatePickingAsyncTask extends AsyncTask<StockPicking, String, Long
 	protected Long doInBackground(StockPicking... values) {
 		loadConnection();	
 		for (int i = 0; i < values.length; i++) {		
-			Long header_picking_id = oc.create(AntonConstants.PICKING_MODEL, values[i].getMap(), this.context);
+			Long header_picking_id = null;
+			try {
+				header_picking_id = oc.create(AntonConstants.PICKING_MODEL, values[i].getMap(), this.context);
+			} catch (XMLRPCException e) {
+				strError = e.getMessage();
+				return null;
+			}
 			values[i].setPickingId(header_picking_id);
 			List<StockMove> moves = values[i].getMoves();
 			for (StockMove stockMove : moves) {
@@ -61,16 +70,30 @@ public class CreatePickingAsyncTask extends AsyncTask<StockPicking, String, Long
 					Long[] res = oc.search(AntonConstants.MARBLE_DIM_MODEL,conditions);
 					Long idDim = null;
 					if((res == null) || (res.length == 0)){						
-						idDim = oc.create(AntonConstants.MARBLE_DIM_MODEL, stockMove.getDim().getMap(), this.context);
+						try {
+							idDim = oc.create(AntonConstants.MARBLE_DIM_MODEL, stockMove.getDim().getMap(), this.context);
+						} catch (XMLRPCException e) {
+							strError = e.getMessage();
+							return null;
+						}
 						oc.call(AntonConstants.MARBLE_DIM_MODEL, "action_confirm", idDim);
 					}else{
 						idDim =  res[0];
 					}
 					stockMove.getDim().setDimId(idDim.toString());
 				}
-				oc.create(AntonConstants.MOVE_MODEL, stockMove.getMap(), this.context);
+				try {
+					oc.create(AntonConstants.MOVE_MODEL, stockMove.getMap(), this.context);
+				} catch (XMLRPCException e) {
+					strError = e.getMessage();
+					return null;
+				}
 			}
-			oc.call(AntonConstants.PICKING_MODEL, "draft_force_assign", header_picking_id);
+			if(values[i].isActionDone())
+				oc.call(AntonConstants.PICKING_MODEL, "action_done", header_picking_id);
+			else
+				oc.call(AntonConstants.PICKING_MODEL, "action_confirm", header_picking_id);
+			
 		}
 		return new Long(1);
 	}
@@ -84,7 +107,9 @@ public class CreatePickingAsyncTask extends AsyncTask<StockPicking, String, Long
             activity.finish();
 		}
 		else{
-			
+            Toast tt = Toast.makeText(this.activity.getApplicationContext(), "Ha ocurrido un error vuelva a intentarlo!"+strError, Toast.LENGTH_LONG);
+            tt.show();
+            activity.finish();			
 		}
 		if (dialog.isShowing()) {
 			dialog.dismiss();

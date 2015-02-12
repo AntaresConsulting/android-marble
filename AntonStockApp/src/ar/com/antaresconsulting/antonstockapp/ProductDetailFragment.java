@@ -35,7 +35,6 @@ public class ProductDetailFragment extends Fragment {
 	 * The fragment argument representing the item ID that this fragment
 	 * represents.
 	 */
-	public static final String ARG_ITEM_ID = "item_id";
 	public static final String ARG_PHOTO_SAVE = "photo_saved";
 	
 	private BaseProduct pData;
@@ -57,10 +56,10 @@ public class ProductDetailFragment extends Fragment {
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		_path = Environment.getExternalStorageDirectory()+"/temp_photo.jpg";
-		if (getArguments().containsKey(ARG_ITEM_ID)) {
-				if(!getArguments().containsKey("savedObject") || (getArguments().containsKey("savedObject") && ((BaseProduct)getArguments().getSerializable("savedObject")).getId().intValue() != ((BaseProduct)getArguments().getSerializable(ARG_ITEM_ID)).getId().intValue())){					
+		if (getArguments().containsKey(AntonConstants.PRODUCT_SELECTED)) {
+				if(!getArguments().containsKey("savedObject") || (getArguments().containsKey("savedObject") && ((BaseProduct)getArguments().getSerializable("savedObject")).getId().intValue() != ((BaseProduct)getArguments().getSerializable(AntonConstants.PRODUCT_SELECTED)).getId().intValue())){					
 					this.tProd = getArguments().getInt(AntonConstants.TPROD);
-					pData = (BaseProduct) getArguments().getSerializable(ARG_ITEM_ID);					
+					pData = (BaseProduct) getArguments().getSerializable(AntonConstants.PRODUCT_SELECTED);					
 				}
 		}	
 	}
@@ -84,6 +83,12 @@ public class ProductDetailFragment extends Fragment {
 				view.findViewById(R.id.precioRow).setVisibility(View.GONE);
 			}
 			
+			if(this.pData.getAtributos() != null && !this.pData.getAtributos().trim().equalsIgnoreCase("")){
+				((TextView) view.findViewById(R.id.atribsProd)).setText(this.pData.getAtributos());
+			}else{
+				((TextView) view.findViewById(R.id.atribsProd)).setVisibility(View.GONE);
+			}
+					
 			if(this.pData.getCantidadReal().doubleValue() > 0)
 				((TextView) view.findViewById(R.id.stockRVal)).setText(this.pData.getCantidadReal().toString());
 			else
@@ -151,7 +156,7 @@ public class ProductDetailFragment extends Fragment {
 	        OpenErpHolder.getInstance().setmModelName("product.product");
 	        HashMap[] values = new HashMap[2];
 	        values[0] = new HashMap<String, Object>();
-	        values[0].put("id",((BaseProduct)getArguments().getSerializable(ARG_ITEM_ID)).getId().toString());
+	        values[0].put("id",((BaseProduct)getArguments().getSerializable(AntonConstants.PRODUCT_SELECTED)).getId().toString());
 	        values[1] = new HashMap<String, Object>();
 	        ByteArrayOutputStream baos=new  ByteArrayOutputStream();
 	        this.savedThumb.compress(Bitmap.CompressFormat.JPEG,100, baos);

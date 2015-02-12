@@ -24,6 +24,7 @@ import ar.com.antaresconsulting.antonstockapp.model.PedidoLinea;
 import ar.com.antaresconsulting.antonstockapp.model.SelectionObject;
 import ar.com.antaresconsulting.antonstockapp.model.dao.MateriaPrimaDAO;
 import ar.com.antaresconsulting.antonstockapp.model.dao.PedidoDAO;
+import ar.com.antaresconsulting.antonstockapp.popup.SearchMPPopupFragment;
 
 /**
  * A placeholder fragment containing a simple view.
@@ -76,7 +77,9 @@ public class InMPProductFragment extends Fragment implements OnItemSelectedListe
 		View rootView = null;
 		this.mpDao = new MateriaPrimaDAO(this);
 
-		rootView = inflater.inflate(R.layout.fragment_in_products_mp,	container, false);
+		rootView = inflater.inflate(R.layout.fragment_in_products,	container, false);
+		rootView.findViewById(R.id.clienteRow).setVisibility(View.GONE);
+
 		this.productosDispo = (ListView) rootView.findViewById(R.id.productosDispo);
 		this.productosDispo.setChoiceMode(ListView.CHOICE_MODE_SINGLE);			
 		this.cantPlacas = (EditText) rootView.findViewById(R.id.clientesList);

@@ -18,7 +18,7 @@ import com.openerp.ReadAsyncTask;
 
 public class BachasDAO extends ProductDAO {
 
-	private String[] bachFields = new String[] { "id", "name", "image_medium","image",  "code", "list_price", "qty_available", "virtual_available","seller_qty","ean13", "uom_id","attrs_material" ,"bacha_marca", "bacha_material", "bacha_tipo", "bacha_acero", "bacha_colocacion", "bacha_ancho", "bacha_largo", "bacha_prof"};
+	private String[] bachFields = new String[] { "id", "name", "image_medium","image",  "code", "list_price", "qty_available", "virtual_available","seller_qty","ean13", "uom_id","attrs_material" ,"bacha_marca", "bacha_material", "bacha_tipo", "bacha_acero", "bacha_colocacion", "bacha_ancho", "bacha_largo", "bacha_prof","product_tmpl_id"};
 	
 	private Fragment activityPart;
 	
