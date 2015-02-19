@@ -10,7 +10,7 @@ public class PedidoLinea implements Serializable, Cloneable  {
 	private static final long serialVersionUID = -8332442030304208826L;
 	private Integer id;
 	private Object[] product;
-	private Integer cantDim;
+	private Double cantDim;
 	private Double cant;
 	private String nombre;
 	private String estado;
@@ -46,10 +46,10 @@ public class PedidoLinea implements Serializable, Cloneable  {
 	public void setProduct(Object[] product) {
 		this.product = product;
 	}
-	public Integer getCantDim() {
+	public Double getCantDim() {
 		return cantDim;
 	}
-	public void setCantDim(Integer cantDim) {
+	public void setCantDim(Double cantDim) {
 		this.cantDim = cantDim;
 	}
 	public Double getCant() {

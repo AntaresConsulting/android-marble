@@ -92,8 +92,8 @@ public class UpdateStockAsyncTask extends AsyncTask<HashMap<String, Object>, Str
 //			values[0].put("new_quantity", cantM2);
 			BaseProduct prod  =  (BaseProduct) values[0].get("product");
 			HashMap<String,Object> move = new HashMap<String,Object>();
-			move.put("dimension_id",idDim);
-			move.put("dimension_qty",values[0].get("new_quantity"));
+			move.put(AntonConstants.STOCK_MOVE_DIM_ID,idDim);
+			move.put(AntonConstants.STOCK_MOVE_DIM_QTY,values[0].get("new_quantity"));
 			move.put("product_uos_qty",values[0].get("new_quantity"));
 			move.put("product_id",values[0].get("product_id"));
 			move.put("product_uom",prod.getUom()[0]);

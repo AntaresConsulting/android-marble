@@ -13,6 +13,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
+import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -27,13 +28,11 @@ import ar.com.antaresconsulting.antonstockapp.model.dao.BachasDAO;
 import ar.com.antaresconsulting.antonstockapp.model.dao.InsumosDAO;
 import ar.com.antaresconsulting.antonstockapp.model.dao.InsumosDAO.InsumosCallbacks;
 
-public class SearchInsumoPopupFragment extends DialogFragment implements InsumosDAO.InsumosCallbacks{
+public class SearchInsumoPopupFragment extends DialogFragment {
 
 
-	private AutoCompleteTextView lNombre;
-	private InsumosDAO insuDao;
+	private EditText lNombre;
 	private int productoSelecPos;
-	private ProgressBar lNombreProg;
 
 
 
@@ -55,8 +54,7 @@ public class SearchInsumoPopupFragment extends DialogFragment implements Insumos
 
 		String nombreProd = sharedPref.getString(getString(R.string.search_nombre),"");
 
-		lNombre = (AutoCompleteTextView) view.findViewById(R.id.nombreProd);
-		lNombreProg = (ProgressBar) view.findViewById(R.id.loading_spinner);
+		lNombre = (EditText) view.findViewById(R.id.nombreProd);
 		lNombre.setOnFocusChangeListener( new View.OnFocusChangeListener() {
 			public void onFocusChange( View v, boolean hasFocus ) {
 				if( hasFocus ) {
@@ -66,14 +64,7 @@ public class SearchInsumoPopupFragment extends DialogFragment implements Insumos
 
 		} );
 
-		lNombre.setOnItemClickListener(new OnItemClickListener() {
-			public void onItemClick(AdapterView<?> parent, View arg1, int pos,
-					long id) {
-				productoSelecPos= pos;
-			}
-		});	
-		insuDao = new InsumosDAO(this);
-		insuDao.getInsumosNames();
+
 		// Inflate and set the layout for the dialog
 		// Pass null as the parent view because its going in the dialog layout
 		builder.setView(view).setTitle(getString(R.string.search_insumo_title))
@@ -100,14 +91,6 @@ public class SearchInsumoPopupFragment extends DialogFragment implements Insumos
 			}
 		});      
 		return builder.create();
-	}
-
-	@Override
-	public void setInsumos() {
-		lNombreProg.setVisibility(View.GONE);
-		lNombre.setVisibility(View.VISIBLE);		
-		ArrayAdapter<String> adapterProd = new ArrayAdapter<String>(this.getActivity(),android.R.layout.simple_list_item_1,this.insuDao.getInsumosNamesList());
-		lNombre.setAdapter(adapterProd);			
 	}
 
 

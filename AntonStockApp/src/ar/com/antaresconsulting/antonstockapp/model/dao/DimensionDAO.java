@@ -5,6 +5,7 @@ import java.util.HashMap;
 import java.util.List;
 
 import android.app.Fragment;
+import ar.com.antaresconsulting.antonstockapp.AntonConstants;
 import ar.com.antaresconsulting.antonstockapp.model.DimensionBalance;
 import com.openerp.ReadAsyncTask;
 
@@ -23,7 +24,7 @@ public class DimensionDAO extends ReadAsyncTask {
 		this.extraData =  true;
 		this.activityPart = frag;
 		this.mModel = "product.marble.dimension.balance";
-		this.mFields = new String[] { "product_id", "dimension_id", "qty_unit", "qty_m2"};
+		this.mFields = new String[] { "product_id", AntonConstants.STOCK_MOVE_DIM_ID, "qty_unit", "qty_m2"};
 	}
 	public void getAllDims(Integer productId,boolean _extraData) {
 		this.extraData = _extraData;
@@ -46,7 +47,7 @@ public class DimensionDAO extends ReadAsyncTask {
 		for (HashMap<String, Object> obj : this.mData) {
 			DimensionBalance resp = new DimensionBalance();
 			Object[] marble_id = obj.get("product_id") instanceof Boolean ? new Object[0]: (Object[]) obj.get("product_id");
-			Object[] dimension_id = obj.get("dimension_id") instanceof Boolean ? new Object[0]: (Object[]) obj.get("dimension_id");
+			Object[] dimension_id = obj.get(AntonConstants.STOCK_MOVE_DIM_ID) instanceof Boolean ? new Object[0]: (Object[]) obj.get(AntonConstants.STOCK_MOVE_DIM_ID);
 			Double qty_unit = obj.get("qty_unit") instanceof Boolean ? 0: (Double) obj.get("qty_unit");
 			Double qty_m2 = obj.get("qty_m2") instanceof Boolean ? 0: (Double) obj.get("qty_m2");
 
@@ -55,7 +56,7 @@ public class DimensionDAO extends ReadAsyncTask {
 			resp.setQtyM2(qty_m2);
 			resp.setQtyUnits(qty_unit);
 			if(extraData)
-				resp.setDimensionVals((HashMap<String, Object>) this.mExtraData.get(i).get("dimension_id"));
+				resp.setDimensionVals((HashMap<String, Object>) this.mExtraData.get(i).get(AntonConstants.STOCK_MOVE_DIM_ID));
 			datosProds.add(resp);
 			i++;
 		}

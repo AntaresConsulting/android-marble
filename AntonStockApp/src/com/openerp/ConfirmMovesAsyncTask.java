@@ -101,15 +101,15 @@ public class ConfirmMovesAsyncTask extends AsyncTask<PedidoLinea, String, Long> 
 					dimId = res[0];
 				}				
 				HashMap<String, Object> moveUp = new HashMap<String, Object>();
-				moveUp.put("dimension_id", dimId);
-				moveUp.put("dimension_qty", pl.getCantDim());				
+				moveUp.put(AntonConstants.STOCK_MOVE_DIM_ID, dimId);
+				moveUp.put(AntonConstants.STOCK_MOVE_DIM_QTY, pl.getCantDim());				
 				oc.write("stock.move", new Long[]{new Long(pl.getId().longValue())}, moveUp, null);
 				
 				HashMap<String, Object> vals3 = new HashMap<String, Object>();
-				vals3.put("prod_id", pl.getProduct()[0]);
-				vals3.put("dim_id",dimId);
-				vals3.put("dimension_qty",pl.getCantDim());
-				vals3.put("dimension_m2",pl.getCant());				
+				vals3.put(AntonConstants.DIM_BALANCE_PROD_ID, pl.getProduct()[0]);
+				vals3.put(AntonConstants.DIM_BALANCE_DIM_ID,dimId);
+				vals3.put(AntonConstants.DIM_BALANCE_QTY_UNITS,pl.getCantDim());
+				vals3.put(AntonConstants.DIM_BALANCE_QTY_MT2,pl.getCant());				
 				vals3.put("typeMove",this.moveType);			
 				oc.call("product.marble.dimension.balance", "register_balance", vals3);						
 			}

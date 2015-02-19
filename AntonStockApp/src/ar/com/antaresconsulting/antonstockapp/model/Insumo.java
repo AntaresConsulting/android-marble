@@ -53,7 +53,7 @@ public class Insumo extends BaseProduct{
 
 	@Override
 	public String toString() {
-		return this.getNombre();
+		return this.getNombre()+" - "+this.getAtributos();
 	}
 
 

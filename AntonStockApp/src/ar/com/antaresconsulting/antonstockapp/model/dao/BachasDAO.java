@@ -44,12 +44,12 @@ public class BachasDAO extends ProductDAO {
 	}
 
 	public void getBachas() {
-		this.setmFilters(new Object[] { new Object[] { "categ_name", "ilike","bacha" } });
+		this.setmFilters(new Object[] { new Object[] { AntonConstants.PRODUCT_TYPE, "ilike",AntonConstants.CATEGORY_BACHA } });
 		this.execute(this.bachFields);
 	}
 	
 	public void getBachasNames() {
-		this.setmFilters(new Object[] { new Object[] { "categ_name", "ilike","bacha" } });
+		this.setmFilters(new Object[] { new Object[] { AntonConstants.PRODUCT_TYPE, "ilike",AntonConstants.CATEGORY_BACHA  } });
 		this.execute( new String[] { "id", "name"});
 	}
 
@@ -104,7 +104,7 @@ public class BachasDAO extends ProductDAO {
 	
 	public void getBachasProducts(String tipo, String marca, String nombreProd,String tipoBacha,String acero, String colocacion) {
 		ArrayList<Object> filtros = new ArrayList<Object>();
-		filtros.add(new Object[] { "categ_name", "ilike", "bacha" });
+		filtros.add(new Object[] { AntonConstants.PRODUCT_TYPE, "ilike", AntonConstants.CATEGORY_BACHA });
 		if (!tipo.equalsIgnoreCase("")) {
 			filtros.add(new Object[] { "bacha_material", "ilike",
 					tipo.toLowerCase().substring(0, 3) });

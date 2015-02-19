@@ -21,6 +21,7 @@ public abstract  class  ReadAsyncTask extends AsyncTask<String, String, OpenErpC
 	protected Long[] ids;
 
 	protected boolean extraData = false;
+	protected String tProd = "";
 	protected List<HashMap<String, Object>> mData;
 	protected List<HashMap<String, Object>>  mExtraData;
 	protected String[] mFields;
@@ -106,6 +107,18 @@ public abstract  class  ReadAsyncTask extends AsyncTask<String, String, OpenErpC
 					prod.put("qty_available", respCall.get(((Integer)prod.get("id")).toString()));
 				}
 			}
+			for (HashMap<String, Object> prod : this.mData) {
+				if(this.tProd.equalsIgnoreCase("insumos")){				
+					Object[] ids =(Object[])prod.get("attribute_value_ids");
+					Long[] idsN = new Long[ids.length];					
+					for (int j = 0; j < ids.length; j++) {
+						idsN[j] = new Long(((Integer) ids[j]).longValue());
+					}		
+					prod.put("attribute_value_ids", oc.read("product.attribute.value",idsN,new String[]{"id","display_name"}));
+				}
+			}			
+
+
 			if(this.extraData){
 				Iterator it = this.mData.iterator();
 				while (it.hasNext()) {

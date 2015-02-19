@@ -16,7 +16,7 @@ public class PedidoDAO extends ReadAsyncTask {
 
 
 	private String[] baseFields = new String[] { "id", "name", "move_type", "partner_id", "note", "origin","move_lines"};
-	private String[] stockMoveFields = new String[] { "id", "state", "name", "product_id", "product_uom","product_qty","dimension_id","dimension_qty"};
+	private String[] stockMoveFields = new String[] { "id", "state", "name", "product_id", "product_uom","product_qty",AntonConstants.STOCK_MOVE_DIM_ID,AntonConstants.STOCK_MOVE_DIM_QTY};
 	
 
 	private Fragment activityPart;
@@ -47,7 +47,7 @@ public class PedidoDAO extends ReadAsyncTask {
 	
 	public void getMoveByPed(Integer id,String tpdrod) {
 		
-		this.setmFilters(new Object[] { new Object[] { "picking_id", "=",id },new Object[] { "state", "=","confirmed" },new Object[] { "product_id.categ_name", "ilike",tpdrod} });
+		this.setmFilters(new Object[] { new Object[] { "picking_id", "=",id },new Object[] { "state", "=","confirmed" },new Object[] { "product_id.prod_type", "ilike",tpdrod} });
 		this.mModel = "stock.move";
 		this.execute(this.stockMoveFields);
 		this.dataToSet = AntonConstants.PEDIDOSLINEAS;
@@ -92,14 +92,14 @@ public class PedidoDAO extends ReadAsyncTask {
 			PedidoLinea resp = new PedidoLinea();
 
 			Object[] product_id = obj.get("product_id") instanceof Boolean ? new Object[0]: (Object[]) obj.get("product_id");
-			Object[] dimension_id = obj.get("dimension_id") instanceof Boolean ? new Object[0]: (Object[]) obj.get("dimension_id");
+			Object[] dimension_id = obj.get(AntonConstants.STOCK_MOVE_DIM_ID) instanceof Boolean ? new Object[0]: (Object[]) obj.get(AntonConstants.STOCK_MOVE_DIM_ID);
 			Object[] product_uom = obj.get("product_uom") instanceof Boolean ? new Object[0]: (Object[]) obj.get("product_uom");
 
 			Double product_qty = obj.get("product_qty") instanceof Boolean ? 0: (Double) obj.get("product_qty");
 			String nombre = obj.get("name") instanceof Boolean ? "": (String) obj.get("name");
 			String estado = obj.get("state") instanceof Boolean ? "": (String) obj.get("state");
 
-			Integer dimension_qty = obj.get("dimension_qty") instanceof Boolean ? 0: (Integer) obj.get("dimension_qty");
+			Double dimension_qty = obj.get(AntonConstants.STOCK_MOVE_DIM_QTY) instanceof Boolean ? 0: (Double) obj.get(AntonConstants.STOCK_MOVE_DIM_QTY);
 
 			resp.setId((Integer) obj.get("id"));
 			resp.setProduct(product_id);

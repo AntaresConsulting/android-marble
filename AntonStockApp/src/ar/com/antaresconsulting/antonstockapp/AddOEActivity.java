@@ -340,7 +340,7 @@ public class AddOEActivity extends ActionBarActivity implements ProductDAO.Servi
 		linea.setCant(Double.valueOf(cant.getText().toString()));
 		linea.setNombre(prod.getNombre());
 		linea.setUom(prod.getUom());
-		linea.setCantDim(Integer.parseInt(cant.getText().toString()));
+		linea.setCantDim(Double.parseDouble(cant.getText().toString()));
 		Object[] prodData=new Object[1];
 		prodData[0] = prod;
 		linea.setProduct(prodData);

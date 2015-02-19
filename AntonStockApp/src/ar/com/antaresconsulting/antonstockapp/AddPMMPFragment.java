@@ -212,7 +212,7 @@ public class AddPMMPFragment extends Fragment implements PartnerDAO.SuppliersCal
 		linea.setUom(prod.getUom());
 		linea.setDimension(dim);
 		linea.setCant(Double.parseDouble(this.dimH.getText().toString())*Double.parseDouble(this.dimW.getText().toString())*Double.parseDouble(this.cantPlacas.getText().toString()));
-		linea.setCantDim(Integer.parseInt(this.cantPlacas.getText().toString()));
+		linea.setCantDim(Double.parseDouble(this.cantPlacas.getText().toString()));
 
 		Object[] prodData=new Object[1];
 		prodData[0] = prod;

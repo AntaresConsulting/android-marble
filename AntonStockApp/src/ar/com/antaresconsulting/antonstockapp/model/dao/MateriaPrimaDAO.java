@@ -39,12 +39,12 @@ public class MateriaPrimaDAO extends ProductDAO  {
 	}
 
 	public void getMateriaPrima() {
-		this.setmFilters(new Object[] { new Object[] { "categ_name", "ilike","raw" } });
+		this.setmFilters(new Object[] { new Object[] { AntonConstants.PRODUCT_TYPE, "ilike","raw" } });
 		this.execute(this.mpFields);
 
 	}
 	public void getMateriaPrimaNames() {
-		this.setmFilters(new Object[] { new Object[] { "categ_name", "ilike","raw" } });
+		this.setmFilters(new Object[] { new Object[] { AntonConstants.PRODUCT_TYPE, "ilike","raw" } });
 		this.execute(new String[] { "id", "name" });
 
 	}	
@@ -61,7 +61,7 @@ public class MateriaPrimaDAO extends ProductDAO  {
 
 	public void getMarmolesProducts(String tm, String color, String acabado, String nombreProd) {
 		ArrayList<Object> filtros = new ArrayList<Object>();
-		filtros.add(new Object[] { "categ_name", "ilike", "raw" });
+		filtros.add(new Object[] { AntonConstants.PRODUCT_TYPE, "ilike", "raw" });
 		if (!tm.equalsIgnoreCase("")) {
 			filtros.add(new Object[] { "raw_material", "ilike",
 					tm.toLowerCase().substring(0, 3) });

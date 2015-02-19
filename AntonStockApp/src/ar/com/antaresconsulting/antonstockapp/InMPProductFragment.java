@@ -181,7 +181,7 @@ public class InMPProductFragment extends Fragment implements OnItemSelectedListe
 		
 		prod.setDimension(dim);
 		prod.setCant(Double.parseDouble(this.dimH.getText().toString())*Double.parseDouble(this.dimW.getText().toString())*Double.parseDouble(this.cantPlacas.getText().toString()));
-		prod.setCantDim(Integer.parseInt(this.cantPlacas.getText().toString()));
+		prod.setCantDim(Double.parseDouble(this.cantPlacas.getText().toString()));
 		adapter.addLinea(prod);
 		adapter.notifyDataSetChanged();
 	}

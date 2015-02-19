@@ -30,12 +30,16 @@ public class InsumosDAO extends ProductDAO {
 	
 	public InsumosDAO(Activity frag) {
 		super(frag);
-		this.extraData =  true;
+//		this.extraData =  true;
+		this.tProd = "insumos";
+		
 		this.mModel = "product.product";
 	}
 	public InsumosDAO(Fragment frag) {
 		super(frag);
-		this.extraData =  true;
+		this.tProd = "insumos";
+		
+//		this.extraData =  true;
 
 		this.activityPart = frag;
 		this.mModel = "product.product";
@@ -47,15 +51,14 @@ public class InsumosDAO extends ProductDAO {
 	}
 
 	public void getInsumos() {
-		this.setmFilters(new Object[] { new Object[] { "categ_name", "ilike",
-				"input" } });
+		this.setmFilters(new Object[] { new Object[] { AntonConstants.PRODUCT_TYPE, "ilike",
+				AntonConstants.CATEGORY_INSUMO } });
 		this.execute(this.insuFilds);
 	}
 	
 	public void getInsumosNames() {
-		this.setmFilters(new Object[] { new Object[] { "categ_name", "ilike",
-				"input" } });
-		this.extraData = true;
+		this.setmFilters(new Object[] { new Object[] { AntonConstants.PRODUCT_TYPE, "ilike",
+				AntonConstants.CATEGORY_INSUMO} });
 		this.execute(new String[] { "id", "name", "attribute_value_ids"});
 	}
 
@@ -63,12 +66,12 @@ public class InsumosDAO extends ProductDAO {
 		List<Insumo> datosProds = new ArrayList<Insumo>();
 		int i = 0;
 		for (HashMap<String, Object> obj : this.mData) {
-			HashMap<String, Object> extraData = this.mExtraData.get(i++);
+			//HashMap<String, Object> extraData = this.mExtraData.get(i++);
 			Insumo resp = new Insumo();
 			this.getProductsArray(obj, resp);
 			String description = obj.get("description") instanceof Boolean ? "": (String) obj.get("description");
 			resp.setDescription(description);
-			List<HashMap<String, Object>>  atribs = (List<HashMap<String, Object>>)extraData.get("attribute_value_ids");
+			List<HashMap<String, Object>>  atribs = (List<HashMap<String, Object>>)obj.get("attribute_value_ids");
 			Iterator it = atribs.iterator();
 			String atributosInsu = "";
 			for (Iterator iterator = atribs.iterator(); iterator.hasNext();) {
@@ -87,8 +90,7 @@ public class InsumosDAO extends ProductDAO {
 		int i= 0 ;
 		for (HashMap<String, Object> obj : this.mData) {
 			String nombre = obj.get("name") instanceof Boolean ? "": (String) obj.get("name");
-			HashMap<String, Object> extraData = this.mExtraData.get(i++);			
-			List<HashMap<String, Object>>  atribs = (List<HashMap<String, Object>>)extraData.get("attribute_value_ids");
+			List<HashMap<String, Object>>  atribs = (List<HashMap<String, Object>>)obj.get("attribute_value_ids");
 			Iterator it = atribs.iterator();
 			String atributosInsu = "";
 			for (Iterator iterator = atribs.iterator(); iterator.hasNext();) {
@@ -110,8 +112,8 @@ public class InsumosDAO extends ProductDAO {
 	}
 	
 	public void getInsumos(String nombreProd) {
-		this.setmFilters(new Object[] { new Object[] { "categ_name", "ilike",
-		"input" },new Object[] { "name", "ilike",
+		this.setmFilters(new Object[] { new Object[] { AntonConstants.PRODUCT_TYPE, "ilike",
+				AntonConstants.CATEGORY_INSUMO },new Object[] { "name", "ilike",
 		nombreProd } });
 		this.execute(this.insuFilds);		
 	}

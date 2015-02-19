@@ -30,9 +30,9 @@ public class AntonConstants {
 	public static final String UOM_MP = "20";
 	public static final String UOM_BACHA = "1";
 	public static final String CATEGORY_MP = "raw";
-	public static final String CATEGORY_BACHA = "bachas";
-	public static final String CATEGORY_INSUMO = "inputs";
-	public static final String CATEGORY_SERVICIO = "services";	
+	public static final String CATEGORY_BACHA = "bacha";
+	public static final String CATEGORY_INSUMO = "input";
+	public static final String CATEGORY_SERVICIO = "service";	
 	public static final String TPROD = "tProd";
 	public static final String TPRODF = "tProdf";
 	
@@ -73,7 +73,7 @@ public class AntonConstants {
 	
 	public static final String PICKING_MODEL = "stock.picking";
 	public static final String MOVE_MODEL = "stock.move";
-	public static final String PRODUCT_MODEL = "product.product";
+	public static final String PRODUCT_MODEL = "product.template";
 	public static final String UOM_MODEL = "product.uom";
 	public static final String PARTNER_MODEL = "res.partner";
 	public static final String USERS_MODEL = "res.users";
@@ -87,5 +87,16 @@ public class AntonConstants {
 	public static final String SET_SUPPLIER = "set_supplier";
 	public static final String DIMENSIONS_LIST = "dim_list";
 	public static final String PRODUCT_SELECTED = "prod_selected";
+	public static final String PRODUCT_TYPE = "prod_type";
+	
+	//Campors del Stock Move
+	public static final String STOCK_MOVE_DIM_QTY = "qty_dimension";
+	public static final String STOCK_MOVE_DIM_ID = "dimension_id";
+
+	//Campos del dim balance Move
+	public static final String DIM_BALANCE_PROD_ID = "product_id";
+	public static final String DIM_BALANCE_DIM_ID = "dimension_id";
+	public static final String DIM_BALANCE_QTY_UNITS = "qty_unit";
+	public static final String DIM_BALANCE_QTY_MT2 = "qty_m2";
 
 }

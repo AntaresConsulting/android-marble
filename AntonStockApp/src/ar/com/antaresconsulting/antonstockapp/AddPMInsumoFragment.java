@@ -175,7 +175,7 @@ public class AddPMInsumoFragment extends Fragment implements AddPMActions,Insumo
 		Insumo prod = (Insumo) this.prodsDispo.getAdapter().getItem(this.prodsDispo.getCheckedItemPosition());
 		PedidoLinea linea = new PedidoLinea();
 		linea.setCant(Double.valueOf(cant.getText().toString()));
-		linea.setNombre(prod.getNombre());
+		linea.setNombre(prod.toString());
 		linea.setUom(prod.getUom());
 		Object[] prodData=new Object[1];
 		prodData[0] = prod;
