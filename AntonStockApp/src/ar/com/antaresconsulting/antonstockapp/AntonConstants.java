@@ -42,10 +42,9 @@ public class AntonConstants {
 	public static final String INSU_LIST = "INSU_LIST";
 
 	
-	public static final String MARBLE_CUTTER_GROUP = "Cutter Marble";
-	public static final String MARBLE_RESP_GROUP = "Responsable Marble";
-	public static final String MARBLE_MANAGER_GROUP = "Manager Marble";
-	public static final String MARBLE_ADMIN_GROUP = "Administrador Anton";
+	public static final String MARBLE_CUTTER_GROUP = "Warehouse Cutter";
+	public static final String MARBLE_RESP_GROUP = "Warehouse Responsable";
+	public static final String MARBLE_MANAGER_GROUP = "Warehouse Manager";
 	
 	public static final int PEDIDOS = 1;
 	public static final int ORDENESDEENTREGA = 2;
@@ -73,7 +72,9 @@ public class AntonConstants {
 	
 	public static final String PICKING_MODEL = "stock.picking";
 	public static final String MOVE_MODEL = "stock.move";
-	public static final String PRODUCT_MODEL = "product.template";
+	public static final String PRODUCT_MODEL = "product.product";
+	public static final String PRODUCT_TPL_MODEL = "product.template";
+	
 	public static final String UOM_MODEL = "product.uom";
 	public static final String PARTNER_MODEL = "res.partner";
 	public static final String USERS_MODEL = "res.users";
@@ -90,7 +91,8 @@ public class AntonConstants {
 	public static final String PRODUCT_TYPE = "prod_type";
 	
 	//Campors del Stock Move
-	public static final String STOCK_MOVE_DIM_QTY = "qty_dimension";
+	//public static final String STOCK_MOVE_DIM_QTY = "qty_dimension";
+	public static final String STOCK_MOVE_DIM_QTY = "dimension_unit";
 	public static final String STOCK_MOVE_DIM_ID = "dimension_id";
 
 	//Campos del dim balance Move

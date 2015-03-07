@@ -42,7 +42,7 @@ public class SearchMPPopupFragment extends DialogFragment implements MateriaPrim
 		AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
 		// Get the layout inflater
 		LayoutInflater inflater = getActivity().getLayoutInflater();
-		view = inflater.inflate(R.layout.fragment_search_mp, null);
+		view = inflater.inflate(R.layout.popup_search_mp, null);
 
 
 		SharedPreferences sharedPref = getActivity().getSharedPreferences(getString(R.string.saved_mp_search),Context.MODE_PRIVATE);

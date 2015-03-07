@@ -24,6 +24,8 @@ import android.widget.AdapterView;
 import android.widget.ListView;
 import ar.com.antaresconsulting.antonstockapp.adapters.CustomDrawerAdapter;
 import ar.com.antaresconsulting.antonstockapp.model.DrawerItem;
+import ar.com.antaresconsulting.antonstockapp.partner.PartnerListActivity;
+import ar.com.antaresconsulting.antonstockapp.product.ProductListActivity;
 
 /**
  * Fragment used for managing interactions for and presentation of a navigation drawer.

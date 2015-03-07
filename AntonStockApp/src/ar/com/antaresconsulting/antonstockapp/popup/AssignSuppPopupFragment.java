@@ -41,7 +41,7 @@ public class AssignSuppPopupFragment extends DialogFragment implements PartnerDA
 		AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
 		// Get the layout inflater
 		LayoutInflater inflater = getActivity().getLayoutInflater();
-		view = inflater.inflate(R.layout.fragment_assign_supp, null);
+		view = inflater.inflate(R.layout.popup_assign_supp, null);
 		lNombre = (AutoCompleteTextView) view.findViewById(R.id.nombreSupp);
 		lNombre.setOnFocusChangeListener( new View.OnFocusChangeListener() {
 			public void onFocusChange( View v, boolean hasFocus ) {

@@ -32,7 +32,7 @@ public class ServerPopupFragment extends DialogFragment implements LoginActivity
 	    AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
 	    // Get the layout inflater
 	    LayoutInflater inflater = getActivity().getLayoutInflater();
-	    view = inflater.inflate(R.layout.fragment_server_popup, null);
+	    view = inflater.inflate(R.layout.popup_server_settings, null);
 	    
 
  	    SharedPreferences sharedPref = getActivity().getSharedPreferences(getString(R.string.preference_setting),Context.MODE_PRIVATE);

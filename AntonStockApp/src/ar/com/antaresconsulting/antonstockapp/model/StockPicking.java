@@ -10,7 +10,7 @@ public class StockPicking {
 	
 	private String origin;
 	private String type;
-	private String partnerId;
+	private Integer partnerId;
 	private String locationSrc;
 	private String locationDest;
 	private String prodType;
@@ -20,7 +20,7 @@ public class StockPicking {
 
 
 	
-	public StockPicking(String origin, String type, String partnerId,
+	public StockPicking(String origin, String type, Integer partnerId,
 			String locationSrc, String locationDest) {
 		super();
 		this.origin = origin;
@@ -31,7 +31,7 @@ public class StockPicking {
 	}
 
 
-	public StockPicking(String origin, String type, String partnerId,
+	public StockPicking(String origin, String type, Integer partnerId,
 			String locationSrc, String locationDest,String prodType) {
 		super();
 		this.origin = origin;
@@ -53,11 +53,11 @@ public class StockPicking {
 	}
 
 
-	public String getPartnerId() {
+	public Integer getPartnerId() {
 		return partnerId;
 	}
 
-	public void setPartnerId(String partnerId) {
+	public void setPartnerId(Integer partnerId) {
 		this.partnerId = partnerId;
 	}
 

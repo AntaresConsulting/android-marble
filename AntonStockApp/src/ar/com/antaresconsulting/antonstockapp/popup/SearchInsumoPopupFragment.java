@@ -46,7 +46,7 @@ public class SearchInsumoPopupFragment extends DialogFragment {
 		AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
 		// Get the layout inflater
 		LayoutInflater inflater = getActivity().getLayoutInflater();
-		view = inflater.inflate(R.layout.fragment_search_insumo, null);
+		view = inflater.inflate(R.layout.popup_search_insumo, null);
 
 
 		SharedPreferences sharedPref = getActivity().getSharedPreferences(getString(R.string.saved_insumo_search),Context.MODE_PRIVATE);

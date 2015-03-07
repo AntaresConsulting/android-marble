@@ -10,7 +10,7 @@ public class PedidoLinea implements Serializable, Cloneable  {
 	private static final long serialVersionUID = -8332442030304208826L;
 	private Integer id;
 	private Object[] product;
-	private Double cantDim;
+	private Integer cantDim;
 	private Double cant;
 	private String nombre;
 	private String estado;
@@ -46,10 +46,10 @@ public class PedidoLinea implements Serializable, Cloneable  {
 	public void setProduct(Object[] product) {
 		this.product = product;
 	}
-	public Double getCantDim() {
+	public Integer getCantDim() {
 		return cantDim;
 	}
-	public void setCantDim(Double cantDim) {
+	public void setCantDim(Integer cantDim) {
 		this.cantDim = cantDim;
 	}
 	public Double getCant() {
@@ -89,7 +89,12 @@ public class PedidoLinea implements Serializable, Cloneable  {
 	@Override
 	public String toString() {
 		if((this.getDimension() != null)&&(this.getDimension().length > 0)){
-			return ((String)this.getProduct()[1])+" "+this.getDimension()[1];
+			String dimName;
+			if(this.getDimension()[0] instanceof Integer)
+				dimName = (String) this.getDimension()[1]; 
+			else
+				dimName = ((Dimension) this.getDimension()[0]).getDisplayName();
+			return ((String)this.getProduct()[1])+" "+this.getCant()+" "+(String)this.getUom()[1]+" --> "+this.getCantDim()+" x "+dimName;
 		}
 		return ((String)this.getProduct()[1])+" cantidad "+this.getCant()+" "+(String)this.getUom()[1];
 	}

@@ -100,11 +100,11 @@ public class PedidoLineaAdapter extends BaseAdapter {
 			Double width = Double.valueOf(dim.getDimW());
 			Double hight = Double.valueOf(dim.getDimH());
 			int cant = registro.getCantDim().intValue();
-			holder.dimHeight.setText(dim.getDimH());
-			holder.dimHeight2.setText(dim.getDimH());
-			holder.dimWidth.setText(dim.getDimW());
-			holder.dimWidth2.setText(dim.getDimW());
-			holder.dimThick.setText(dim.getDimT());
+			holder.dimHeight.setText(dim.getDimH().toString());
+			holder.dimHeight2.setText(dim.getDimH().toString());
+			holder.dimWidth.setText(dim.getDimW().toString());
+			holder.dimWidth2.setText(dim.getDimW().toString());
+			holder.dimThick.setText(dim.getDimT().toString());
 			holder.superficie.setText(String.valueOf(width.doubleValue() * hight.doubleValue()));
 			holder.superficieTotal.setText(String.valueOf(width.doubleValue() * hight.doubleValue()*cant));
 			holder.unidades.setText(dim.getDimTipo().getName());

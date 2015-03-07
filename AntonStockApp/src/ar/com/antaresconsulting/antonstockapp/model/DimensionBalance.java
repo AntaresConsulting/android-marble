@@ -10,7 +10,7 @@ public class DimensionBalance implements Serializable  {
 	private Object[] dimId;
 	private Double qtyM2;
 	private Double qtyUnits;
-	private HashMap<String, Object> dimensionVals;
+	private Dimension dim;
 	
 	/**
 	 * 
@@ -19,6 +19,22 @@ public class DimensionBalance implements Serializable  {
 
 	
 	public DimensionBalance() {}
+
+
+
+	
+	public Dimension getDim() {
+		return dim;
+	}
+
+
+
+
+	public void setDim(Dimension dim) {
+		this.dim = dim;
+	}
+
+
 
 
 	public Object[] getProdId() {
@@ -58,16 +74,6 @@ public class DimensionBalance implements Serializable  {
 
 	public void setQtyUnits(Double qtyUnits) {
 		this.qtyUnits = qtyUnits;
-	}
-
-
-	public HashMap<String, Object> getDimensionVals() {
-		return dimensionVals;
-	}
-
-
-	public void setDimensionVals(HashMap<String, Object> dimensionVals) {
-		this.dimensionVals = dimensionVals;
 	}
 
 

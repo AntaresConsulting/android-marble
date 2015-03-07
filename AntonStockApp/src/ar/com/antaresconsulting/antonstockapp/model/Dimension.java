@@ -12,12 +12,15 @@ public class Dimension implements Serializable  {
 	 * 
 	 */
 	private static final long serialVersionUID = 2335380404419758743L;
-	private String dimId;
-	private String dimH;
-	private String dimW;
-	private String dimT;	
+	private Integer dimId;
+	private String displayName;
+
+	private Double dimH;
+	private Double dimW;
+	private Double dimT;	
 	private SelectionObject dimTipo;
 
+	
 	public Dimension() {
 		super();
 	}
@@ -25,45 +28,61 @@ public class Dimension implements Serializable  {
 	public Dimension(String dimH, String dimW, String dimT,
 			SelectionObject dimTipo) {
 		super();
-		this.dimH = dimH;
-		this.dimW = dimW;
-		this.dimT = dimT;
+		this.dimH = Double.parseDouble(dimH);
+		this.dimW = Double.parseDouble(dimW);
+		this.dimT = Double.parseDouble(dimT);
 		this.dimTipo = dimTipo;
 	}
 	
+	public Dimension(HashMap<String, Object> hashMap) {
+		this.displayName = (String) hashMap.get("display_name");		
+		this.dimH = (Double) hashMap.get("hight");
+		this.dimW =  (Double) hashMap.get("width");
+		this.dimT =  (Double) hashMap.get("thickness");
+		this.dimTipo =  SelectionObject.getDimTipoById((String) hashMap.get("type"));
+	}
+
+	public String getDisplayName() {
+		return displayName;
+	}
+
+	public void setDisplayName(String displayName) {
+		this.displayName = displayName;
+	}
+
 	public SelectionObject getDimTipo() {
 		return dimTipo;
 	}
 	public void setDimTipo(SelectionObject dimTipo) {
 		this.dimTipo = dimTipo;
 	}
-	public String getDimH() {
+	public Double getDimH() {
 		return dimH;
 	}
-	public void setDimH(String dimH) {
+	public void setDimH(Double dimH) {
 		this.dimH = dimH;
 	}
-	public String getDimW() {
+	public Double getDimW() {
 		return dimW;
 	}
-	public void setDimW(String dimW) {
+	public void setDimW(Double dimW) {
 		this.dimW = dimW;
 	}
-	public String getDimT() {
+	public Double getDimT() {
 		return dimT;
 	}
-	public void setDimT(String dimT) {
+	public void setDimT(Double dimT) {
 		this.dimT = dimT;
 	}	
 	public double getM2(){
-		return Double.parseDouble(dimH)*Double.parseDouble(dimW);
+		return dimH.doubleValue() *dimW.doubleValue();
 	}
 
-	public String getDimId() {
+	public Integer getDimId() {
 		return dimId;
 	}
 
-	public void setDimId(String dimId) {
+	public void setDimId(Integer dimId) {
 		this.dimId = dimId;
 	}
 	public HashMap<String, Object> getMap(){

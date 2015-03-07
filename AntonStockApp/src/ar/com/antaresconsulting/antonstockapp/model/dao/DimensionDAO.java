@@ -6,6 +6,7 @@ import java.util.List;
 
 import android.app.Fragment;
 import ar.com.antaresconsulting.antonstockapp.AntonConstants;
+import ar.com.antaresconsulting.antonstockapp.model.Dimension;
 import ar.com.antaresconsulting.antonstockapp.model.DimensionBalance;
 import com.openerp.ReadAsyncTask;
 
@@ -56,7 +57,7 @@ public class DimensionDAO extends ReadAsyncTask {
 			resp.setQtyM2(qty_m2);
 			resp.setQtyUnits(qty_unit);
 			if(extraData)
-				resp.setDimensionVals((HashMap<String, Object>) this.mExtraData.get(i).get(AntonConstants.STOCK_MOVE_DIM_ID));
+				resp.setDim(new Dimension((HashMap<String, Object>) ((ArrayList)this.mExtraData.get(i).get(AntonConstants.STOCK_MOVE_DIM_ID)).get(0)));
 			datosProds.add(resp);
 			i++;
 		}

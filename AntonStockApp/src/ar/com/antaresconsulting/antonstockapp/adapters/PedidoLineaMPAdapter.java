@@ -70,13 +70,13 @@ public class PedidoLineaMPAdapter extends BaseAdapter {
 		holder.lblNombre.setText(registro.getNombre());
 		holder.cantPlacas.setText(String.valueOf(registro.getCant().intValue()));
 		Dimension dim = (Dimension) registro.getDimension()[0];
-		if(((dim.getDimH() !=null) && !dim.getDimH().isEmpty())){
-			holder.dimHeight.setText(dim.getDimH());
-			holder.dimWidth.setText(dim.getDimW());
-			holder.dimThick.setText(dim.getDimT());
-			holder.dimHeight2.setText(dim.getDimH());
-			holder.dimWidth2.setText(dim.getDimW());
-			float sup = Float.parseFloat(dim.getDimW()) * Float.parseFloat(dim.getDimH());
+		if(((dim.getDimH() !=null))){
+			holder.dimHeight.setText(dim.getDimH().toString());
+			holder.dimWidth.setText(dim.getDimW().toString());
+			holder.dimThick.setText(dim.getDimT().toString());
+			holder.dimHeight2.setText(dim.getDimH().toString());
+			holder.dimWidth2.setText(dim.getDimW().toString());
+			float sup = dim.getDimW().floatValue() * dim.getDimH().floatValue();
 			holder.superficie.setText(" = "+String.valueOf(sup)+" m2");
 			holder.supTotal.setText(String.valueOf(sup*registro.getCant().doubleValue())+" m2");
 		}

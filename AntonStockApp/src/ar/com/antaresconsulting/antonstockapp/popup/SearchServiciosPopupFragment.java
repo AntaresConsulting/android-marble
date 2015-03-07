@@ -42,7 +42,7 @@ public class SearchServiciosPopupFragment extends DialogFragment implements Prod
 		AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
 		// Get the layout inflater
 		LayoutInflater inflater = getActivity().getLayoutInflater();
-		view = inflater.inflate(R.layout.fragment_search_servicios, null);
+		view = inflater.inflate(R.layout.popup_search_servicios, null);
 
 
 		SharedPreferences sharedPref = getActivity().getSharedPreferences(getString(R.string.saved_servicios_search),Context.MODE_PRIVATE);

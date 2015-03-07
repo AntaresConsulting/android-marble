@@ -36,7 +36,7 @@ public class OrderPointPopupFragment extends DialogFragment  {
 		AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
 		// Get the layout inflater
 		LayoutInflater inflater = getActivity().getLayoutInflater();
-		view = inflater.inflate(R.layout.fragment_orderpoint, null);
+		view = inflater.inflate(R.layout.popup_orderpoint, null);
 		minqty = (EditText) view.findViewById(R.id.minQty);
 		maxqty = (EditText) view.findViewById(R.id.maxQty);
 

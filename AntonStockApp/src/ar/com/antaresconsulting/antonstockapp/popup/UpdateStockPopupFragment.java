@@ -57,7 +57,7 @@ public class UpdateStockPopupFragment extends DialogFragment  {
 	    tprod = getArguments().getInt("tprod");
 	    switch (tprod) {
 		case AntonConstants.MATERIA_PRIMA:
-			view = inflater.inflate(R.layout.fragment_ustock_mp, null);
+			view = inflater.inflate(R.layout.popup_ustock_mp, null);
 			espesor = (Spinner) view.findViewById(R.id.espesorDim);
 			espesor.setSelection(AntonConstants.DEFAULT_ESPESORES);
 			alto = (EditText) view.findViewById(R.id.largoDim);
@@ -67,7 +67,7 @@ public class UpdateStockPopupFragment extends DialogFragment  {
 			break;
 
 		default:
-			view = inflater.inflate(R.layout.fragment_ustock, null);
+			view = inflater.inflate(R.layout.popup_ustock, null);
 			break;
 		}
 	    

@@ -8,6 +8,15 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.Toast;
+import ar.com.antaresconsulting.antonstockapp.incoming.AddPMActivity;
+import ar.com.antaresconsulting.antonstockapp.incoming.InProducts;
+import ar.com.antaresconsulting.antonstockapp.internal.ConsumeInsumo;
+import ar.com.antaresconsulting.antonstockapp.internal.MoveProducts;
+import ar.com.antaresconsulting.antonstockapp.internal.ReEnterProducts;
+import ar.com.antaresconsulting.antonstockapp.outgoing.AddOEActivity;
+import ar.com.antaresconsulting.antonstockapp.outgoing.SubmitProducts;
+import ar.com.antaresconsulting.antonstockapp.partner.PartnerListActivity;
+import ar.com.antaresconsulting.antonstockapp.product.ProductTypeActivity;
 
 public class AntonLauncherActivity extends BaseActivity {
 

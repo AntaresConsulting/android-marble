@@ -7,6 +7,7 @@ import java.util.List;
 import android.app.Activity;
 import android.app.Fragment;
 import ar.com.antaresconsulting.antonstockapp.AntonConstants;
+import ar.com.antaresconsulting.antonstockapp.model.Dimension;
 import ar.com.antaresconsulting.antonstockapp.model.Pedido;
 import ar.com.antaresconsulting.antonstockapp.model.PedidoLinea;
 
@@ -46,7 +47,7 @@ public class PedidoDAO extends ReadAsyncTask {
 	}
 	
 	public void getMoveByPed(Integer id,String tpdrod) {
-		
+		this.extraData =  true;				
 		this.setmFilters(new Object[] { new Object[] { "picking_id", "=",id },new Object[] { "state", "=","confirmed" },new Object[] { "product_id.prod_type", "ilike",tpdrod} });
 		this.mModel = "stock.move";
 		this.execute(this.stockMoveFields);
@@ -61,7 +62,7 @@ public class PedidoDAO extends ReadAsyncTask {
 	}
 	
 	public void getMoveByPed(Integer id) {
-		
+		this.extraData =  true;				
 		this.setmFilters(new Object[] { new Object[] { "picking_id", "=",id },new Object[] { "state", "=","assigned" } });
 		this.mModel = "stock.move";
 		this.execute(this.stockMoveFields);
@@ -75,6 +76,7 @@ public class PedidoDAO extends ReadAsyncTask {
 		this.dataToSet = AntonConstants.PEDIDOS;
 	}
 	public void getOrdenesDeEntregaPend() {
+		this.extraData =  true;				
 		this.setmFilters(new Object[] { new Object[] { "state", "=","confirmed" },new Object[] { "picking_type_id.code", "=",AntonConstants.OUT_PORDUCT_TYPE }});
 		this.mModel = "stock.picking";
 		this.execute(this.baseFields);
@@ -82,24 +84,31 @@ public class PedidoDAO extends ReadAsyncTask {
 	}	
 	public void getOrdenesDeEntregaReady() {
 		this.setmFilters(new Object[] { new Object[] { "state", "=","assigned" },new Object[] { "picking_type_id.code", "=",AntonConstants.OUT_PORDUCT_TYPE }});
-		this.mModel = "stock.picking.out";
+		this.mModel = "stock.picking";
 		this.execute(this.baseFields);
 		this.dataToSet = AntonConstants.ORDENESDEENTREGA;
 	}		
 	public List<PedidoLinea> getPedidoLineaList() {
 		List<PedidoLinea> datosProds = new ArrayList<PedidoLinea>();
+		int i = 0;
 		for (HashMap<String, Object> obj : this.mData) {
 			PedidoLinea resp = new PedidoLinea();
 
 			Object[] product_id = obj.get("product_id") instanceof Boolean ? new Object[0]: (Object[]) obj.get("product_id");
 			Object[] dimension_id = obj.get(AntonConstants.STOCK_MOVE_DIM_ID) instanceof Boolean ? new Object[0]: (Object[]) obj.get(AntonConstants.STOCK_MOVE_DIM_ID);
 			Object[] product_uom = obj.get("product_uom") instanceof Boolean ? new Object[0]: (Object[]) obj.get("product_uom");
-
+			if(this.extraData){
+				if(!(obj.get(AntonConstants.STOCK_MOVE_DIM_ID) instanceof Boolean)){
+					dimension_id = new Object[1];
+					dimension_id[0] = new Dimension((HashMap<String, Object>) ((ArrayList)this.mExtraData.get(i).get(AntonConstants.STOCK_MOVE_DIM_ID)).get(0));
+				}
+			}
+			i++;
 			Double product_qty = obj.get("product_qty") instanceof Boolean ? 0: (Double) obj.get("product_qty");
 			String nombre = obj.get("name") instanceof Boolean ? "": (String) obj.get("name");
 			String estado = obj.get("state") instanceof Boolean ? "": (String) obj.get("state");
 
-			Double dimension_qty = obj.get(AntonConstants.STOCK_MOVE_DIM_QTY) instanceof Boolean ? 0: (Double) obj.get(AntonConstants.STOCK_MOVE_DIM_QTY);
+			Integer dimension_qty = obj.get(AntonConstants.STOCK_MOVE_DIM_QTY) instanceof Boolean ? 0: (Integer) obj.get(AntonConstants.STOCK_MOVE_DIM_QTY);
 
 			resp.setId((Integer) obj.get("id"));
 			resp.setProduct(product_id);

@@ -50,7 +50,7 @@ public class SearchBachaPopupFragment extends DialogFragment implements BachasDA
 		AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
 		// Get the layout inflater
 		LayoutInflater inflater = getActivity().getLayoutInflater();
-		view = inflater.inflate(R.layout.fragment_search_bacha, null);
+		view = inflater.inflate(R.layout.popup_search_bacha, null);
 
 
 		SharedPreferences sharedPref = getActivity().getSharedPreferences(getString(R.string.saved_bacha_search),Context.MODE_PRIVATE);

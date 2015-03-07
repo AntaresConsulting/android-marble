@@ -13,14 +13,15 @@ public class StockMove {
 	private String locationSrc;
 	private String locationDest;
 	private String origin;
-	private String qty;
+	private Double qty;
 	private String employee;
 	private Dimension dim;
+	private Integer dimQty;
 	
 	
 	
 	public StockMove(String nameStr,Integer productId, Integer prodUOM, String locationSrc,
-			String locationDest, String origin, String qty) {
+			String locationDest, String origin, Double qty) {
 		super();
 		this.name = nameStr;
 		this.productId = productId;
@@ -31,7 +32,7 @@ public class StockMove {
 		this.qty = qty;
 	}
 	public StockMove(String nameStr,Integer productId, Integer prodUOM, String locationSrc,
-			String locationDest, String origin, String qty, Dimension dimId) {
+			String locationDest, String origin, Double qty, Dimension dimId, Integer dimQty) {
 		super();
 		this.name = nameStr;
 		this.productId = productId;
@@ -41,6 +42,7 @@ public class StockMove {
 		this.origin = origin;
 		this.qty = qty;
 		this.dim = dimId;
+		this.dimQty = dimQty;
 	}
 	
 	
@@ -86,10 +88,10 @@ public class StockMove {
 	public void setOrigin(String origin) {
 		this.origin = origin;
 	}
-	public String getQty() {
+	public Double getQty() {
 		return qty;
 	}
-	public void setQty(String qty) {
+	public void setQty(Double qty) {
 		this.qty = qty;
 	}
 	public Dimension getDim() {
@@ -99,6 +101,12 @@ public class StockMove {
 		this.dim = dimId;
 	}
 	
+	public Integer getDimQty() {
+		return dimQty;
+	}
+	public void setDimQty(Integer dimQty) {
+		this.dimQty = dimQty;
+	}
 	public String getPickingId() {
 		return pickingId;
 	}
@@ -118,8 +126,10 @@ public class StockMove {
 		res.put("product_id",this.getProductId());
 		res.put("product_uom_qty",this.getQty());
 		res.put("product_uos",this.getProdUOM());
-		if(this.getDim()!=null)
-			res.put("dimension_id",this.getDim().getDimId());
+		if(this.getDim()!=null){
+			res.put("dimension_id",new Integer(this.getDim().getDimId()));
+			res.put("dimension_unit",this.getDimQty());
+		}
 
 		res.put("location_id",this.getLocationSrc());
 		res.put("location_dest_id",this.getLocationDest());				
