@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="ar.com.antaresconsulting.antonstockapp.ProductDetailActivity" >
+    tools:context="ar.com.antaresconsulting.antonstockapp.product.ProductDetailActivity" >
 
     <FrameLayout
         android:id="@+id/photoContainer"
@@ -13,8 +13,8 @@
 
         <ImageView
             android:id="@+id/productImg"
-            android:layout_width="200dp"
-            android:layout_height="200dp"
+            android:layout_width="@dimen/prod_detail_image_w"
+            android:layout_height="@dimen/prod_detail_image_h"
             android:layout_alignParentLeft="true"
             android:layout_alignParentTop="true"
             android:onClick="zoomPhoto"
@@ -23,17 +23,18 @@
         <Button
             android:id="@+id/takePhotoBtn"
             android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:layout_marginTop="200dp"
+            android:layout_height="@dimen/button_h"
+            android:layout_marginTop="@dimen/prod_detail_image_h"
             android:drawableLeft="@drawable/ic_take_photo"
             android:onClick="takePhoto"
+			android:textSize="@dimen/button_text_size"                                            
             android:text="Sacar Foto" />
     </FrameLayout>
 
     <View
         android:id="@+id/sepProdThumb"
         android:layout_width="4dp"
-        android:layout_height="200dp"
+        android:layout_height="@dimen/prod_detail_image_h"
         android:layout_alignParentTop="true"
         android:layout_marginLeft="15dp"
         android:layout_marginRight="30dp"
@@ -49,7 +50,7 @@
         android:layout_marginTop="20dp"
         android:layout_toRightOf="@+id/sepProdThumb"
         android:text="Nombre_Producto"
-        android:textSize="30sp" />
+        android:textSize="@dimen/prod_name_text_size" />
     <TextView
         android:id="@+id/atribsProd"
         android:layout_width="wrap_content"
@@ -62,7 +63,7 @@
         android:layout_toRightOf="@+id/nombreProd"
         android:text="Atributos"
         android:background="@drawable/shape"
-        android:textSize="20sp" />
+        android:textSize="@dimen/prod_text_size" />
 
     <FrameLayout
         android:id="@+id/productDetail"
@@ -91,14 +92,14 @@
                 android:layout_height="wrap_content"
                 android:layout_marginRight="20dp"
                 android:text="@string/lbl_prod_codigo"
-                android:textSize="25sp" />
+                android:textSize="@dimen/prod_text_size" />
 
             <TextView
                 android:id="@+id/codigoVal"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Codigo"
-                android:textSize="25sp" />
+                android:textSize="@dimen/prod_text_size" />
         </TableRow>
 
         <TableRow
@@ -112,14 +113,14 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/lbl_prod_precio"
-                android:textSize="25sp" />
+                android:textSize="@dimen/prod_text_size" />
 
             <TextView
                 android:id="@+id/precioVal"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Precio"
-                android:textSize="25sp" />
+                android:textSize="@dimen/prod_text_size" />
         </TableRow>
     </TableLayout>
 
@@ -140,6 +141,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:onClick="updateStock"
+				android:textSize="@dimen/button_text_size"                                
             	android:drawableLeft="@drawable/ic_action_stock"                
                 android:text="@string/lbl_prod_stock_adjust" />
 
@@ -154,6 +156,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:onClick="asignSupp"
+				android:textSize="@dimen/button_text_size"                
             	android:drawableLeft="@drawable/ic_action_assign"                                
                 android:text="@string/lbl_prod_stock_prov" />            
         </TableRow>
@@ -166,6 +169,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:onClick="stockRule"
+                android:textSize="@dimen/button_text_size"
             	android:drawableLeft="@drawable/ic_action_rule"                                
                 android:text="@string/lbl_prod_stock_rule" />            
         </TableRow>        
@@ -190,14 +194,14 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/lbl_prod_stockR"
-                android:textSize="25sp" />
+                android:textSize="@dimen/prod_text_size" />
 
             <TextView
                 android:id="@+id/stockRVal"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Cantidad"
-                android:textSize="25sp" />
+                android:textSize="@dimen/prod_text_size" />
         </TableRow>
 
         <TableRow
@@ -211,14 +215,14 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/lbl_prod_stockF"
-                android:textSize="25sp" />
+                android:textSize="@dimen/prod_text_size" />
 
             <TextView
                 android:id="@+id/stockFVal"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Cantidad"
-                android:textSize="25sp" />
+                android:textSize="@dimen/prod_text_size" />
         </TableRow>
 
         <TableRow
@@ -232,14 +236,14 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/lbl_prod_stockI"
-                android:textSize="25sp" />
+                android:textSize="@dimen/prod_text_size" />
 
             <TextView
                 android:id="@+id/stockIVal"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Cantidad"
-                android:textSize="25sp" />
+                android:textSize="@dimen/prod_text_size" />
         </TableRow>
 
     </TableLayout>

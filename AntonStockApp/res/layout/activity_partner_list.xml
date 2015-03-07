@@ -4,7 +4,7 @@
     android:id="@+id/drawer_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="ar.com.antaresconsulting.antonstockapp.PartnerListActivity">
+    tools:context="ar.com.antaresconsulting.antonstockapp.partner.PartnerListActivity">
 <fragment 
     android:id="@+id/partner_list"
     android:name="com.example.android.fragments.PartnerListFragment"

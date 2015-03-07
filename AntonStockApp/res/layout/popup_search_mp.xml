@@ -35,7 +35,7 @@
         <Spinner
             android:id="@+id/tipoMaterial"
             android:layout_width="200dp"
-            android:layout_height="wrap_content"
+            android:layout_height="@dimen/popup_input_height"
             android:entries="@array/tipoMaterial" >
 
             <requestFocus />
@@ -44,7 +44,7 @@
         <Spinner
             android:id="@+id/color"
             android:layout_width="200dp"
-            android:layout_height="wrap_content"
+            android:layout_height="@dimen/popup_input_height"
             android:entries="@array/color" />
     </TableRow>
 
@@ -70,7 +70,7 @@
         <Spinner
             android:id="@+id/acabado"
             android:layout_width="200dp"
-            android:layout_height="wrap_content"
+            android:layout_height="@dimen/popup_input_height"
             android:entries="@array/terminaciones" />
 
     </TableRow>

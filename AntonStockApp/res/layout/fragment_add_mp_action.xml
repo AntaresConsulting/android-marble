@@ -4,7 +4,6 @@
     android:layout_width="fill_parent"
     android:layout_height="match_parent"
     android:layout_gravity="center_horizontal"
-    android:layout_margin="20dp"
     android:orientation="vertical" >
 
     <TableLayout
@@ -14,7 +13,8 @@
         <TableRow
             android:id="@+id/tableRow2"
             android:layout_width="fill_parent"
-            android:layout_height="wrap_content" >
+            android:layout_height="@dimen/oe_row_height"
+			 >
 
             <TableLayout
                 android:id="@+id/innerTable"
@@ -93,7 +93,7 @@
                     <Spinner
                         android:id="@+id/espesorPlaca"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                    	android:layout_height="@dimen/oe_input_height"
                         android:layout_weight="1"
                         android:entries="@array/espesores" />
                 </TableRow>
@@ -118,7 +118,7 @@
                 android:id="@+id/tipoDim"
                 android:layout_weight="1"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="@dimen/oe_input_height"
                 android:entries="@array/tipoDim" />
 
 
@@ -156,8 +156,8 @@
     <View
         android:layout_width="fill_parent"
         android:layout_height="4dp"
-        android:layout_marginBottom="10dp"
-        android:layout_marginTop="10dp"
+        android:layout_marginBottom="@dimen/oe_margin_sep"
+        android:layout_marginTop="@dimen/oe_margin_sep"
         android:background="@color/actionbar_theme_color" />
 
     <ImageButton

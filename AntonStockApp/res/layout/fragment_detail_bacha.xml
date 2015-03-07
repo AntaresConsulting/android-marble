@@ -10,7 +10,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
         android:orientation="vertical"
-        tools:context="ar.com.antaresconsulting.antonstockapp.ProductDetailActivity" >
+        tools:context="ar.com.antaresconsulting.antonstockapp.product.ProductDetailActivity" >
 
         <TableRow
             android:id="@+id/row3"
@@ -26,16 +26,16 @@
                 android:layout_marginRight="15dp"
                 android:text="@string/lbl_prod_tipo_material"
                 android:textAppearance="?android:attr/textAppearanceMedium"
-                android:textSize="25sp" />
+                android:textSize="@dimen/prod_text_size" />
 
             <TextView
                 android:id="@+id/material"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="25dp"
+                android:layout_marginLeft="@dimen/prod_text_size"
                 android:text=""
                 android:textAppearance="?android:attr/textAppearanceMedium"
-                android:textSize="25sp" />
+                android:textSize="@dimen/prod_text_size" />
         </TableRow>
 
         <TableRow
@@ -50,16 +50,16 @@
                 android:layout_marginBottom="15dp"
                 android:text="@string/lbl_prod_marca"
                 android:textAppearance="?android:attr/textAppearanceMedium"
-                android:textSize="25sp" />
+                android:textSize="@dimen/prod_text_size" />
 
             <TextView
                 android:id="@+id/marca"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="25dp"
+                android:layout_marginLeft="@dimen/prod_text_size"
                 android:text=""
                 android:textAppearance="?android:attr/textAppearanceMedium"
-                android:textSize="25sp" />
+                android:textSize="@dimen/prod_text_size" />
         </TableRow>
 
         <TableRow
@@ -74,16 +74,16 @@
                 android:layout_marginBottom="15dp"
                 android:text="@string/lbl_prod_bacha_acero"
                 android:textAppearance="?android:attr/textAppearanceMedium"
-                android:textSize="25sp" />
+                android:textSize="@dimen/prod_text_size" />
 
             <TextView
                 android:id="@+id/acero"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="25dp"
+                android:layout_marginLeft="@dimen/prod_text_size"
                 android:text=""
                 android:textAppearance="?android:attr/textAppearanceMedium"
-                android:textSize="25sp" />
+                android:textSize="@dimen/prod_text_size" />
         </TableRow>
 
         <TableRow
@@ -98,16 +98,16 @@
                 android:layout_marginBottom="15dp"
                 android:text="@string/lbl_prod_bacha_tipo"
                 android:textAppearance="?android:attr/textAppearanceMedium"
-                android:textSize="25sp" />
+                android:textSize="@dimen/prod_text_size" />
 
             <TextView
                 android:id="@+id/tipoBacha"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="25dp"
+                android:layout_marginLeft="@dimen/prod_text_size"
                 android:text=""
                 android:textAppearance="?android:attr/textAppearanceMedium"
-                android:textSize="25sp" />
+                android:textSize="@dimen/prod_text_size" />
         </TableRow>
     </TableLayout>
     <TableLayout
@@ -128,7 +128,7 @@
                 android:layout_marginBottom="15dp"
                 android:text="@string/lbl_prod_bacha_colocacion"
                 android:textAppearance="?android:attr/textAppearanceMedium"
-                android:textSize="25sp" />
+                android:textSize="@dimen/prod_text_size" />
 
             <TextView
                 android:id="@+id/colocacion"
@@ -151,15 +151,15 @@
                 android:layout_marginBottom="15dp"
                 android:text="@string/lbl_prod_bacha_largo"
                 android:textAppearance="?android:attr/textAppearanceMedium"
-                android:textSize="25sp" />
+                android:textSize="@dimen/prod_text_size" />
 
             <TextView
                 android:id="@+id/bachaLargo"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="25dp"
+                android:layout_marginLeft="@dimen/prod_text_size"
                 android:textAppearance="?android:attr/textAppearanceMedium"
-                android:textSize="25sp" />
+                android:textSize="@dimen/prod_text_size" />
         </TableRow>
 
         <TableRow
@@ -174,15 +174,15 @@
                 android:layout_marginBottom="15dp"
                 android:text="@string/lbl_prod_bacha_ancho"
                 android:textAppearance="?android:attr/textAppearanceMedium"
-                android:textSize="25sp" />
+                android:textSize="@dimen/prod_text_size" />
 
             <TextView
                 android:id="@+id/bachaAncho"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="25dp"
+                android:layout_marginLeft="@dimen/prod_text_size"
                 android:textAppearance="?android:attr/textAppearanceMedium"
-                android:textSize="25sp" />
+                android:textSize="@dimen/prod_text_size" />
         </TableRow>
 
         <TableRow
@@ -197,15 +197,15 @@
                 android:layout_marginBottom="15dp"
                 android:text="@string/lbl_prod_bacha_prof"
                 android:textAppearance="?android:attr/textAppearanceMedium"
-                android:textSize="25sp" />
+                android:textSize="@dimen/prod_text_size" />
 
             <TextView
                 android:id="@+id/bachaProf"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="25dp"
+                android:layout_marginLeft="@dimen/prod_text_size"
                 android:textAppearance="?android:attr/textAppearanceMedium"
-                android:textSize="25sp" />
+                android:textSize="@dimen/prod_text_size" />
         </TableRow>
     </TableLayout>
 

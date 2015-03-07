@@ -36,7 +36,7 @@
         <Spinner
             android:id="@+id/marca"
             android:layout_width="200dp"
-            android:layout_height="wrap_content" >
+            android:layout_height="@dimen/popup_input_height" >
 
             <requestFocus />
         </Spinner>
@@ -44,7 +44,7 @@
         <Spinner
             android:id="@+id/tipoMaterial"
             android:layout_width="200dp"
-            android:layout_height="wrap_content" />
+            android:layout_height="@dimen/popup_input_height" />
     </TableRow>
 
     <TableRow
@@ -76,12 +76,12 @@
         <Spinner
             android:id="@+id/aceroBacha"
             android:layout_width="200dp"
-            android:layout_height="wrap_content" />
+            android:layout_height="@dimen/popup_input_height" />
 
         <Spinner
             android:id="@+id/colocacionBacha"
             android:layout_width="200dp"
-            android:layout_height="wrap_content" />
+            android:layout_height="@dimen/popup_input_height" />
     </TableRow>
     <TableRow
         android:id="@+id/TableRow03"
@@ -106,7 +106,7 @@
         <Spinner
             android:id="@+id/tipoBacha"
             android:layout_width="200dp"
-            android:layout_height="wrap_content" />
+            android:layout_height="@dimen/popup_input_height" />
 
     </TableRow>
     <TableRow

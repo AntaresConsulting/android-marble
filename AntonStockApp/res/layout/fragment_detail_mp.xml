@@ -3,7 +3,7 @@
     android:id="@+id/ScrollView1"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="ar.com.antaresconsulting.antonstockapp.ProductDetailActivity" >
+    tools:context="ar.com.antaresconsulting.antonstockapp.product.ProductDetailActivity" >
 
     <RelativeLayout
         android:id="@+id/RelativeLayout1"
@@ -19,7 +19,7 @@
             android:layout_marginRight="15dp"
             android:text="@string/lbl_prod_tipo_material"
             android:textAppearance="?android:attr/textAppearanceMedium"
-            android:textSize="25sp" />
+            android:textSize="@dimen/prod_text_size" />
 
         <TextView
             android:id="@+id/material"
@@ -30,7 +30,7 @@
             android:layout_toRightOf="@+id/lblMaterial"
             android:text="Medium Text"
             android:textAppearance="?android:attr/textAppearanceMedium"
-            android:textSize="25sp" />
+            android:textSize="@dimen/prod_text_size" />
 
         <TextView
             android:id="@+id/lblColor"
@@ -40,7 +40,7 @@
             android:layout_marginBottom="15dp"
             android:text="@string/lbl_prod_color"
             android:textAppearance="?android:attr/textAppearanceMedium"
-            android:textSize="25sp" />
+            android:textSize="@dimen/prod_text_size" />
 
         <TextView
             android:id="@+id/color"
@@ -48,11 +48,11 @@
             android:layout_height="wrap_content"
             android:layout_alignBaseline="@+id/lblColor"
             android:layout_below="@+id/lblMaterial"
-            android:layout_marginLeft="25dp"
+            android:layout_marginLeft="@dimen/prod_text_size"
             android:layout_toRightOf="@+id/lblMaterial"
             android:text="Medium Text"
             android:textAppearance="?android:attr/textAppearanceMedium"
-            android:textSize="25sp" />
+            android:textSize="@dimen/prod_text_size" />
 
         <TextView
             android:id="@+id/lblAcab"
@@ -62,7 +62,7 @@
             android:layout_marginBottom="15dp"
             android:text="@string/lbl_prod_acabado"
             android:textAppearance="?android:attr/textAppearanceMedium"
-            android:textSize="25sp" />
+            android:textSize="@dimen/prod_text_size" />
 
         <TextView
             android:id="@+id/acabado"
@@ -70,11 +70,11 @@
             android:layout_height="wrap_content"
             android:layout_alignBaseline="@+id/lblAcab"
             android:layout_below="@+id/lblColor"
-            android:layout_marginLeft="25dp"
+            android:layout_marginLeft="@dimen/prod_text_size"
             android:layout_toRightOf="@+id/lblMaterial"
             android:text="Medium Text"
             android:textAppearance="?android:attr/textAppearanceMedium"
-            android:textSize="25sp" />
+            android:textSize="@dimen/prod_text_size" />
     </RelativeLayout>
 
 </ScrollView>

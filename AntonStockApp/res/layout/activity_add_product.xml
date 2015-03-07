@@ -14,8 +14,8 @@
 
         <ImageView
             android:id="@+id/productImg"
-            android:layout_width="200dp"
-            android:layout_height="200dp"
+            android:layout_width="@dimen/prod_detail_image_w"
+            android:layout_height="@dimen/prod_detail_image_h"
             android:layout_alignParentLeft="true"
             android:layout_alignParentTop="true"
             android:src="@drawable/ic_no_photo" />
@@ -33,7 +33,7 @@
     <View
         android:id="@+id/sepProdThumb"
         android:layout_width="4dp"
-        android:layout_height="250dp"
+        android:layout_height="@dimen/prod_detail_image_h"
         android:layout_alignParentTop="true"
         android:layout_marginLeft="15dp"
         android:layout_marginRight="30dp"

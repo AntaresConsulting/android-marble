@@ -7,8 +7,8 @@
 
     <ImageView
         android:id="@+id/prodImg"
-        android:layout_width="150dp"
-        android:layout_height="150dp"
+        android:layout_width="@dimen/prod_list_image_w"
+        android:layout_height="@dimen/prod_list_image_h"
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
         android:src="@drawable/abc_ab_bottom_solid_dark_holo" />

@@ -4,13 +4,13 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="ar.com.antaresconsulting.antonstockapp.PartnerDetailFragment" >
+    tools:context="ar.com.antaresconsulting.antonstockapp.partner.PartnerDetailFragment" >
     
 
     <ImageView     
         android:id="@+id/partnerImg"
-        android:layout_width="250dp"
-        android:layout_height="250dp"
+        android:layout_width="@dimen/partner_image_w"
+        android:layout_height="@dimen/partner_image_h"
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
         android:src="@drawable/abc_ab_bottom_solid_dark_holo" />
@@ -18,7 +18,7 @@
     <View
         android:id="@+id/sepProdThumb"
         android:layout_width="4dp"
-        android:layout_height="250dp"
+        android:layout_height="@dimen/partner_image_h"
         android:layout_alignParentTop="true"
         android:layout_marginLeft="5dp"
         android:layout_toRightOf="@id/partnerImg"
@@ -32,7 +32,7 @@
         android:layout_marginBottom="30dp"
         android:layout_toRightOf="@+id/sepProdThumb"
         android:text="Nombre_Partner"
-        android:textSize="40sp" />
+        android:textSize="@dimen/partner_name_text_size" />
 
     <ImageView
         android:id="@+id/icAddress"
@@ -52,7 +52,7 @@
         android:layout_alignBottom="@id/icAddress"
         android:shadowColor="@color/abc_search_url_text_normal"
         android:text="Domicilio_Part"
-        android:textSize="30sp" />
+        android:textSize="@dimen/partner_text_size" />
 
     <ImageView
         android:id="@+id/icEmail"
@@ -72,7 +72,7 @@
         android:layout_toRightOf="@id/icEmail"
         android:shadowColor="@color/abc_search_url_text_normal"
         android:text="Email_Part"
-        android:textSize="30sp" />
+        android:textSize="@dimen/partner_text_size" />
    
     <ImageView
         android:id="@+id/icPhone"
@@ -92,7 +92,7 @@
         android:layout_toRightOf="@id/icPhone"
         android:shadowColor="@color/abc_search_url_text_normal"
         android:text="Phone_Part"
-        android:textSize="30sp" />  
+        android:textSize="@dimen/partner_text_size" />  
     <ImageView
         android:id="@+id/icWeb"
         android:layout_marginLeft="50dp"
@@ -112,7 +112,7 @@
         android:layout_toRightOf="@id/icWeb"
         android:shadowColor="@color/abc_search_url_text_normal"
         android:text="Web_Part"
-        android:textSize="30sp" />
+        android:textSize="@dimen/partner_text_size" />
  
     <ImageView
         android:id="@+id/icCuit"
@@ -133,6 +133,6 @@
         android:layout_toRightOf="@id/icCuit"
         android:shadowColor="@color/abc_search_url_text_normal"
         android:text="CUIT_Part"
-        android:textSize="30sp" />
+        android:textSize="@dimen/partner_text_size" />
 
 </RelativeLayout>

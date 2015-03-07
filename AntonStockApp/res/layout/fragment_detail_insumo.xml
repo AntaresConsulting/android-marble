@@ -5,7 +5,7 @@
     android:layout_height="wrap_content"
     android:layout_gravity="center_horizontal|center_vertical"
     android:orientation="vertical"
-    tools:context="ar.com.antaresconsulting.antonstockapp.ProductDetailActivity" >
+    tools:context="ar.com.antaresconsulting.antonstockapp.product.ProductDetailActivity" >
 
      <TextView
             android:id="@+id/lblDescripcion"
@@ -15,7 +15,7 @@
             android:layout_marginBottom="15dp"
             android:text="@string/lbl_prod_desc"
             android:textAppearance="?android:attr/textAppearanceMedium"
-            android:textSize="25sp" />
+            android:textSize="@dimen/prod_text_size" />
 
         <TextView
             android:id="@+id/insuDesc"
@@ -26,6 +26,6 @@
             android:layout_marginLeft="25dp"            
             android:text=""
             android:textAppearance="?android:attr/textAppearanceMedium"
-            android:textSize="25sp" />
+            android:textSize="@dimen/prod_text_size" />
 
 </RelativeLayout>

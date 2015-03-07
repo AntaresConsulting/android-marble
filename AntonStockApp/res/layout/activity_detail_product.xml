@@ -3,5 +3,5 @@
     android:id="@+id/product_detail_container"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="ar.com.antaresconsulting.antonstockapp.ProductDetailActivity"
+    tools:context="ar.com.antaresconsulting.antonstockapp.product.ProductDetailActivity"
     tools:ignore="MergeRootFrame" />

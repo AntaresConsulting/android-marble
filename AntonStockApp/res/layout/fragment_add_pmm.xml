@@ -21,12 +21,13 @@
             android:layout_height="wrap_content"
             android:text="@string/add_pm_prod_dispo"
             android:textAppearance="?android:attr/textAppearanceLarge"
-            android:textSize="30sp" />
+            android:textSize="@dimen/pm_title_text_size" />
 
         <ListView
             android:id="@+id/productosDispo"
             android:layout_width="match_parent"
-            android:layout_height="240dp" >
+			android:layout_weight="1"            
+            android:layout_height="@dimen/product_available_height" >
         </ListView>
 
         <View
@@ -36,12 +37,10 @@
             android:layout_marginTop="10dp"
             android:background="@color/actionbar_theme_color" />
 
-        
         <TableLayout
             android:layout_width="fill_parent"
-            android:layout_height="match_parent"
-            android:layout_gravity="center_horizontal"
-            >
+            android:layout_height="@dimen/pm_row_height"
+            android:layout_gravity="center_horizontal" >
 
             <TableRow
                 android:id="@+id/provSelect"
@@ -54,14 +53,15 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
                     android:text="@string/add_pm_proveedor"
-                    android:textAppearance="?android:attr/textAppearanceMedium" />
+                    android:textAppearance="?android:attr/textAppearanceSmall" />
 
                 <Spinner
                     android:id="@+id/proveedorList"
-                    android:layout_width="fill_parent"
-                    android:layout_height="50dp"
-                    android:ems="10"
-                   />
+                    android:layout_width="wrap_content"
+                    android:layout_height="@dimen/pm_input_height"
+                    android:layout_weight="1"
+                    android:ems="10" />
+
             </TableRow>
            </TableLayout>
 
@@ -73,7 +73,7 @@
                 <TableRow
                     android:id="@+id/tableRow8"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" >
+                    android:layout_height="@dimen/pm_row_height" >
 
                     <TextView
                         android:id="@+id/TextView02"
@@ -88,7 +88,7 @@
                     <Spinner
                         android:id="@+id/tipoDim"
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        android:layout_height="@dimen/pm_input_height"
                         android:layout_weight="1"
                         android:entries="@array/tipoDim" />
                 </TableRow>
@@ -96,12 +96,12 @@
                 <TableRow
                     android:id="@+id/tableRow2"
                     android:layout_width="fill_parent"
-                    android:layout_height="wrap_content" >
+                    android:layout_height="@dimen/pm_row_height" >
 
                     <TableLayout
                         android:id="@+id/innerTable"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        android:layout_height="@dimen/pm_row_height"
                         android:layout_weight="1" >
 
                         <TableRow
@@ -173,7 +173,7 @@
                             <Spinner
                                 android:id="@+id/espesorPlaca"
                                 android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
+                                android:layout_height="@dimen/pm_input_height"
                                 android:layout_weight="1"
                                 android:entries="@array/espesores" />
 
@@ -185,25 +185,25 @@
              <TableLayout
                  android:id="@+id/cantidad"
                  android:layout_width="match_parent"
-                 android:layout_height="match_parent" >
+                 android:layout_height="wrap_content" >
 			<TableRow
                 android:id="@+id/tableRow26"
                 android:layout_width="wrap_content"
-                android:layout_height="match_parent" >
+                android:layout_height="@dimen/pm_row_height" >
 
                 <TextView
                     android:id="@+id/lblCantidad"
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
                     android:text="@string/add_pm_prod_cant"
-                    android:textAppearance="?android:attr/textAppearanceMedium" />
+                    android:textAppearance="?android:attr/textAppearanceSmall" />
 
                 <EditText
                     android:id="@+id/cantidadPlacas"
                     android:layout_width="fill_parent"
-                    android:layout_height="50dp"
+                    android:layout_height="@dimen/pm_input_height"
                     android:ems="10"
-                    android:inputType="text" />                
+                     android:inputType="numberDecimal" />                
             </TableRow>            
                  
 			<TableRow
@@ -216,12 +216,12 @@
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
                     android:text="@string/add_pm_compra"
-                    android:textAppearance="?android:attr/textAppearanceMedium" />
+                    android:textAppearance="?android:attr/textAppearanceSmall" />
 
                 <EditText
                     android:id="@+id/pickingList"
                     android:layout_width="fill_parent"
-                    android:layout_height="50dp"
+                    android:layout_height="@dimen/pm_input_height"
                     android:ems="10"
                     android:inputType="text" />                
             </TableRow>            
@@ -233,8 +233,8 @@
             <View
                 android:layout_width="fill_parent"
                 android:layout_height="4dp"
-                android:layout_marginBottom="10dp"
-                android:layout_marginTop="10dp"
+                android:layout_marginBottom="@dimen/pm_margin_sep"
+                android:layout_marginTop="@dimen/pm_margin_sep"
                 android:layout_span="2"
                 android:background="@color/actionbar_theme_color" />
             </TableRow>
@@ -271,7 +271,7 @@
             android:layout_height="wrap_content"
             android:text="@string/add_pm_prod_in"
             android:textAppearance="?android:attr/textAppearanceLarge"
-            android:textSize="30sp" />
+            android:textSize="@dimen/pm_title_text_size" />
 
         <ListView
             android:id="@+id/productosPedido"

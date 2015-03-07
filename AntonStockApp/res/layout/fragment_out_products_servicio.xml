@@ -44,8 +44,8 @@
             <View
                 android:layout_width="wrap_content"
                 android:layout_height="4dp"
-                android:layout_marginBottom="10dp"
-                android:layout_marginTop="10dp"
+                android:layout_marginBottom="@dimen/oe_margin_sep"
+                android:layout_marginTop="@dimen/oe_margin_sep"
                 android:layout_span="2"
                 android:background="@color/actionbar_theme_color" />
 
@@ -60,14 +60,14 @@
             <ListView
                 android:id="@+id/productosDispo"
                 android:layout_width="match_parent"
-                android:layout_height="363dp" >
+                android:layout_height="@dimen/product_available_height" >
             </ListView>
 
             <View
                 android:layout_width="fill_parent"
                 android:layout_height="4dp"
-                android:layout_marginBottom="10dp"
-                android:layout_marginTop="10dp"
+                android:layout_marginBottom="@dimen/oe_margin_sep"
+                android:layout_marginTop="@dimen/oe_margin_sep"
                 android:layout_span="2"
                 android:background="@color/actionbar_theme_color" />
 
@@ -103,7 +103,7 @@
             android:layout_height="wrap_content"
             android:text="@string/out_prod_clientes"
             android:textAppearance="?android:attr/textAppearanceLarge"
-            android:textSize="30sp" />
+            android:textSize="@dimen/oe_title_text_size" />
 
         <TextView
             android:id="@+id/clienteNombre"
@@ -121,7 +121,7 @@
             android:layout_height="wrap_content"
             android:text="@string/out_prod_title_productos"
             android:textAppearance="?android:attr/textAppearanceLarge"
-            android:textSize="30sp" />
+            android:textSize="@dimen/oe_title_text_size" />
 
         <ListView
             android:id="@+id/productosEgreso"
