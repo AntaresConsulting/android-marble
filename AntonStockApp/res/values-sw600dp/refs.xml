@@ -9,8 +9,5 @@
     http://developer.android.com/training/multiscreen/screensizes.html#TaskUseAliasFilters
     -->
     <item name="activity_partner_list" type="layout">@layout/activity_partner_twopane</item>
-    <item name="activity_product_list" type="layout">@layout/activity_product_twopane</item>
-    <dimen name="login_logo_width">170dp</dimen>
-    <dimen name="login_logo_height">176dp</dimen>
-    <dimen name="login_logo_top">20dp</dimen>    
+    <item name="activity_product_list" type="layout">@layout/activity_product_twopane</item>          
 </resources>
