@@ -142,6 +142,7 @@ public abstract  class  ReadAsyncTask extends AsyncTask<String, String, OpenErpC
 										idsN[j] = new Long(((Integer) vals[j]).longValue());
 									}									
 								}else{
+									idsN = new Long[1];
 									idsN[0] = new Long(((Integer) vals[0]).longValue());
 								}
 

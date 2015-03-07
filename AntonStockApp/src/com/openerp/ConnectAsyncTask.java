@@ -53,7 +53,7 @@ public class ConnectAsyncTask extends
 		List<HashMap<String, Object>> respg = oc.read(AntonConstants.GROUPS_MODEL,grpIdsn,new String[]{"name"} );
 		for (HashMap<String, Object> hashMap : respg) {
 			String grpName = (String) hashMap.get("name");
-			if(grpName.equalsIgnoreCase(AntonConstants.MARBLE_MANAGER_GROUP)||grpName.equalsIgnoreCase(AntonConstants.MARBLE_ADMIN_GROUP))
+			if(grpName.equalsIgnoreCase(AntonConstants.MARBLE_MANAGER_GROUP))
 				oc.setManager(true);
 			if(grpName.equalsIgnoreCase(AntonConstants.MARBLE_CUTTER_GROUP))
 				oc.setCutter(true);

@@ -21,10 +21,20 @@ public class CreatePickingAsyncTask extends AsyncTask<StockPicking, String, Long
 	private OpenErpConnect oc;
 	private String  strError;
 
+	private Long  outPicking;
+
 	HashMap<String, String> context;
 	
 	
 	
+	public Long getOutPicking() {
+		return outPicking;
+	}
+
+	public void setOutPicking(Long outPicking) {
+		this.outPicking = outPicking;
+	}
+
 	public CreatePickingAsyncTask(Activity act) {
 		this.activity = act;
 		this.context = new HashMap<String, String>();
@@ -80,7 +90,7 @@ public class CreatePickingAsyncTask extends AsyncTask<StockPicking, String, Long
 					}else{
 						idDim =  res[0];
 					}
-					stockMove.getDim().setDimId(idDim.toString());
+					stockMove.getDim().setDimId(new Integer(idDim.toString()));
 				}
 				try {
 					oc.create(AntonConstants.MOVE_MODEL, stockMove.getMap(), this.context);
@@ -95,6 +105,8 @@ public class CreatePickingAsyncTask extends AsyncTask<StockPicking, String, Long
 				oc.call(AntonConstants.PICKING_MODEL, "action_confirm", header_picking_id);
 			
 		}
+        if(this.getOutPicking()!= null)
+        	oc.call(AntonConstants.PICKING_MODEL, "action_assign", this.getOutPicking());
 		return new Long(1);
 	}
 
