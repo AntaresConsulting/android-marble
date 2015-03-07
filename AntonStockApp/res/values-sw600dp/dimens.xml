@@ -1,0 +1,59 @@
+<resources>
+
+    <!-- Default screen margins, per the Android Design guidelines. -->
+    <dimen name="activity_horizontal_margin">16dp</dimen>
+    <dimen name="activity_vertical_margin">16dp</dimen>
+
+    <!--
+         Per the design guidelines, navigation drawers should be between 240dp and 320dp:
+         https://developer.android.com/design/patterns/navigation-drawer.html
+    -->
+    <dimen name="navigation_drawer_width">220dp</dimen>
+
+    <dimen name="login_table_top">170dp</dimen>
+    <dimen name="login_icon_width">90dp</dimen>
+    <dimen name="login_icon_height">90dp</dimen>
+    <dimen name="login_textfield_width">200dp</dimen>
+    <dimen name="login_actionbar_height">60dp</dimen>
+    <dimen name="app_text_size">15dp</dimen>
+	<dimen name="item_drawer_margin">10dp</dimen>
+	<dimen name="item_drawer_icon_dim">40dp</dimen>
+	<dimen name="item_drawer_text_size">18sp</dimen>
+
+	<dimen name="login_logo_width">170dp</dimen>
+    <dimen name="login_logo_height">176dp</dimen>
+    <dimen name="login_logo_top">20dp</dimen> 
+    <dimen name="prod_detail_image_w">150dp</dimen>
+	<dimen name="prod_detail_image_h">150dp</dimen>            
+    <dimen name="prod_list_image_w">100dp</dimen>
+	<dimen name="prod_list_image_h">100dp</dimen>  	
+	<dimen name="prod_text_size">19sp</dimen>
+	<dimen name="prod_name_text_size">25sp</dimen>   	
+	<dimen name="button_h">40dp</dimen>   	
+	<dimen name="button_text_size">10sp</dimen>  
+	
+	<dimen name="partner_name_text_size">30sp</dimen>  
+	<dimen name="partner_image_w">150dp</dimen>  
+	<dimen name="partner_image_h">150dp</dimen>  
+	<dimen name="partner_text_size">19sp</dimen>  	
+
+	<dimen name="product_available_height">150dp</dimen>  	
+
+	<dimen name="pm_row_height">40dp</dimen>  	
+	<dimen name="pm_title_text_size">25sp</dimen>
+	<dimen name="pm_input_height">40dp</dimen>  	
+	<dimen name="pm_margin_sep">5dp</dimen>  
+	<dimen name="pm_spinner_text_size">10sp</dimen>
+	
+	<dimen name="oe_title_text_size">25sp</dimen>
+	<dimen name="oe_margin_sep">5dp</dimen>  
+	<dimen name="oe_row_height">40dp</dimen>  	
+	<dimen name="oe_input_height">40dp</dimen>  	
+		
+	<dimen name="popup_input_height">40dp</dimen>  	
+		
+		
+	
+			
+	
+</resources>
