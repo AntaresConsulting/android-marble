@@ -10,4 +10,5 @@
     -->
     <item name="activity_partner_list" type="layout">@layout/activity_partner_twopane</item>
     <item name="activity_product_list" type="layout">@layout/activity_product_twopane</item>
+		   	
 </resources>
