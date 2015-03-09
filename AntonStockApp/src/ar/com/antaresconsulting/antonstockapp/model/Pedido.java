@@ -1,6 +1,9 @@
 package ar.com.antaresconsulting.antonstockapp.model;
 
 import java.io.Serializable;
+import java.util.Date;
+
+import ar.com.antaresconsulting.antonstockapp.util.DateUtil;
 
 
 public class Pedido implements Serializable {
@@ -12,11 +15,26 @@ public class Pedido implements Serializable {
 	private Object[] partner;
 	private String nota;
 	private String tipo;
+	private String tipoMov;
 	private String origen;
 	private String nombre;
+	private String arrivalDate;
 	private Object[] lineas;
 	
 	
+	
+	public String getTipoMov() {
+		return tipoMov;
+	}
+	public void setTipoMov(String tipoMov) {
+		this.tipoMov = tipoMov;
+	}
+	public String getArrivalDate() {
+		return arrivalDate;
+	}
+	public void setArrivalDate(String arrivalDate) {
+		this.arrivalDate = arrivalDate;
+	}
 	public Object[] getLineas() {
 		return lineas;
 	}
@@ -61,8 +79,18 @@ public class Pedido implements Serializable {
 	}
 	@Override
 	public String toString() {
+		String empresa = "";
+		String movType = "";
+		
 		// TODO Auto-generated method stub
-		return this.getNombre();
+		if((getTipoMov() != null) && !getTipoMov().equalsIgnoreCase(""))
+			movType = " - Tipo: "+SelectionObject.getAntonTipoById(getTipoMov());
+		
+		if(getPartner() != null && getPartner().length >1 )
+			empresa = " - Empresa: "+getPartner()[1];
+			
+		return this.getNombre()+empresa+movType+" - Fecha: "+DateUtil.formatDateToStr(this.arrivalDate);
+			
 	}
 	
 	

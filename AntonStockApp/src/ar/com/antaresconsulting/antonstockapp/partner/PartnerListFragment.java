@@ -5,11 +5,11 @@ import android.app.ListFragment;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ListView;
-import ar.com.antaresconsulting.antonstockapp.AntonConstants;
 import ar.com.antaresconsulting.antonstockapp.adapters.PartnerAdapter;
 import ar.com.antaresconsulting.antonstockapp.model.BaseProduct;
 import ar.com.antaresconsulting.antonstockapp.model.Partner;
 import ar.com.antaresconsulting.antonstockapp.model.dao.PartnerDAO;
+import ar.com.antaresconsulting.antonstockapp.util.AntonConstants;
 
 /**
  * A list fragment representing a list of Partners. This fragment also supports
@@ -20,11 +20,12 @@ import ar.com.antaresconsulting.antonstockapp.model.dao.PartnerDAO;
  * Activities containing this fragment MUST implement the {@link Callbacks}
  * interface.
  */
-public class PartnerListFragment extends ListFragment  implements PartnerDAO.SuppliersCallbacks,PartnerDAO.ClientsCallbacks{
+public class PartnerListFragment extends ListFragment  implements PartnerDAO.SuppliersCallbacks,PartnerDAO.ClientsCallbacks,PartnerDAO.WorksCallbacks{
 	private PartnerAdapter mAdapter;
 	private PartnerDAO pDao;
 	private Partner[] customers;
 	private Partner[] suppliers;
+	private Partner[] works;
 
 	/**
 	 * The serialization (saved instance state) Bundle key representing the
@@ -194,6 +195,14 @@ public class PartnerListFragment extends ListFragment  implements PartnerDAO.Sup
 		this.mAdapter = new PartnerAdapter(this,this.suppliers);
 		setListAdapter(this.mAdapter);
 	}
+	
+	@Override
+	public void setWorks() {
+		if(this.works == null)
+			this.works = this.pDao.getPartnersArray();
+		this.mAdapter = new PartnerAdapter(this,this.works);
+		setListAdapter(this.mAdapter);
+	}
 
 	@Override
 	public void setClientDetail() {
@@ -217,6 +226,13 @@ public class PartnerListFragment extends ListFragment  implements PartnerDAO.Sup
 			}else{
 				this.pDao = new PartnerDAO(this);
 				this.pDao.getAllSuppliers();
+			}
+		}else if(partnerType.equalsIgnoreCase(PartnerListActivity.WORKS)){
+			if(this.works != null){
+				this.setWorks();
+			}else{
+				this.pDao = new PartnerDAO(this);
+				this.pDao.getAllWorks();
 			}
 		}
 		

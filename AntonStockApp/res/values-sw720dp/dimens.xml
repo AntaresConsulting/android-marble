@@ -41,6 +41,7 @@
 	<dimen name="pm_row_height">40dp</dimen>  	
 	<dimen name="pm_title_text_size">30sp</dimen> 
 	<dimen name="pm_input_height">50dp</dimen>  	
+	<dimen name="pm_input_width">190dp</dimen>	
 	<dimen name="pm_margin_sep">10dp</dimen>  
 	<dimen name="pm_spinner_text_size">15sp</dimen>
 			
@@ -48,7 +49,18 @@
 	<dimen name="oe_margin_sep">10dp</dimen>  			
 	<dimen name="oe_row_height">40dp</dimen>  	
 	<dimen name="oe_input_height">50dp</dimen>  	
-	
+	<dimen name="oe_input_width">190dp</dimen>  	
+		
 	<dimen name="popup_input_height">50dp</dimen>  	
+
+	<dimen name="emploee_image_w">80dp</dimen>  
+	<dimen name="emploee_image_h">80dp</dimen>  		
+
+	<dimen name="partner_list_image_w">100dp</dimen>  
+	<dimen name="partner_list_image_h">100dp</dimen>  	
+	<dimen name="partner_list_margin">5dp</dimen>  	
+	<dimen name="partner_list_text_size">20dp</dimen>
+	<dimen name="partner_list_data_size">15dp</dimen>
 				
+					
 </resources>

@@ -92,12 +92,19 @@ public abstract  class  ReadAsyncTask extends AsyncTask<String, String, OpenErpC
 				this.ids = oc.search(this.mModel, this.mFilters);
 			int k = 0;
 			if(respCall != null){
-				this.ids = new Long[respCall.keySet().size()];
+				int cantIds = 0;
+				for (String keyVal : respCall.keySet()) {
+					if(((Double)respCall.get(keyVal)).doubleValue() > 0 ){
+						cantIds++;
+					}
+				}
+				this.ids = new Long[cantIds];
 				for (String keyVal : respCall.keySet()) {
 					if(((Double)respCall.get(keyVal)).doubleValue() > 0 ){
 						this.ids[k++]=new Long(keyVal);
 					}
 				}
+				
 			}
 		}
 		if (this.ids != null) {

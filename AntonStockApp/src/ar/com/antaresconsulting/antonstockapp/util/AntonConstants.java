@@ -1,4 +1,4 @@
-package ar.com.antaresconsulting.antonstockapp;
+package ar.com.antaresconsulting.antonstockapp.util;
 
 public class AntonConstants {
 	public static final String IN_PORDUCT_TYPE = "incoming";
@@ -100,5 +100,7 @@ public class AntonConstants {
 	public static final String DIM_BALANCE_DIM_ID = "dimension_id";
 	public static final String DIM_BALANCE_QTY_UNITS = "qty_unit";
 	public static final String DIM_BALANCE_QTY_MT2 = "qty_m2";
+	public static final String DB_DATE_FORMAT = "yyyy-MM-dd";
+	public static final String DISPLAY_DATE_FORMAT = "dd/MM/yyyy";
 
 }

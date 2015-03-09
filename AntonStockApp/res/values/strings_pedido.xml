@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="pk_title_pedidos">Pedidos</string>
+    <string name="pk_estado_pedido">Estado</string>
+    <string name="pk_tipo_pedido">Tipo</string>
+    <string name="pk_button_filter">Filtrar</string>
+    
+      
+</resources>

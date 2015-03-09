@@ -42,12 +42,15 @@ public class AntonLauncherActivity extends BaseActivity {
 		btReincome.setVisibility(View.GONE);
 		ImageButton btProduction =  (ImageButton) findViewById(R.id.productionButton);
 		btProduction.setVisibility(View.GONE);
+		ImageButton btPedidos =  (ImageButton) findViewById(R.id.pickingsButton);
+		btPedidos.setVisibility(View.GONE);
 		
 		if(OpenErpHolder.getInstance().getmOConn().isManager()){
 			btPart.setVisibility(View.VISIBLE);
 			btPRoduct.setVisibility(View.VISIBLE);
 			btPM.setVisibility(View.VISIBLE);
 			btOE.setVisibility(View.VISIBLE);
+			btPedidos.setVisibility(View.VISIBLE);
 		}
 		if(OpenErpHolder.getInstance().getmOConn().isCutter()){
 			btPRoduct.setVisibility(View.VISIBLE);			
@@ -107,6 +110,11 @@ public class AntonLauncherActivity extends BaseActivity {
 	}
 	public void getInsumos(View v ) {
 		Intent outProds = new Intent(this, ConsumeInsumo.class);
+		startActivity(outProds);
+		
+	}	
+	public void getPickings(View v ) {
+		Intent outProds = new Intent(this, PedidoActivity.class);
 		startActivity(outProds);
 		
 	}		

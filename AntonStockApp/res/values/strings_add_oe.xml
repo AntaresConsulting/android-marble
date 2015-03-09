@@ -15,4 +15,6 @@
     <string name="add_oe_prod_btn_mas_prod">Mas Productos</string>
     <string name="add_oe_title_productos">Productos a Remitir</string>
     <string name="action_add_oe_cliente">Cliente</string>
+    <string name="action_date_oe">Entrega</string>
+    
 </resources>

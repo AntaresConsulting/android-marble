@@ -10,10 +10,10 @@ import java.util.List;
 
 import com.xmlrpc.XMLRPCException;
 
-import ar.com.antaresconsulting.antonstockapp.AntonConstants;
 import ar.com.antaresconsulting.antonstockapp.R;
 import ar.com.antaresconsulting.antonstockapp.model.StockMove;
 import ar.com.antaresconsulting.antonstockapp.model.StockPicking;
+import ar.com.antaresconsulting.antonstockapp.util.AntonConstants;
 
 public class CreatePickingAsyncTask extends AsyncTask<StockPicking, String, Long> {
 	private Activity activity;

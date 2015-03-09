@@ -55,15 +55,27 @@
             <AutoCompleteTextView android:text=""
                 android:id="@+id/clienteCombo"
                 android:layout_height="@dimen/oe_input_height"
-                android:layout_width="match_parent"
-                android:layout_toRightOf="@+id/clienteLbl"
+                android:layout_width="@dimen/oe_input_width"
+                android:layout_toRightOf="@+id/clienteLbl"                
                  />
+			<Button
+                android:id="@+id/button1"
+                android:layout_toRightOf="@+id/clienteCombo"
+                android:layout_alignBaseline="@+id/clienteCombo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:drawableLeft="@drawable/ic_action_date"
+                android:onClick="setFecha"
+                android:text="@string/action_date_pm" />            
         </RelativeLayout>
 
         <FrameLayout
             android:id="@+id/addProductContainer"
             android:layout_width="match_parent"
             android:layout_height="fill_parent">
+
+            
+
         </FrameLayout>
     </LinearLayout>
 

@@ -10,10 +10,10 @@ import java.util.HashMap;
 
 import com.xmlrpc.XMLRPCException;
 
-import ar.com.antaresconsulting.antonstockapp.AntonConstants;
 import ar.com.antaresconsulting.antonstockapp.R;
 import ar.com.antaresconsulting.antonstockapp.model.Dimension;
 import ar.com.antaresconsulting.antonstockapp.model.PedidoLinea;
+import ar.com.antaresconsulting.antonstockapp.util.AntonConstants;
 
 public class ConfirmMovesAsyncTask extends AsyncTask<PedidoLinea, String, Long> {
 	private Activity activity;

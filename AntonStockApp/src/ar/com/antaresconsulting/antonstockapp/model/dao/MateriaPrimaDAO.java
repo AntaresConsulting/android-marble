@@ -6,7 +6,6 @@ import java.util.List;
 
 import android.app.Activity;
 import android.app.Fragment;
-import ar.com.antaresconsulting.antonstockapp.AntonConstants;
 import ar.com.antaresconsulting.antonstockapp.model.Bacha;
 import ar.com.antaresconsulting.antonstockapp.model.BaseProduct;
 import ar.com.antaresconsulting.antonstockapp.model.Insumo;
@@ -14,12 +13,14 @@ import ar.com.antaresconsulting.antonstockapp.model.MateriaPrima;
 import ar.com.antaresconsulting.antonstockapp.model.MateriaPrimaOut;
 import ar.com.antaresconsulting.antonstockapp.model.SelectionObject;
 import ar.com.antaresconsulting.antonstockapp.model.dao.InsumosDAO.InsumosCallbacks;
+import ar.com.antaresconsulting.antonstockapp.util.AntonConstants;
 
 import com.openerp.ReadAsyncTask;
 
 public class MateriaPrimaDAO extends ProductDAO  {
 
-	private String[] mpFields = new String[] { "id", "name", "image_medium", "image", "code", "list_price", "qty_available","virtual_available","seller_qty", "ean13", "uom_id", "attrs_material","raw_color","raw_finished","raw_material","product_tmpl_id" };
+	private String[] mpExtFields = new String[] { "id", "name", "image_medium", "image", "code", "list_price", "qty_available","virtual_available","seller_qty", "ean13", "uom_id", "attrs_material","raw_color","raw_finished","raw_material","product_tmpl_id" };
+	private String[] mpFields = new String[] { "id", "name", "code", "list_price", "qty_available","virtual_available","seller_qty", "ean13", "uom_id", "attrs_material","raw_color","raw_finished","raw_material","product_tmpl_id" };
 	
 	private Fragment activityPart;
 
@@ -40,7 +41,7 @@ public class MateriaPrimaDAO extends ProductDAO  {
 
 	public void getMateriaPrima() {
 		this.setmFilters(new Object[] { new Object[] { AntonConstants.PRODUCT_TYPE, "ilike","raw" } });
-		this.execute(this.mpFields);
+		this.execute(this.mpExtFields);
 
 	}
 	public void getMateriaPrimaNames() {
@@ -130,7 +131,7 @@ public class MateriaPrimaDAO extends ProductDAO  {
 		this.customSearchMethod = "get_prod_by_location";
 		this.isCustomSearch = true;
 		this.setmFilters(new Object[] { new Object[] {Integer.parseInt(loc_id) } });
-		this.execute(this.mpFields);
+		this.execute(new String[] { "id", "name", "code", "list_price", "qty_available","virtual_available","seller_qty", "ean13", "uom_id","product_tmpl_id" });
 	}
 
 	public List<String> getMateriaPrimasNamesList() {

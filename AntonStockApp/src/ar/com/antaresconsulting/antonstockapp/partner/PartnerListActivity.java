@@ -39,6 +39,7 @@ NavigationDrawerFragment.NavigationDrawerCallbacks,PartnerListFragment.Callbacks
 	
 	public static final String CUSTOMERS = "customers";
 	public static final String SUPPLIERS = "suppliers";
+	public static final String WORKS = "works";
 	
 	private boolean mTwoPane;
 	private String partnerType;
@@ -88,6 +89,10 @@ NavigationDrawerFragment.NavigationDrawerCallbacks,PartnerListFragment.Callbacks
 		case 1:
 			mTitle = getString(R.string.title_suppliers);
 			this.listFragment.refreshPartners(SUPPLIERS);
+			break;	
+		case 2:
+			mTitle = getString(R.string.title_works);
+			this.listFragment.refreshPartners(WORKS);
 			break;				
 		default:
 			finish(); 

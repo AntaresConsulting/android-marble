@@ -21,12 +21,12 @@
             android:layout_height="wrap_content"
             android:text="@string/in_prod_disponibles"
             android:textAppearance="?android:attr/textAppearanceLarge"
-            android:textSize="30sp" />
+            android:textSize="@dimen/oe_title_text_size" />
 
         <ListView
             android:id="@+id/productosDispo"
             android:layout_width="match_parent"
-            android:layout_height="313dp"
+            android:layout_height="@dimen/product_available_height"
             android:layout_weight="4.65" >
         </ListView>
 
@@ -42,7 +42,7 @@
             android:layout_width="fill_parent"
             android:layout_height="match_parent"
             android:layout_gravity="center_horizontal"
-            android:layout_margin="20dp" >
+             >
 
             <TableLayout
                 android:id="@+id/marmolData"
@@ -66,7 +66,7 @@
                     <Spinner
                         android:id="@+id/tipoDim"
                         android:layout_width="fill_parent"
-                        android:layout_height="wrap_content"
+                        android:layout_height="@dimen/oe_input_height"
                         android:layout_weight="1"
                         android:entries="@array/tipoDim" />
                 </TableRow>
@@ -130,7 +130,7 @@
                                 android:layout_height="wrap_content"
                                 android:layout_weight="1"
                                 android:inputType="numberDecimal"
-                                android:nextFocusForward="@+id/clientesList"
+                                android:nextFocusForward="@+id/canDim"
                                 android:singleLine="true" />
 
                             <TextView
@@ -154,7 +154,7 @@
                             <Spinner
                                 android:id="@+id/espesorPlaca"
                                 android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
+                                android:layout_height="@dimen/oe_input_height"
                                 android:layout_weight="1"
                                 android:entries="@array/espesores" />
                         </TableRow>
@@ -177,7 +177,7 @@
                     android:textAppearance="?android:attr/textAppearanceSmall" />
 
                 <EditText
-                    android:id="@+id/clientesList"
+                    android:id="@+id/canDim"
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -220,7 +220,7 @@
             android:layout_height="wrap_content"
             android:text="@string/re_prod_title_productos"
             android:textAppearance="?android:attr/textAppearanceLarge"
-            android:textSize="30sp" />
+            android:textSize="@dimen/oe_title_text_size" />
 
         <ListView
             android:id="@+id/productosPedido"

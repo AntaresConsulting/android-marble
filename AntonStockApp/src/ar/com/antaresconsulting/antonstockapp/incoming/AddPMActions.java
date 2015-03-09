@@ -8,5 +8,6 @@ public interface AddPMActions {
 
 	public void setLineaPedido();
 	
+	public void setDate(int y, int m, int d);
 
 }

@@ -15,13 +15,13 @@ import android.view.ViewGroup;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
-import ar.com.antaresconsulting.antonstockapp.AntonConstants;
 import ar.com.antaresconsulting.antonstockapp.R;
 import ar.com.antaresconsulting.antonstockapp.R.id;
 import ar.com.antaresconsulting.antonstockapp.R.layout;
 import ar.com.antaresconsulting.antonstockapp.model.BaseProduct;
 import ar.com.antaresconsulting.antonstockapp.model.DimensionBalance;
 import ar.com.antaresconsulting.antonstockapp.model.dao.DimensionDAO;
+import ar.com.antaresconsulting.antonstockapp.util.AntonConstants;
 
 /**
  * A simple {@link android.support.v4.app.Fragment} subclass. Activities that

@@ -25,11 +25,10 @@
         <activity
             android:name=".AntonLauncherActivity"
             android:configChanges="orientation|keyboardHidden"
-            android:label="@string/title_activity_launcher"
-            >
-        </activity>        
+            android:label="@string/title_activity_launcher" >
+        </activity>
         <activity
-            android:name="ar.com.antaresconsulting.antonstockapp.partner.PartnerListActivity"
+            android:name=".partner.PartnerListActivity"
             android:configChanges="orientation|keyboardHidden"
             android:label="@string/app_name"
             android:screenOrientation="landscape" >
@@ -38,7 +37,7 @@
                 android:value="ar.com.antaresconsulting.antonstockapp.AntonLauncherActivity" />
         </activity>
         <activity
-            android:name="ar.com.antaresconsulting.antonstockapp.product.ProductListActivity"
+            android:name=".product.ProductListActivity"
             android:configChanges="orientation|keyboardHidden"
             android:label="@string/app_name"
             android:screenOrientation="landscape" >
@@ -56,8 +55,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity        
-            android:name=".PartnerDetailActivity"
+        <activity
+            android:name=".partner.PartnerDetailActivity"
             android:configChanges="orientation|keyboardHidden"
             android:label="@string/title_partner_detail"
             android:screenOrientation="landscape" >
@@ -66,7 +65,7 @@
                 android:value="ar.com.antaresconsulting.antonstockapp.partner.PartnerListActivity" />
         </activity>
         <activity
-            android:name="ar.com.antaresconsulting.antonstockapp.product.ProductDetailActivity"
+            android:name=".product.ProductDetailActivity"
             android:configChanges="orientation|keyboardHidden"
             android:label="@string/title_product_detail"
             android:screenOrientation="landscape" >
@@ -75,34 +74,33 @@
                 android:value="ar.com.antaresconsulting.antonstockapp.product.ProductListActivity" />
         </activity>
         <activity
-            android:name=".InProducts"
+            android:name=".incoming.InProducts"
             android:configChanges="orientation|keyboardHidden"
             android:label="@string/title_activity_in_products"
-            android:screenOrientation="portrait" >
+            >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="ar.com.antaresconsulting.antonstockapp.AntonLauncherActivity" />
         </activity>
         <activity
-            android:name=".SubmitProducts"
+            android:name=".outgoing.SubmitProducts"
             android:configChanges="orientation|keyboardHidden"
-            android:label="@string/title_activity_in_products"
-			 >
+            android:label="@string/title_activity_in_products" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="ar.com.antaresconsulting.antonstockapp.AntonLauncherActivity" />
         </activity>
         <activity
-            android:name=".ReEnterProducts"
+            android:name=".internal.ReEnterProducts"
             android:configChanges="orientation|keyboardHidden"
             android:label="@string/title_activity_in_products"
-            android:screenOrientation="landscape" >
+             >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="ar.com.antaresconsulting.antonstockapp.AntonLauncherActivity" />
         </activity>
         <activity
-            android:name=".MoveProducts"
+            android:name=".internal.MoveProducts"
             android:configChanges="orientation|keyboardHidden"
             android:label="@string/title_activity_out_products"
             android:screenOrientation="landscape" >
@@ -111,7 +109,7 @@
                 android:value="ar.com.antaresconsulting.antonstockapp.AntonLauncherActivity" />
         </activity>
         <activity
-            android:name=".AddProductActivity"
+            android:name=".product.AddProductActivity"
             android:configChanges="orientation|keyboardHidden"
             android:label="@string/title_activity_add_product"
             android:screenOrientation="landscape" >
@@ -120,7 +118,7 @@
                 android:value="ar.com.antaresconsulting.antonstockapp.ProductListActivity" />
         </activity>
         <activity
-            android:name=".ConsumeInsumo"
+            android:name=".internal.ConsumeInsumo"
             android:label="@string/title_activity_consume_insumos"
             android:screenOrientation="landscape" >
             <meta-data
@@ -128,7 +126,7 @@
                 android:value="ar.com.antaresconsulting.antonstockapp.AntonLauncherActivity" />
         </activity>
         <activity
-            android:name=".AddPMActivity"
+            android:name=".incoming.AddPMActivity"
             android:label="@string/title_activity_add_pm"
             android:screenOrientation="landscape" >
             <meta-data
@@ -136,7 +134,7 @@
                 android:value="ar.com.antaresconsulting.antonstockapp.AntonLauncherActivity" />
         </activity>
         <activity
-            android:name=".AddOEActivity"
+            android:name=".outgoing.AddOEActivity"
             android:label="@string/title_activity_add_oe"
             android:screenOrientation="landscape" >
             <meta-data
@@ -144,8 +142,12 @@
                 android:value="ar.com.antaresconsulting.antonstockapp.AntonLauncherActivity" />
         </activity>
         <activity
-            android:name=".ProductTypeActivity"
+            android:name=".product.ProductTypeActivity"
             android:label="@string/title_activity_product_type" >
+        </activity>
+        <activity
+            android:name=".PedidoActivity"
+            android:label="@string/pk_title_pedidos" >
         </activity>
     </application>
 

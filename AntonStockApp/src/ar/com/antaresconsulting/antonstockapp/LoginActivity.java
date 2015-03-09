@@ -20,6 +20,7 @@ import android.view.inputmethod.EditorInfo;
 import android.widget.EditText;
 import android.widget.TextView;
 import ar.com.antaresconsulting.antonstockapp.popup.ServerPopupFragment;
+import ar.com.antaresconsulting.antonstockapp.util.AntonConstants;
 
 /**
  * Activity which displays a login screen to the user, offering registration as

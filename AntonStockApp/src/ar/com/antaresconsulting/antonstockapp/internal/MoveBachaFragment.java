@@ -1,5 +1,7 @@
 package ar.com.antaresconsulting.antonstockapp.internal;
 
+import com.openerp.CreatePickingAsyncTask;
+
 import android.app.Fragment;
 import android.os.Bundle;
 import android.util.SparseBooleanArray;
@@ -13,18 +15,22 @@ import android.widget.ListView;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.AdapterView.OnItemSelectedListener;
-import ar.com.antaresconsulting.antonstockapp.AntonConstants;
 import ar.com.antaresconsulting.antonstockapp.R;
 import ar.com.antaresconsulting.antonstockapp.R.id;
 import ar.com.antaresconsulting.antonstockapp.R.layout;
 import ar.com.antaresconsulting.antonstockapp.adapters.PedidoLineaAdapter;
 import ar.com.antaresconsulting.antonstockapp.listener.SwipeDismissListViewTouchListener;
 import ar.com.antaresconsulting.antonstockapp.model.Bacha;
+import ar.com.antaresconsulting.antonstockapp.model.MateriaPrima;
+import ar.com.antaresconsulting.antonstockapp.model.Partner;
 import ar.com.antaresconsulting.antonstockapp.model.Pedido;
 import ar.com.antaresconsulting.antonstockapp.model.PedidoLinea;
+import ar.com.antaresconsulting.antonstockapp.model.StockMove;
+import ar.com.antaresconsulting.antonstockapp.model.StockPicking;
 import ar.com.antaresconsulting.antonstockapp.model.dao.BachasDAO;
 import ar.com.antaresconsulting.antonstockapp.model.dao.PedidoDAO;
 import ar.com.antaresconsulting.antonstockapp.popup.SearchBachaPopupFragment;
+import ar.com.antaresconsulting.antonstockapp.util.AntonConstants;
 
 /**
  * A placeholder fragment containing a simple view.
@@ -113,54 +119,23 @@ BachasDAO.BachasCallbacks, MoveProductActions,PedidoDAO.OrdenesDeEntregaCallback
 	}
 	
 	public void closeMoves() {
-//		this.saveData = new CreateMovesAsyncTask(this.getActivity());
-//		OpenErpHolder.getInstance().setmModelName("stock.move");
-//		int maxProds = this.productos.getAdapter().getCount();
-//		PickingMove[] values = new PickingMove[1];
-//		values[0] = new PickingMove();
-//
-//		HashMap<String, Object> headerPicking = new HashMap<String, Object>();
-//		String loc_source;
-//		String loc_destination;
-//
-//		this.saveData.setModelStockPicking("stock.picking");
-//		loc_source = AntonConstants.PRODUCT_LOCATION_STOCK;
-//		loc_destination = AntonConstants.PRODUCT_LOCATION_OUTPUT;			
-//		String origin = selectPed.getNombre();
-//		values[0].setPedidoOut(selectPed);
-//		headerPicking.put("type", AntonConstants.INTERNAL_PORDUCT_TYPE);
-//		headerPicking.put("auto_picking",false);
-//		headerPicking.put("company_id",AntonConstants.ANTON_COMPANY_ID);
-//		headerPicking.put("partner_id",AntonConstants.ANTON_COMPANY_ID);
-//		headerPicking.put("move_type",AntonConstants.DIRECT_METHOD);
-//		headerPicking.put("origin",origin);		
-//		headerPicking.put("location_id",loc_source);
-//		headerPicking.put("location_dest_id",loc_destination);			
-//
-//		values[0].setHeaderPicking(headerPicking);
-//
-//		List<HashMap<String,Object>> moves = new ArrayList<HashMap<String, Object>>();
-//		
-//		for (int i = 0; i < maxProds; i++) {
-//			PedidoLinea prod = (PedidoLinea) this.productos.getAdapter().getItem(i);
-//			HashMap<String,Object> move = new HashMap<String,Object>();
-//			move.put("product_uos_qty",prod.getCant());
-//			move.put("product_id",(Integer)prod.getProduct()[0]);
-//			move.put("product_uom",prod.getUom()[0]);
-//			move.put("location_id",loc_source);
-//			move.put("location_dest_id",loc_destination);				
-//			move.put("company_id",AntonConstants.ANTON_COMPANY_ID);
-//			move.put("prodlot_id",false);
-//			move.put("tracking_id",false);
-//			move.put("product_qty",prod.getCant());
-//			move.put("product_uos",prod.getUom()[0]);
-//			move.put("state","draft");
-//			move.put("name",prod.getNombre());
-//			moves.add(move);
-//		}
-//		values[0].setMoves(moves);
-//		values[0].setMoveType(AntonConstants.INTERNAL_PORDUCT_TYPE);
-//		this.saveData.execute(values);	
+		CreatePickingAsyncTask saveData = new CreatePickingAsyncTask(this.getActivity());
+		int maxProds = this.productos.getAdapter().getCount();
+
+		Integer clienteId = (Integer) this.selectPed.getPartner()[0];
+		String origin = "";
+
+		String loc_source = AntonConstants.PRODUCT_LOCATION_STOCK;
+		String loc_destination = AntonConstants.PRODUCT_LOCATION_OUTPUT;			
+		
+		StockPicking picking = new StockPicking(origin,AntonConstants.PICKING_TYPE_ID_INTERNAL,clienteId,loc_source,loc_destination,AntonConstants.BACHA_PICKING);
+
+		for (int i = 0; i < maxProds; i++) {
+			Bacha prod = (Bacha) this.productos.getAdapter().getItem(i);
+			StockMove move = new StockMove(prod.getNombre(), prod.getId(), (Integer)prod.getUom()[0], loc_source, loc_destination, origin, prod.getCantidadReal(),null);				
+			picking.addMove(move);
+		}
+		saveData.execute(picking);
 	}
 	
 	public void addProductBacha(View view) {

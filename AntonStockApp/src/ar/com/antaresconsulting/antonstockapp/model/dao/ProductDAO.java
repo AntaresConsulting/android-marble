@@ -6,10 +6,10 @@ import java.util.List;
 
 import android.app.Activity;
 import android.app.Fragment;
-import ar.com.antaresconsulting.antonstockapp.AntonConstants;
 import ar.com.antaresconsulting.antonstockapp.model.BaseProduct;
 import ar.com.antaresconsulting.antonstockapp.model.SelectionObject;
 import ar.com.antaresconsulting.antonstockapp.model.Servicio;
+import ar.com.antaresconsulting.antonstockapp.util.AntonConstants;
 
 import com.openerp.ReadAsyncTask;
 

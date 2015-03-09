@@ -39,7 +39,7 @@
 
         <TableLayout
             android:layout_width="fill_parent"
-            android:layout_height="@dimen/pm_row_height"
+            android:layout_height="fill_parent"
             android:layout_gravity="center_horizontal" >
 
             <TableRow
@@ -57,12 +57,38 @@
 
                 <Spinner
                     android:id="@+id/proveedorList"
-                    android:layout_width="wrap_content"
+                    android:layout_width="@dimen/pm_input_width"
                     android:layout_height="@dimen/pm_input_height"
                     android:layout_weight="1"
                     android:ems="10" />
-
+				<Button
+                    android:id="@+id/button1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:onClick="setFecha"
+            		android:drawableLeft="@drawable/ic_action_date"                                        
+                    android:text="@string/action_date_pm" />
             </TableRow>
+			<TableRow
+                android:id="@+id/rowPicking"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent" >
+
+                <TextView
+                    android:id="@+id/lblPicking"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/add_pm_compra"
+                    android:textAppearance="?android:attr/textAppearanceSmall" />
+
+                <EditText
+                    android:id="@+id/pickingList"
+                    android:layout_width="wrap_content"
+                    android:layout_height="@dimen/pm_input_height"
+                    android:ems="10"
+                    android:inputType="text" />
+				                              
+            </TableRow>                 
            </TableLayout>
 
              <TableLayout
@@ -81,7 +107,6 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="center_vertical"
                         android:layout_weight="1"
-                        android:gravity="center_horizontal"
                         android:text="@string/in_prod_tipo_dim"
                         android:textAppearance="?android:attr/textAppearanceSmall" />
 
@@ -114,7 +139,6 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_weight="1"
-                                android:gravity="center_horizontal"
                                 android:text="@string/lbl_prod_largo"
                                 android:textAppearance="?android:attr/textAppearanceSmall" />
 
@@ -132,7 +156,6 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_weight="1"
-                                android:gravity="center_horizontal"
                                 android:text="@string/lbl_prod_unidad"
                                 android:textAppearance="?android:attr/textAppearanceSmall" />
 
@@ -182,7 +205,7 @@
                 </TableRow>
             </TableLayout>
           
-             <TableLayout
+            <TableLayout
                  android:id="@+id/cantidad"
                  android:layout_width="match_parent"
                  android:layout_height="wrap_content" >
@@ -200,31 +223,13 @@
 
                 <EditText
                     android:id="@+id/cantidadPlacas"
-                    android:layout_width="fill_parent"
+                    android:layout_width="@dimen/pm_input_width"
                     android:layout_height="@dimen/pm_input_height"
                     android:ems="10"
                      android:inputType="numberDecimal" />                
             </TableRow>            
                  
-			<TableRow
-                android:id="@+id/rowPicking"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent" >
-
-                <TextView
-                    android:id="@+id/lblPicking"
-                    android:layout_width="fill_parent"
-                    android:layout_height="wrap_content"
-                    android:text="@string/add_pm_compra"
-                    android:textAppearance="?android:attr/textAppearanceSmall" />
-
-                <EditText
-                    android:id="@+id/pickingList"
-                    android:layout_width="fill_parent"
-                    android:layout_height="@dimen/pm_input_height"
-                    android:ems="10"
-                    android:inputType="text" />                
-            </TableRow>            
+       
             <TableRow
                 android:id="@+id/tableRow3"
                 android:layout_width="wrap_content"

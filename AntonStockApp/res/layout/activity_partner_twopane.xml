@@ -28,6 +28,7 @@
 
     <fragment
         android:id="@+id/partner_list"
+        android:name="ar.com.antaresconsulting.antonstockapp.partner.PartnerListFragment"        
         android:layout_width="0dp"
         android:layout_height="match_parent"
         android:layout_weight="2"

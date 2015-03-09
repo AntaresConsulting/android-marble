@@ -3,7 +3,7 @@ package ar.com.antaresconsulting.antonstockapp.model;
 import java.io.Serializable;
 import java.util.HashMap;
 
-import ar.com.antaresconsulting.antonstockapp.AntonConstants;
+import ar.com.antaresconsulting.antonstockapp.util.AntonConstants;
 
 
 public class Dimension implements Serializable  {

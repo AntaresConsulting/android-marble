@@ -10,7 +10,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Spinner;
-import ar.com.antaresconsulting.antonstockapp.AntonConstants;
 import ar.com.antaresconsulting.antonstockapp.R;
 import ar.com.antaresconsulting.antonstockapp.R.array;
 import ar.com.antaresconsulting.antonstockapp.R.id;
@@ -18,6 +17,7 @@ import ar.com.antaresconsulting.antonstockapp.R.layout;
 import ar.com.antaresconsulting.antonstockapp.model.BaseProduct;
 import ar.com.antaresconsulting.antonstockapp.model.MateriaPrima;
 import ar.com.antaresconsulting.antonstockapp.model.SelectionObject;
+import ar.com.antaresconsulting.antonstockapp.util.AntonConstants;
 
 /**
  * A simple {@link android.support.v4.app.Fragment} subclass. Use the

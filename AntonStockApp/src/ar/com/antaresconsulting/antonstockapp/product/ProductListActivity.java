@@ -31,7 +31,6 @@ import android.widget.ImageView;
 import android.widget.PopupWindow;
 import android.widget.TabHost;
 import android.widget.Toast;
-import ar.com.antaresconsulting.antonstockapp.AntonConstants;
 import ar.com.antaresconsulting.antonstockapp.NavigationDrawerFragment;
 import ar.com.antaresconsulting.antonstockapp.R;
 import ar.com.antaresconsulting.antonstockapp.NavigationDrawerFragment.NavigationDrawerCallbacks;
@@ -50,6 +49,7 @@ import ar.com.antaresconsulting.antonstockapp.partner.PartnerListFragment.Callba
 import ar.com.antaresconsulting.antonstockapp.popup.AssignSuppPopupFragment;
 import ar.com.antaresconsulting.antonstockapp.popup.OrderPointPopupFragment;
 import ar.com.antaresconsulting.antonstockapp.popup.UpdateStockPopupFragment;
+import ar.com.antaresconsulting.antonstockapp.util.AntonConstants;
 
 /**
  * An activity representing a list of Items. This activity has different

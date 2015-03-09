@@ -21,7 +21,6 @@ import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.Spinner;
 import android.widget.Toast;
-import ar.com.antaresconsulting.antonstockapp.AntonConstants;
 import ar.com.antaresconsulting.antonstockapp.AntonLauncherActivity;
 import ar.com.antaresconsulting.antonstockapp.R;
 import ar.com.antaresconsulting.antonstockapp.R.id;
@@ -41,6 +40,7 @@ import ar.com.antaresconsulting.antonstockapp.model.SelectionObject;
 import ar.com.antaresconsulting.antonstockapp.model.StockMove;
 import ar.com.antaresconsulting.antonstockapp.model.StockPicking;
 import ar.com.antaresconsulting.antonstockapp.model.dao.MateriaPrimaDAO;
+import ar.com.antaresconsulting.antonstockapp.util.AntonConstants;
 
 public class ReEnterProducts extends Activity implements MateriaPrimaDAO.MateriaPrimaCallbacks{
 	private MateriaPrimaDAO prodDao;
@@ -64,7 +64,7 @@ public class ReEnterProducts extends Activity implements MateriaPrimaDAO.Materia
 		this.productosDispo.setChoiceMode(ListView.CHOICE_MODE_SINGLE);			
 		this.prodBuscaAdapter = new ArrayAdapter<BaseProduct>(this,android.R.layout.simple_list_item_single_choice);
 		this.productosDispo.setAdapter(this.prodBuscaAdapter);
-		this.cantPlacas = (EditText) findViewById(R.id.clientesList);
+		this.cantPlacas = (EditText) findViewById(R.id.canDim);
 		this.dimH = (EditText) findViewById(R.id.altoPlaca);
 		this.dimW = (EditText) findViewById(R.id.anchoPlaca);
 		this.dimT = (Spinner) findViewById(R.id.espesorPlaca);
@@ -84,9 +84,9 @@ public class ReEnterProducts extends Activity implements MateriaPrimaDAO.Materia
 					public void onDismiss(ListView listView,
 							int[] reverseSortedPositions) {
 						for (int position : reverseSortedPositions) {
-							((BaseProductAdapter) productos.getAdapter()).delProduct((BaseProduct) productos.getAdapter().getItem(position));
+							((PedidoLineaMPAdapter) productos.getAdapter()).delLinea((PedidoLinea) productos.getAdapter().getItem(position));
 						}
-						((BaseAdapter) productos.getAdapter()).notifyDataSetChanged();
+						((PedidoLineaMPAdapter) productos.getAdapter()).notifyDataSetChanged();
 					}
 				});
 		this.productos.setOnTouchListener(touchListener);
@@ -99,7 +99,7 @@ public class ReEnterProducts extends Activity implements MateriaPrimaDAO.Materia
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		// Inflate the menu; this adds items to the action bar if it is present.
-		getMenuInflater().inflate(R.menu.in_products, menu);
+		getMenuInflater().inflate(R.menu.reenter_products, menu);
 		return true;
 	}
 
@@ -118,17 +118,18 @@ public class ReEnterProducts extends Activity implements MateriaPrimaDAO.Materia
 		CreatePickingAsyncTask saveData = new CreatePickingAsyncTask(this);
 		int maxProds = this.productos.getAdapter().getCount();
 
-		Partner proveedor = null;
+		Integer clienteId = null;
 		String origin = "";
 
 		String loc_source = AntonConstants.PRODUCT_LOCATION_PRODUCTION;
 		String loc_destination = AntonConstants.PRODUCT_LOCATION_STOCK;			
 		
-		StockPicking picking = new StockPicking(origin,AntonConstants.PICKING_TYPE_ID_INTERNAL,proveedor.getId(),loc_source,loc_destination,AntonConstants.RAW_PICKING);
+		StockPicking picking = new StockPicking(origin,AntonConstants.PICKING_TYPE_ID_INTERNAL,clienteId,loc_source,loc_destination,AntonConstants.RAW_PICKING);
 
 		for (int i = 0; i < maxProds; i++) {
-			MateriaPrima prod = (MateriaPrima) this.productos.getAdapter().getItem(i);
-			StockMove move = new StockMove(prod.getNombre(), prod.getId(), (Integer)prod.getUom()[0], loc_source, loc_destination, origin, prod.getCantidadReal());				
+			PedidoLinea prod = (PedidoLinea) this.productos.getAdapter().getItem(i);
+			Dimension dim = (Dimension) prod.getDimension()[0];
+			StockMove move = new StockMove(prod.getNombre(),((MateriaPrima)prod.getProduct()[0]).getId(), (Integer)prod.getUom()[0], loc_source, loc_destination, origin, prod.getCant(),dim,prod.getCantDim(),null);				
 			picking.addMove(move);
 		}
 		saveData.execute(picking);
@@ -176,7 +177,17 @@ public class ReEnterProducts extends Activity implements MateriaPrimaDAO.Materia
 			tt.show();
 			return;			
 		}
-	
+		PedidoLinea pl = new PedidoLinea();		
+		pl.setNombre(prod.getNombre());
+		pl.setUom(prod.getUom());		
+		pl.setDimension(new Dimension(this.dimH.getText().toString(),this.dimW.getText().toString(),(String)this.dimT.getSelectedItem(),(SelectionObject) this.dimTipo.getSelectedItem()));
+		pl.setCantDim(new Integer(this.cantPlacas.getText().toString()));
+		pl.setCant(new Double((hight * width)* cantP));
+		Object[] prodData=new Object[1];
+		prodData[0] = prod;
+		pl.setProduct(prodData);		
+		((PedidoLineaMPAdapter)this.productos.getAdapter()).addLinea(pl);
+		((PedidoLineaMPAdapter)this.productos.getAdapter()).notifyDataSetChanged();
 	}
 
 	@Override

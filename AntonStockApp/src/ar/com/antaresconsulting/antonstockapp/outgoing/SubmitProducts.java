@@ -19,7 +19,6 @@ import android.widget.ListView;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
-import ar.com.antaresconsulting.antonstockapp.AntonConstants;
 import ar.com.antaresconsulting.antonstockapp.AntonLauncherActivity;
 import ar.com.antaresconsulting.antonstockapp.R;
 import ar.com.antaresconsulting.antonstockapp.R.id;
@@ -29,6 +28,7 @@ import ar.com.antaresconsulting.antonstockapp.model.Pedido;
 import ar.com.antaresconsulting.antonstockapp.model.PedidoLinea;
 import ar.com.antaresconsulting.antonstockapp.model.dao.PedidoDAO;
 import ar.com.antaresconsulting.antonstockapp.model.dao.ProductDAO;
+import ar.com.antaresconsulting.antonstockapp.util.AntonConstants;
 
 public class SubmitProducts extends Activity implements OnItemSelectedListener,PedidoDAO.PedidosCallbacks, PedidoDAO.OrdenesDeEntregaCallbacks{
 	private PedidoDAO pedDao;

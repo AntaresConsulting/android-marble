@@ -11,7 +11,6 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toast;
-import ar.com.antaresconsulting.antonstockapp.AntonConstants;
 import ar.com.antaresconsulting.antonstockapp.AntonLauncherActivity;
 import ar.com.antaresconsulting.antonstockapp.R;
 import ar.com.antaresconsulting.antonstockapp.R.id;
@@ -19,6 +18,7 @@ import ar.com.antaresconsulting.antonstockapp.R.layout;
 import ar.com.antaresconsulting.antonstockapp.R.menu;
 import ar.com.antaresconsulting.antonstockapp.partner.PartnerTypeFragment;
 import ar.com.antaresconsulting.antonstockapp.product.ProductTypeFragment;
+import ar.com.antaresconsulting.antonstockapp.util.AntonConstants;
 
 public class InProducts extends Activity {
 

@@ -107,6 +107,8 @@ public class NavigationDrawerFragment extends Fragment {
         if(actAux  instanceof PartnerListActivity){
         	 dataList.add(new DrawerItem(getString(R.string.title_clientes), R.drawable.ic_menu_partner));
         	 dataList.add(new DrawerItem(getString(R.string.title_suppliers), R.drawable.ic_menu_partner));
+        	 dataList.add(new DrawerItem(getString(R.string.title_works), R.drawable.ic_menu_partner));
+
         }
         
         if(actAux  instanceof ProductListActivity){

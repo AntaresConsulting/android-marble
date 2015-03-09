@@ -4,6 +4,7 @@ import java.io.Serializable;
 
 import ar.com.antaresconsulting.antonstockapp.AntonStockApp;
 import ar.com.antaresconsulting.antonstockapp.R;
+import ar.com.antaresconsulting.antonstockapp.util.AntonConstants;
 
 public class SelectionObject  implements Serializable  {
 	/**
@@ -19,6 +20,9 @@ public class SelectionObject  implements Serializable  {
 	private static SelectionObject[] tipoBachaData = {new SelectionObject("",""),new SelectionObject("sim","Simple"),new SelectionObject("dob","Doble"),new SelectionObject("red","Redonda")};
 	private static SelectionObject[] colocacionBachaData = {new SelectionObject("",""),new SelectionObject("peg","Pegado de Abajo"),new SelectionObject("enc","Encastrado")};
 	private static SelectionObject[] aceroBachaData = {new SelectionObject("",""),new SelectionObject("304","304"),new SelectionObject("403","403")};	
+	private static SelectionObject[] tipoPedido = {new SelectionObject("",""),new SelectionObject(AntonConstants.PICKING_TYPE_ID_IN,"Recepcion"),new SelectionObject(AntonConstants.PICKING_TYPE_ID_INTERNAL,"Interno"),new SelectionObject(AntonConstants.PICKING_TYPE_ID_OUT,"Entrega")};	
+	private static SelectionObject[] estadoPedido = {new SelectionObject("",""),new SelectionObject("done","Realizado"),new SelectionObject("assigned","Asignado"),new SelectionObject("draft","Borrador")};	
+	private static SelectionObject[] tipoAntonPedido = {new SelectionObject(AntonConstants.RAW_PICKING,"Materia Prima"),new SelectionObject(AntonConstants.BACHA_PICKING,"Bacha"),new SelectionObject(AntonConstants.INSU_PICKING,"Insumo")};	
 	
 	public SelectionObject(String id, String name) {
 		this.id = id;
@@ -44,6 +48,18 @@ public class SelectionObject  implements Serializable  {
 
 	
 
+	public static SelectionObject[] getTipoPedido() {
+		return tipoPedido;
+	}
+	public static void setTipoPedido(SelectionObject[] tipoPedido) {
+		SelectionObject.tipoPedido = tipoPedido;
+	}
+	public static SelectionObject[] getEstadoPedido() {
+		return estadoPedido;
+	}
+	public static void setEstadoPedido(SelectionObject[] estadoPedido) {
+		SelectionObject.estadoPedido = estadoPedido;
+	}
 	public static SelectionObject[] getTipoBachaData() {
 		return tipoBachaData;
 	}
@@ -132,6 +148,10 @@ public class SelectionObject  implements Serializable  {
 	public static SelectionObject getBachaColocaiconById(String colocacion) {
 		// TODO Auto-generated method stub
 		return getObjectById(colocacion,colocacionBachaData);
+	}
+	public static SelectionObject getAntonTipoById(String tipo) {
+		// TODO Auto-generated method stub
+		return getObjectById(tipo,tipoAntonPedido);
 	}
 	public static SelectionObject getBachaTipoById(String tipo) {
 		// TODO Auto-generated method stub

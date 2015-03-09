@@ -25,6 +25,26 @@
         android:contentDescription="@string/main_products_desc"
         android:onClick="getProducts"
         android:src="@drawable/ic_main_prodducts" />
+		
+	<ImageButton
+        android:id="@+id/partnerButton"
+        style="?android:attr/borderlessButtonStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
+        android:contentDescription="@string/main_partners_desc"
+        android:onClick="getPartners"
+        android:src="@drawable/ic_main_partners" />
+
+	<ImageButton
+        android:id="@+id/pickingsButton"
+        style="?android:attr/borderlessButtonStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
+        android:contentDescription="@string/main_pickings_desc"
+        android:onClick="getPickings"
+        android:src="@drawable/ic_main_pedidos" />
 
     <ImageButton
         android:id="@+id/incomeButton"
@@ -36,15 +56,6 @@
         android:onClick="getInCome"
         android:src="@drawable/ic_main_income" />
 
-    <ImageButton
-        android:id="@+id/partnerButton"
-        style="?android:attr/borderlessButtonStyle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_vertical"
-        android:contentDescription="@string/main_partners_desc"
-        android:onClick="getPartners"
-        android:src="@drawable/ic_main_partners" />
 
     <ImageButton
         android:id="@+id/reincomeButton"

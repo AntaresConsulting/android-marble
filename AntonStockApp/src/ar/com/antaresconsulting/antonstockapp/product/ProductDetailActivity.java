@@ -9,10 +9,10 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.ImageButton;
-import ar.com.antaresconsulting.antonstockapp.AntonConstants;
 import ar.com.antaresconsulting.antonstockapp.R;
 import ar.com.antaresconsulting.antonstockapp.R.id;
 import ar.com.antaresconsulting.antonstockapp.R.layout;
+import ar.com.antaresconsulting.antonstockapp.util.AntonConstants;
 
 /**
  * An activity representing a single Product detail screen. This activity is

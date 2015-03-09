@@ -7,15 +7,15 @@
 
     <ImageView
         android:id="@+id/partnerImg"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
+        android:layout_width="@dimen/partner_list_image_w"
+        android:layout_height="@dimen/partner_list_image_h"
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
         android:src="@drawable/abc_ab_bottom_solid_dark_holo" />
     <View
         android:id="@+id/sepProdThumb"
         android:layout_width="4dp"
-        android:layout_height="100dp"
+        android:layout_height="@dimen/partner_list_image_h"
         android:layout_alignParentTop="true"
         android:layout_marginLeft="5dp"
         android:background="@color/actionbar_theme_color"
@@ -31,7 +31,7 @@
         android:layout_marginTop="17dp"
         android:layout_toRightOf="@+id/sepProdThumb"
         android:text="Nombre_Partner"
-        android:textSize="20sp" />    
+        android:textSize="@dimen/partner_list_text_size" />    
 
     <TextView
         android:id="@+id/domicilioPart"
@@ -39,22 +39,22 @@
         android:layout_height="wrap_content"
         android:layout_alignParentRight="true"
         android:layout_below="@id/nombrePart"
-        android:layout_margin="5dp"
+        android:layout_margin="@dimen/partner_list_margin"
         android:layout_toRightOf="@id/sepProdThumb"
         android:shadowColor="@color/abc_search_url_text_normal"
         android:text="Domicilio_Part"
-        android:textSize="15sp" />
+        android:textSize="@dimen/partner_list_data_size" />
     <TextView
         android:id="@+id/emailPart"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentRight="true"
         android:layout_below="@id/domicilioPart"
-        android:layout_margin="5dp"
+        android:layout_margin="@dimen/partner_list_margin"
         android:layout_toRightOf="@id/sepProdThumb"
         android:shadowColor="@color/abc_search_url_text_normal"
         android:text="Email_Part"
-        android:textSize="15sp" />   
+        android:textSize="@dimen/partner_list_data_size" />   
          
     <TextView
         android:id="@+id/phonePart"
@@ -62,11 +62,11 @@
         android:layout_height="wrap_content"
         android:layout_alignParentRight="true"
         android:layout_below="@id/emailPart"
-        android:layout_margin="7dp"
+        android:layout_margin="@dimen/partner_list_margin"
         android:layout_toRightOf="@id/sepProdThumb"
         android:shadowColor="@color/abc_search_url_text_normal"
         android:text="Phone_Part"
-        android:textSize="15sp" />  
+        android:textSize="@dimen/partner_list_data_size" />  
 
 
 </RelativeLayout>

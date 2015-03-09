@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
-import ar.com.antaresconsulting.antonstockapp.AntonConstants;
+import ar.com.antaresconsulting.antonstockapp.util.AntonConstants;
 
 public class StockPicking {
 	

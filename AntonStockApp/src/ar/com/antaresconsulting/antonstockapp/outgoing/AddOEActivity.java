@@ -1,10 +1,14 @@
 package ar.com.antaresconsulting.antonstockapp.outgoing;
 
+import java.util.Calendar;
+import java.util.Date;
+
 import com.openerp.CreatePickingAsyncTask;
 import android.support.v4.app.NavUtils;
 import android.support.v7.app.ActionBarActivity;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.app.DialogFragment;
 import android.app.Fragment;
 import android.content.Context;
 import android.content.Intent;
@@ -23,7 +27,6 @@ import android.widget.FrameLayout;
 import android.widget.ListView;
 import android.widget.Spinner;
 import android.widget.Toast;
-import ar.com.antaresconsulting.antonstockapp.AntonConstants;
 import ar.com.antaresconsulting.antonstockapp.AntonLauncherActivity;
 import ar.com.antaresconsulting.antonstockapp.R;
 import ar.com.antaresconsulting.antonstockapp.R.id;
@@ -47,13 +50,15 @@ import ar.com.antaresconsulting.antonstockapp.model.dao.InsumosDAO;
 import ar.com.antaresconsulting.antonstockapp.model.dao.MateriaPrimaDAO;
 import ar.com.antaresconsulting.antonstockapp.model.dao.PartnerDAO;
 import ar.com.antaresconsulting.antonstockapp.model.dao.ProductDAO;
+import ar.com.antaresconsulting.antonstockapp.popup.DatePickerPopupFragment;
 import ar.com.antaresconsulting.antonstockapp.popup.ProductTypePopupFragment;
 import ar.com.antaresconsulting.antonstockapp.popup.SearchBachaPopupFragment;
 import ar.com.antaresconsulting.antonstockapp.popup.SearchInsumoPopupFragment;
 import ar.com.antaresconsulting.antonstockapp.popup.SearchMPPopupFragment;
 import ar.com.antaresconsulting.antonstockapp.popup.SearchServiciosPopupFragment;
+import ar.com.antaresconsulting.antonstockapp.util.AntonConstants;
 
-public class AddOEActivity extends ActionBarActivity implements ProductDAO.ServiciosCallbacks, PartnerDAO.ClientsCallbacks, MateriaPrimaDAO.MateriaPrimaCallbacks, InsumosDAO.InsumosCallbacks, BachasDAO.BachasCallbacks,SearchMPPopupFragment.SearchProductListener,SearchInsumoPopupFragment.SearchProductListener,SearchBachaPopupFragment.SearchProductListener,SearchServiciosPopupFragment.SearchProductListener{
+public class AddOEActivity extends ActionBarActivity implements ProductDAO.ServiciosCallbacks, PartnerDAO.ClientsCallbacks, MateriaPrimaDAO.MateriaPrimaCallbacks, InsumosDAO.InsumosCallbacks, BachasDAO.BachasCallbacks,SearchMPPopupFragment.SearchProductListener,SearchInsumoPopupFragment.SearchProductListener,SearchBachaPopupFragment.SearchProductListener,SearchServiciosPopupFragment.SearchProductListener, DatePickerPopupFragment.DatePickerListener{
 
 	private ProductTypePopupFragment popconf;
 	private BachasDAO baDao;
@@ -67,7 +72,9 @@ public class AddOEActivity extends ActionBarActivity implements ProductDAO.Servi
 	private AutoCompleteTextView clientes;
 	private boolean isExcecute=false;
 	private Fragment thisFrag;
+	private Date expectedDate;
 
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -169,7 +176,7 @@ public class AddOEActivity extends ActionBarActivity implements ProductDAO.Servi
 		for (int i = 0; i < maxProds; i++) {
 			PedidoLinea prod = (PedidoLinea) this.prodsPedido.getAdapter().getItem(i);
 			Dimension dim = (Dimension) prod.getDimension()[0];			
-			StockMove move = new StockMove(prod.getNombre(),((BaseProduct)prod.getProduct()[0]).getId(), (Integer)prod.getUom()[0], loc_source, loc_destination, origin, prod.getCant(),dim,prod.getCantDim());				
+			StockMove move = new StockMove(prod.getNombre(),((BaseProduct)prod.getProduct()[0]).getId(), (Integer)prod.getUom()[0], loc_source, loc_destination, origin, prod.getCant(),dim,prod.getCantDim(),this.expectedDate);				
 			picking.addMove(move);
 		}
 		saveData.execute(picking);	
@@ -371,6 +378,18 @@ public class AddOEActivity extends ActionBarActivity implements ProductDAO.Servi
 		((FrameLayout) findViewById(R.id.addProductContainer)).removeAllViews();
 		View.inflate(this, R.layout.fragment_add_product_action, (ViewGroup) findViewById(R.id.addProductContainer));			
 	}
+	
+	public void setFecha(View v) {
+	    DialogFragment newFragment = new DatePickerPopupFragment();
+	    newFragment.show(getFragmentManager(), "datePicker");
+	}
 
+	@Override
+	public void setSelectedDate(int year, int month, int day) {
+		Calendar c = Calendar.getInstance();
+		c.set(year,month, day,0,0);
+		this.expectedDate = c.getTime();		
+	}
+	
 }
 

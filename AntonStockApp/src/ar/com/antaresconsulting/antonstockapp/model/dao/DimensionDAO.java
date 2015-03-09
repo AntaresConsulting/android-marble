@@ -5,9 +5,10 @@ import java.util.HashMap;
 import java.util.List;
 
 import android.app.Fragment;
-import ar.com.antaresconsulting.antonstockapp.AntonConstants;
 import ar.com.antaresconsulting.antonstockapp.model.Dimension;
 import ar.com.antaresconsulting.antonstockapp.model.DimensionBalance;
+import ar.com.antaresconsulting.antonstockapp.util.AntonConstants;
+
 import com.openerp.ReadAsyncTask;
 
 public class DimensionDAO extends ReadAsyncTask {

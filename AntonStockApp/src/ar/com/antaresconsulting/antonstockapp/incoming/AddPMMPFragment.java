@@ -1,5 +1,8 @@
 package ar.com.antaresconsulting.antonstockapp.incoming;
 
+import java.util.Calendar;
+import java.util.Date;
+
 import com.openerp.CreatePickingAsyncTask;
 import android.app.Fragment;
 import android.content.Context;
@@ -14,7 +17,6 @@ import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.Spinner;
 import android.widget.Toast;
-import ar.com.antaresconsulting.antonstockapp.AntonConstants;
 import ar.com.antaresconsulting.antonstockapp.R;
 import ar.com.antaresconsulting.antonstockapp.R.id;
 import ar.com.antaresconsulting.antonstockapp.R.layout;
@@ -32,6 +34,7 @@ import ar.com.antaresconsulting.antonstockapp.model.StockPicking;
 import ar.com.antaresconsulting.antonstockapp.model.dao.MateriaPrimaDAO;
 import ar.com.antaresconsulting.antonstockapp.model.dao.PartnerDAO;
 import ar.com.antaresconsulting.antonstockapp.popup.SearchMPPopupFragment;
+import ar.com.antaresconsulting.antonstockapp.util.AntonConstants;
 
 /**
  * A simple {@link android.support.v4.app.Fragment} subclass. Use the
@@ -54,6 +57,7 @@ public class AddPMMPFragment extends Fragment implements PartnerDAO.SuppliersCal
 	private Spinner proveedor;
 	private ListView prodsPedido;
 	private ListView prodsDispo;
+	private Date arrivalDate;
 
 	public static AddPMMPFragment newInstance() {
 		AddPMMPFragment fragment = new AddPMMPFragment();
@@ -139,7 +143,7 @@ public class AddPMMPFragment extends Fragment implements PartnerDAO.SuppliersCal
 		for (int i = 0; i < maxProds; i++) {
 			PedidoLinea prod = (PedidoLinea) this.prodsPedido.getAdapter().getItem(i);
 			Dimension dim = (Dimension) prod.getDimension()[0];
-			StockMove move = new StockMove(prod.getNombre(),((MateriaPrima)prod.getProduct()[0]).getId(), (Integer)prod.getUom()[0], loc_source, loc_destination, origin, prod.getCant(),dim,prod.getCantDim());				
+			StockMove move = new StockMove(prod.getNombre(),((MateriaPrima)prod.getProduct()[0]).getId(), (Integer)prod.getUom()[0], loc_source, loc_destination, origin, prod.getCant(),dim,prod.getCantDim(),this.arrivalDate);				
 			picking.addMove(move);
 		}
 		saveData.execute(picking);
@@ -232,6 +236,14 @@ public class AddPMMPFragment extends Fragment implements PartnerDAO.SuppliersCal
 	public void setSuppliersProd() {
 		// TODO Auto-generated method stub
 		
+	}
+
+
+	@Override
+	public void setDate(int y, int m, int d) {
+		Calendar c = Calendar.getInstance();
+		c.set(y, m, d,0,0);
+		this.arrivalDate = c.getTime();	
 	}
 
 }

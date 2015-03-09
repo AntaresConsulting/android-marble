@@ -13,6 +13,7 @@ public class PartnerDAO extends ReadAsyncTask{
 	private static final int PARTNER_SUPPLIERS = 2;
 	private static final int PARTNER_CLIENT_DETAIL = 3;
 	private static final int PARTNER_SUPPLIERS_PROD = 4;
+	private static final int PARTNER_WORKS = 5;
 
 	private int dataToSet;
 	private Fragment activityPart;
@@ -26,7 +27,9 @@ public class PartnerDAO extends ReadAsyncTask{
 		void setSuppliersProd();
 
 	}	
-		
+	public interface WorksCallbacks{
+		void setWorks();
+	}			
 	public PartnerDAO(Fragment frag){
 		super(frag);
 		this.activityPart = frag;
@@ -108,6 +111,9 @@ public class PartnerDAO extends ReadAsyncTask{
 			break;	
 		case PartnerDAO.PARTNER_SUPPLIERS_PROD:
 			((SuppliersCallbacks)this.activityPart).setSuppliersProd();
+			break;	
+		case PartnerDAO.PARTNER_WORKS:
+			((WorksCallbacks)this.activityPart).setWorks();
 			break;				
 		default:
 			break;
@@ -128,6 +134,12 @@ public class PartnerDAO extends ReadAsyncTask{
 		this.setmModel("product.supplierinfo");	
 		this.execute(new String[]{"name","min_qty","qty","product_code"});
 		this.dataToSet=PartnerDAO.PARTNER_SUPPLIERS_PROD;		
+	}
+
+	public void getAllWorks() {
+		this.setmFilters(new Object[] {new Object[] {"is_work", "=", true}});
+		this.execute(new String[]{"id","name","image_medium","street","parent_id","phone","website","email","vat"});
+		this.dataToSet=PartnerDAO.PARTNER_WORKS;
 	}
 	
 }

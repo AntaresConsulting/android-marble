@@ -15,7 +15,6 @@ import android.widget.ListView;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
-import ar.com.antaresconsulting.antonstockapp.AntonConstants;
 import ar.com.antaresconsulting.antonstockapp.R;
 import ar.com.antaresconsulting.antonstockapp.R.id;
 import ar.com.antaresconsulting.antonstockapp.R.layout;
@@ -27,6 +26,7 @@ import ar.com.antaresconsulting.antonstockapp.model.PedidoLinea;
 import ar.com.antaresconsulting.antonstockapp.model.dao.InsumosDAO;
 import ar.com.antaresconsulting.antonstockapp.model.dao.PedidoDAO;
 import ar.com.antaresconsulting.antonstockapp.popup.SearchMPPopupFragment;
+import ar.com.antaresconsulting.antonstockapp.util.AntonConstants;
 
 /**
  * A placeholder fragment containing a simple view.

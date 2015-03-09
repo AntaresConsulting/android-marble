@@ -1,0 +1,111 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/container"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:baselineAligned="false"
+    android:gravity="right"
+    tools:context="ar.com.antaresconsulting.antonstockapp.PedidoActivity"
+    tools:ignore="MergeRootFrame" >
+    
+     <FrameLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="3.8" >
+
+        <TableLayout
+            android:layout_width="fill_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center_horizontal"
+            android:layout_margin="20dp" >
+
+            <TableRow
+                android:id="@+id/tableRow3"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:gravity="center_horizontal" >
+
+                <TextView
+                    android:id="@+id/textView1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_weight="2"
+                    android:gravity="center_vertical"
+                    android:text="@string/pk_tipo_pedido"
+                    android:textAppearance="?android:attr/textAppearanceLarge" />
+
+                <Spinner
+                    android:id="@+id/tipoPedido"
+                    android:layout_width="fill_parent"
+                    android:layout_height="@dimen/oe_input_height"
+                    android:layout_weight="8" />
+            </TableRow>
+            <TableRow
+                android:id="@+id/tableRow4"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:gravity="center_horizontal" >
+
+                <TextView
+                    android:id="@+id/textView2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_weight="2"
+                    android:gravity="center_vertical"
+                    android:text="@string/pk_estado_pedido"
+                    android:textAppearance="?android:attr/textAppearanceLarge" />
+
+                <Spinner
+                    android:id="@+id/estadoPedido"
+                    android:layout_width="fill_parent"
+                    android:layout_height="@dimen/oe_input_height"
+                    android:layout_weight="8" />
+            </TableRow>
+
+            <TableRow
+                android:id="@+id/tableRow1"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent" >
+
+                <Button
+                    android:id="@+id/button1"
+                    android:layout_span="2"                   
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:onClick="buscarPedidos"
+                    android:text="@string/pk_button_filter" />
+
+            </TableRow>
+
+            <View
+                android:layout_width="wrap_content"
+                android:layout_height="4dp"
+                android:layout_marginBottom="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_span="2"
+                android:background="@color/actionbar_theme_color" />
+
+            <TextView
+                android:id="@+id/titleCant"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_span="2"
+                android:text="@string/pk_title_pedidos"
+                android:textAppearance="?android:attr/textAppearanceLarge" />
+
+            <ListView
+                android:id="@+id/pedidosList"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="4.65" >
+            </ListView>
+
+        </TableLayout>
+
+    </FrameLayout>
+    
+</LinearLayout>

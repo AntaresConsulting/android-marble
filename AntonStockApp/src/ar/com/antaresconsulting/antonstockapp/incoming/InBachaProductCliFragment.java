@@ -27,7 +27,6 @@ import android.widget.ListView;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
-import ar.com.antaresconsulting.antonstockapp.AntonConstants;
 import ar.com.antaresconsulting.antonstockapp.R;
 import ar.com.antaresconsulting.antonstockapp.R.id;
 import ar.com.antaresconsulting.antonstockapp.R.layout;
@@ -45,6 +44,7 @@ import ar.com.antaresconsulting.antonstockapp.model.dao.PartnerDAO;
 import ar.com.antaresconsulting.antonstockapp.model.dao.PedidoDAO;
 import ar.com.antaresconsulting.antonstockapp.popup.SearchBachaPopupFragment;
 import ar.com.antaresconsulting.antonstockapp.popup.SearchMPPopupFragment;
+import ar.com.antaresconsulting.antonstockapp.util.AntonConstants;
 
 /**
  * A placeholder fragment containing a simple view.
@@ -228,7 +228,7 @@ public class InBachaProductCliFragment extends Fragment implements  SearchBachaP
 
 		for (int i = 0; i < maxProds; i++) {
 			PedidoLinea prod = (PedidoLinea) this.productos.getAdapter().getItem(i);
-			StockMove move = new StockMove(prod.getNombre(),((Bacha)prod.getProduct()[0]).getId(), (Integer)prod.getUom()[0], loc_source, loc_destination, origin, prod.getCant());				
+			StockMove move = new StockMove(prod.getNombre(),((Bacha)prod.getProduct()[0]).getId(), (Integer)prod.getUom()[0], loc_source, loc_destination, origin, prod.getCant(),null);				
 			picking.addMove(move);
 		}
 		saveData.execute(picking);	

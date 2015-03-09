@@ -10,11 +10,11 @@ import java.util.HashMap;
 
 import com.xmlrpc.XMLRPCException;
 
-import ar.com.antaresconsulting.antonstockapp.AntonConstants;
 import ar.com.antaresconsulting.antonstockapp.R;
 import ar.com.antaresconsulting.antonstockapp.model.BaseProduct;
 import ar.com.antaresconsulting.antonstockapp.model.Dimension;
 import ar.com.antaresconsulting.antonstockapp.model.MateriaPrima;
+import ar.com.antaresconsulting.antonstockapp.util.AntonConstants;
 
 public class UpdateStockAsyncTask extends AsyncTask<HashMap<String, Object>, String, Long> {
 	private Activity activity;

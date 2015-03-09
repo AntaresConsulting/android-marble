@@ -58,10 +58,17 @@
 
                 <Spinner
                     android:id="@+id/proveedorList"
-                    android:layout_width="fill_parent"
-                    android:layout_height="50dp"
+                    android:layout_width="@dimen/pm_input_width"
+                    android:layout_height="@dimen/pm_input_height"
                     android:ems="10"
                    />
+				<Button
+                    android:id="@+id/button1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:onClick="setFecha"
+            		android:drawableLeft="@drawable/ic_action_date"                                        
+                    android:text="@string/action_date_pm" />                
             </TableRow>
 
             <TableRow
@@ -78,8 +85,8 @@
 
                 <EditText
                     android:id="@+id/cantidadProducto"
-                    android:layout_width="fill_parent"
-                    android:layout_height="50dp"
+                    android:layout_width="@dimen/pm_input_width"
+                    android:layout_height="@dimen/pm_input_height"
                     android:ems="10"
                     android:inputType="number" />
 
@@ -105,10 +112,11 @@
 
                 <EditText
                     android:id="@+id/pickingList"
-                    android:layout_width="fill_parent"
-                    android:layout_height="50dp"
+                    android:layout_width="@dimen/pm_input_width"
+                    android:layout_height="@dimen/pm_input_height"
                     android:ems="10"
-                    android:inputType="text" />                
+                    android:inputType="text" />
+                
             </TableRow>            
             <TableRow
                 android:id="@+id/tableRow3"

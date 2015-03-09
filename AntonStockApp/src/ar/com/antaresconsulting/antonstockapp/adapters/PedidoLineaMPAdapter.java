@@ -68,7 +68,7 @@ public class PedidoLineaMPAdapter extends BaseAdapter {
 		ViewHolder holder = (ViewHolder) rowView.getTag();
 		PedidoLinea registro = (PedidoLinea) datos.get(position);
 		holder.lblNombre.setText(registro.getNombre());
-		holder.cantPlacas.setText(String.valueOf(registro.getCant().intValue()));
+		holder.cantPlacas.setText(String.valueOf(registro.getCantDim().intValue()));
 		Dimension dim = (Dimension) registro.getDimension()[0];
 		if(((dim.getDimH() !=null))){
 			holder.dimHeight.setText(dim.getDimH().toString());

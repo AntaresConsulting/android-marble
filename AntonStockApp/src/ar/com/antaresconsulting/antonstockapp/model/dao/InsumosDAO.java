@@ -7,7 +7,6 @@ import java.util.List;
 
 import android.app.Activity;
 import android.app.Fragment;
-import ar.com.antaresconsulting.antonstockapp.AntonConstants;
 import ar.com.antaresconsulting.antonstockapp.model.Bacha;
 import ar.com.antaresconsulting.antonstockapp.model.BaseProduct;
 import ar.com.antaresconsulting.antonstockapp.model.Insumo;
@@ -15,12 +14,14 @@ import ar.com.antaresconsulting.antonstockapp.model.MateriaPrima;
 import ar.com.antaresconsulting.antonstockapp.model.MateriaPrimaOut;
 import ar.com.antaresconsulting.antonstockapp.model.SelectionObject;
 import ar.com.antaresconsulting.antonstockapp.model.dao.BachasDAO.BachasCallbacks;
+import ar.com.antaresconsulting.antonstockapp.util.AntonConstants;
 
 import com.openerp.ReadAsyncTask;
 
 public class InsumosDAO extends ProductDAO {
 
-	private String[] insuFilds = new String[] { "id", "name", "image_medium", "image", "code", "list_price", "qty_available","virtual_available","seller_qty", "ean13", "uom_id", "description","attribute_value_ids","product_tmpl_id" };
+	private String[] insuFilds = new String[] { "id", "name", "code", "list_price", "qty_available","virtual_available","seller_qty", "ean13", "uom_id", "description","attribute_value_ids","product_tmpl_id" };
+	private String[] insuExtFilds = new String[] { "id", "name", "image_medium", "image", "code", "list_price", "qty_available","virtual_available","seller_qty", "ean13", "uom_id", "description","attribute_value_ids","product_tmpl_id" };
 	
 	private Fragment activityPart;
 	
@@ -53,7 +54,7 @@ public class InsumosDAO extends ProductDAO {
 	public void getInsumos() {
 		this.setmFilters(new Object[] { new Object[] { AntonConstants.PRODUCT_TYPE, "ilike",
 				AntonConstants.CATEGORY_INSUMO } });
-		this.execute(this.insuFilds);
+		this.execute(this.insuExtFilds);
 	}
 	
 	public void getInsumosNames() {

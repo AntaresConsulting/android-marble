@@ -23,13 +23,13 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
-import ar.com.antaresconsulting.antonstockapp.AntonConstants;
 import ar.com.antaresconsulting.antonstockapp.R;
 import ar.com.antaresconsulting.antonstockapp.R.id;
 import ar.com.antaresconsulting.antonstockapp.R.layout;
 import ar.com.antaresconsulting.antonstockapp.R.menu;
 import ar.com.antaresconsulting.antonstockapp.R.string;
 import ar.com.antaresconsulting.antonstockapp.model.BaseProduct;
+import ar.com.antaresconsulting.antonstockapp.util.AntonConstants;
 
 public class AddProductActivity extends ActionBarActivity implements WriteAsyncTask.WriteAsyncTaskCallbacks, AddProductsCallbacks, CreateAsyncTask.CreateAsyncTaskCallbacks {
 	private Bitmap savedThumb;

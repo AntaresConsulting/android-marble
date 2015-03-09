@@ -49,6 +49,7 @@
     <string name="main_remito_desc">Remitos</string>
     <string name="main_products_desc">Productos</string>
     <string name="main_partners_desc">Empresas</string>
+    <string name="main_pickings_desc">Pedidos</string>
     <string name="main_genpm_desc">Gen PM</string>
     <string name="main_genoe_desc">Gen OE</string>
     <string name="main_insumos_desc">Insumos</string>
@@ -61,5 +62,4 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="title_activity_consumo_insumo">ConsumoInsumo</string>
     <string name="title_activity_product_type">ProductTypeActivity</string>
-
 </resources>

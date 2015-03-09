@@ -7,9 +7,9 @@ import android.app.Activity;
 import android.app.ProgressDialog;
 import android.os.AsyncTask;
 import android.util.Log;
-import ar.com.antaresconsulting.antonstockapp.AntonConstants;
 import ar.com.antaresconsulting.antonstockapp.LoginActivityInterface;
 import ar.com.antaresconsulting.antonstockapp.R;
+import ar.com.antaresconsulting.antonstockapp.util.AntonConstants;
 
 public class DBAsyncTask extends
 		AsyncTask<String, Integer, Object[]> {

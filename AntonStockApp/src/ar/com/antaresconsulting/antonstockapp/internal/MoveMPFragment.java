@@ -1,6 +1,7 @@
 package ar.com.antaresconsulting.antonstockapp.internal;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
 
@@ -22,7 +23,6 @@ import android.widget.ListView;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
-import ar.com.antaresconsulting.antonstockapp.AntonConstants;
 import ar.com.antaresconsulting.antonstockapp.R;
 import ar.com.antaresconsulting.antonstockapp.R.id;
 import ar.com.antaresconsulting.antonstockapp.R.layout;
@@ -41,6 +41,7 @@ import ar.com.antaresconsulting.antonstockapp.model.dao.MateriaPrimaDAO;
 import ar.com.antaresconsulting.antonstockapp.model.dao.DimensionDAO;
 import ar.com.antaresconsulting.antonstockapp.model.dao.PedidoDAO;
 import ar.com.antaresconsulting.antonstockapp.popup.SearchMPPopupFragment;
+import ar.com.antaresconsulting.antonstockapp.util.AntonConstants;
 
 /**
  * A placeholder fragment containing a simple view.
@@ -154,12 +155,12 @@ public class MoveMPFragment extends Fragment implements OnItemSelectedListener,M
 			MateriaPrimaOut mpo = (MateriaPrimaOut) this.productos.getAdapter().getItem(i);
 			PedidoLinea prod = mpo.getPl().get(0);
 			Dimension dim = mpo.getDim().getDim();
-			StockMove move = new StockMove(prod.getNombre(),((Integer)prod.getProduct()[0]), (Integer)prod.getUom()[0], loc_sourceSTK, loc_destinationPROD, origin, prod.getCant(),dim,mpo.getCant());
+			StockMove move = new StockMove(prod.getNombre(),((Integer)prod.getProduct()[0]), (Integer)prod.getUom()[0], loc_sourceSTK, loc_destinationPROD, origin, prod.getCant(),dim,mpo.getCant(),null);
 			List pls = mpo.getPl();
 			for (Iterator iterator = pls.iterator(); iterator.hasNext();) {
 				PedidoLinea plAux = (PedidoLinea) iterator.next();
 				Dimension dimOut = (Dimension) plAux.getDimension()[0];		
-				StockMove moveOut = new StockMove(prod.getNombre(),((Integer)prod.getProduct()[0]), (Integer)prod.getUom()[0], loc_destinationPROD, loc_destinationOUT, origin, plAux.getCant(),dimOut,plAux.getCantDim());
+				StockMove moveOut = new StockMove(prod.getNombre(),((Integer)prod.getProduct()[0]), (Integer)prod.getUom()[0], loc_destinationPROD, loc_destinationOUT, origin, plAux.getCant(),dimOut,plAux.getCantDim(),null);
 				pickings[1].addMove(moveOut);
 			}
 			pickings[0].addMove(move);

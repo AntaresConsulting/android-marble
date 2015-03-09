@@ -1,8 +1,10 @@
 package ar.com.antaresconsulting.antonstockapp.model;
 
+import java.util.Date;
 import java.util.HashMap;
 
-import ar.com.antaresconsulting.antonstockapp.AntonConstants;
+import ar.com.antaresconsulting.antonstockapp.util.AntonConstants;
+import ar.com.antaresconsulting.antonstockapp.util.DateUtil;
 
 public class StockMove {
 
@@ -17,11 +19,12 @@ public class StockMove {
 	private String employee;
 	private Dimension dim;
 	private Integer dimQty;
-	
+	private Date dateExpected;
+
 	
 	
 	public StockMove(String nameStr,Integer productId, Integer prodUOM, String locationSrc,
-			String locationDest, String origin, Double qty) {
+			String locationDest, String origin, Double qty,Date date) {
 		super();
 		this.name = nameStr;
 		this.productId = productId;
@@ -30,9 +33,11 @@ public class StockMove {
 		this.locationDest = locationDest;
 		this.origin = origin;
 		this.qty = qty;
+		this.dateExpected = date;
+
 	}
 	public StockMove(String nameStr,Integer productId, Integer prodUOM, String locationSrc,
-			String locationDest, String origin, Double qty, Dimension dimId, Integer dimQty) {
+			String locationDest, String origin, Double qty, Dimension dimId, Integer dimQty,Date date) {
 		super();
 		this.name = nameStr;
 		this.productId = productId;
@@ -43,9 +48,16 @@ public class StockMove {
 		this.qty = qty;
 		this.dim = dimId;
 		this.dimQty = dimQty;
+		this.dateExpected = date;		
 	}
 	
 	
+	public Date getDateExpected() {
+		return dateExpected;
+	}
+	public void setDateExpected(Date dateExpected) {
+		this.dateExpected = dateExpected;
+	}
 	public String getName() {
 		return name;
 	}
@@ -126,6 +138,11 @@ public class StockMove {
 		res.put("product_id",this.getProductId());
 		res.put("product_uom_qty",this.getQty());
 		res.put("product_uos",this.getProdUOM());
+		if(this.getDateExpected() == null)
+			res.put("date_expected",DateUtil.formatDateToStr(new Date())+" 03:10:00");
+		else
+			res.put("date_expected",DateUtil.formatDateToStr(this.getDateExpected())+" 03:10:00");
+
 		if(this.getDim()!=null){
 			res.put("dimension_id",new Integer(this.getDim().getDimId()));
 			res.put("dimension_unit",this.getDimQty());
@@ -134,8 +151,8 @@ public class StockMove {
 		res.put("location_id",this.getLocationSrc());
 		res.put("location_dest_id",this.getLocationDest());				
 		res.put("company_id",AntonConstants.ANTON_COMPANY_ID);
-		res.put("prodlot_id",false);
-		res.put("tracking_id",false);		
+		//res.put("prodlot_id",false);
+		//res.put("tracking_id",false);		
 		res.put("origin",this.getOrigin());
 		res.put("state","draft");
 		if(this.getEmployee() != null)

@@ -6,19 +6,20 @@ import java.util.List;
 
 import android.app.Activity;
 import android.app.Fragment;
-import ar.com.antaresconsulting.antonstockapp.AntonConstants;
 import ar.com.antaresconsulting.antonstockapp.model.Bacha;
 import ar.com.antaresconsulting.antonstockapp.model.BaseProduct;
 import ar.com.antaresconsulting.antonstockapp.model.Insumo;
 import ar.com.antaresconsulting.antonstockapp.model.MateriaPrima;
 import ar.com.antaresconsulting.antonstockapp.model.MateriaPrimaOut;
 import ar.com.antaresconsulting.antonstockapp.model.SelectionObject;
+import ar.com.antaresconsulting.antonstockapp.util.AntonConstants;
 
 import com.openerp.ReadAsyncTask;
 
 public class BachasDAO extends ProductDAO {
 
-	private String[] bachFields = new String[] { "id", "name", "image_medium","image",  "code", "list_price", "qty_available", "virtual_available","seller_qty","ean13", "uom_id","attrs_material" ,"bacha_marca", "bacha_material", "bacha_tipo", "bacha_acero", "bacha_colocacion", "bacha_ancho", "bacha_largo", "bacha_prof","product_tmpl_id"};
+	private String[] bachFields = new String[] { "id", "name", "code", "list_price", "qty_available", "virtual_available","seller_qty","ean13", "uom_id","attrs_material" ,"bacha_marca", "bacha_material", "bacha_tipo", "bacha_acero", "bacha_colocacion", "bacha_ancho", "bacha_largo", "bacha_prof","product_tmpl_id"};
+	private String[] bachExtFields = new String[] { "id", "name", "image_medium","image",  "code", "list_price", "qty_available", "virtual_available","seller_qty","ean13", "uom_id","attrs_material" ,"bacha_marca", "bacha_material", "bacha_tipo", "bacha_acero", "bacha_colocacion", "bacha_ancho", "bacha_largo", "bacha_prof","product_tmpl_id"};
 	
 	private Fragment activityPart;
 	
@@ -45,7 +46,7 @@ public class BachasDAO extends ProductDAO {
 
 	public void getBachas() {
 		this.setmFilters(new Object[] { new Object[] { AntonConstants.PRODUCT_TYPE, "ilike",AntonConstants.CATEGORY_BACHA } });
-		this.execute(this.bachFields);
+		this.execute(this.bachExtFields);
 	}
 	
 	public void getBachasNames() {

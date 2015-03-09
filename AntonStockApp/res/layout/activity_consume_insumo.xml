@@ -8,12 +8,11 @@
     tools:ignore="MergeRootFrame" >
 
     <LinearLayout
-        android:id="@+id/LinearLayout1"
+        android:id="@+id/LinearLayoutLeft"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_vertical"
+        android:layout_height="fill_parent"
         android:layout_weight="3.8"
-        android:layout_margin="5dp"
+        android:layout_margin="5dp"                
         android:orientation="vertical" >
 
         <TextView
@@ -21,22 +20,25 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:gravity="center_vertical"
-            android:layout_marginBottom="10dp"
             android:text="@string/ci_empleado"
-            android:textAppearance="?android:attr/textAppearanceLarge" />
+            android:textAppearance="?android:attr/textAppearanceLarge" 
+            android:textSize="@dimen/oe_title_text_size"
+            />
 
         <ListView
             android:id="@+id/empleList"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1" >
+            android:layout_height="@dimen/product_available_height"
+            android:layout_weight="1"
+             >
         </ListView>
 
         <TableLayout
-            android:layout_width="fill_parent"
-            android:layout_height="match_parent"
-            android:layout_gravity="center_horizontal"
-            android:layout_margin="20dp" >
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:gravity="bottom"
+            android:layout_margin="10dp" >
 
             <TableRow
                 android:id="@+id/TableRow05"
@@ -117,7 +119,7 @@
     </LinearLayout>
 
     <LinearLayout
-        android:id="@+id/LinearLayout1"
+        android:id="@+id/LinearLayoutRight"
         android:layout_width="0dp"
         android:layout_height="match_parent"
         android:layout_weight="4"
@@ -130,7 +132,7 @@
             android:layout_height="wrap_content"
             android:text="@string/ci_productos_entrega"
             android:textAppearance="?android:attr/textAppearanceLarge"
-            android:textSize="30sp" />
+            android:textSize="@dimen/oe_title_text_size" />
 
         <ListView
             android:id="@+id/productosEgreso"

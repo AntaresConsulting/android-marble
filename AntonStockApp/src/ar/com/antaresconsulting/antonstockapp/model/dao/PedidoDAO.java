@@ -1,22 +1,23 @@
 package ar.com.antaresconsulting.antonstockapp.model.dao;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 
 import android.app.Activity;
 import android.app.Fragment;
-import ar.com.antaresconsulting.antonstockapp.AntonConstants;
 import ar.com.antaresconsulting.antonstockapp.model.Dimension;
 import ar.com.antaresconsulting.antonstockapp.model.Pedido;
 import ar.com.antaresconsulting.antonstockapp.model.PedidoLinea;
+import ar.com.antaresconsulting.antonstockapp.util.AntonConstants;
 
 import com.openerp.ReadAsyncTask;
 
 public class PedidoDAO extends ReadAsyncTask {
 
 
-	private String[] baseFields = new String[] { "id", "name", "move_type", "partner_id", "note", "origin","move_lines"};
+	private String[] baseFields = new String[] { "id", "name", "move_type", "partner_id", "note", "origin","move_lines","min_date","move_prod_type"};
 	private String[] stockMoveFields = new String[] { "id", "state", "name", "product_id", "product_uom","product_qty",AntonConstants.STOCK_MOVE_DIM_ID,AntonConstants.STOCK_MOVE_DIM_QTY};
 	
 
@@ -75,6 +76,14 @@ public class PedidoDAO extends ReadAsyncTask {
 		this.execute(this.baseFields);
 		this.dataToSet = AntonConstants.PEDIDOS;
 	}
+	
+	public void getPedidosPorEstadoyTipo(String estado,String tipo) {
+		this.setmFilters(new Object[] { new Object[] { "picking_type_id", "=",new Integer(tipo) }, new Object[] { "state", "=",estado }});
+		this.mModel = "stock.picking";
+		this.execute(this.baseFields);
+		this.dataToSet = AntonConstants.PEDIDOS;
+	}
+	
 	public void getOrdenesDeEntregaPend() {
 		this.extraData =  true;				
 		this.setmFilters(new Object[] { new Object[] { "state", "=","confirmed" },new Object[] { "picking_type_id.code", "=",AntonConstants.OUT_PORDUCT_TYPE }});
@@ -133,6 +142,8 @@ public class PedidoDAO extends ReadAsyncTask {
 			String origin = obj.get("origin") instanceof Boolean ? "": (String) obj.get("origin");
 			String nota = obj.get("note") instanceof Boolean ? "": (String) obj.get("note");
 			Object[] move_lines = obj.get("move_lines") instanceof Boolean ? new Object[0]: (Object[]) obj.get("move_lines");
+			String arrDate = obj.get("min_date") instanceof Boolean ? "": (String) obj.get("min_date");
+			String movType = obj.get("move_prod_type") instanceof Boolean ? "": (String) obj.get("move_prod_type");
 
 			resp.setId((Integer) obj.get("id"));
 			resp.setNota(nota);
@@ -141,6 +152,8 @@ public class PedidoDAO extends ReadAsyncTask {
 			resp.setOrigen(origin);
 			resp.setNombre(nombre);	
 			resp.setLineas(move_lines);
+			resp.setArrivalDate(arrDate);
+			resp.setTipoMov(movType);
 			datosProds.add(resp);
 		}
 		return datosProds;
@@ -156,7 +169,10 @@ public class PedidoDAO extends ReadAsyncTask {
 				((OrdenesDeEntregaCallbacks) this.activityPart).setOrdenes();
 			break;
 		case AntonConstants.PEDIDOS:
-			((PedidosCallbacks) this.activityPart).setPedidos();
+			if(this.activityPart == null)
+				((PedidosCallbacks) this.activity).setPedidos();
+			else
+				((PedidosCallbacks) this.activityPart).setPedidos();
 			break;			
 		case AntonConstants.PEDIDOSLINEAS:
 			if(this.activityPart == null)

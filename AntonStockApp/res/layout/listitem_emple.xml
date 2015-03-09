@@ -7,8 +7,8 @@
 
     <ImageView
         android:id="@+id/empleImg"
-        android:layout_width="80dp"
-        android:layout_height="80dp"
+        android:layout_width="@dimen/emploee_image_w"
+        android:layout_height="@dimen/emploee_image_h"
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
         android:background="@color/bg_listitem_emple"
@@ -17,7 +17,7 @@
     <View
         android:id="@+id/sepProdThumb"
         android:layout_width="4dp"
-        android:layout_height="80dp"
+        android:layout_height="@dimen/emploee_image_h"
         android:layout_alignParentTop="true"
         android:layout_marginLeft="5dp"
         android:layout_toRightOf="@id/empleImg"

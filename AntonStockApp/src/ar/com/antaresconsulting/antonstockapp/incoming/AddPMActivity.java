@@ -2,6 +2,7 @@ package ar.com.antaresconsulting.antonstockapp.incoming;
 
 import android.support.v4.app.NavUtils;
 import android.support.v7.app.ActionBarActivity;
+import android.app.DialogFragment;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
@@ -12,9 +13,10 @@ import ar.com.antaresconsulting.antonstockapp.R;
 import ar.com.antaresconsulting.antonstockapp.R.id;
 import ar.com.antaresconsulting.antonstockapp.R.layout;
 import ar.com.antaresconsulting.antonstockapp.R.menu;
+import ar.com.antaresconsulting.antonstockapp.popup.DatePickerPopupFragment;
 import ar.com.antaresconsulting.antonstockapp.product.ProductTypeFragment;
 
-public class AddPMActivity extends ActionBarActivity {
+public class AddPMActivity extends ActionBarActivity implements  DatePickerPopupFragment.DatePickerListener{
 
 
 
@@ -45,7 +47,12 @@ public class AddPMActivity extends ActionBarActivity {
 		}		
 		return super.onOptionsItemSelected(item);
 	}
-
+	
+	public void setFecha(View v) {
+	    DialogFragment newFragment = new DatePickerPopupFragment();
+	    newFragment.show(getFragmentManager(), "datePicker");
+	}
+	
 	public void setBachas(View view) {
 		enableMenuVis();
 		getFragmentManager().beginTransaction().replace(R.id.container, AddPMBachaFragment.newInstance()).commit();
@@ -80,6 +87,11 @@ public class AddPMActivity extends ActionBarActivity {
 		for (int i = 0; i < mainMenu.size(); i++) {
 			mainMenu.getItem(i).setVisible(true);
 		} 	
+	}
+
+	@Override
+	public void setSelectedDate(int year, int month, int day) {
+		((AddPMActions) getFragmentManager().findFragmentById(	R.id.container)).setDate(year, month, day);				
 	}
 	
 }
