@@ -19,31 +19,30 @@ import android.widget.TableRow;
 import android.widget.TextView;
 import ar.com.antaresconsulting.antonstockapp.R;
 import ar.com.antaresconsulting.antonstockapp.model.BaseProduct;
-import ar.com.antaresconsulting.antonstockapp.model.Dimension;
-import ar.com.antaresconsulting.antonstockapp.model.DimensionBalance;
 import ar.com.antaresconsulting.antonstockapp.model.MateriaPrimaOut;
+import ar.com.antaresconsulting.antonstockapp.model.Pedido;
 import ar.com.antaresconsulting.antonstockapp.model.PedidoLinea;
 
-public class MateriaPrimaOutAdapter extends BaseExpandableListAdapter {
+public class PedidoDesplegableAdapter extends BaseExpandableListAdapter {
 	Activity context;
-	List<MateriaPrimaOut> datos = new ArrayList<MateriaPrimaOut>();
+	List<Pedido> datos = new ArrayList<Pedido>();
 
-	public void addProduct(MateriaPrimaOut prod) {
+	public void addProduct(Pedido prod) {
 		this.datos.add(prod);
 	}
-	public void delProduct(MateriaPrimaOut prod) {
+	public void delProduct(Pedido prod) {
 		this.datos.remove(prod);
 	}	
 
-	public void addAll(List<MateriaPrimaOut> prods) {
+	public void addAll(List<Pedido> prods) {
 		this.datos.addAll(prods);
 	}
 
-	public MateriaPrimaOutAdapter(Activity context) {
+	public PedidoDesplegableAdapter(Activity context) {
 		this.context = context;
 	}
 
-	public MateriaPrimaOutAdapter(Fragment productListFragment,	List<MateriaPrimaOut> mp) {
+	public PedidoDesplegableAdapter(Fragment productListFragment,	List<Pedido> mp) {
 		this.context = productListFragment.getActivity();
 		this.datos.addAll(mp);		
 	}
@@ -57,7 +56,7 @@ public class MateriaPrimaOutAdapter extends BaseExpandableListAdapter {
 	@Override
 	public Object getChild(int arg0, int arg1) {
 		// TODO Auto-generated method stub
-		return this.datos.get(arg0).getPl().get(arg1);
+		return this.datos.get(arg0).getLineas()[arg1];
 	}
 	@Override
 	public long getChildId(int groupPosition, int childPosition) {
@@ -76,13 +75,14 @@ public class MateriaPrimaOutAdapter extends BaseExpandableListAdapter {
         }
  
         TextView dim = (TextView) convertView.findViewById(R.id.dimensionVal);
-       	dim.setText(childText.toString());
+ 
+        dim.setText((String) childText.getDimension()[1]);
         return convertView;
 	}
 	@Override
 	public int getChildrenCount(int groupPosition) {
 		// TODO Auto-generated method stub
-		return this.datos.get(groupPosition).getPl().size();
+		return this.datos.get(groupPosition).getLineas().length;
 	}
 	@Override
 	public Object getGroup(int groupPosition) {

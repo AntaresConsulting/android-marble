@@ -88,8 +88,6 @@ public class AddProductActivity extends ActionBarActivity implements WriteAsyncT
 	}
 	public void addProductSave(MenuItem view) {
 
-		OpenErpHolder.getInstance().setmModelName(AntonConstants.PRODUCT_MODEL);
-
 		HashMap<String, Object> dataToSave = new HashMap<String, Object>();			
 		dataToSave.put("name", ((EditText)findViewById(R.id.prodNombre)).getText().toString());
 		if(this.encodedImage != null && !this.encodedImage.trim().equalsIgnoreCase(""))
@@ -106,10 +104,12 @@ public class AddProductActivity extends ActionBarActivity implements WriteAsyncT
 			dataToUpdate[0] = new HashMap<String, Object>();
 			dataToUpdate[0].put("id", idProd.getId() );
 			dataToUpdate[1] = dataToSave;
+			OpenErpHolder.getInstance().setmModelName(AntonConstants.PRODUCT_MODEL);
 
 			this.updateData = new WriteAsyncTask(this);
 			this.updateData.execute(dataToUpdate);
 		}else{
+			OpenErpHolder.getInstance().setmModelName(AntonConstants.PRODUCT_MODEL);
 			this.saveData = new CreateAsyncTask(this);
 			this.saveData.execute(dataToSave);			
 		}
@@ -139,7 +139,10 @@ public class AddProductActivity extends ActionBarActivity implements WriteAsyncT
 	public void setResultCreate(Long res) {
 		Toast tt =Toast.makeText(getApplicationContext(), "Se creado el producto en forma satisfactoria con el id = "+res.toString(), Toast.LENGTH_SHORT);
 		tt.show();
-		finish();
+		Intent output = new Intent();
+		output.putExtra("aaa", this.tprod);
+		setResult(RESULT_OK, output);		
+		finish();		
 	}
 
 	public boolean onOptionsItemSelected(MenuItem item) {

@@ -36,9 +36,7 @@ public class InInsumoProductFragment extends Fragment implements OnItemSelectedL
 	private PedidoDAO pedDao;
 
 	private Spinner pedidos;
-
 	private ListView productos;
-	//private ListView productosDispo;
 
 	private EditText cantPlacas;
 	private TextView provee;
@@ -77,41 +75,15 @@ public class InInsumoProductFragment extends Fragment implements OnItemSelectedL
 		View rootView = null;
 		this.insuDao = new InsumosDAO(this);
 
-		rootView = inflater.inflate(R.layout.fragment_in_products,	container, false);
-
-//		this.productosDispo = (ListView) rootView.findViewById(R.id.productosDispo);
-//		this.productosDispo.setChoiceMode(ListView.CHOICE_MODE_SINGLE);			
+		rootView = inflater.inflate(R.layout.fragment_in_products,	container, false);		
 		this.cantPlacas = (EditText) rootView.findViewById(R.id.clientesList);
-		//this.productos = (ListView) rootView.findViewById(R.id.productosPedido);
 		this.productos = (ListView) rootView.findViewById(R.id.productosDispo);
-		//this.productos.setChoiceMode(ListView.CHOICE_MODE_MULTIPLE);		
 		this.provee = (TextView) rootView.findViewById(R.id.proveedorNombre);
 		this.pedidos = (Spinner) rootView.findViewById(R.id.pedidosCombo);
 		this.pedidos.setOnItemSelectedListener(this);
 
 		this.pedDao = new PedidoDAO(this);
 		this.pedDao.getPedidosPend(AntonConstants.INSU_PICKING);
-
-//		SwipeDismissListViewTouchListener touchListener = new SwipeDismissListViewTouchListener(
-//				this.productosDispo,
-//				new SwipeDismissListViewTouchListener.DismissCallbacks() {
-//					@Override
-//					public boolean canDismiss(int position) {
-//						return true;
-//					}
-//
-//					@Override
-//					public void onDismiss(ListView listView,
-//							int[] reverseSortedPositions) {
-//						for (int position : reverseSortedPositions) {
-//							((PedidoLineaAdapter) productosDispo.getAdapter()).delLinea((PedidoLinea) productosDispo.getAdapter().getItem(position));
-//						}
-//						((PedidoLineaAdapter) productosDispo.getAdapter()).notifyDataSetChanged();
-//					}
-//				});
-//		this.productosDispo.setOnTouchListener(touchListener);
-//		this.productosDispo.setOnScrollListener(touchListener.makeScrollListener());
-
 		return rootView;
 	}
 
@@ -122,45 +94,19 @@ public class InInsumoProductFragment extends Fragment implements OnItemSelectedL
 		popconf.show(getFragmentManager(),"Server_Search");
 	}
 
-
-
-//	public void addProduct(View view) {
-//		boolean cancel = false;
-//		View focus = null; 
-//		if(this.cantPlacas.getText().toString().trim().equalsIgnoreCase("")){
-//			this.cantPlacas.setError(getString(R.string.error_field_required));
-//			cancel = true;
-//			focus = this.cantPlacas;
-//		}
-//
-//		if(cancel){
-//			focus.requestFocus();
-//			return;
-//		}
-//
-//		PedidoLinea prod = (PedidoLinea) this.productosDispo.getAdapter().getItem(this.productosDispo.getCheckedItemPosition());
-//		int position =  productosDispo.getCheckedItemPosition();
-//		if(position == AdapterView.INVALID_POSITION){
-//			Toast tt = Toast.makeText(this.getActivity(), "Primero debe seleccionar un producto", Toast.LENGTH_SHORT);
-//			tt.show();
-//			return;
-//		}
-//		
-//		PedidoLineaAdapter adapter = (PedidoLineaAdapter) this.productos.getAdapter();		
-//		prod.setCant(Double.parseDouble(this.cantPlacas.getText().toString()));
-//		
-//		adapter.addLinea(prod);
-//		adapter.notifyDataSetChanged();
-//	}
-
 	@Override
 	public void setInsumos() {
-//		this.productos.setAdapter(new ArrayAdapter<Insumo>(this.getActivity(),android.R.layout.simple_list_item_1,this.insuDao.getInsumosList()));	
 		
 	}
 
 
 	public void confirmStock() {
+		if(this.pedidos.getSelectedItem() == null){
+			Toast tt = Toast.makeText(this.getActivity().getApplicationContext(), "Debe haber almenos un pedido.", Toast.LENGTH_SHORT);
+			tt.show();		
+			return;
+		}
+
 		PedidoLinea[] pls = new PedidoLinea[((PedidoLineaAdapter)this.productos.getAdapter()).getCantVerified()];
 		int j = 0;
 		for (int i = 0; i < this.productos.getAdapter().getCount(); i++) {
@@ -170,11 +116,17 @@ public class InInsumoProductFragment extends Fragment implements OnItemSelectedL
 			}
 			
 		}
-		
+		if(pls.length <= 0){
+			Toast tt = Toast.makeText(this.getActivity().getApplicationContext(), "Debe confirmar almenos un producto.", Toast.LENGTH_SHORT);
+			tt.show();		
+			return;			
+		}
+		Pedido ped = (Pedido) this.pedidos.getSelectedItem();
+		ped.setLineas(pls);
 		ConfirmMovesAsyncTask confAction = new ConfirmMovesAsyncTask(getActivity());
 		confAction.setMoveType("in");
-		confAction.setModelStockPicking("stock.move");
-		confAction.execute(pls);				
+		confAction.setModelStockPicking(AntonConstants.PICKING_MODEL);
+		confAction.execute(ped);				
 
 	}
 

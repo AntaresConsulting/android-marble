@@ -17,6 +17,7 @@ import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.Spinner;
 import android.widget.Toast;
+import ar.com.antaresconsulting.antonstockapp.AntonStockApp;
 import ar.com.antaresconsulting.antonstockapp.R;
 import ar.com.antaresconsulting.antonstockapp.R.id;
 import ar.com.antaresconsulting.antonstockapp.R.layout;
@@ -24,6 +25,7 @@ import ar.com.antaresconsulting.antonstockapp.R.string;
 import ar.com.antaresconsulting.antonstockapp.adapters.PedidoLineaAdapter;
 import ar.com.antaresconsulting.antonstockapp.listener.SwipeDismissListViewTouchListener;
 import ar.com.antaresconsulting.antonstockapp.model.Bacha;
+import ar.com.antaresconsulting.antonstockapp.model.Insumo;
 import ar.com.antaresconsulting.antonstockapp.model.Partner;
 import ar.com.antaresconsulting.antonstockapp.model.PedidoLinea;
 import ar.com.antaresconsulting.antonstockapp.model.StockMove;
@@ -116,17 +118,23 @@ public class AddPMBachaFragment extends Fragment implements AddPMActions,BachasD
 	public void addPM() {
 		CreatePickingAsyncTask saveData = new CreatePickingAsyncTask(this.getActivity());
 		int maxProds = this.prodsPedido.getAdapter().getCount();		
-
+		if(maxProds <= 0){
+			Toast tt = Toast.makeText(this.getActivity().getApplicationContext(), "Debe haber seleccionado almenos un producto!", Toast.LENGTH_SHORT);
+			tt.show();		
+			return;
+		}
+		
 		Partner proveedor = (Partner) this.proveedor.getSelectedItem();
 		String origin = pl.getText().toString();
 
-		String loc_source = AntonConstants.PRODUCT_LOCATION_SUPPLIER;
-		String loc_destination = AntonConstants.PRODUCT_LOCATION_STOCK;			
+		Integer loc_source = AntonStockApp.getExternalId(AntonConstants.PRODUCT_LOCATION_SUPPLIER);
 		
-		StockPicking picking = new StockPicking(origin,AntonConstants.PICKING_TYPE_ID_IN,proveedor.getId(),loc_source,loc_destination,AntonConstants.BACHA_PICKING);
+		StockPicking picking = new StockPicking(origin,AntonConstants.PICKING_TYPE_ID_IN,proveedor.getId(),AntonConstants.BACHA_PICKING);
 
-		for (int i = 0; i < maxProds; i++) {
+		for (int i = 0; i < maxProds; i++) {			
 			PedidoLinea prod = (PedidoLinea) this.prodsPedido.getAdapter().getItem(i);
+			Bacha prodObj = (Bacha)prod.getProduct()[0];
+			Integer loc_destination = (Integer) prodObj.getLocId()[0];				
 			StockMove move = new StockMove(prod.getNombre(),((Bacha)prod.getProduct()[0]).getId(), (Integer)prod.getUom()[0], loc_source, loc_destination, origin, prod.getCant(),this.arrivalDate);				
 			picking.addMove(move);
 		}

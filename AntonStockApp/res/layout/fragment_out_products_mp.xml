@@ -94,7 +94,6 @@
                 android:layout_marginBottom="@dimen/oe_margin_sep"
                 android:layout_marginLeft="40dp"
                 android:layout_marginRight="40dp"
-                android:layout_marginTop="@dimen/oe_margin_sep"
                 android:nextFocusForward="@+id/placasList"
                 android:onClick="checkDispoPlacas"
                 android:singleLine="true"
@@ -124,25 +123,15 @@
                     android:id="@+id/prodNombre"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_span="2"
                     android:text="@string/out_prod_quantity"
                     android:textAppearance="?android:attr/textAppearanceMedium" />
 
                 <EditText
-                    android:id="@+id/cantPlacasDispo"
+                    android:id="@+id/cantPlacasSelect"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
+	                android:layout_height="@dimen/oe_input_height"
                     android:inputType="number" />
             </TableRow>
-
-            <View
-                android:layout_width="fill_parent"
-                android:layout_height="4dp"
-                android:layout_marginBottom="@dimen/oe_margin_sep"
-                android:layout_marginTop="@dimen/oe_margin_sep"
-                android:layout_span="2"
-                android:background="@color/actionbar_theme_color" />
 
             <TableRow
                 android:id="@+id/asdasd"

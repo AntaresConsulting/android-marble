@@ -47,8 +47,14 @@ public class PedidoDAO extends ReadAsyncTask {
 		this.mModel = "product.product";
 	}
 	
-	public void getMoveByPed(Integer id,String tpdrod) {
+	public void getMoveByPedMP(Integer id,String tpdrod) {
 		this.extraData =  true;				
+		this.setmFilters(new Object[] { new Object[] { "picking_id", "=",id },new Object[] { "state", "=","confirmed" },new Object[] { "product_id.prod_type", "ilike",tpdrod} });
+		this.mModel = "stock.move";
+		this.execute(this.stockMoveFields);
+		this.dataToSet = AntonConstants.PEDIDOSLINEAS;
+	}
+	public void getMoveByPed(Integer id,String tpdrod) {
 		this.setmFilters(new Object[] { new Object[] { "picking_id", "=",id },new Object[] { "state", "=","confirmed" },new Object[] { "product_id.prod_type", "ilike",tpdrod} });
 		this.mModel = "stock.move";
 		this.execute(this.stockMoveFields);
@@ -85,8 +91,7 @@ public class PedidoDAO extends ReadAsyncTask {
 	}
 	
 	public void getOrdenesDeEntregaPend() {
-		this.extraData =  true;				
-		this.setmFilters(new Object[] { new Object[] { "state", "=","confirmed" },new Object[] { "picking_type_id.code", "=",AntonConstants.OUT_PORDUCT_TYPE }});
+		this.setmFilters(new Object[] { "|",new Object[] { "state", "=","partially_available" },new Object[] { "state", "=","confirmed" },new Object[] { "picking_type_id.code", "=",AntonConstants.OUT_PORDUCT_TYPE }});
 		this.mModel = "stock.picking";
 		this.execute(this.baseFields);
 		this.dataToSet = AntonConstants.ORDENESDEENTREGA;

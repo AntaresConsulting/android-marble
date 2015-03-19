@@ -17,6 +17,7 @@ import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.Spinner;
 import android.widget.Toast;
+import ar.com.antaresconsulting.antonstockapp.AntonStockApp;
 import ar.com.antaresconsulting.antonstockapp.R;
 import ar.com.antaresconsulting.antonstockapp.R.id;
 import ar.com.antaresconsulting.antonstockapp.R.layout;
@@ -131,19 +132,25 @@ public class AddPMMPFragment extends Fragment implements PartnerDAO.SuppliersCal
 	public void addPM() {
 		CreatePickingAsyncTask saveData = new CreatePickingAsyncTask(this.getActivity());
 		int maxProds = this.prodsPedido.getAdapter().getCount();		
-
+		if(maxProds <= 0){
+			Toast tt = Toast.makeText(this.getActivity().getApplicationContext(), "Debe haber seleccionado almenos un producto!", Toast.LENGTH_SHORT);
+			tt.show();		
+			return;
+		}
 		Partner proveedor = (Partner) this.proveedor.getSelectedItem();
 		String origin = pl.getText().toString();
 
-		String loc_source = AntonConstants.PRODUCT_LOCATION_SUPPLIER;
-		String loc_destination = AntonConstants.PRODUCT_LOCATION_STOCK;			
+		Integer loc_source = AntonStockApp.getExternalId(AntonConstants.PRODUCT_LOCATION_SUPPLIER);
+					
 		
-		StockPicking picking = new StockPicking(origin,AntonConstants.PICKING_TYPE_ID_IN,proveedor.getId(),loc_source,loc_destination,AntonConstants.RAW_PICKING);
+		StockPicking picking = new StockPicking(origin,AntonConstants.PICKING_TYPE_ID_IN,proveedor.getId(),AntonConstants.RAW_PICKING);
 		
 		for (int i = 0; i < maxProds; i++) {
 			PedidoLinea prod = (PedidoLinea) this.prodsPedido.getAdapter().getItem(i);
 			Dimension dim = (Dimension) prod.getDimension()[0];
-			StockMove move = new StockMove(prod.getNombre(),((MateriaPrima)prod.getProduct()[0]).getId(), (Integer)prod.getUom()[0], loc_source, loc_destination, origin, prod.getCant(),dim,prod.getCantDim(),this.arrivalDate);				
+			MateriaPrima prodObj = (MateriaPrima)prod.getProduct()[0];
+			Integer loc_destination = (Integer) prodObj.getLocId()[0];
+			StockMove move = new StockMove(prod.getNombre(),prodObj.getId(), (Integer)prod.getUom()[0], loc_source, loc_destination, origin, prod.getCant(),dim,prod.getCantDim(),this.arrivalDate);				
 			picking.addMove(move);
 		}
 		saveData.execute(picking);

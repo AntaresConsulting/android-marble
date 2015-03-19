@@ -1,219 +1,225 @@
-<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/TableLayout1"
+    android:id="@+id/scrollBacha"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:layout_gravity="center_vertical|center_horizontal"
-    android:orientation="vertical"
-    tools:context="ar.com.antaresconsulting.antonstockapp.AddProductActivity" >
-
-    <TableRow
-        android:id="@+id/provRow"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" >
-
-        <TextView
-            android:id="@+id/textView1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical"
-            android:layout_marginLeft="15dp"
-            android:text="@string/lbl_prod_tipo_material"
-            android:textAppearance="?android:attr/textAppearanceLarge"
-            android:textSize="20sp" />
-
-        <Spinner
-            android:id="@+id/tmaterial"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
-    </TableRow>
-
-    <TableRow
-        android:id="@+id/tableRow2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" >
-
-        <TextView
-            android:id="@+id/textView2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical"
-            android:layout_marginLeft="15dp"
-            android:text="@string/lbl_prod_marca"
-            android:textAppearance="?android:attr/textAppearanceLarge"
-            android:textSize="20sp" />
-
-        <Spinner
-            android:id="@+id/marca"
-            android:layout_width="200dp"
-            android:layout_height="wrap_content" />
-    </TableRow>
-
-    <TableRow
-        android:id="@+id/rowAcero"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" >
-
-        <TextView
-            android:id="@+id/TextView03"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical"
-            android:layout_marginLeft="15dp"
-            android:text="@string/lbl_prod_bacha_acero"
-            android:textAppearance="?android:attr/textAppearanceLarge"
-            android:textSize="20sp" />
-
-        <Spinner
-            android:id="@+id/acero"
-            android:layout_width="200dp"
-            android:layout_height="wrap_content" />
-    </TableRow>
-
-    <TableRow
-        android:id="@+id/TableRow04"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" >
-
-        <TextView
-            android:id="@+id/TextView04"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical"
-            android:layout_marginLeft="15dp"
-            android:text="@string/lbl_prod_bacha_tipo"
-            android:textAppearance="?android:attr/textAppearanceLarge"
-            android:textSize="20sp" />
-
-        <Spinner
-            android:id="@+id/tipo"
-            android:layout_width="200dp"
-            android:layout_height="wrap_content" />
-    </TableRow>
-
-    <TableRow
-        android:id="@+id/TableRow05"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" >
-
-        <TextView
-            android:id="@+id/TextView05"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical"
-            android:layout_marginLeft="15dp"
-            android:text="@string/lbl_prod_bacha_colocacion"
-            android:textAppearance="?android:attr/textAppearanceLarge"
-            android:textSize="20sp" />
-
-        <Spinner
-            android:id="@+id/colocacion"
-            android:layout_width="200dp"
-            android:layout_height="wrap_content" />
-    </TableRow>
+    android:layout_gravity="center_vertical|center_horizontal" >
 
     <TableLayout
-        android:id="@+id/dimSimple"
+        android:id="@+id/TableLayout1"
         android:layout_width="wrap_content"
-        android:layout_height="match_parent" >
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        tools:context="ar.com.antaresconsulting.antonstockapp.AddProductActivity" >
 
         <TableRow
-            android:id="@+id/TableRow06"
+            android:id="@+id/provRow"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" >
+
+            <TextView
+                android:id="@+id/textView1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="15dp"
+                android:text="@string/lbl_prod_tipo_material"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:textSize="@dimen/prod_text_size" />
+
+            <Spinner
+                android:id="@+id/tmaterial"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/prod_input_height" />
+        </TableRow>
+
+        <TableRow
+            android:id="@+id/tableRow2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" >
+
+            <TextView
+                android:id="@+id/textView2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="15dp"
+                android:text="@string/lbl_prod_marca"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:textSize="20sp" />
+
+            <Spinner
+                android:id="@+id/marca"
+                android:layout_width="200dp"
+                android:layout_height="@dimen/prod_input_height" />
+        </TableRow>
+
+        <TableRow
+            android:id="@+id/rowAcero"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" >
+
+            <TextView
+                android:id="@+id/TextView03"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="15dp"
+                android:text="@string/lbl_prod_bacha_acero"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:textSize="@dimen/prod_text_size" />
+
+            <Spinner
+                android:id="@+id/acero"
+                android:layout_width="200dp"
+                android:layout_height="@dimen/prod_input_height" />
+        </TableRow>
+
+        <TableRow
+            android:id="@+id/TableRow04"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" >
+
+            <TextView
+                android:id="@+id/TextView04"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="15dp"
+                android:text="@string/lbl_prod_bacha_tipo"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:textSize="@dimen/prod_text_size" />
+
+            <Spinner
+                android:id="@+id/tipo"
+                android:layout_width="200dp"
+                android:layout_height="@dimen/prod_input_height" />
+        </TableRow>
+
+        <TableRow
+            android:id="@+id/TableRow05"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" >
+
+            <TextView
+                android:id="@+id/TextView05"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="15dp"
+                android:text="@string/lbl_prod_bacha_colocacion"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:textSize="@dimen/prod_text_size" />
+
+            <Spinner
+                android:id="@+id/colocacion"
+                android:layout_width="200dp"
+                android:layout_height="@dimen/prod_input_height" />
+        </TableRow>
+
+        <TableLayout
+            android:id="@+id/dimSimple"
             android:layout_width="wrap_content"
             android:layout_height="match_parent" >
 
-            <TextView
-                android:id="@+id/TextView06"
+            <TableRow
+                android:id="@+id/TableRow06"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical"
-                android:layout_marginLeft="15dp"
-                android:text="@string/lbl_prod_bacha_largo"
-                android:textAppearance="?android:attr/textAppearanceLarge"
-                android:textSize="20sp" />
+                android:layout_height="match_parent" >
 
-            <EditText
-                android:id="@+id/largo"
-                android:layout_width="200dp"
-                android:layout_height="wrap_content"
-                android:inputType="numberDecimal"
-                android:text="" />
-        </TableRow>
+                <TextView
+                    android:id="@+id/TextView06"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginLeft="15dp"
+                    android:text="@string/lbl_prod_bacha_largo"
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:textSize="@dimen/prod_text_size" />
 
-        <TableRow
-            android:id="@+id/TableRow07"
+                <EditText
+                    android:id="@+id/largo"
+                    android:layout_width="200dp"
+                    android:layout_height="@dimen/prod_input_height"
+                    android:inputType="numberDecimal"
+                    android:text="" />
+            </TableRow>
+
+            <TableRow
+                android:id="@+id/TableRow07"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" >
+
+                <TextView
+                    android:id="@+id/TextView07"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginLeft="15dp"
+                    android:text="@string/lbl_prod_bacha_ancho"
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:textSize="@dimen/prod_text_size" />
+
+                <EditText
+                    android:id="@+id/ancho"
+                    android:layout_width="200dp"
+                    android:layout_height="@dimen/prod_input_height"
+                    android:inputType="numberDecimal"
+                    android:text="" />
+            </TableRow>
+
+            <TableRow
+                android:id="@+id/TableRow08"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" >
+
+                <TextView
+                    android:id="@+id/TextView08"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginLeft="15dp"
+                    android:text="@string/lbl_prod_bacha_prof"
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:textSize="@dimen/prod_text_size" />
+
+                <EditText
+                    android:id="@+id/prof"
+                    android:layout_width="200dp"
+                    android:layout_height="@dimen/prod_input_height"
+                    android:inputType="numberDecimal"
+                    android:text="" />
+            </TableRow>
+        </TableLayout>
+
+        <TableLayout
+            android:id="@+id/dimRedonda"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" >
 
-            <TextView
-                android:id="@+id/TextView07"
+            <TableRow
+                android:id="@+id/TableRow09"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical"
-                android:layout_marginLeft="15dp"
-                android:text="@string/lbl_prod_bacha_ancho"
-                android:textAppearance="?android:attr/textAppearanceLarge"
-                android:textSize="20sp" />
+                android:layout_height="wrap_content" >
 
-            <EditText
-                android:id="@+id/ancho"
-                android:layout_width="200dp"
-                android:layout_height="wrap_content"
-                android:inputType="numberDecimal"
-                android:text="" />
-        </TableRow>
+                <TextView
+                    android:id="@+id/TextView09"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginLeft="15dp"
+                    android:text="@string/lbl_prod_bacha_diametro"
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:textSize="@dimen/prod_text_size" />
 
-        <TableRow
-            android:id="@+id/TableRow08"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" >
-
-            <TextView
-                android:id="@+id/TextView08"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical"
-                android:layout_marginLeft="15dp"
-                android:text="@string/lbl_prod_bacha_prof"
-                android:textAppearance="?android:attr/textAppearanceLarge"
-                android:textSize="20sp" />
-
-            <EditText
-                android:id="@+id/prof"
-                android:layout_width="200dp"
-                android:layout_height="wrap_content"
-                android:inputType="numberDecimal"
-                android:text="" />
-        </TableRow>
+                <EditText
+                    android:id="@+id/diametro"
+                    android:layout_width="200dp"
+                    android:layout_height="wrap_content"
+                    android:inputType="numberDecimal"
+                    android:text="" />
+            </TableRow>
+        </TableLayout>
     </TableLayout>
 
-    <TableLayout
-        android:id="@+id/dimRedonda"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" >
-
-        <TableRow
-            android:id="@+id/TableRow09"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" >
-
-            <TextView
-                android:id="@+id/TextView09"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical"
-                android:layout_marginLeft="15dp"
-                android:text="@string/lbl_prod_bacha_diametro"
-                android:textAppearance="?android:attr/textAppearanceLarge"
-                android:textSize="20sp" />
-
-            <EditText
-                android:id="@+id/diametro"
-                android:layout_width="200dp"
-                android:layout_height="wrap_content"
-                android:inputType="numberDecimal"
-                android:text="" />
-        </TableRow>
-    </TableLayout>
-
-</TableLayout>
+</ScrollView>

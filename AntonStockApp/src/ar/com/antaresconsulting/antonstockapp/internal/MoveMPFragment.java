@@ -23,6 +23,7 @@ import android.widget.ListView;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
+import ar.com.antaresconsulting.antonstockapp.AntonStockApp;
 import ar.com.antaresconsulting.antonstockapp.R;
 import ar.com.antaresconsulting.antonstockapp.R.id;
 import ar.com.antaresconsulting.antonstockapp.R.layout;
@@ -59,7 +60,7 @@ public class MoveMPFragment extends Fragment implements OnItemSelectedListener,M
 	private Spinner placasList;
 	private ExpandableListView productos;
 	private ListView productosDispo;
-	private EditText cantPlacasDispo;
+	private EditText cantPlacasS;
 	private List<PedidoLinea> pls;	
 	private MateriaPrimaOutAdapter listAdapter;
 	private static final String ARG_PARAM1 = "param1";
@@ -93,7 +94,7 @@ public class MoveMPFragment extends Fragment implements OnItemSelectedListener,M
 		this.productosDispo = (ListView) rootView.findViewById(R.id.productosDispo);
 		this.productosDispo.setChoiceMode(ListView.CHOICE_MODE_MULTIPLE);
 
-		this.cantPlacasDispo = (EditText) rootView.findViewById(R.id.cantPlacasDispo);
+		this.cantPlacasS = (EditText) rootView.findViewById(R.id.cantPlacasSelect);
 		this.placasList = (Spinner) rootView.findViewById(R.id.placasList);	
 		this.productos = (ExpandableListView) rootView.findViewById(R.id.productosEgreso);
 		this.listAdapter = new MateriaPrimaOutAdapter(this.getActivity());
@@ -138,23 +139,28 @@ public class MoveMPFragment extends Fragment implements OnItemSelectedListener,M
 	public void closeMoves() {
 		CreatePickingAsyncTask saveData = new CreatePickingAsyncTask(this.getActivity());
 		int maxProds = this.productos.getAdapter().getCount();		
-
+		if(maxProds <= 0){
+			Toast tt = Toast.makeText(this.getActivity().getApplicationContext(), "Debe haber seleccionado almenos un producto!", Toast.LENGTH_SHORT);
+			tt.show();		
+			return;
+		}
+		
 		String origin = selectPed.getOrigen();
 		Integer clienteID = (Integer) selectPed.getPartner()[0];
-		String loc_sourceSTK = AntonConstants.PRODUCT_LOCATION_STOCK;
-		String loc_destinationPROD = AntonConstants.PRODUCT_LOCATION_PRODUCTION;			
-		String loc_destinationOUT = AntonConstants.PRODUCT_LOCATION_OUTPUT;			
+		Integer loc_destinationPROD = AntonStockApp.getExternalId(AntonConstants.PRODUCT_LOCATION_PRODUCTION);			
+		Integer loc_destinationOUT = AntonStockApp.getExternalId(AntonConstants.PRODUCT_LOCATION_OUTPUT);			
 
 		saveData.setOutPicking(new Long(this.selectPed.getId().longValue()));
 		
 		StockPicking[] pickings = new StockPicking[2]; 
 		
-		pickings[0] = new StockPicking(origin,AntonConstants.PICKING_TYPE_ID_INTERNAL,clienteID,loc_sourceSTK,loc_destinationPROD,AntonConstants.RAW_PICKING);
-		pickings[1] = new StockPicking(origin,AntonConstants.PICKING_TYPE_ID_INTERNAL,clienteID,loc_destinationPROD,loc_destinationOUT,AntonConstants.RAW_PICKING);
+		pickings[0] = new StockPicking(origin,AntonConstants.PICKING_TYPE_ID_INTERNAL,clienteID,AntonConstants.RAW_PICKING);
+		pickings[1] = new StockPicking(origin,AntonConstants.PICKING_TYPE_ID_INTERNAL,clienteID,AntonConstants.RAW_PICKING);
 		for (int i = 0; i < maxProds; i++) {
 			MateriaPrimaOut mpo = (MateriaPrimaOut) this.productos.getAdapter().getItem(i);
 			PedidoLinea prod = mpo.getPl().get(0);
 			Dimension dim = mpo.getDim().getDim();
+			Integer loc_sourceSTK = (Integer) mpo.getLocId()[0];
 			StockMove move = new StockMove(prod.getNombre(),((Integer)prod.getProduct()[0]), (Integer)prod.getUom()[0], loc_sourceSTK, loc_destinationPROD, origin, prod.getCant(),dim,mpo.getCant(),null);
 			List pls = mpo.getPl();
 			for (Iterator iterator = pls.iterator(); iterator.hasNext();) {
@@ -177,7 +183,7 @@ public class MoveMPFragment extends Fragment implements OnItemSelectedListener,M
 
 		DimensionBalance dim = (DimensionBalance) this.placasList.getSelectedItem();
 		MateriaPrimaOut prod = new MateriaPrimaOut();
-		prod.setCant(new Integer(this.cantPlacasDispo.getText().toString()));
+		prod.setCant(new Integer(this.cantPlacasS.getText().toString()));
 		prod.setPl(this.pls);
 		prod.setDim(dim);
 		prod.setNombre((String) this.pls.get(0).getProduct()[1]);
@@ -212,26 +218,38 @@ public class MoveMPFragment extends Fragment implements OnItemSelectedListener,M
 		}		
 		pls = new ArrayList<PedidoLinea>();
 		Integer prodId = null;
+		Double tchkControl = new Double(0); 
 		for (int i = 0; i < checked.size(); i++) {
 			int position = checked.keyAt(i);
 			if (checked.valueAt(i)){
 				PedidoLinea pl = (PedidoLinea) this.productosDispo.getAdapter().getItem(position);
-				if(prodId != null){
-					if(((Integer) pl.getProduct()[0]).intValue() != prodId.intValue()){
+				if(prodId != null){					
+					Dimension dim =  (Dimension) pl.getDimension()[0];
+					Double thck = dim.getDimT();				
+					Integer actProdId = (Integer) pl.getProduct()[0];
+					if(actProdId.intValue() != prodId.intValue()){
 						Toast tt = Toast.makeText(getActivity(), "Las lineas seleccionadas debe corresponder al mismo tipo de producto", Toast.LENGTH_SHORT);
+						tt.show();
+						return;						
+					}if(!thck.equals(tchkControl)){
+						Toast tt = Toast.makeText(getActivity(), "Las lineas seleccionadas debe tener el mismo espesor", Toast.LENGTH_SHORT);
 						tt.show();
 						return;						
 					}else{
 						pls.add(pl);
 					}
 				}else{
+					Dimension dim =  (Dimension) pl.getDimension()[0];
+					Double thck = dim.getDimT();
+					if(tchkControl.doubleValue() == 0)
+						tchkControl = thck;					
 					prodId = (Integer) pl.getProduct()[0];
 					pls.add(pl);
 				}				 
 			}
 		}
 		dimDao = new DimensionDAO(this);
-		dimDao.getAllDims(prodId);
+		dimDao.getAllDims(prodId,tchkControl);
 	}
 
 	@Override
@@ -251,7 +269,7 @@ public class MoveMPFragment extends Fragment implements OnItemSelectedListener,M
 		selectPed = (Pedido) arg0.getItemAtPosition(pos);
 		this.cliente.setText((String) selectPed.getPartner()[1]);
 		this.pedDao = new PedidoDAO(this);
-		this.pedDao.getMoveByPed(selectPed.getId(),AntonConstants.MP_FILTER);		
+		this.pedDao.getMoveByPedMP(selectPed.getId(),AntonConstants.MP_FILTER);		
 	}
 
 	@Override

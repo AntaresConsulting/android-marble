@@ -22,6 +22,7 @@ import android.widget.ListView;
 import android.widget.Spinner;
 import android.widget.Toast;
 import ar.com.antaresconsulting.antonstockapp.AntonLauncherActivity;
+import ar.com.antaresconsulting.antonstockapp.AntonStockApp;
 import ar.com.antaresconsulting.antonstockapp.R;
 import ar.com.antaresconsulting.antonstockapp.R.id;
 import ar.com.antaresconsulting.antonstockapp.R.layout;
@@ -117,21 +118,28 @@ public class ReEnterProducts extends Activity implements MateriaPrimaDAO.Materia
 	public void closeIncome(MenuItem view) {
 		CreatePickingAsyncTask saveData = new CreatePickingAsyncTask(this);
 		int maxProds = this.productos.getAdapter().getCount();
+		if(maxProds <= 0){
+			Toast tt = Toast.makeText(this.getApplicationContext(), "Debe haber seleccionado almenos un producto!", Toast.LENGTH_SHORT);
+			tt.show();		
+			return;
+		}
 
 		Integer clienteId = null;
 		String origin = "";
 
-		String loc_source = AntonConstants.PRODUCT_LOCATION_PRODUCTION;
-		String loc_destination = AntonConstants.PRODUCT_LOCATION_STOCK;			
+		Integer loc_source = AntonStockApp.getExternalId(AntonConstants.PRODUCT_LOCATION_PRODUCTION);
 		
-		StockPicking picking = new StockPicking(origin,AntonConstants.PICKING_TYPE_ID_INTERNAL,clienteId,loc_source,loc_destination,AntonConstants.RAW_PICKING);
+		StockPicking picking = new StockPicking(origin,AntonConstants.PICKING_TYPE_ID_INTERNAL,clienteId,AntonConstants.RAW_PICKING);
 
 		for (int i = 0; i < maxProds; i++) {
 			PedidoLinea prod = (PedidoLinea) this.productos.getAdapter().getItem(i);
 			Dimension dim = (Dimension) prod.getDimension()[0];
+			MateriaPrima prodObj = (MateriaPrima)prod.getProduct()[0];
+			Integer loc_destination = (Integer) prodObj.getLocId()[0];
 			StockMove move = new StockMove(prod.getNombre(),((MateriaPrima)prod.getProduct()[0]).getId(), (Integer)prod.getUom()[0], loc_source, loc_destination, origin, prod.getCant(),dim,prod.getCantDim(),null);				
 			picking.addMove(move);
 		}
+		picking.setActionDone(true);
 		saveData.execute(picking);
 	}
 

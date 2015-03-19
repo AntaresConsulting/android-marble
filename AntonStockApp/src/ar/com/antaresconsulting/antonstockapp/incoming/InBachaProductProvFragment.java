@@ -47,11 +47,11 @@ import ar.com.antaresconsulting.antonstockapp.util.AntonConstants;
  * A placeholder fragment containing a simple view.
  */
 public class InBachaProductProvFragment extends Fragment implements   PartnerDAO.ClientsCallbacks,OnItemSelectedListener, InProductActions,BachasDAO.BachasCallbacks, PedidoDAO.PedidosCallbacks{
-	
+
 	private BachasDAO baDao;
 	private PedidoDAO pedDao;
 	private PartnerDAO partDao;
-	
+
 	private Spinner pedidos;
 
 	private ListView productos;
@@ -76,7 +76,7 @@ public class InBachaProductProvFragment extends Fragment implements   PartnerDAO
 		return fragment;
 	}
 
-	
+
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -90,37 +90,49 @@ public class InBachaProductProvFragment extends Fragment implements   PartnerDAO
 			Bundle savedInstanceState) {
 		View rootView = null;
 		this.baDao = new BachasDAO(this);
-	
-			rootView = inflater.inflate(R.layout.fragment_in_products,	container, false);			
-			this.provee = (TextView) rootView.findViewById(R.id.proveedorNombre);
-			this.pedidos = (Spinner) rootView.findViewById(R.id.pedidosCombo);
-			this.pedidos.setOnItemSelectedListener(this);
-			this.productos = (ListView) rootView.findViewById(R.id.productosDispo);
-			
-			this.pedDao = new PedidoDAO(this);
-			this.pedDao.getPedidosPend(AntonConstants.BACHA_PICKING);			
-			
-		
-	
+
+		rootView = inflater.inflate(R.layout.fragment_in_products,	container, false);			
+		this.provee = (TextView) rootView.findViewById(R.id.proveedorNombre);
+		this.pedidos = (Spinner) rootView.findViewById(R.id.pedidosCombo);
+		this.pedidos.setOnItemSelectedListener(this);
+		this.productos = (ListView) rootView.findViewById(R.id.productosDispo);
+
+		this.pedDao = new PedidoDAO(this);
+		this.pedDao.getPedidosPend(AntonConstants.BACHA_PICKING);			
+
+
+
 		return rootView;
 	}
 
 
 	public void confirmStock() {
-			PedidoLinea[] pls = new PedidoLinea[this.productos.getAdapter().getCount()];
-			int j = 0;
-			for (int i = 0; i < this.productos.getAdapter().getCount(); i++) {
-				PedidoLinea pl = (PedidoLinea) this.productos.getAdapter().getItem(i);
-				if(pl.isVerificado()){
-					pls[j++] =  pl;
-				}
-				
-			}			
-			ConfirmMovesAsyncTask confAction = new ConfirmMovesAsyncTask(getActivity());
-			confAction.setMoveType("in");
-			confAction.setModelStockPicking("stock.move");
-			confAction.execute(pls);				
-		
+		if(this.pedidos.getSelectedItem() == null){
+			Toast tt = Toast.makeText(this.getActivity().getApplicationContext(), "Debe haber almenos un pedido.", Toast.LENGTH_SHORT);
+			tt.show();		
+			return;
+		}	
+		PedidoLinea[] pls = new PedidoLinea[this.productos.getAdapter().getCount()];
+		int j = 0;
+		for (int i = 0; i < this.productos.getAdapter().getCount(); i++) {
+			PedidoLinea pl = (PedidoLinea) this.productos.getAdapter().getItem(i);
+			if(pl.isVerificado()){
+				pls[j++] =  pl;
+			}
+
+		}
+		if(pls.length <= 0){
+			Toast tt = Toast.makeText(this.getActivity().getApplicationContext(), "Debe confirmar almenos un producto.", Toast.LENGTH_SHORT);
+			tt.show();		
+			return;			
+		}			
+		Pedido ped = (Pedido) this.pedidos.getSelectedItem();
+		ped.setLineas(pls);
+		ConfirmMovesAsyncTask confAction = new ConfirmMovesAsyncTask(getActivity());
+		confAction.setMoveType("in");
+		confAction.setModelStockPicking(AntonConstants.PICKING_MODEL);
+		confAction.execute(ped);				
+
 
 	}
 
@@ -154,25 +166,25 @@ public class InBachaProductProvFragment extends Fragment implements   PartnerDAO
 	@Override
 	public void setClientDetail() {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
 	public void setBachas() {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
 	public void searchByEAN(String scanContent) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
 	public void setClients() {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 }

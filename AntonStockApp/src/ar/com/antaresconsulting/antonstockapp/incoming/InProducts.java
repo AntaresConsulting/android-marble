@@ -81,6 +81,10 @@ public class InProducts extends Activity {
 	public void searchPM(MenuItem menu) {
 		((InBachaProductCliFragment) getFragmentManager().findFragmentById(	R.id.container)).searchProduct();		
 	}
+
+	public void addProduct(View view) {
+		((InBachaProductCliFragment) getFragmentManager().findFragmentById(	R.id.container)).addProduct(view);		
+	}
 	
 	public void setBachas(View view) {
 		getFragmentManager().beginTransaction().replace(R.id.container, new PartnerTypeFragment()).commit();

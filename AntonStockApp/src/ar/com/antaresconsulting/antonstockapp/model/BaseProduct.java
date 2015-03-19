@@ -23,6 +23,7 @@ public class BaseProduct implements Serializable {
 	private String productBig;	
 	private String ean13;
 	private Object[] uom;
+	private Object[] locId;
 
 	public BaseProduct(Integer id, String cod, String nom, String prodImg,
 			Double price, Double cant, String ean13,String prodBig) {
@@ -65,6 +66,16 @@ public class BaseProduct implements Serializable {
 	public void setId(Integer id) {
 		this.id = id;
 	}
+
+	public Object[] getLocId() {
+		return locId;
+	}
+
+
+	public void setLocId(Object[] locId) {
+		this.locId = locId;
+	}
+
 
 	public BaseProduct() {
 	}

@@ -8,6 +8,7 @@ import android.support.v4.app.NavUtils;
 import android.support.v7.app.ActionBarActivity;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.app.Activity;
 import android.app.DialogFragment;
 import android.app.Fragment;
 import android.content.Context;
@@ -22,12 +23,14 @@ import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.FrameLayout;
 import android.widget.ListView;
 import android.widget.Spinner;
 import android.widget.Toast;
 import ar.com.antaresconsulting.antonstockapp.AntonLauncherActivity;
+import ar.com.antaresconsulting.antonstockapp.AntonStockApp;
 import ar.com.antaresconsulting.antonstockapp.R;
 import ar.com.antaresconsulting.antonstockapp.R.id;
 import ar.com.antaresconsulting.antonstockapp.R.layout;
@@ -71,13 +74,16 @@ public class AddOEActivity extends ActionBarActivity implements ProductDAO.Servi
 	private Partner selectCliente;
 	private AutoCompleteTextView clientes;
 	private boolean isExcecute=false;
-	private Fragment thisFrag;
+	private Activity thisAct;
 	private Date expectedDate;
+	private Spinner esp;
+	private CheckBox bachasCli;
 
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+		this.thisAct= this; 
 		setContentView(R.layout.activity_add_oe);
 		clientes = (AutoCompleteTextView) findViewById(R.id.clienteCombo);
 		clientes.addTextChangedListener(new TextWatcher() {
@@ -96,7 +102,7 @@ public class AddOEActivity extends ActionBarActivity implements ProductDAO.Servi
 			        	return ;
 			        if (text.length() > 3) {
 			        	isExcecute = true;
-			        	partDao = new PartnerDAO(thisFrag);
+			        	partDao = new PartnerDAO(thisAct);
 			        	partDao.getAllCompanies(text);
 			        }
 		        }
@@ -106,6 +112,8 @@ public class AddOEActivity extends ActionBarActivity implements ProductDAO.Servi
 			public void onItemClick(AdapterView<?> arg0, View arg1, int arg2,
 					long arg3) {
 				selectCliente = (Partner) arg0.getItemAtPosition(arg2);
+				if((selectCliente != null) && selectCliente.getHasLoc())
+					bachasCli.setVisibility(View.VISIBLE);
 			}
 		});		
 		prodsDispo = (ListView) findViewById(R.id.productosDispo);
@@ -164,18 +172,29 @@ public class AddOEActivity extends ActionBarActivity implements ProductDAO.Servi
 	public void addOE(MenuItem menu) {
 		CreatePickingAsyncTask saveData = new CreatePickingAsyncTask(this);
 		int maxProds = this.prodsPedido.getAdapter().getCount();		
-
+		if(maxProds <= 0){
+			Toast tt = Toast.makeText(this.getApplicationContext(), "Debe haber seleccionado almenos un producto!", Toast.LENGTH_SHORT);
+			tt.show();		
+			return;
+		}
 		Partner cliente = this.selectCliente;
 		String origin = "";
+		if(cliente == null){
+			Toast tt = Toast.makeText(this.getApplicationContext(), "Debe definir un cliente!", Toast.LENGTH_SHORT);
+			tt.show();		
+			return;		
+		}
 
-		String loc_source = AntonConstants.PRODUCT_LOCATION_OUTPUT;
-		String loc_destination = AntonConstants.PRODUCT_LOCATION_CUSTOMER;			
+		Integer loc_source = AntonStockApp.getExternalId(AntonConstants.PRODUCT_LOCATION_OUTPUT);
+		Integer loc_destination = AntonStockApp.getExternalId(AntonConstants.PRODUCT_LOCATION_CUSTOMER);			
 		
-		StockPicking picking = new StockPicking(origin,AntonConstants.PICKING_TYPE_ID_OUT,cliente.getId(),loc_source,loc_destination);
+		StockPicking picking = new StockPicking(origin,AntonConstants.PICKING_TYPE_ID_OUT,cliente.getId());
 
 		for (int i = 0; i < maxProds; i++) {
 			PedidoLinea prod = (PedidoLinea) this.prodsPedido.getAdapter().getItem(i);
-			Dimension dim = (Dimension) prod.getDimension()[0];			
+			Dimension dim =null;
+			if(prod.getDimension()!=null)
+				dim = (Dimension) prod.getDimension()[0];			
 			StockMove move = new StockMove(prod.getNombre(),((BaseProduct)prod.getProduct()[0]).getId(), (Integer)prod.getUom()[0], loc_source, loc_destination, origin, prod.getCant(),dim,prod.getCantDim(),this.expectedDate);				
 			picking.addMove(move);
 		}
@@ -256,7 +275,11 @@ public class AddOEActivity extends ActionBarActivity implements ProductDAO.Servi
 		prodsDispo.setAdapter(adapterAux);
 		adapterAux.addAll(this.baDao.getBachasList());
 		((FrameLayout) findViewById(R.id.addProductContainer)).removeAllViews();
-		View.inflate(this, R.layout.fragment_add_product_action, (ViewGroup) findViewById(R.id.addProductContainer));		
+		View.inflate(this, R.layout.fragment_add_product_action, (ViewGroup) findViewById(R.id.addProductContainer));
+		
+		this.bachasCli =  (CheckBox) findViewById(R.id.bachasCli);
+		if((this.selectCliente != null) && this.selectCliente.getHasLoc())
+			this.bachasCli.setVisibility(View.VISIBLE);
 	}
 
 	@Override
@@ -275,6 +298,8 @@ public class AddOEActivity extends ActionBarActivity implements ProductDAO.Servi
 		adapterAux.addAll(this.mpDao.getMateriaPrimasList());
 		((FrameLayout) findViewById(R.id.addProductContainer)).removeAllViews();		
 		View.inflate(this, R.layout.fragment_add_mp_action, (ViewGroup) findViewById(R.id.addProductContainer));
+		esp = (Spinner) findViewById(R.id.espesorPlaca);
+		esp.setSelection(AntonConstants.DEFAULT_ESPESORES);			
 	}
 
 	@Override
@@ -350,8 +375,7 @@ public class AddOEActivity extends ActionBarActivity implements ProductDAO.Servi
 		MateriaPrima prod = (MateriaPrima) this.prodsDispo.getAdapter().getItem(this.prodsDispo.getCheckedItemPosition());
 		PedidoLinea linea = new PedidoLinea();
 
-		Spinner esp = (Spinner) findViewById(R.id.espesorPlaca);
-		esp.setSelection(AntonConstants.DEFAULT_ESPESORES);	
+
 		Spinner tipo = (Spinner) findViewById(R.id.tipoDim);
 		linea.setCant(Double.valueOf(cant.getText().toString()));
 		linea.setNombre(prod.getNombre());

@@ -97,12 +97,12 @@
                 android:text="@string/pk_title_pedidos"
                 android:textAppearance="?android:attr/textAppearanceLarge" />
 
-            <ListView
-                android:id="@+id/pedidosList"
+ 			<ListView
+               android:id="@+id/pedidosList"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_weight="4.65" >
-            </ListView>
+                android:layout_weight="4.65">
+	        </ListView>            
 
         </TableLayout>
 

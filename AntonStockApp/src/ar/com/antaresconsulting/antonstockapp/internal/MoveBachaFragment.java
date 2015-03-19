@@ -14,7 +14,9 @@ import android.widget.BaseAdapter;
 import android.widget.ListView;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 import android.widget.AdapterView.OnItemSelectedListener;
+import ar.com.antaresconsulting.antonstockapp.AntonStockApp;
 import ar.com.antaresconsulting.antonstockapp.R;
 import ar.com.antaresconsulting.antonstockapp.R.id;
 import ar.com.antaresconsulting.antonstockapp.R.layout;
@@ -121,20 +123,29 @@ BachasDAO.BachasCallbacks, MoveProductActions,PedidoDAO.OrdenesDeEntregaCallback
 	public void closeMoves() {
 		CreatePickingAsyncTask saveData = new CreatePickingAsyncTask(this.getActivity());
 		int maxProds = this.productos.getAdapter().getCount();
-
+		if(maxProds <= 0){
+			Toast tt = Toast.makeText(this.getActivity().getApplicationContext(), "Debe haber seleccionado almenos un producto!", Toast.LENGTH_SHORT);
+			tt.show();		
+			return;
+		}
+		
 		Integer clienteId = (Integer) this.selectPed.getPartner()[0];
 		String origin = "";
 
-		String loc_source = AntonConstants.PRODUCT_LOCATION_STOCK;
-		String loc_destination = AntonConstants.PRODUCT_LOCATION_OUTPUT;			
+		Integer loc_destination = AntonStockApp.getExternalId(AntonConstants.PRODUCT_LOCATION_OUTPUT);			
 		
-		StockPicking picking = new StockPicking(origin,AntonConstants.PICKING_TYPE_ID_INTERNAL,clienteId,loc_source,loc_destination,AntonConstants.BACHA_PICKING);
+		StockPicking picking = new StockPicking(origin,AntonConstants.PICKING_TYPE_ID_INTERNAL,clienteId,AntonConstants.BACHA_PICKING);
 
 		for (int i = 0; i < maxProds; i++) {
-			Bacha prod = (Bacha) this.productos.getAdapter().getItem(i);
-			StockMove move = new StockMove(prod.getNombre(), prod.getId(), (Integer)prod.getUom()[0], loc_source, loc_destination, origin, prod.getCantidadReal(),null);				
+			PedidoLinea pl = (PedidoLinea) this.productos.getAdapter().getItem(i);
+			String prodNombre = (String) pl.getProduct()[1];
+			Integer prodId = (Integer) pl.getProduct()[0];
+			Integer uomId = (Integer) pl.getUom()[0];
+			Integer loc_source = new Integer(0);
+			StockMove move = new StockMove(prodNombre, prodId, uomId, loc_source, loc_destination, origin, pl.getCant(),null);				
 			picking.addMove(move);
 		}
+		picking.setActionDone(true);
 		saveData.execute(picking);
 	}
 	

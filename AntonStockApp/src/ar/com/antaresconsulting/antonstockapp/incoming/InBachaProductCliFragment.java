@@ -27,6 +27,7 @@ import android.widget.ListView;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
+import ar.com.antaresconsulting.antonstockapp.AntonStockApp;
 import ar.com.antaresconsulting.antonstockapp.R;
 import ar.com.antaresconsulting.antonstockapp.R.id;
 import ar.com.antaresconsulting.antonstockapp.R.layout;
@@ -214,23 +215,32 @@ public class InBachaProductCliFragment extends Fragment implements  SearchBachaP
 
 
 	public void confirmStock() {
-
+		if(!selectCliente.getHasLoc().booleanValue()){
+			Toast tt = Toast.makeText(this.getActivity().getApplicationContext(), "El cliente seleccionado debe tener una ubicacion de stock habilitada en el deposito!", Toast.LENGTH_SHORT);
+			tt.show();		
+			return;			
+		}
 		CreatePickingAsyncTask saveData = new CreatePickingAsyncTask(this.getActivity());
 		int maxProds = this.productos.getAdapter().getCount();
-
+		if(maxProds <= 0){
+			Toast tt = Toast.makeText(this.getActivity().getApplicationContext(), "Debe haber seleccionado almenos un producto!", Toast.LENGTH_SHORT);
+			tt.show();		
+			return;
+		}
 		Partner proveedor = this.selectCliente;
 		String origin = "";
 
-		String loc_source = AntonConstants.PRODUCT_LOCATION_SUPPLIER;
-		String loc_destination = AntonConstants.PRODUCT_LOCATION_STOCK;			
+		Integer loc_source = AntonStockApp.getExternalId(AntonConstants.PRODUCT_LOCATION_SUPPLIER);
+		Integer loc_destination = (Integer) selectCliente.getLocId()[0];			
 
-		StockPicking picking = new StockPicking(origin,AntonConstants.PICKING_TYPE_ID_IN,proveedor.getId(),loc_source,loc_destination,AntonConstants.BACHA_PICKING);
+		StockPicking picking = new StockPicking(origin,AntonConstants.PICKING_TYPE_ID_IN,proveedor.getId(),AntonConstants.BACHA_PICKING);
 
 		for (int i = 0; i < maxProds; i++) {
 			PedidoLinea prod = (PedidoLinea) this.productos.getAdapter().getItem(i);
 			StockMove move = new StockMove(prod.getNombre(),((Bacha)prod.getProduct()[0]).getId(), (Integer)prod.getUom()[0], loc_source, loc_destination, origin, prod.getCant(),null);				
 			picking.addMove(move);
 		}
+		picking.setActionDone(true);
 		saveData.execute(picking);	
 
 

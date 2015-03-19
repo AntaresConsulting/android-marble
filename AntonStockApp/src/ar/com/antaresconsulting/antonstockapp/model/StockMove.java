@@ -9,11 +9,12 @@ import ar.com.antaresconsulting.antonstockapp.util.DateUtil;
 public class StockMove {
 
 	private String name;
-	private String pickingId;
+	private Integer pickingId;
+	private Integer pickingTypeId;
 	private Integer productId;
 	private Integer prodUOM;
-	private String locationSrc;
-	private String locationDest;
+	private Integer locationSrc;
+	private Integer locationDest;
 	private String origin;
 	private Double qty;
 	private String employee;
@@ -23,8 +24,8 @@ public class StockMove {
 
 	
 	
-	public StockMove(String nameStr,Integer productId, Integer prodUOM, String locationSrc,
-			String locationDest, String origin, Double qty,Date date) {
+	public StockMove(String nameStr,Integer productId, Integer prodUOM, Integer locationSrc,
+			Integer locationDest, String origin, Double qty,Date date) {
 		super();
 		this.name = nameStr;
 		this.productId = productId;
@@ -36,8 +37,8 @@ public class StockMove {
 		this.dateExpected = date;
 
 	}
-	public StockMove(String nameStr,Integer productId, Integer prodUOM, String locationSrc,
-			String locationDest, String origin, Double qty, Dimension dimId, Integer dimQty,Date date) {
+	public StockMove(String nameStr,Integer productId, Integer prodUOM, Integer locationSrc,
+			Integer locationDest, String origin, Double qty, Dimension dimId, Integer dimQty,Date date) {
 		super();
 		this.name = nameStr;
 		this.productId = productId;
@@ -52,6 +53,12 @@ public class StockMove {
 	}
 	
 	
+	public Integer getPickingTypeId() {
+		return pickingTypeId;
+	}
+	public void setPickingTypeId(Integer pickingTypeId) {
+		this.pickingTypeId = pickingTypeId;
+	}
 	public Date getDateExpected() {
 		return dateExpected;
 	}
@@ -82,16 +89,16 @@ public class StockMove {
 	public void setProdUOM(Integer prodUOM) {
 		this.prodUOM = prodUOM;
 	}
-	public String getLocationSrc() {
+	public Integer getLocationSrc() {
 		return locationSrc;
 	}
-	public void setLocationSrc(String locationSrc) {
+	public void setLocationSrc(Integer locationSrc) {
 		this.locationSrc = locationSrc;
 	}
-	public String getLocationDest() {
+	public Integer getLocationDest() {
 		return locationDest;
 	}
-	public void setLocationDest(String locationDest) {
+	public void setLocationDest(Integer locationDest) {
 		this.locationDest = locationDest;
 	}
 	public String getOrigin() {
@@ -119,15 +126,16 @@ public class StockMove {
 	public void setDimQty(Integer dimQty) {
 		this.dimQty = dimQty;
 	}
-	public String getPickingId() {
+	public Integer getPickingId() {
 		return pickingId;
 	}
-	public void setPickingId(String pickingId) {
+	public void setPickingId(Integer pickingId) {
 		this.pickingId = pickingId;
 	}
 	public HashMap<String, Object> getMap(){
 		HashMap<String, Object> res = new HashMap<String, Object>();
 		res.put("picking_id",this.getPickingId());
+		res.put("picking_type_id",this.getPickingTypeId());
 
 		res.put("name",this.getName());
 
@@ -138,9 +146,7 @@ public class StockMove {
 		res.put("product_id",this.getProductId());
 		res.put("product_uom_qty",this.getQty());
 		res.put("product_uos",this.getProdUOM());
-		if(this.getDateExpected() == null)
-			res.put("date_expected",DateUtil.formatDateToStr(new Date())+" 03:10:00");
-		else
+		if(this.getDateExpected() != null)
 			res.put("date_expected",DateUtil.formatDateToStr(this.getDateExpected())+" 03:10:00");
 
 		if(this.getDim()!=null){
@@ -156,7 +162,7 @@ public class StockMove {
 		res.put("origin",this.getOrigin());
 		res.put("state","draft");
 		if(this.getEmployee() != null)
-			res.put("employee",this.getEmployee());
+			res.put("employee_id",this.getEmployee());
 		return res;
 	}
 	public boolean hasDimension() {

@@ -20,8 +20,8 @@ public class SelectionObject  implements Serializable  {
 	private static SelectionObject[] tipoBachaData = {new SelectionObject("",""),new SelectionObject("sim","Simple"),new SelectionObject("dob","Doble"),new SelectionObject("red","Redonda")};
 	private static SelectionObject[] colocacionBachaData = {new SelectionObject("",""),new SelectionObject("peg","Pegado de Abajo"),new SelectionObject("enc","Encastrado")};
 	private static SelectionObject[] aceroBachaData = {new SelectionObject("",""),new SelectionObject("304","304"),new SelectionObject("403","403")};	
-	private static SelectionObject[] tipoPedido = {new SelectionObject("",""),new SelectionObject(AntonConstants.PICKING_TYPE_ID_IN,"Recepcion"),new SelectionObject(AntonConstants.PICKING_TYPE_ID_INTERNAL,"Interno"),new SelectionObject(AntonConstants.PICKING_TYPE_ID_OUT,"Entrega")};	
-	private static SelectionObject[] estadoPedido = {new SelectionObject("",""),new SelectionObject("done","Realizado"),new SelectionObject("assigned","Asignado"),new SelectionObject("draft","Borrador")};	
+	private static SelectionObject[] tipoPedido = {new SelectionObject("",""),new SelectionObject(AntonConstants.PICKING_TYPE_ID_IN,"Pedido"),new SelectionObject(AntonConstants.PICKING_TYPE_ID_OUT,"Remito")};	
+	private static SelectionObject[] estadoPedido = {new SelectionObject("",""),new SelectionObject("draft","Creado"),new SelectionObject("assigned","Pendiente"),new SelectionObject("partially_available","Parcialmente Completo"),new SelectionObject("done","Completo")};	
 	private static SelectionObject[] tipoAntonPedido = {new SelectionObject(AntonConstants.RAW_PICKING,"Materia Prima"),new SelectionObject(AntonConstants.BACHA_PICKING,"Bacha"),new SelectionObject(AntonConstants.INSU_PICKING,"Insumo")};	
 	
 	public SelectionObject(String id, String name) {

@@ -20,7 +20,7 @@ public class ProductDAO extends ReadAsyncTask {
 	private static final int UOMS = 7;
 	private static final int LOCATION = 8;
 
-	private String[] baseFields = new String[] { "id", "name", "image_medium", "image", "code", "list_price", "qty_available", "ean13", "uom_id" ,"attrs_material","virtual_available","seller_qty","product_tmpl_id" };
+	private String[] baseFields = new String[] { "id", "name", "image_medium", "image", "code", "list_price", "qty_available", "ean13", "uom_id" ,"attrs_material","virtual_available","seller_qty","product_tmpl_id" ,"stock_location_id"};
 
 	private int dataToSet;
 	private Fragment activityPart;
@@ -95,6 +95,7 @@ public class ProductDAO extends ReadAsyncTask {
 		Double cantIncome = registro.get("seller_qty") instanceof Boolean ? 0: (Double) registro.get("seller_qty");
 		String nombre = registro.get("name") instanceof Boolean ? "": (String) registro.get("name");
 		String descrAtribs = registro.get("attrs_material") instanceof Boolean ? "": (String) registro.get("attrs_material");
+		Object[] locId = registro.get("stock_location_id") instanceof Boolean ? new Object[0]: (Object[]) registro.get("stock_location_id");
 
 		prod.setAtributos(descrAtribs);
 		prod.setId((Integer) registro.get("id"));
@@ -109,6 +110,7 @@ public class ProductDAO extends ReadAsyncTask {
 		prod.setProductBig(imageBig);
 		prod.setUom(uom);
 		prod.setTemplateId((Integer) templId[0]);
+		prod.setLocId(locId);
 	}
 
 	public List<BaseProduct> getBaseProductsList() {

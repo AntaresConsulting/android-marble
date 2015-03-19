@@ -64,21 +64,24 @@ public class PartnerDAO extends ReadAsyncTask{
 			String phone = obj.get("phone") instanceof Boolean?"":(String)obj.get("phone");
 			String email = obj.get("email") instanceof Boolean?"":(String)obj.get("email");
 			String cuit = obj.get("vat") instanceof Boolean?"":(String)obj.get("vat");
+			Boolean hasLoc = (Boolean)obj.get("has_local_stock");
+			Object[] locId = obj.get("customer_location_id") instanceof Boolean ? new Object[0]: (Object[]) obj.get("customer_location_id");
+
 			// For each field
-			datosProds[i++] = new Partner((Integer)obj.get("id"),(String)obj.get("name"),street,web,email,phone,imageResp,cuit);
+			datosProds[i++] = new Partner((Integer)obj.get("id"),(String)obj.get("name"),street,web,email,phone,imageResp,cuit,hasLoc,locId);
 		}	
 		return datosProds;
 	}
 	
 	public void getAllCompanies(){
 		this.setmFilters(new Object[] {new Object[] {"customer", "=", true}});
-		this.execute(new String[]{"id","name","image_medium","street","parent_id","phone","website","email","vat"});
+		this.execute(new String[]{"id","name","image_medium","street","parent_id","phone","website","email","vat","has_local_stock","customer_location_id"});
 		this.dataToSet=PartnerDAO.PARTNER_CLIENTS;
 		
 	}
 	public void getAllCompanies(String filter){
 		this.setmFilters(new Object[] {new Object[] {"customer", "=", true},new Object[] {"name", "ilike", filter+"%"}});
-		this.execute(new String[]{"id","name","image_medium","street","parent_id","phone","website","email","vat"});
+		this.execute(new String[]{"id","name","image_medium","street","parent_id","phone","website","email","vat","has_local_stock","customer_location_id"});
 		this.dataToSet=PartnerDAO.PARTNER_CLIENTS;
 		
 	}	

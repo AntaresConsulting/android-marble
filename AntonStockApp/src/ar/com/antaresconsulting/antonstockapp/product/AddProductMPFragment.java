@@ -71,8 +71,7 @@ public class AddProductMPFragment extends Fragment implements AddProductInterfac
 
 	@Override
 	public HashMap<String, Object> addProduct(HashMap<String, Object> params){
-		OpenErpHolder.getInstance().setmModelName(AntonConstants.PRODUCT_TPL_MODEL);
-
+		params.put("type", "product");
 		params.put("raw_material", ((String)material.getSelectedItem()).toLowerCase().substring(0, 3));
 		params.put("raw_color", ((String)color.getSelectedItem()).toLowerCase().substring(0, 3));
 		params.put("raw_finished",((String)finished.getSelectedItem()).toLowerCase().substring(0, 3));

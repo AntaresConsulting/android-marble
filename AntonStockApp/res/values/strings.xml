@@ -26,6 +26,8 @@
     <string name="saved_bacha_search">saved_bacha_search</string>
     <string name="saved_insumo_search">saved_insumo_search</string>
     <string name="saved_servicios_search">saved_servicios_search</string>
+    <string name="saved_external_ids">saved_external_ids</string>
+    
     <string name="title_partner_list">Partners</string>
     <string name="title_partner_detail">Partner Detail</string>
     <string name="title_product_list">Products</string>

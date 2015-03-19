@@ -19,7 +19,17 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"
-        android:inputType="numberDecimal" />
+        android:inputType="numberDecimal" >
+
+        <requestFocus />
+    </EditText>
+
+    <CheckBox
+        android:id="@+id/bachasCli"
+        android:visibility="gone"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="El cliente provee sus bachas" />
 
     <View
         android:layout_width="fill_parent"
@@ -33,8 +43,8 @@
         style="?android:attr/borderlessButtonStyle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:onClick="addProduct"
         android:layout_gravity="center_horizontal"
+        android:onClick="addProduct"
         android:src="@drawable/ic_common_add"
         android:text="@string/add_oe_prod_btn_mas_prod" />
 

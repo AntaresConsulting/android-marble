@@ -16,7 +16,8 @@ public class Partner implements Serializable {
 	private String cuit;
 	private String email;
 	private String partnerImg;
-	
+	private Boolean hasLoc;
+	private Object[] locId;
 	
 	
 	public Integer getId() {
@@ -33,6 +34,22 @@ public class Partner implements Serializable {
 		return this.nombre;
 	}
 
+	public Boolean getHasLoc() {
+		return hasLoc;
+	}
+
+	public void setHasLoc(Boolean hasLoc) {
+		this.hasLoc = hasLoc;
+	}
+
+	public Object[] getLocId() {
+		return locId;
+	}
+
+	public void setLocId(Object[] locId) {
+		this.locId = locId;
+	}
+
 	public String getPartnerImg() {
 		return partnerImg;
 	}
@@ -40,7 +57,20 @@ public class Partner implements Serializable {
 	public void setPartnerImg(String partnerImg) {
 		this.partnerImg = partnerImg;
 	}
+	public Partner(Integer id,String nom, String dom, String web, String email, String phone, String img, String cuit, Boolean hasLocv, Object[] locIdv) {
+		this.nombre = nom;
+		this.id = id;
+		this.domicilio = dom;
+		this.web = web;
+		this.phone = phone;
+		this.email = email;
+		this.cuit = cuit;
+		this.partnerImg = img;
+		this.hasLoc = hasLocv;
+		this.locId = locIdv;
 
+	}
+	
 	public Partner(Integer id,String nom, String dom, String web, String email, String phone, String img, String cuit) {
 		this.nombre = nom;
 		this.id = id;

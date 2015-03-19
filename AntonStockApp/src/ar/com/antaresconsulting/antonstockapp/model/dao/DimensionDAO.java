@@ -33,9 +33,9 @@ public class DimensionDAO extends ReadAsyncTask {
 		this.setmFilters(new Object[] { new Object[] { "product_id", "=", productId },new Object[] { "qty_unit", ">", 0 } });
 		this.execute(this.mFields);
 	}
-	public void getAllDims(Integer productId) {
-		this.setmFilters(new Object[] { new Object[] { "product_id", "=", productId },new Object[] { "qty_unit", ">", 0 } });
-		this.execute(this.mFields);
+	public void getAllDims(Integer productId, Double espesor) {
+		this.setmFilters(new Object[] { new Object[] { "product_id", "=", productId },new Object[] { "qty_unit", ">", 0 },new Object[] { "dimension_id.thickness", "=", espesor } });
+		this.execute(new String[] { AntonConstants.STOCK_MOVE_DIM_ID, "qty_unit", "qty_m2"});
 	}
 	
 	@Override
@@ -48,7 +48,9 @@ public class DimensionDAO extends ReadAsyncTask {
 		int i = 0 ;
 		for (HashMap<String, Object> obj : this.mData) {
 			DimensionBalance resp = new DimensionBalance();
-			Object[] marble_id = obj.get("product_id") instanceof Boolean ? new Object[0]: (Object[]) obj.get("product_id");
+			Object[] marble_id = null;
+			if(obj.get("product_id") != null)
+				marble_id = obj.get("product_id") instanceof Boolean ? new Object[0]: (Object[]) obj.get("product_id");
 			Object[] dimension_id = obj.get(AntonConstants.STOCK_MOVE_DIM_ID) instanceof Boolean ? new Object[0]: (Object[]) obj.get(AntonConstants.STOCK_MOVE_DIM_ID);
 			Double qty_unit = obj.get("qty_unit") instanceof Boolean ? 0: (Double) obj.get("qty_unit");
 			Double qty_m2 = obj.get("qty_m2") instanceof Boolean ? 0: (Double) obj.get("qty_m2");

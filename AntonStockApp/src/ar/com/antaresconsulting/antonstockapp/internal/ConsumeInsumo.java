@@ -18,6 +18,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.AdapterView.OnItemClickListener;
 import ar.com.antaresconsulting.antonstockapp.AntonLauncherActivity;
+import ar.com.antaresconsulting.antonstockapp.AntonStockApp;
 import ar.com.antaresconsulting.antonstockapp.R;
 import ar.com.antaresconsulting.antonstockapp.R.id;
 import ar.com.antaresconsulting.antonstockapp.R.layout;
@@ -44,7 +45,7 @@ public class ConsumeInsumo extends ActionBarActivity implements EmpleadoDAO.Empl
 	private ArrayAdapter<Insumo> prodBuscaAdapter;
 	private EditText cantPlacasUtil;
 	private ListView empleados;
-	protected int productoSelecPos;
+	protected int productoSelecPos = -1;
 
 	
 	@Override
@@ -128,13 +129,17 @@ public class ConsumeInsumo extends ActionBarActivity implements EmpleadoDAO.Empl
 	public void deliverInsumo(MenuItem view) {
 		CreatePickingAsyncTask saveData = new CreatePickingAsyncTask(this);
 		int maxProds = this.productos.getAdapter().getCount();
-
-		String loc_source = AntonConstants.PRODUCT_LOCATION_STOCK;
-		String loc_destination = AntonConstants.PRODUCT_LOCATION_INSUMOS;			
+		if(maxProds <= 0){
+			Toast tt = Toast.makeText(this.getApplicationContext(), "Debe haber seleccionado almenos un insumo!", Toast.LENGTH_SHORT);
+			tt.show();		
+			return;
+		}
+		Integer loc_destination = AntonStockApp.getExternalId(AntonConstants.PRODUCT_LOCATION_INSUMOS);			
 		
-		StockPicking picking = new StockPicking("",AntonConstants.PICKING_TYPE_ID_INTERNAL,null,loc_source,loc_destination);
+		StockPicking picking = new StockPicking("",AntonConstants.PICKING_TYPE_ID_INTERNAL,null);
 		for (int i = 0; i < maxProds; i++) {
 			Insumo prod = (Insumo) this.productos.getAdapter().getItem(i);
+			Integer loc_source = (Integer) prod.getLocId()[0];
 			StockMove move = new StockMove(prod.getNombre(),prod.getId(), (Integer)prod.getUom()[0], loc_source, loc_destination, "", prod.getCantidadReal(),null);				
 			move.setEmployee(prod.getEntregado().getId().toString());
 			picking.addMove(move);
@@ -151,6 +156,14 @@ public class ConsumeInsumo extends ActionBarActivity implements EmpleadoDAO.Empl
 	}	
 	
 	public void addProductInsumo(View view) {
+		if(this.productoSelecPos < 0){
+			this.prodBuscador.setError(getString(R.string.error_field_required));
+			this.prodBuscador.requestFocus();
+			Toast tt = Toast.makeText(this.getApplicationContext(), "Debe seleccionar el producto deseado.", Toast.LENGTH_SHORT);
+			tt.show();
+			return;
+		}	
+		
 		if(this.cantPlacasUtil.getText().toString().trim().equalsIgnoreCase("")){
 			this.cantPlacasUtil.setError(getString(R.string.error_field_required));
 			this.cantPlacasUtil.requestFocus();

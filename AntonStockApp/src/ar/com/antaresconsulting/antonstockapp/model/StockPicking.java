@@ -11,8 +11,6 @@ public class StockPicking {
 	private String origin;
 	private String type;
 	private Integer partnerId;
-	private String locationSrc;
-	private String locationDest;
 	private String prodType;
 	private boolean actionDone = false;
 	private List<StockMove> moves;
@@ -20,25 +18,20 @@ public class StockPicking {
 
 
 	
-	public StockPicking(String origin, String type, Integer partnerId,
-			String locationSrc, String locationDest) {
+	public StockPicking(String origin, String type, Integer partnerId) {
 		super();
 		this.origin = origin;
 		this.type = type;
 		this.partnerId = partnerId;
-		this.locationSrc = locationSrc;
-		this.locationDest = locationDest;
 	}
 
 
 	public StockPicking(String origin, String type, Integer partnerId,
-			String locationSrc, String locationDest,String prodType) {
+			String prodType) {
 		super();
 		this.origin = origin;
 		this.type = type;
 		this.partnerId = partnerId;
-		this.locationSrc = locationSrc;
-		this.locationDest = locationDest;
 		this.prodType = prodType;
 	}
 
@@ -77,22 +70,6 @@ public class StockPicking {
 		this.type = type;
 	}
 
-	public String getLocationSrc() {
-		return locationSrc;
-	}
-
-	public void setLocationSrc(String locationSrc) {
-		this.locationSrc = locationSrc;
-	}
-
-	public String getLocationDest() {
-		return locationDest;
-	}
-
-	public void setLocationDest(String locationDest) {
-		this.locationDest = locationDest;
-	}
-
 	public List<StockMove> getMoves() {
 		return moves;
 	}
@@ -128,15 +105,14 @@ public class StockPicking {
 		res.put("origin",origin);
 		if(this.getProdType() != null)
 			res.put("move_prod_type",this.getProdType());
-		res.put("location_id",this.getLocationSrc());
-		res.put("location_dest_id",this.getLocationDest());	
 		res.put("partner_id",this.getPartnerId());
 		return res;
 	}
 
 	public void setPickingId(Long header_picking_id) {
 		for (StockMove move : this.moves) {
-			move.setPickingId(header_picking_id.toString());
+			move.setPickingId(new Integer(header_picking_id.intValue()));
+			move.setPickingTypeId(new Integer(this.getType()));
 		}
 		
 	}

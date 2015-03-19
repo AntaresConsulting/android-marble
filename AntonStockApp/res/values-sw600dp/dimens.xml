@@ -28,7 +28,9 @@
     <dimen name="prod_list_image_w">100dp</dimen>
 	<dimen name="prod_list_image_h">100dp</dimen>  	
 	<dimen name="prod_text_size">19sp</dimen>
-	<dimen name="prod_name_text_size">25sp</dimen>   	
+	<dimen name="prod_name_text_size">25sp</dimen>   
+	<dimen name="prod_input_height">40sp</dimen>   
+			
 	<dimen name="button_h">40dp</dimen>   	
 	<dimen name="button_text_size">10sp</dimen>  
 	
@@ -50,7 +52,7 @@
 	<dimen name="oe_margin_sep">5dp</dimen>  
 	<dimen name="oe_row_height">40dp</dimen>  	
 	<dimen name="oe_input_height">40dp</dimen>  	
-	<dimen name="oe_input_width">150dp</dimen>	
+	<dimen name="oe_input_width">230dp</dimen>	
 		
 	<dimen name="popup_input_height">40dp</dimen>  	
 		

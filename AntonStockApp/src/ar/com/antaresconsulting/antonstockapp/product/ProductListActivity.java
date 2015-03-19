@@ -287,19 +287,28 @@ public class ProductListActivity extends ActionBarActivity implements
 	public void delProduct(MenuItem view) {
 		List<BaseProduct> checked = ((BaseProductAdapter) this.listFragment
 				.getListView().getAdapter()).getCheckedItems();
-		Long[] toDelete = new Long[checked.size()];
+		Long[] prodsDelete = new Long[checked.size()];
+		Long[] tplsDelete = new Long[checked.size()];
+		
 		int i = 0;
 		for (Iterator<BaseProduct> iterator = checked.iterator(); iterator
 				.hasNext();) {
 			BaseProduct baseProduct = (BaseProduct) iterator.next();
-			toDelete[i++] = new Long(baseProduct.getId());
+			prodsDelete[i] = new Long(baseProduct.getId());
+			tplsDelete[i++] = new Long(baseProduct.getTemplateId());			
 		}
-		if (toDelete.length > 0) {
+		if (prodsDelete.length > 0) {
+	
 			// WriteAsyncTask delProd = new WriteAsyncTask(this);
 			DeleteAsyncTask delProd = new DeleteAsyncTask(this);
-			OpenErpHolder.getInstance().setmModelName(
-					AntonConstants.PRODUCT_MODEL);
-			delProd.execute(toDelete);
+			DeleteAsyncTask delProd2 = new DeleteAsyncTask(this);
+			
+			OpenErpHolder.getInstance().setmModelName(AntonConstants.PRODUCT_MODEL);
+			delProd.execute(prodsDelete);
+			if(tProd != AntonConstants.INSUMOS){
+				OpenErpHolder.getInstance().setmModelName(AntonConstants.PRODUCT_TPL_MODEL);
+				delProd2.execute(tplsDelete);				
+			}					
 		}
 	}
 
@@ -372,12 +381,21 @@ public class ProductListActivity extends ActionBarActivity implements
 	public void updateStockAction(int cant, Dimension dim) {
 		UpdateStockAsyncTask update = new UpdateStockAsyncTask(this);
 		HashMap<String, Object> values = new HashMap<String, Object>();
-		values.put("dimension", dim);
+		if(dim != null){
+			values.put("dimension_id", dim);
+			values.put("dimension_unit_new", cant);			
+			values.put("is_raw", new Boolean(true));			
+		}else{
+			values.put("dimension_id", null);
+			values.put("dimension_unit_new", 0);						
+			values.put("is_raw", new Boolean(false));					
+		}
 		values.put("lot_id", false);
 		values.put("new_quantity", cant);
 		ProductDetailFragment prodDet = (ProductDetailFragment) getFragmentManager().findFragmentById(R.id.product_detail_container);
-		BaseProduct prod = prodDet.getProductSelected();	
-		values.put("product",prod);
+		BaseProduct prod = prodDet.getProductSelected();
+		
+		values.put("location_id", (Integer)prodDet.getProductSelected().getLocId()[0]);	
 		values.put("product_id", prodDet.getProductSelected().getId());
 		update.execute(values);
 	}

@@ -136,7 +136,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="25dp"
                 android:textAppearance="?android:attr/textAppearanceMedium"
-                android:textSize="25sp" />
+                android:textSize="@dimen/prod_text_size" />
         </TableRow>
 
         <TableRow
