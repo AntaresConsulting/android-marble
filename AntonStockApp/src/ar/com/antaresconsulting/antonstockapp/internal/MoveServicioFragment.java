@@ -14,13 +14,11 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.AdapterView.OnItemSelectedListener;
 import ar.com.antaresconsulting.antonstockapp.R;
-import ar.com.antaresconsulting.antonstockapp.R.id;
-import ar.com.antaresconsulting.antonstockapp.R.layout;
 import ar.com.antaresconsulting.antonstockapp.adapters.PedidoLineaAdapter;
 import ar.com.antaresconsulting.antonstockapp.listener.SwipeDismissListViewTouchListener;
-import ar.com.antaresconsulting.antonstockapp.model.Pedido;
-import ar.com.antaresconsulting.antonstockapp.model.PedidoLinea;
 import ar.com.antaresconsulting.antonstockapp.model.Servicio;
+import ar.com.antaresconsulting.antonstockapp.model.StockMove;
+import ar.com.antaresconsulting.antonstockapp.model.StockPicking;
 import ar.com.antaresconsulting.antonstockapp.model.dao.PedidoDAO;
 import ar.com.antaresconsulting.antonstockapp.model.dao.ProductDAO;
 import ar.com.antaresconsulting.antonstockapp.popup.SearchBachaPopupFragment;
@@ -36,7 +34,7 @@ ProductDAO.ServiciosCallbacks, MoveProductActions,PedidoDAO.OrdenesDeEntregaCall
 	private PedidoDAO pedDao;
 
 	private TextView cliente;
-	private Pedido selectPed;
+	private StockPicking selectPed;
 
 	private ListView productos;
 	private ListView productosDispo;
@@ -92,7 +90,7 @@ ProductDAO.ServiciosCallbacks, MoveProductActions,PedidoDAO.OrdenesDeEntregaCall
 					public void onDismiss(ListView listView,
 							int[] reverseSortedPositions) {
 						for (int position : reverseSortedPositions) {
-							((PedidoLineaAdapter) productos.getAdapter()).delProduct((PedidoLinea) productos.getAdapter().getItem(position));
+							((PedidoLineaAdapter) productos.getAdapter()).delProduct((StockMove) productos.getAdapter().getItem(position));
 						}
 						((BaseAdapter) productos.getAdapter()).notifyDataSetChanged();
 					}
@@ -168,7 +166,7 @@ ProductDAO.ServiciosCallbacks, MoveProductActions,PedidoDAO.OrdenesDeEntregaCall
 		for (int i = 0; i < checked.size(); i++) {
 			int position = checked.keyAt(i);
 			if (checked.valueAt(i)){
-				PedidoLinea pl = (PedidoLinea) this.productosDispo.getAdapter().getItem(position);
+				StockMove pl = (StockMove) this.productosDispo.getAdapter().getItem(position);
 				adapter.addLinea(pl);
 			}
 
@@ -192,13 +190,13 @@ ProductDAO.ServiciosCallbacks, MoveProductActions,PedidoDAO.OrdenesDeEntregaCall
 
 	@Override
 	public void setPedidosLineas() {
-		this.productosDispo.setAdapter(new ArrayAdapter<PedidoLinea>(this.getActivity(),android.R.layout.simple_list_item_multiple_choice,this.pedDao.getPedidoLineaList()));		
+		this.productosDispo.setAdapter(new ArrayAdapter<StockMove>(this.getActivity(),android.R.layout.simple_list_item_multiple_choice,this.pedDao.getPedidoLineaList()));		
 	}
 
 
 	@Override
 	public void onItemSelected(AdapterView<?> arg0, View arg1, int pos,long arg3) {
-		selectPed = (Pedido) arg0.getItemAtPosition(pos);
+		selectPed = (StockPicking) arg0.getItemAtPosition(pos);
 		this.cliente.setText((String) selectPed.getPartner()[1]);
 		this.pedDao = new PedidoDAO(this);
 		this.pedDao.getMoveByPed(selectPed.getId(),AntonConstants.BACHA_FILTER);
@@ -212,7 +210,7 @@ ProductDAO.ServiciosCallbacks, MoveProductActions,PedidoDAO.OrdenesDeEntregaCall
 
 	@Override
 	public void setOrdenes() {
-		this.pedidos.setAdapter(new ArrayAdapter<Pedido>(this.getActivity(),android.R.layout.simple_list_item_1,this.pedDao.getPedidoList()));		
+		this.pedidos.setAdapter(new ArrayAdapter<StockPicking>(this.getActivity(),android.R.layout.simple_list_item_1,this.pedDao.getPedidoList()));		
 	}
 
 	@Override

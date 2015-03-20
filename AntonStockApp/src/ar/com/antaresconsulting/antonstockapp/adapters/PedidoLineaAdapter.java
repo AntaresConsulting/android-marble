@@ -16,10 +16,10 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import ar.com.antaresconsulting.antonstockapp.R;
 import ar.com.antaresconsulting.antonstockapp.model.Dimension;
-import ar.com.antaresconsulting.antonstockapp.model.PedidoLinea;
+import ar.com.antaresconsulting.antonstockapp.model.StockMove;
 
 public class PedidoLineaAdapter extends BaseAdapter {
-	List<PedidoLinea> datos = new ArrayList<PedidoLinea>();
+	List<StockMove> datos = new ArrayList<StockMove>();
 	Activity context;	
 	int cantVerified = 0;
 	boolean forCheck = false;
@@ -40,7 +40,7 @@ public class PedidoLineaAdapter extends BaseAdapter {
 
 	}
 	
-	public PedidoLineaAdapter(Fragment context,List<PedidoLinea> prods) {
+	public PedidoLineaAdapter(Fragment context,List<StockMove> prods) {
 		this.context = context.getActivity();
 		this.datos = prods;
 	}
@@ -76,9 +76,9 @@ public class PedidoLineaAdapter extends BaseAdapter {
 			rowView.setTag(viewHolder);
 		}
 		ViewHolder holder = (ViewHolder) rowView.getTag();
-		final PedidoLinea registro = (PedidoLinea) datos.get(position);
-		holder.lblNombre.setText(registro.getNombre());
-		holder.cantidad.setText(String.valueOf(registro.getCant()));
+		final StockMove registro = (StockMove) datos.get(position);
+		holder.lblNombre.setText(registro.getName());
+		holder.cantidad.setText(String.valueOf(registro.getQty()));
 		holder.unidades.setText((String)registro.getUom()[1]);
 		holder.verificado.setOnCheckedChangeListener(new OnCheckedChangeListener()
         {
@@ -96,10 +96,10 @@ public class PedidoLineaAdapter extends BaseAdapter {
 		if((registro.getDimension() != null) && (registro.getDimension().length > 0)){
 			holder.dimContainer.setVisibility(View.VISIBLE);
 			Dimension dim = (Dimension) registro.getDimension()[0];
-			holder.cantidad.setText(String.valueOf(registro.getCantDim().intValue()));
+			holder.cantidad.setText(String.valueOf(registro.getQtytDim().intValue()));
 			Double width = Double.valueOf(dim.getDimW());
 			Double hight = Double.valueOf(dim.getDimH());
-			int cant = registro.getCantDim().intValue();
+			int cant = registro.getQtytDim().intValue();
 			holder.dimHeight.setText(dim.getDimH().toString());
 			holder.dimHeight2.setText(dim.getDimH().toString());
 			holder.dimWidth.setText(dim.getDimW().toString());
@@ -123,7 +123,7 @@ public class PedidoLineaAdapter extends BaseAdapter {
 	}
 
 	@Override
-	public PedidoLinea getItem(int arg0) {
+	public StockMove getItem(int arg0) {
 		return this.datos.get(arg0);
 	}
 
@@ -131,17 +131,17 @@ public class PedidoLineaAdapter extends BaseAdapter {
 	public long getItemId(int position) {
 		 return position;
 	}
-	public void addAll(List<PedidoLinea> lineas) {
+	public void addAll(List<StockMove> lineas) {
 		this.datos.addAll(lineas);
 	}
 	
-	public void addLinea(PedidoLinea prod) {
+	public void addLinea(StockMove prod) {
 		this.datos.add(prod);
 	}
-	public void delLinea(PedidoLinea prod) {
+	public void delLinea(StockMove prod) {
 		this.datos.remove(prod);
 	}
-	public void delProduct(PedidoLinea item) {
+	public void delProduct(StockMove item) {
 		this.datos.remove(item);
 	}
 	public int getCantVerified() {

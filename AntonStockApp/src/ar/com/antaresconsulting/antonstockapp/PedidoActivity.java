@@ -10,8 +10,8 @@ import android.widget.ExpandableListView;
 import android.widget.ListView;
 import android.widget.Spinner;
 import ar.com.antaresconsulting.antonstockapp.model.MateriaPrima;
-import ar.com.antaresconsulting.antonstockapp.model.Pedido;
 import ar.com.antaresconsulting.antonstockapp.model.SelectionObject;
+import ar.com.antaresconsulting.antonstockapp.model.StockPicking;
 import ar.com.antaresconsulting.antonstockapp.model.dao.PedidoDAO;
 
 public class PedidoActivity extends ActionBarActivity implements PedidoDAO.PedidosCallbacks{
@@ -62,7 +62,7 @@ public class PedidoActivity extends ActionBarActivity implements PedidoDAO.Pedid
 
 	@Override
 	public void setPedidos() {
-		this.pedidos.setAdapter(new ArrayAdapter<Pedido>(this,android.R.layout.simple_list_item_1,this.pedDao.getPedidoList()));			
+		this.pedidos.setAdapter(new ArrayAdapter<StockPicking>(this,android.R.layout.simple_list_item_1,this.pedDao.getPedidoList()));			
 	}
 
 	@Override

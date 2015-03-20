@@ -1,12 +1,6 @@
 package ar.com.antaresconsulting.antonstockapp.internal;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-
 import com.openerp.CreatePickingAsyncTask;
-import com.openerp.OpenErpHolder;
-
 import android.support.v4.app.NavUtils;
 import android.app.Activity;
 import android.content.Intent;
@@ -16,7 +10,6 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.BaseAdapter;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.Spinner;
@@ -24,19 +17,11 @@ import android.widget.Toast;
 import ar.com.antaresconsulting.antonstockapp.AntonLauncherActivity;
 import ar.com.antaresconsulting.antonstockapp.AntonStockApp;
 import ar.com.antaresconsulting.antonstockapp.R;
-import ar.com.antaresconsulting.antonstockapp.R.id;
-import ar.com.antaresconsulting.antonstockapp.R.layout;
-import ar.com.antaresconsulting.antonstockapp.R.menu;
-import ar.com.antaresconsulting.antonstockapp.R.string;
-import ar.com.antaresconsulting.antonstockapp.adapters.BaseProductAdapter;
 import ar.com.antaresconsulting.antonstockapp.adapters.PedidoLineaMPAdapter;
 import ar.com.antaresconsulting.antonstockapp.listener.SwipeDismissListViewTouchListener;
 import ar.com.antaresconsulting.antonstockapp.model.BaseProduct;
 import ar.com.antaresconsulting.antonstockapp.model.Dimension;
-import ar.com.antaresconsulting.antonstockapp.model.Insumo;
 import ar.com.antaresconsulting.antonstockapp.model.MateriaPrima;
-import ar.com.antaresconsulting.antonstockapp.model.Partner;
-import ar.com.antaresconsulting.antonstockapp.model.PedidoLinea;
 import ar.com.antaresconsulting.antonstockapp.model.SelectionObject;
 import ar.com.antaresconsulting.antonstockapp.model.StockMove;
 import ar.com.antaresconsulting.antonstockapp.model.StockPicking;
@@ -85,7 +70,7 @@ public class ReEnterProducts extends Activity implements MateriaPrimaDAO.Materia
 					public void onDismiss(ListView listView,
 							int[] reverseSortedPositions) {
 						for (int position : reverseSortedPositions) {
-							((PedidoLineaMPAdapter) productos.getAdapter()).delLinea((PedidoLinea) productos.getAdapter().getItem(position));
+							((PedidoLineaMPAdapter) productos.getAdapter()).delLinea((StockMove) productos.getAdapter().getItem(position));
 						}
 						((PedidoLineaMPAdapter) productos.getAdapter()).notifyDataSetChanged();
 					}
@@ -124,19 +109,19 @@ public class ReEnterProducts extends Activity implements MateriaPrimaDAO.Materia
 			return;
 		}
 
-		Integer clienteId = null;
 		String origin = "";
-
+		Object[] cliente = new Object[1];
+		cliente[0] = new Integer(0);
+		
 		Integer loc_source = AntonStockApp.getExternalId(AntonConstants.PRODUCT_LOCATION_PRODUCTION);
 		
-		StockPicking picking = new StockPicking(origin,AntonConstants.PICKING_TYPE_ID_INTERNAL,clienteId,AntonConstants.RAW_PICKING);
+		StockPicking picking = new StockPicking(origin,AntonConstants.PICKING_TYPE_ID_INTERNAL,cliente,AntonConstants.RAW_PICKING);
 
 		for (int i = 0; i < maxProds; i++) {
-			PedidoLinea prod = (PedidoLinea) this.productos.getAdapter().getItem(i);
-			Dimension dim = (Dimension) prod.getDimension()[0];
+			StockMove prod = (StockMove) this.productos.getAdapter().getItem(i);
 			MateriaPrima prodObj = (MateriaPrima)prod.getProduct()[0];
 			Integer loc_destination = (Integer) prodObj.getLocId()[0];
-			StockMove move = new StockMove(prod.getNombre(),((MateriaPrima)prod.getProduct()[0]).getId(), (Integer)prod.getUom()[0], loc_source, loc_destination, origin, prod.getCant(),dim,prod.getCantDim(),null);				
+			StockMove move = new StockMove(prod.getName(),prod.getProduct(), prod.getUom(), loc_source, loc_destination, origin, prod.getQty(),prod.getDimension(),prod.getQtytDim(),null);				
 			picking.addMove(move);
 		}
 		picking.setActionDone(true);
@@ -185,12 +170,12 @@ public class ReEnterProducts extends Activity implements MateriaPrimaDAO.Materia
 			tt.show();
 			return;			
 		}
-		PedidoLinea pl = new PedidoLinea();		
-		pl.setNombre(prod.getNombre());
+		StockMove pl = new StockMove();		
+		pl.setName(prod.getNombre());
 		pl.setUom(prod.getUom());		
 		pl.setDimension(new Dimension(this.dimH.getText().toString(),this.dimW.getText().toString(),(String)this.dimT.getSelectedItem(),(SelectionObject) this.dimTipo.getSelectedItem()));
-		pl.setCantDim(new Integer(this.cantPlacas.getText().toString()));
-		pl.setCant(new Double((hight * width)* cantP));
+		pl.setQtytDim(new Integer(this.cantPlacas.getText().toString()));
+		pl.setQty(new Double((hight * width)* cantP));
 		Object[] prodData=new Object[1];
 		prodData[0] = prod;
 		pl.setProduct(prodData);		

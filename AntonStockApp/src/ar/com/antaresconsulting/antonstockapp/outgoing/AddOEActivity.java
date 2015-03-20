@@ -10,7 +10,6 @@ import android.text.Editable;
 import android.text.TextWatcher;
 import android.app.Activity;
 import android.app.DialogFragment;
-import android.app.Fragment;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -32,10 +31,6 @@ import android.widget.Toast;
 import ar.com.antaresconsulting.antonstockapp.AntonLauncherActivity;
 import ar.com.antaresconsulting.antonstockapp.AntonStockApp;
 import ar.com.antaresconsulting.antonstockapp.R;
-import ar.com.antaresconsulting.antonstockapp.R.id;
-import ar.com.antaresconsulting.antonstockapp.R.layout;
-import ar.com.antaresconsulting.antonstockapp.R.menu;
-import ar.com.antaresconsulting.antonstockapp.R.string;
 import ar.com.antaresconsulting.antonstockapp.adapters.PedidoLineaAdapter;
 import ar.com.antaresconsulting.antonstockapp.listener.SwipeDismissListViewTouchListener;
 import ar.com.antaresconsulting.antonstockapp.model.Bacha;
@@ -44,7 +39,6 @@ import ar.com.antaresconsulting.antonstockapp.model.Dimension;
 import ar.com.antaresconsulting.antonstockapp.model.Insumo;
 import ar.com.antaresconsulting.antonstockapp.model.MateriaPrima;
 import ar.com.antaresconsulting.antonstockapp.model.Partner;
-import ar.com.antaresconsulting.antonstockapp.model.PedidoLinea;
 import ar.com.antaresconsulting.antonstockapp.model.SelectionObject;
 import ar.com.antaresconsulting.antonstockapp.model.StockMove;
 import ar.com.antaresconsulting.antonstockapp.model.StockPicking;
@@ -112,7 +106,7 @@ public class AddOEActivity extends ActionBarActivity implements ProductDAO.Servi
 			public void onItemClick(AdapterView<?> arg0, View arg1, int arg2,
 					long arg3) {
 				selectCliente = (Partner) arg0.getItemAtPosition(arg2);
-				if((selectCliente != null) && selectCliente.getHasLoc())
+				if((selectCliente != null) && selectCliente.getHasLoc() && (bachasCli != null) )
 					bachasCli.setVisibility(View.VISIBLE);
 			}
 		});		
@@ -134,7 +128,7 @@ public class AddOEActivity extends ActionBarActivity implements ProductDAO.Servi
 					public void onDismiss(ListView listView,
 							int[] reverseSortedPositions) {
 						for (int position : reverseSortedPositions) {
-							((PedidoLineaAdapter) prodsPedido.getAdapter()).delProduct((PedidoLinea) prodsPedido.getAdapter().getItem(position));
+							((PedidoLineaAdapter) prodsPedido.getAdapter()).delProduct((StockMove) prodsPedido.getAdapter().getItem(position));
 						}
 						((PedidoLineaAdapter) prodsPedido.getAdapter()).notifyDataSetChanged();
 					}
@@ -177,7 +171,9 @@ public class AddOEActivity extends ActionBarActivity implements ProductDAO.Servi
 			tt.show();		
 			return;
 		}
-		Partner cliente = this.selectCliente;
+		
+		Object[] cliente = new Object[1];
+		cliente[0] = this.selectCliente;
 		String origin = "";
 		if(cliente == null){
 			Toast tt = Toast.makeText(this.getApplicationContext(), "Debe definir un cliente!", Toast.LENGTH_SHORT);
@@ -188,14 +184,12 @@ public class AddOEActivity extends ActionBarActivity implements ProductDAO.Servi
 		Integer loc_source = AntonStockApp.getExternalId(AntonConstants.PRODUCT_LOCATION_OUTPUT);
 		Integer loc_destination = AntonStockApp.getExternalId(AntonConstants.PRODUCT_LOCATION_CUSTOMER);			
 		
-		StockPicking picking = new StockPicking(origin,AntonConstants.PICKING_TYPE_ID_OUT,cliente.getId());
+		StockPicking picking = new StockPicking(origin,AntonConstants.PICKING_TYPE_ID_OUT,cliente);
 
 		for (int i = 0; i < maxProds; i++) {
-			PedidoLinea prod = (PedidoLinea) this.prodsPedido.getAdapter().getItem(i);
-			Dimension dim =null;
-			if(prod.getDimension()!=null)
-				dim = (Dimension) prod.getDimension()[0];			
-			StockMove move = new StockMove(prod.getNombre(),((BaseProduct)prod.getProduct()[0]).getId(), (Integer)prod.getUom()[0], loc_source, loc_destination, origin, prod.getCant(),dim,prod.getCantDim(),this.expectedDate);				
+			StockMove prod = (StockMove) this.prodsPedido.getAdapter().getItem(i);
+			StockMove move = new StockMove(prod.getName(),prod.getProduct(), prod.getUom(), loc_source, loc_destination, origin, prod.getQty(),prod.getDimension(),prod.getQtytDim(),this.expectedDate);
+			move.setUseClientLocation(prod.isUseClientLocation());
 			picking.addMove(move);
 		}
 		saveData.execute(picking);	
@@ -325,11 +319,14 @@ public class AddOEActivity extends ActionBarActivity implements ProductDAO.Servi
 			return;
 		}		
 		BaseProduct prod = (BaseProduct) this.prodsDispo.getAdapter().getItem(this.prodsDispo.getCheckedItemPosition());
-		PedidoLinea linea = new PedidoLinea();
+		StockMove linea = new StockMove();
 		EditText cant = (EditText) findViewById(R.id.cantProds);
-		linea.setCant(Double.valueOf(cant.getText().toString()));
-		linea.setNombre(prod.getNombre());
+		linea.setQty(Double.valueOf(cant.getText().toString()));
+		linea.setName(prod.getNombre());
 		linea.setUom(prod.getUom());
+		if((this.bachasCli != null)&&(this.bachasCli.isChecked())){
+			linea.setUseClientLocation(true);
+		}
 		Object[] prodData=new Object[1];
 		prodData[0] = prod;
 		linea.setProduct(prodData);
@@ -373,14 +370,14 @@ public class AddOEActivity extends ActionBarActivity implements ProductDAO.Servi
 		}
 		
 		MateriaPrima prod = (MateriaPrima) this.prodsDispo.getAdapter().getItem(this.prodsDispo.getCheckedItemPosition());
-		PedidoLinea linea = new PedidoLinea();
+		StockMove linea = new StockMove();
 
 
 		Spinner tipo = (Spinner) findViewById(R.id.tipoDim);
-		linea.setCant(Double.valueOf(cant.getText().toString()));
-		linea.setNombre(prod.getNombre());
+		linea.setQty(Double.valueOf(cant.getText().toString()));
+		linea.setName(prod.getNombre());
 		linea.setUom(prod.getUom());
-		linea.setCantDim(Integer.parseInt(cant.getText().toString()));
+		linea.setQtytDim(Integer.parseInt(cant.getText().toString()));
 		Object[] prodData=new Object[1];
 		prodData[0] = prod;
 		linea.setProduct(prodData);

@@ -1,5 +1,8 @@
 package ar.com.antaresconsulting.antonstockapp.incoming;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import com.openerp.ConfirmMovesAsyncTask;
 
 import android.app.Fragment;
@@ -10,21 +13,15 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemSelectedListener;
 import android.widget.ArrayAdapter;
-import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 import ar.com.antaresconsulting.antonstockapp.R;
-import ar.com.antaresconsulting.antonstockapp.R.id;
-import ar.com.antaresconsulting.antonstockapp.R.layout;
 import ar.com.antaresconsulting.antonstockapp.adapters.PedidoLineaAdapter;
-import ar.com.antaresconsulting.antonstockapp.listener.SwipeDismissListViewTouchListener;
-import ar.com.antaresconsulting.antonstockapp.model.Dimension;
 import ar.com.antaresconsulting.antonstockapp.model.MateriaPrima;
-import ar.com.antaresconsulting.antonstockapp.model.Pedido;
-import ar.com.antaresconsulting.antonstockapp.model.PedidoLinea;
-import ar.com.antaresconsulting.antonstockapp.model.SelectionObject;
+import ar.com.antaresconsulting.antonstockapp.model.StockMove;
+import ar.com.antaresconsulting.antonstockapp.model.StockPicking;
 import ar.com.antaresconsulting.antonstockapp.model.dao.MateriaPrimaDAO;
 import ar.com.antaresconsulting.antonstockapp.model.dao.PedidoDAO;
 import ar.com.antaresconsulting.antonstockapp.popup.SearchMPPopupFragment;
@@ -106,19 +103,19 @@ public class InMPProductFragment extends Fragment implements OnItemSelectedListe
 			return;
 		}
 	
-		PedidoLinea[] pls = new PedidoLinea[this.productos.getAdapter().getCount()];
+		List<StockMove> pls = new ArrayList<StockMove>();
 		for (int i = 0; i < this.productos.getAdapter().getCount(); i++) {
-			PedidoLinea pl = (PedidoLinea) this.productos.getAdapter().getItem(i);
+			StockMove pl = (StockMove) this.productos.getAdapter().getItem(i);
 			if(pl.isVerificado())
-				pls[i] =  pl;
+				pls.add(pl);
 		}
-		if(pls.length <= 0){
+		if(pls.size() <= 0){
 			Toast tt = Toast.makeText(this.getActivity().getApplicationContext(), "Debe confirmar almenos un producto.", Toast.LENGTH_SHORT);
 			tt.show();		
 			return;			
 		}	
-		Pedido ped = (Pedido) this.pedidos.getSelectedItem();
-		ped.setLineas(pls);
+		StockPicking ped = (StockPicking) this.pedidos.getSelectedItem();
+		ped.setMoves(pls);
 		ConfirmMovesAsyncTask confAction = new ConfirmMovesAsyncTask(getActivity());
 		confAction.setMoveType("in");
 		confAction.setModelStockPicking(AntonConstants.PICKING_MODEL);
@@ -127,7 +124,7 @@ public class InMPProductFragment extends Fragment implements OnItemSelectedListe
 
 	@Override
 	public void setPedidos() {
-		this.pedidos.setAdapter(new ArrayAdapter<Pedido>(this.getActivity(),android.R.layout.simple_list_item_1,this.pedDao.getPedidoList()));
+		this.pedidos.setAdapter(new ArrayAdapter<StockPicking>(this.getActivity(),android.R.layout.simple_list_item_1,this.pedDao.getPedidoList()));
 	}
 
 	@Override
@@ -138,7 +135,7 @@ public class InMPProductFragment extends Fragment implements OnItemSelectedListe
 
 	@Override
 	public void onItemSelected(AdapterView<?> arg0, View arg1, int pos,long arg3) {
-		Pedido ped = (Pedido) arg0.getItemAtPosition(pos);
+		StockPicking ped = (StockPicking) arg0.getItemAtPosition(pos);
 		this.provee.setText((String) ped.getPartner()[1]);
 		this.pedDao = new PedidoDAO(this);
 		this.pedDao.getMoveByPed(ped.getId());

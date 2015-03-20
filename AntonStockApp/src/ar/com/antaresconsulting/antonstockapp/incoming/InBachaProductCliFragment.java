@@ -1,13 +1,6 @@
 package ar.com.antaresconsulting.antonstockapp.incoming;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-
-import com.openerp.ConfirmMovesAsyncTask;
 import com.openerp.CreatePickingAsyncTask;
-import com.openerp.OpenErpHolder;
-
 import android.app.Fragment;
 import android.content.Context;
 import android.content.SharedPreferences;
@@ -29,15 +22,10 @@ import android.widget.TextView;
 import android.widget.Toast;
 import ar.com.antaresconsulting.antonstockapp.AntonStockApp;
 import ar.com.antaresconsulting.antonstockapp.R;
-import ar.com.antaresconsulting.antonstockapp.R.id;
-import ar.com.antaresconsulting.antonstockapp.R.layout;
-import ar.com.antaresconsulting.antonstockapp.R.string;
 import ar.com.antaresconsulting.antonstockapp.adapters.PedidoLineaAdapter;
 import ar.com.antaresconsulting.antonstockapp.listener.SwipeDismissListViewTouchListener;
 import ar.com.antaresconsulting.antonstockapp.model.Bacha;
 import ar.com.antaresconsulting.antonstockapp.model.Partner;
-import ar.com.antaresconsulting.antonstockapp.model.Pedido;
-import ar.com.antaresconsulting.antonstockapp.model.PedidoLinea;
 import ar.com.antaresconsulting.antonstockapp.model.StockMove;
 import ar.com.antaresconsulting.antonstockapp.model.StockPicking;
 import ar.com.antaresconsulting.antonstockapp.model.dao.BachasDAO;
@@ -153,7 +141,7 @@ public class InBachaProductCliFragment extends Fragment implements  SearchBachaP
 					public void onDismiss(ListView listView,
 							int[] reverseSortedPositions) {
 						for (int position : reverseSortedPositions) {
-							((PedidoLineaAdapter) productos.getAdapter()).delLinea((PedidoLinea) productos.getAdapter().getItem(position));
+							((PedidoLineaAdapter) productos.getAdapter()).delLinea((StockMove) productos.getAdapter().getItem(position));
 						}
 						((PedidoLineaAdapter) productos.getAdapter()).notifyDataSetChanged();
 					}
@@ -196,9 +184,9 @@ public class InBachaProductCliFragment extends Fragment implements  SearchBachaP
 		Bacha prod = (Bacha) this.productosDispo.getAdapter().getItem(this.productosDispo.getCheckedItemPosition());
 		PedidoLineaAdapter adapter = (PedidoLineaAdapter) this.productos.getAdapter();
 
-		PedidoLinea linea = new PedidoLinea();
-		linea.setCant(Double.valueOf(cantPlacas.getText().toString()));
-		linea.setNombre(prod.getNombre());
+		StockMove linea = new StockMove();
+		linea.setQty(Double.valueOf(cantPlacas.getText().toString()));
+		linea.setName(prod.getNombre());
 		linea.setUom(prod.getUom());
 		Object[] prodData=new Object[1];
 		prodData[0] = prod;
@@ -227,17 +215,18 @@ public class InBachaProductCliFragment extends Fragment implements  SearchBachaP
 			tt.show();		
 			return;
 		}
-		Partner proveedor = this.selectCliente;
+		Object[] proveedor = new Object[1];
+		proveedor[0] = this.selectCliente.getId();
 		String origin = "";
 
 		Integer loc_source = AntonStockApp.getExternalId(AntonConstants.PRODUCT_LOCATION_SUPPLIER);
 		Integer loc_destination = (Integer) selectCliente.getLocId()[0];			
 
-		StockPicking picking = new StockPicking(origin,AntonConstants.PICKING_TYPE_ID_IN,proveedor.getId(),AntonConstants.BACHA_PICKING);
+		StockPicking picking = new StockPicking(origin,AntonConstants.PICKING_TYPE_ID_IN,proveedor,AntonConstants.BACHA_PICKING);
 
 		for (int i = 0; i < maxProds; i++) {
-			PedidoLinea prod = (PedidoLinea) this.productos.getAdapter().getItem(i);
-			StockMove move = new StockMove(prod.getNombre(),((Bacha)prod.getProduct()[0]).getId(), (Integer)prod.getUom()[0], loc_source, loc_destination, origin, prod.getCant(),null);				
+			StockMove prod = (StockMove) this.productos.getAdapter().getItem(i);
+			StockMove move = new StockMove(prod.getName(),prod.getProduct(), prod.getUom(), loc_source, loc_destination, origin, prod.getQty(),null);				
 			picking.addMove(move);
 		}
 		picking.setActionDone(true);
@@ -248,7 +237,7 @@ public class InBachaProductCliFragment extends Fragment implements  SearchBachaP
 
 	@Override
 	public void setPedidos() {
-		this.pedidos.setAdapter(new ArrayAdapter<Pedido>(this.getActivity(),android.R.layout.simple_list_item_1,this.pedDao.getPedidoList()));
+		this.pedidos.setAdapter(new ArrayAdapter<StockPicking>(this.getActivity(),android.R.layout.simple_list_item_1,this.pedDao.getPedidoList()));
 	}
 
 	@Override
@@ -259,7 +248,7 @@ public class InBachaProductCliFragment extends Fragment implements  SearchBachaP
 
 	@Override
 	public void onItemSelected(AdapterView<?> arg0, View arg1, int pos,long arg3) {
-		Pedido ped = (Pedido) arg0.getItemAtPosition(pos);
+		StockPicking ped = (StockPicking) arg0.getItemAtPosition(pos);
 		this.provee.setText((String) ped.getPartner()[1]);
 		this.pedDao = new PedidoDAO(this);
 		this.pedDao.getMoveByPed(ped.getId());
@@ -273,7 +262,7 @@ public class InBachaProductCliFragment extends Fragment implements  SearchBachaP
 
 	@Override
 	public void setPedidosLineas() {
-		this.productosDispo.setAdapter(new ArrayAdapter<PedidoLinea>(this.getActivity(),android.R.layout.simple_list_item_single_choice,this.pedDao.getPedidoLineaList()));		
+		this.productosDispo.setAdapter(new ArrayAdapter<StockMove>(this.getActivity(),android.R.layout.simple_list_item_single_choice,this.pedDao.getPedidoLineaList()));		
 	}
 
 	@Override

@@ -18,15 +18,9 @@ import android.widget.Toast;
 import android.widget.AdapterView.OnItemSelectedListener;
 import ar.com.antaresconsulting.antonstockapp.AntonStockApp;
 import ar.com.antaresconsulting.antonstockapp.R;
-import ar.com.antaresconsulting.antonstockapp.R.id;
-import ar.com.antaresconsulting.antonstockapp.R.layout;
 import ar.com.antaresconsulting.antonstockapp.adapters.PedidoLineaAdapter;
 import ar.com.antaresconsulting.antonstockapp.listener.SwipeDismissListViewTouchListener;
 import ar.com.antaresconsulting.antonstockapp.model.Bacha;
-import ar.com.antaresconsulting.antonstockapp.model.MateriaPrima;
-import ar.com.antaresconsulting.antonstockapp.model.Partner;
-import ar.com.antaresconsulting.antonstockapp.model.Pedido;
-import ar.com.antaresconsulting.antonstockapp.model.PedidoLinea;
 import ar.com.antaresconsulting.antonstockapp.model.StockMove;
 import ar.com.antaresconsulting.antonstockapp.model.StockPicking;
 import ar.com.antaresconsulting.antonstockapp.model.dao.BachasDAO;
@@ -44,7 +38,7 @@ BachasDAO.BachasCallbacks, MoveProductActions,PedidoDAO.OrdenesDeEntregaCallback
 	private PedidoDAO pedDao;
 
 	private TextView cliente;
-	private Pedido selectPed;
+	private StockPicking selectPed;
 
 	private Spinner placasList;
 	private ListView productos;
@@ -89,7 +83,7 @@ BachasDAO.BachasCallbacks, MoveProductActions,PedidoDAO.OrdenesDeEntregaCallback
 			this.pedidos = (Spinner) rootView.findViewById(R.id.pedidosCombo);
 			this.pedidos.setOnItemSelectedListener(this);			
 			this.pedDao = new PedidoDAO(this);
-			this.pedDao.getOrdenesDeEntregaPend();
+			this.pedDao.getOrdenesDeEntregaPendBachas();
 
 		SwipeDismissListViewTouchListener touchListener = new SwipeDismissListViewTouchListener(
 				this.productos,
@@ -103,7 +97,7 @@ BachasDAO.BachasCallbacks, MoveProductActions,PedidoDAO.OrdenesDeEntregaCallback
 					public void onDismiss(ListView listView,
 							int[] reverseSortedPositions) {
 						for (int position : reverseSortedPositions) {
-							((PedidoLineaAdapter) productos.getAdapter()).delProduct((PedidoLinea) productos.getAdapter().getItem(position));
+							((PedidoLineaAdapter) productos.getAdapter()).delProduct((StockMove) productos.getAdapter().getItem(position));
 						}
 						((BaseAdapter) productos.getAdapter()).notifyDataSetChanged();
 					}
@@ -131,18 +125,21 @@ BachasDAO.BachasCallbacks, MoveProductActions,PedidoDAO.OrdenesDeEntregaCallback
 		
 		Integer clienteId = (Integer) this.selectPed.getPartner()[0];
 		String origin = "";
-
+		Object[] cliente = new Object[1];
+		cliente[0] = clienteId;
+		
 		Integer loc_destination = AntonStockApp.getExternalId(AntonConstants.PRODUCT_LOCATION_OUTPUT);			
 		
-		StockPicking picking = new StockPicking(origin,AntonConstants.PICKING_TYPE_ID_INTERNAL,clienteId,AntonConstants.BACHA_PICKING);
+		StockPicking picking = new StockPicking(origin,AntonConstants.PICKING_TYPE_ID_INTERNAL,cliente,AntonConstants.BACHA_PICKING);
 
 		for (int i = 0; i < maxProds; i++) {
-			PedidoLinea pl = (PedidoLinea) this.productos.getAdapter().getItem(i);
-			String prodNombre = (String) pl.getProduct()[1];
-			Integer prodId = (Integer) pl.getProduct()[0];
-			Integer uomId = (Integer) pl.getUom()[0];
-			Integer loc_source = new Integer(0);
-			StockMove move = new StockMove(prodNombre, prodId, uomId, loc_source, loc_destination, origin, pl.getCant(),null);				
+			StockMove pl = (StockMove) this.productos.getAdapter().getItem(i);
+			Integer loc_source;
+			if(pl.isUseClientLocation())
+				loc_source = this.selectPed.getCustomerLocation();
+			else
+				loc_source = (Integer) pl.getLocationProduct();
+			StockMove move = new StockMove(pl.getName(), pl.getProduct(), pl.getUom(), loc_source, loc_destination, origin, pl.getQty(),null);				
 			picking.addMove(move);
 		}
 		picking.setActionDone(true);
@@ -157,7 +154,7 @@ BachasDAO.BachasCallbacks, MoveProductActions,PedidoDAO.OrdenesDeEntregaCallback
 		for (int i = 0; i < checked.size(); i++) {
 			int position = checked.keyAt(i);
 			if (checked.valueAt(i)){
-				PedidoLinea pl = (PedidoLinea) this.productosDispo.getAdapter().getItem(position);
+				StockMove pl = (StockMove) this.productosDispo.getAdapter().getItem(position);
 				adapter.addLinea(pl);
 			}
 
@@ -181,13 +178,13 @@ BachasDAO.BachasCallbacks, MoveProductActions,PedidoDAO.OrdenesDeEntregaCallback
 
 	@Override
 	public void setPedidosLineas() {
-		this.productosDispo.setAdapter(new ArrayAdapter<PedidoLinea>(this.getActivity(),android.R.layout.simple_list_item_multiple_choice,this.pedDao.getPedidoLineaList()));		
+		this.productosDispo.setAdapter(new ArrayAdapter<StockMove>(this.getActivity(),android.R.layout.simple_list_item_multiple_choice,this.pedDao.getPedidoLineaList()));		
 	}
 
 
 	@Override
 	public void onItemSelected(AdapterView<?> arg0, View arg1, int pos,long arg3) {
-		selectPed = (Pedido) arg0.getItemAtPosition(pos);
+		selectPed = (StockPicking) arg0.getItemAtPosition(pos);
 		this.cliente.setText((String) selectPed.getPartner()[1]);
 		this.pedDao = new PedidoDAO(this);
 		this.pedDao.getMoveByPed(selectPed.getId(),AntonConstants.BACHA_FILTER);
@@ -201,7 +198,7 @@ BachasDAO.BachasCallbacks, MoveProductActions,PedidoDAO.OrdenesDeEntregaCallback
 
 	@Override
 	public void setOrdenes() {
-		this.pedidos.setAdapter(new ArrayAdapter<Pedido>(this.getActivity(),android.R.layout.simple_list_item_1,this.pedDao.getPedidoList()));		
+		this.pedidos.setAdapter(new ArrayAdapter<StockPicking>(this.getActivity(),android.R.layout.simple_list_item_1,this.pedDao.getPedidoList()));		
 	}
 
 	@Override

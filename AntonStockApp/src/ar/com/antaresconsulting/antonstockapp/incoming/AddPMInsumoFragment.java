@@ -21,15 +21,10 @@ import android.widget.TextView;
 import android.widget.Toast;
 import ar.com.antaresconsulting.antonstockapp.AntonStockApp;
 import ar.com.antaresconsulting.antonstockapp.R;
-import ar.com.antaresconsulting.antonstockapp.R.id;
-import ar.com.antaresconsulting.antonstockapp.R.layout;
-import ar.com.antaresconsulting.antonstockapp.R.string;
 import ar.com.antaresconsulting.antonstockapp.adapters.PedidoLineaAdapter;
 import ar.com.antaresconsulting.antonstockapp.listener.SwipeDismissListViewTouchListener;
 import ar.com.antaresconsulting.antonstockapp.model.Insumo;
-import ar.com.antaresconsulting.antonstockapp.model.MateriaPrima;
 import ar.com.antaresconsulting.antonstockapp.model.Partner;
-import ar.com.antaresconsulting.antonstockapp.model.PedidoLinea;
 import ar.com.antaresconsulting.antonstockapp.model.StockMove;
 import ar.com.antaresconsulting.antonstockapp.model.StockPicking;
 import ar.com.antaresconsulting.antonstockapp.model.dao.InsumosDAO;
@@ -111,7 +106,7 @@ public class AddPMInsumoFragment extends Fragment implements AddPMActions,Insumo
 					public void onDismiss(ListView listView,
 							int[] reverseSortedPositions) {
 						for (int position : reverseSortedPositions) {
-							((PedidoLineaAdapter) prodsPedido.getAdapter()).delProduct((PedidoLinea) prodsPedido.getAdapter().getItem(position));
+							((PedidoLineaAdapter) prodsPedido.getAdapter()).delProduct((StockMove) prodsPedido.getAdapter().getItem(position));
 						}
 						((PedidoLineaAdapter) prodsPedido.getAdapter()).notifyDataSetChanged();
 					}
@@ -137,18 +132,19 @@ public class AddPMInsumoFragment extends Fragment implements AddPMActions,Insumo
 			tt.show();		
 			return;
 		}
-		Partner proveedor = (Partner) this.proveedor.getSelectedItem();
+		Object[] proveedor = new Object[1];
+		proveedor[0] = ((Partner) this.proveedor.getSelectedItem()).getId();
 		String origin = pl.getText().toString();
 
 		Integer loc_source = AntonStockApp.getExternalId(AntonConstants.PRODUCT_LOCATION_SUPPLIER);
 		
-		StockPicking picking = new StockPicking(origin,AntonConstants.PICKING_TYPE_ID_IN,proveedor.getId(),AntonConstants.INSU_PICKING);
+		StockPicking picking = new StockPicking(origin,AntonConstants.PICKING_TYPE_ID_IN,proveedor,AntonConstants.INSU_PICKING);
 
 		for (int i = 0; i < maxProds; i++) {
-			PedidoLinea prod = (PedidoLinea) this.prodsPedido.getAdapter().getItem(i);
+			StockMove prod = (StockMove) this.prodsPedido.getAdapter().getItem(i);
 			Insumo prodObj = (Insumo)prod.getProduct()[0];
 			Integer loc_destination = (Integer) prodObj.getLocId()[0];			
-			StockMove move = new StockMove(prod.getNombre(),((Insumo)prod.getProduct()[0]).getId(), (Integer)prod.getUom()[0], loc_source, loc_destination, origin, prod.getCant(),this.arrivalDate);				
+			StockMove move = new StockMove(prod.getName(),prod.getProduct(), prod.getUom(), loc_source, loc_destination, origin, prod.getQty(),this.arrivalDate);				
 			picking.addMove(move);
 		}
 		saveData.execute(picking);				
@@ -189,9 +185,9 @@ public class AddPMInsumoFragment extends Fragment implements AddPMActions,Insumo
 			return;
 		}		
 		Insumo prod = (Insumo) this.prodsDispo.getAdapter().getItem(this.prodsDispo.getCheckedItemPosition());
-		PedidoLinea linea = new PedidoLinea();
-		linea.setCant(Double.valueOf(cant.getText().toString()));
-		linea.setNombre(prod.toString());
+		StockMove linea = new StockMove();
+		linea.setQty(Double.valueOf(cant.getText().toString()));
+		linea.setName(prod.toString());
 		linea.setUom(prod.getUom());
 		Object[] prodData=new Object[1];
 		prodData[0] = prod;

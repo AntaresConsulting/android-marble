@@ -20,10 +20,6 @@ import android.widget.AdapterView.OnItemClickListener;
 import ar.com.antaresconsulting.antonstockapp.AntonLauncherActivity;
 import ar.com.antaresconsulting.antonstockapp.AntonStockApp;
 import ar.com.antaresconsulting.antonstockapp.R;
-import ar.com.antaresconsulting.antonstockapp.R.id;
-import ar.com.antaresconsulting.antonstockapp.R.layout;
-import ar.com.antaresconsulting.antonstockapp.R.menu;
-import ar.com.antaresconsulting.antonstockapp.R.string;
 import ar.com.antaresconsulting.antonstockapp.adapters.BaseProductAdapter;
 import ar.com.antaresconsulting.antonstockapp.adapters.EmpleadosAdapter;
 import ar.com.antaresconsulting.antonstockapp.adapters.InsumoAdapter;
@@ -139,8 +135,10 @@ public class ConsumeInsumo extends ActionBarActivity implements EmpleadoDAO.Empl
 		StockPicking picking = new StockPicking("",AntonConstants.PICKING_TYPE_ID_INTERNAL,null);
 		for (int i = 0; i < maxProds; i++) {
 			Insumo prod = (Insumo) this.productos.getAdapter().getItem(i);
+			Object[] products = new Object[1];
+			products[0] = prod.getId(); 
 			Integer loc_source = (Integer) prod.getLocId()[0];
-			StockMove move = new StockMove(prod.getNombre(),prod.getId(), (Integer)prod.getUom()[0], loc_source, loc_destination, "", prod.getCantidadReal(),null);				
+			StockMove move = new StockMove(prod.getNombre(),products, prod.getUom(), loc_source, loc_destination, "", prod.getCantidadReal(),null);				
 			move.setEmployee(prod.getEntregado().getId().toString());
 			picking.addMove(move);
 			picking.setActionDone(true);

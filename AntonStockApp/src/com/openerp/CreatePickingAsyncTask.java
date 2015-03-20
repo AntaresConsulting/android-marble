@@ -11,6 +11,7 @@ import java.util.List;
 import com.xmlrpc.XMLRPCException;
 
 import ar.com.antaresconsulting.antonstockapp.R;
+import ar.com.antaresconsulting.antonstockapp.model.Dimension;
 import ar.com.antaresconsulting.antonstockapp.model.StockMove;
 import ar.com.antaresconsulting.antonstockapp.model.StockPicking;
 import ar.com.antaresconsulting.antonstockapp.util.AntonConstants;
@@ -76,12 +77,13 @@ public class CreatePickingAsyncTask extends AsyncTask<StockPicking, String, Long
 			List<StockMove> moves = values[i].getMoves();
 			for (StockMove stockMove : moves) {
 				if(stockMove.hasDimension()){
-					Object[] conditions = new Object[] {new Object[] {AntonConstants.DIMENSION_WIDTH, "=",stockMove.getDim().getDimW()},new Object[] {AntonConstants.DIMENSION_HIGHT, "=", stockMove.getDim().getDimH()},new Object[] {AntonConstants.DIMENSION_THICKNESS, "=", stockMove.getDim().getDimT()}};			
+					Dimension dim = (Dimension) stockMove.getDimension()[0];
+					Object[] conditions = new Object[] {new Object[] {AntonConstants.DIMENSION_WIDTH, "=",dim.getDimW()},new Object[] {AntonConstants.DIMENSION_HIGHT, "=", dim.getDimH()},new Object[] {AntonConstants.DIMENSION_THICKNESS, "=", dim.getDimT()}};			
 					Long[] res = oc.search(AntonConstants.MARBLE_DIM_MODEL,conditions);
 					Long idDim = null;
 					if((res == null) || (res.length == 0)){						
 						try {
-							idDim = oc.create(AntonConstants.MARBLE_DIM_MODEL, stockMove.getDim().getMap(), this.context);
+							idDim = oc.create(AntonConstants.MARBLE_DIM_MODEL, dim.getMap(), this.context);
 						} catch (XMLRPCException e) {
 							strError = e.getMessage();
 							return null;
@@ -90,7 +92,7 @@ public class CreatePickingAsyncTask extends AsyncTask<StockPicking, String, Long
 					}else{
 						idDim =  res[0];
 					}
-					stockMove.getDim().setDimId(new Integer(idDim.toString()));
+					stockMove.getDimension()[0] = new Integer(idDim.toString());
 				}
 				try {
 					oc.create(AntonConstants.MOVE_MODEL, stockMove.getMap(), this.context);

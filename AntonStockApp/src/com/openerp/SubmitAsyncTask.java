@@ -8,9 +8,9 @@ import android.widget.Toast;
 import java.util.ArrayList;
 import java.util.HashMap;
 import ar.com.antaresconsulting.antonstockapp.R;
-import ar.com.antaresconsulting.antonstockapp.model.PedidoLinea;
+import ar.com.antaresconsulting.antonstockapp.model.StockMove;
 
-public class SubmitAsyncTask extends AsyncTask<PedidoLinea, String, Long> {
+public class SubmitAsyncTask extends AsyncTask<StockMove, String, Long> {
 	private Activity activity;
 	public ProgressDialog dialog;
 	private OpenErpConnect oc;
@@ -64,10 +64,10 @@ public class SubmitAsyncTask extends AsyncTask<PedidoLinea, String, Long> {
 	 * Creates a record
 	 */
 	@Override
-	protected Long doInBackground(PedidoLinea... values) {
+	protected Long doInBackground(StockMove... values) {
 		loadConnection();	
 		for (int i = 0; i < values.length; i++) {		
-			PedidoLinea pl = values[i];
+			StockMove pl = values[i];
 			ArrayList<Integer> vals = new ArrayList<Integer>();
 			vals.add(pl.getId());
 			//oc.call(this.modelStockPicking, "action_move", vals);

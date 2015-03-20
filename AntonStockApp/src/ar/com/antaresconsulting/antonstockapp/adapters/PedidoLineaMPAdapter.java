@@ -15,10 +15,10 @@ import ar.com.antaresconsulting.antonstockapp.R;
 import ar.com.antaresconsulting.antonstockapp.model.BaseProduct;
 import ar.com.antaresconsulting.antonstockapp.model.Dimension;
 import ar.com.antaresconsulting.antonstockapp.model.MateriaPrima;
-import ar.com.antaresconsulting.antonstockapp.model.PedidoLinea;
+import ar.com.antaresconsulting.antonstockapp.model.StockMove;
 
 public class PedidoLineaMPAdapter extends BaseAdapter {
-	List<PedidoLinea> datos = new ArrayList<PedidoLinea>();
+	List<StockMove> datos = new ArrayList<StockMove>();
 	Activity context;	
 
 	static class ViewHolder {
@@ -34,7 +34,7 @@ public class PedidoLineaMPAdapter extends BaseAdapter {
 		public TextView titleCant;
 	}
 	
-	public PedidoLineaMPAdapter(Fragment context,List<PedidoLinea> prods) {
+	public PedidoLineaMPAdapter(Fragment context,List<StockMove> prods) {
 		this.context = context.getActivity();
 		this.datos = prods;
 	}
@@ -66,9 +66,9 @@ public class PedidoLineaMPAdapter extends BaseAdapter {
 			rowView.setTag(viewHolder);
 		}
 		ViewHolder holder = (ViewHolder) rowView.getTag();
-		PedidoLinea registro = (PedidoLinea) datos.get(position);
-		holder.lblNombre.setText(registro.getNombre());
-		holder.cantPlacas.setText(String.valueOf(registro.getCantDim().intValue()));
+		StockMove registro = (StockMove) datos.get(position);
+		holder.lblNombre.setText(registro.getName());
+		holder.cantPlacas.setText(String.valueOf(registro.getQtytDim().intValue()));
 		Dimension dim = (Dimension) registro.getDimension()[0];
 		if(((dim.getDimH() !=null))){
 			holder.dimHeight.setText(dim.getDimH().toString());
@@ -78,7 +78,7 @@ public class PedidoLineaMPAdapter extends BaseAdapter {
 			holder.dimWidth2.setText(dim.getDimW().toString());
 			float sup = dim.getDimW().floatValue() * dim.getDimH().floatValue();
 			holder.superficie.setText(" = "+String.valueOf(sup)+" m2");
-			holder.supTotal.setText(String.valueOf(sup*registro.getCant().doubleValue())+" m2");
+			holder.supTotal.setText(String.valueOf(sup*registro.getQty().doubleValue())+" m2");
 		}
 		return rowView;
 
@@ -90,7 +90,7 @@ public class PedidoLineaMPAdapter extends BaseAdapter {
 	}
 
 	@Override
-	public PedidoLinea getItem(int arg0) {
+	public StockMove getItem(int arg0) {
 		return this.datos.get(arg0);
 	}
 
@@ -99,10 +99,10 @@ public class PedidoLineaMPAdapter extends BaseAdapter {
 		 return position;
 	}
 	
-	public void addLinea(PedidoLinea prod) {
+	public void addLinea(StockMove prod) {
 		this.datos.add(prod);
 	}
-	public void delLinea(PedidoLinea prod) {
+	public void delLinea(StockMove prod) {
 		this.datos.remove(prod);
 	}		
 }

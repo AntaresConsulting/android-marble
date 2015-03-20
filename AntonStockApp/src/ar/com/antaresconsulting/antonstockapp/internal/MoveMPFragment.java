@@ -1,7 +1,6 @@
 package ar.com.antaresconsulting.antonstockapp.internal;
 
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
 
@@ -25,17 +24,11 @@ import android.widget.TextView;
 import android.widget.Toast;
 import ar.com.antaresconsulting.antonstockapp.AntonStockApp;
 import ar.com.antaresconsulting.antonstockapp.R;
-import ar.com.antaresconsulting.antonstockapp.R.id;
-import ar.com.antaresconsulting.antonstockapp.R.layout;
 import ar.com.antaresconsulting.antonstockapp.adapters.MateriaPrimaOutAdapter;
 import ar.com.antaresconsulting.antonstockapp.listener.SwipeDismissListViewTouchListener;
 import ar.com.antaresconsulting.antonstockapp.model.Dimension;
 import ar.com.antaresconsulting.antonstockapp.model.DimensionBalance;
-import ar.com.antaresconsulting.antonstockapp.model.MateriaPrima;
 import ar.com.antaresconsulting.antonstockapp.model.MateriaPrimaOut;
-import ar.com.antaresconsulting.antonstockapp.model.Partner;
-import ar.com.antaresconsulting.antonstockapp.model.Pedido;
-import ar.com.antaresconsulting.antonstockapp.model.PedidoLinea;
 import ar.com.antaresconsulting.antonstockapp.model.StockMove;
 import ar.com.antaresconsulting.antonstockapp.model.StockPicking;
 import ar.com.antaresconsulting.antonstockapp.model.dao.MateriaPrimaDAO;
@@ -55,13 +48,13 @@ public class MoveMPFragment extends Fragment implements OnItemSelectedListener,M
 	private PedidoDAO pedDao;
 
 	private TextView cliente;
-	private Pedido selectPed;
+	private StockPicking selectPed;
 
 	private Spinner placasList;
 	private ExpandableListView productos;
 	private ListView productosDispo;
 	private EditText cantPlacasS;
-	private List<PedidoLinea> pls;	
+	private List<StockMove> pls;	
 	private MateriaPrimaOutAdapter listAdapter;
 	private static final String ARG_PARAM1 = "param1";
 
@@ -145,8 +138,10 @@ public class MoveMPFragment extends Fragment implements OnItemSelectedListener,M
 			return;
 		}
 		
-		String origin = selectPed.getOrigen();
+		String origin = selectPed.getOrigin();
 		Integer clienteID = (Integer) selectPed.getPartner()[0];
+		Object[] cliente = new Object[1];
+		cliente[0] = clienteID;
 		Integer loc_destinationPROD = AntonStockApp.getExternalId(AntonConstants.PRODUCT_LOCATION_PRODUCTION);			
 		Integer loc_destinationOUT = AntonStockApp.getExternalId(AntonConstants.PRODUCT_LOCATION_OUTPUT);			
 
@@ -154,19 +149,20 @@ public class MoveMPFragment extends Fragment implements OnItemSelectedListener,M
 		
 		StockPicking[] pickings = new StockPicking[2]; 
 		
-		pickings[0] = new StockPicking(origin,AntonConstants.PICKING_TYPE_ID_INTERNAL,clienteID,AntonConstants.RAW_PICKING);
-		pickings[1] = new StockPicking(origin,AntonConstants.PICKING_TYPE_ID_INTERNAL,clienteID,AntonConstants.RAW_PICKING);
+		pickings[0] = new StockPicking(origin,AntonConstants.PICKING_TYPE_ID_INTERNAL,cliente,AntonConstants.RAW_PICKING);
+		pickings[1] = new StockPicking(origin,AntonConstants.PICKING_TYPE_ID_INTERNAL,cliente,AntonConstants.RAW_PICKING);
 		for (int i = 0; i < maxProds; i++) {
 			MateriaPrimaOut mpo = (MateriaPrimaOut) this.productos.getAdapter().getItem(i);
-			PedidoLinea prod = mpo.getPl().get(0);
+			StockMove prod = mpo.getPl().get(0);
 			Dimension dim = mpo.getDim().getDim();
+			Object[] dimension = new Object[1];
+			dimension[0]= dim.getDimId();
 			Integer loc_sourceSTK = (Integer) mpo.getLocId()[0];
-			StockMove move = new StockMove(prod.getNombre(),((Integer)prod.getProduct()[0]), (Integer)prod.getUom()[0], loc_sourceSTK, loc_destinationPROD, origin, prod.getCant(),dim,mpo.getCant(),null);
+			StockMove move = new StockMove(prod.getName(),prod.getProduct(), prod.getUom(), loc_sourceSTK, loc_destinationPROD, origin, prod.getQty(),dimension,mpo.getCant(),null);
 			List pls = mpo.getPl();
 			for (Iterator iterator = pls.iterator(); iterator.hasNext();) {
-				PedidoLinea plAux = (PedidoLinea) iterator.next();
-				Dimension dimOut = (Dimension) plAux.getDimension()[0];		
-				StockMove moveOut = new StockMove(prod.getNombre(),((Integer)prod.getProduct()[0]), (Integer)prod.getUom()[0], loc_destinationPROD, loc_destinationOUT, origin, plAux.getCant(),dimOut,plAux.getCantDim(),null);
+				StockMove plAux = (StockMove) iterator.next();		
+				StockMove moveOut = new StockMove(prod.getName(),prod.getProduct(), prod.getUom(), loc_destinationPROD, loc_destinationOUT, origin, plAux.getQty(),plAux.getDimension(),plAux.getQtytDim(),null);
 				pickings[1].addMove(moveOut);
 			}
 			pickings[0].addMove(move);
@@ -216,13 +212,13 @@ public class MoveMPFragment extends Fragment implements OnItemSelectedListener,M
 			tt.show();
 			return;
 		}		
-		pls = new ArrayList<PedidoLinea>();
+		pls = new ArrayList<StockMove>();
 		Integer prodId = null;
 		Double tchkControl = new Double(0); 
 		for (int i = 0; i < checked.size(); i++) {
 			int position = checked.keyAt(i);
 			if (checked.valueAt(i)){
-				PedidoLinea pl = (PedidoLinea) this.productosDispo.getAdapter().getItem(position);
+				StockMove pl = (StockMove) this.productosDispo.getAdapter().getItem(position);
 				if(prodId != null){					
 					Dimension dim =  (Dimension) pl.getDimension()[0];
 					Double thck = dim.getDimT();				
@@ -259,14 +255,14 @@ public class MoveMPFragment extends Fragment implements OnItemSelectedListener,M
 
 	@Override
 	public void setOrdenes() {
-		this.pedidos.setAdapter(new ArrayAdapter<Pedido>(this.getActivity(),android.R.layout.simple_list_item_1,this.pedDao.getPedidoList()));		
+		this.pedidos.setAdapter(new ArrayAdapter<StockPicking>(this.getActivity(),android.R.layout.simple_list_item_1,this.pedDao.getPedidoList()));		
 
 	}
 
 	@Override
 	public void onItemSelected(AdapterView<?> arg0, View arg1, int pos,
 			long arg3) {
-		selectPed = (Pedido) arg0.getItemAtPosition(pos);
+		selectPed = (StockPicking) arg0.getItemAtPosition(pos);
 		this.cliente.setText((String) selectPed.getPartner()[1]);
 		this.pedDao = new PedidoDAO(this);
 		this.pedDao.getMoveByPedMP(selectPed.getId(),AntonConstants.MP_FILTER);		
@@ -286,7 +282,7 @@ public class MoveMPFragment extends Fragment implements OnItemSelectedListener,M
 
 	@Override
 	public void setPedidosLineas() {
-		this.productosDispo.setAdapter(new ArrayAdapter<PedidoLinea>(this.getActivity(),android.R.layout.simple_list_item_multiple_choice,this.pedDao.getPedidoLineaList()));				
+		this.productosDispo.setAdapter(new ArrayAdapter<StockMove>(this.getActivity(),android.R.layout.simple_list_item_multiple_choice,this.pedDao.getPedidoLineaList()));				
 	}
 
 }

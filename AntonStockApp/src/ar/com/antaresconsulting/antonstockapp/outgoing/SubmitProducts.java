@@ -21,13 +21,9 @@ import android.widget.TextView;
 import android.widget.Toast;
 import ar.com.antaresconsulting.antonstockapp.AntonLauncherActivity;
 import ar.com.antaresconsulting.antonstockapp.R;
-import ar.com.antaresconsulting.antonstockapp.R.id;
-import ar.com.antaresconsulting.antonstockapp.R.layout;
-import ar.com.antaresconsulting.antonstockapp.R.menu;
-import ar.com.antaresconsulting.antonstockapp.model.Pedido;
-import ar.com.antaresconsulting.antonstockapp.model.PedidoLinea;
+import ar.com.antaresconsulting.antonstockapp.model.StockMove;
+import ar.com.antaresconsulting.antonstockapp.model.StockPicking;
 import ar.com.antaresconsulting.antonstockapp.model.dao.PedidoDAO;
-import ar.com.antaresconsulting.antonstockapp.model.dao.ProductDAO;
 import ar.com.antaresconsulting.antonstockapp.util.AntonConstants;
 
 public class SubmitProducts extends Activity implements OnItemSelectedListener,PedidoDAO.PedidosCallbacks, PedidoDAO.OrdenesDeEntregaCallbacks{
@@ -35,11 +31,11 @@ public class SubmitProducts extends Activity implements OnItemSelectedListener,P
 
 	private Spinner pedidos;
 	private TextView cliente;
-	private Pedido selectPed;
+	private StockPicking selectPed;
 
 	private ListView productosDispo;
 
-	ArrayAdapter<PedidoLinea> prodBuscaAdapter;
+	ArrayAdapter<StockMove> prodBuscaAdapter;
 	
 	protected boolean isScanSearch = false;
 
@@ -50,7 +46,7 @@ public class SubmitProducts extends Activity implements OnItemSelectedListener,P
 		getActionBar().setDisplayHomeAsUpEnabled(true);
 		this.productosDispo = (ListView) findViewById(R.id.productosDispo);
 		this.productosDispo.setChoiceMode(ListView.CHOICE_MODE_MULTIPLE);			
-		this.prodBuscaAdapter = new ArrayAdapter<PedidoLinea>(this,android.R.layout.simple_list_item_multiple_choice);
+		this.prodBuscaAdapter = new ArrayAdapter<StockMove>(this,android.R.layout.simple_list_item_multiple_choice);
 		this.productosDispo.setAdapter(this.prodBuscaAdapter);
 
 	
@@ -93,11 +89,11 @@ public class SubmitProducts extends Activity implements OnItemSelectedListener,P
 		}		
 		int cant = 0;
 		for (int i = 0; i < checked.size(); i++)if (checked.valueAt(i))cant++;
-		PedidoLinea[] plsVals = new PedidoLinea[cant]; 				
+		StockMove[] plsVals = new StockMove[cant]; 				
 		for (int i = 0; i < checked.size(); i++) {
 			int position = checked.keyAt(i);
 			if (checked.valueAt(i)){
-				plsVals[i] = (PedidoLinea) this.productosDispo.getAdapter().getItem(position);
+				plsVals[i] = (StockMove) this.productosDispo.getAdapter().getItem(position);
 			}
 		}
 		sub.execute(plsVals);
@@ -106,14 +102,14 @@ public class SubmitProducts extends Activity implements OnItemSelectedListener,P
 
 	@Override
 	public void setOrdenes() {
-		this.pedidos.setAdapter(new ArrayAdapter<Pedido>(this,android.R.layout.simple_list_item_1,this.pedDao.getPedidoList()));		
+		this.pedidos.setAdapter(new ArrayAdapter<StockPicking>(this,android.R.layout.simple_list_item_1,this.pedDao.getPedidoList()));		
 		
 	}
 
 	@Override
 	public void onItemSelected(AdapterView<?> arg0, View arg1, int pos,
 			long arg3) {
-		selectPed = (Pedido) arg0.getItemAtPosition(pos);
+		selectPed = (StockPicking) arg0.getItemAtPosition(pos);
 		this.cliente.setText((String) selectPed.getPartner()[1]);
 		this.pedDao = new PedidoDAO(this);
 		this.pedDao.getMoveAll(selectPed.getId());		
@@ -133,11 +129,11 @@ public class SubmitProducts extends Activity implements OnItemSelectedListener,P
 
 	@Override
 	public void setPedidosLineas() {
-		List<PedidoLinea> pls = this.pedDao.getPedidoLineaList();
+		List<StockMove> pls = this.pedDao.getPedidoLineaList();
 		this.prodBuscaAdapter.clear();
 		this.prodBuscaAdapter.addAll(pls);
 		int i = 0;
-		for (PedidoLinea pedidoLinea : pls) {
+		for (StockMove pedidoLinea : pls) {
 			if(pedidoLinea.getEstado().equalsIgnoreCase(AntonConstants.ESTADO_FIN))
 				this.productosDispo.setItemChecked(i, true);
 			i++;

@@ -8,13 +8,13 @@ public class MateriaPrimaOut extends MateriaPrima  {
 	 * 
 	 */
 	private static final long serialVersionUID = 2033980945838135860L;
-	private List<PedidoLinea> pl;
+	private List<StockMove> pl;
 	private DimensionBalance dim;
 	private Integer cant;
-	public List<PedidoLinea> getPl() {
+	public List<StockMove> getPl() {
 		return pl;
 	}
-	public void setPl(List<PedidoLinea> pl) {
+	public void setPl(List<StockMove> pl) {
 		this.pl = pl;
 	}
 	public DimensionBalance getDim() {

@@ -20,21 +20,21 @@ import android.widget.TextView;
 import ar.com.antaresconsulting.antonstockapp.R;
 import ar.com.antaresconsulting.antonstockapp.model.BaseProduct;
 import ar.com.antaresconsulting.antonstockapp.model.MateriaPrimaOut;
-import ar.com.antaresconsulting.antonstockapp.model.Pedido;
-import ar.com.antaresconsulting.antonstockapp.model.PedidoLinea;
+import ar.com.antaresconsulting.antonstockapp.model.StockMove;
+import ar.com.antaresconsulting.antonstockapp.model.StockPicking;
 
 public class PedidoDesplegableAdapter extends BaseExpandableListAdapter {
 	Activity context;
-	List<Pedido> datos = new ArrayList<Pedido>();
+	List<StockPicking> datos = new ArrayList<StockPicking>();
 
-	public void addProduct(Pedido prod) {
+	public void addProduct(StockPicking prod) {
 		this.datos.add(prod);
 	}
-	public void delProduct(Pedido prod) {
+	public void delProduct(StockPicking prod) {
 		this.datos.remove(prod);
 	}	
 
-	public void addAll(List<Pedido> prods) {
+	public void addAll(List<StockPicking> prods) {
 		this.datos.addAll(prods);
 	}
 
@@ -42,7 +42,7 @@ public class PedidoDesplegableAdapter extends BaseExpandableListAdapter {
 		this.context = context;
 	}
 
-	public PedidoDesplegableAdapter(Fragment productListFragment,	List<Pedido> mp) {
+	public PedidoDesplegableAdapter(Fragment productListFragment,	List<StockPicking> mp) {
 		this.context = productListFragment.getActivity();
 		this.datos.addAll(mp);		
 	}
@@ -56,7 +56,7 @@ public class PedidoDesplegableAdapter extends BaseExpandableListAdapter {
 	@Override
 	public Object getChild(int arg0, int arg1) {
 		// TODO Auto-generated method stub
-		return this.datos.get(arg0).getLineas()[arg1];
+		return this.datos.get(arg0).getMoves().get(arg1);
 	}
 	@Override
 	public long getChildId(int groupPosition, int childPosition) {
@@ -66,7 +66,7 @@ public class PedidoDesplegableAdapter extends BaseExpandableListAdapter {
 	@Override
 	public View getChildView(int groupPosition, int childPosition,
 			boolean isLastChild, View convertView, ViewGroup parent) {
-        final PedidoLinea childText = (PedidoLinea) getChild(groupPosition, childPosition);
+        final StockMove childText = (StockMove) getChild(groupPosition, childPosition);
         
         if (convertView == null) {
             LayoutInflater infalInflater = (LayoutInflater) this.context
@@ -82,7 +82,7 @@ public class PedidoDesplegableAdapter extends BaseExpandableListAdapter {
 	@Override
 	public int getChildrenCount(int groupPosition) {
 		// TODO Auto-generated method stub
-		return this.datos.get(groupPosition).getLineas().length;
+		return this.datos.get(groupPosition).getMoves().size();
 	}
 	@Override
 	public Object getGroup(int groupPosition) {

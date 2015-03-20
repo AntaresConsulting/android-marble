@@ -6,23 +6,15 @@ import java.util.List;
 import android.app.Activity;
 import android.app.Fragment;
 import android.content.Context;
-import android.graphics.Typeface;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.BaseAdapter;
 import android.widget.BaseExpandableListAdapter;
-import android.widget.EditText;
 import android.widget.LinearLayout;
-import android.widget.TableLayout;
-import android.widget.TableRow;
 import android.widget.TextView;
 import ar.com.antaresconsulting.antonstockapp.R;
-import ar.com.antaresconsulting.antonstockapp.model.BaseProduct;
-import ar.com.antaresconsulting.antonstockapp.model.Dimension;
-import ar.com.antaresconsulting.antonstockapp.model.DimensionBalance;
 import ar.com.antaresconsulting.antonstockapp.model.MateriaPrimaOut;
-import ar.com.antaresconsulting.antonstockapp.model.PedidoLinea;
+import ar.com.antaresconsulting.antonstockapp.model.StockMove;
 
 public class MateriaPrimaOutAdapter extends BaseExpandableListAdapter {
 	Activity context;
@@ -67,7 +59,7 @@ public class MateriaPrimaOutAdapter extends BaseExpandableListAdapter {
 	@Override
 	public View getChildView(int groupPosition, int childPosition,
 			boolean isLastChild, View convertView, ViewGroup parent) {
-        final PedidoLinea childText = (PedidoLinea) getChild(groupPosition, childPosition);
+        final StockMove childText = (StockMove) getChild(groupPosition, childPosition);
         
         if (convertView == null) {
             LayoutInflater infalInflater = (LayoutInflater) this.context

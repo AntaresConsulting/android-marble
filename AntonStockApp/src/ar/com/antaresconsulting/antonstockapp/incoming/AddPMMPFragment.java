@@ -28,7 +28,6 @@ import ar.com.antaresconsulting.antonstockapp.model.Dimension;
 import ar.com.antaresconsulting.antonstockapp.model.Insumo;
 import ar.com.antaresconsulting.antonstockapp.model.MateriaPrima;
 import ar.com.antaresconsulting.antonstockapp.model.Partner;
-import ar.com.antaresconsulting.antonstockapp.model.PedidoLinea;
 import ar.com.antaresconsulting.antonstockapp.model.SelectionObject;
 import ar.com.antaresconsulting.antonstockapp.model.StockMove;
 import ar.com.antaresconsulting.antonstockapp.model.StockPicking;
@@ -111,7 +110,7 @@ public class AddPMMPFragment extends Fragment implements PartnerDAO.SuppliersCal
 					public void onDismiss(ListView listView,
 							int[] reverseSortedPositions) {
 						for (int position : reverseSortedPositions) {
-							((PedidoLineaAdapter) prodsPedido.getAdapter()).delProduct((PedidoLinea) prodsPedido.getAdapter().getItem(position));
+							((PedidoLineaAdapter) prodsPedido.getAdapter()).delProduct((StockMove) prodsPedido.getAdapter().getItem(position));
 						}
 						((PedidoLineaAdapter) prodsPedido.getAdapter()).notifyDataSetChanged();
 					}
@@ -137,20 +136,20 @@ public class AddPMMPFragment extends Fragment implements PartnerDAO.SuppliersCal
 			tt.show();		
 			return;
 		}
-		Partner proveedor = (Partner) this.proveedor.getSelectedItem();
+		Object[] proveedor = new Object[1]; 
+		proveedor[0]= ((Partner)this.proveedor.getSelectedItem()).getId();
+		
 		String origin = pl.getText().toString();
-
 		Integer loc_source = AntonStockApp.getExternalId(AntonConstants.PRODUCT_LOCATION_SUPPLIER);
 					
 		
-		StockPicking picking = new StockPicking(origin,AntonConstants.PICKING_TYPE_ID_IN,proveedor.getId(),AntonConstants.RAW_PICKING);
+		StockPicking picking = new StockPicking(origin,AntonConstants.PICKING_TYPE_ID_IN,proveedor,AntonConstants.RAW_PICKING);
 		
 		for (int i = 0; i < maxProds; i++) {
-			PedidoLinea prod = (PedidoLinea) this.prodsPedido.getAdapter().getItem(i);
-			Dimension dim = (Dimension) prod.getDimension()[0];
+			StockMove prod = (StockMove) this.prodsPedido.getAdapter().getItem(i);
 			MateriaPrima prodObj = (MateriaPrima)prod.getProduct()[0];
 			Integer loc_destination = (Integer) prodObj.getLocId()[0];
-			StockMove move = new StockMove(prod.getNombre(),prodObj.getId(), (Integer)prod.getUom()[0], loc_source, loc_destination, origin, prod.getCant(),dim,prod.getCantDim(),this.arrivalDate);				
+			StockMove move = new StockMove(prod.getName(),prod.getProduct(), prod.getUom(), loc_source, loc_destination, origin, prod.getQty(),prod.getDimension(),prod.getQtytDim(),this.arrivalDate);				
 			picking.addMove(move);
 		}
 		saveData.execute(picking);
@@ -224,12 +223,12 @@ public class AddPMMPFragment extends Fragment implements PartnerDAO.SuppliersCal
 		dim.setDimW(new Double(this.dimW.getText().toString()));
 		dim.setDimTipo((SelectionObject) this.dimTipo.getSelectedItem());
 		
-		PedidoLinea linea = new PedidoLinea();
-		linea.setNombre(prod.getNombre());
+		StockMove linea = new StockMove();
+		linea.setName(prod.getNombre());
 		linea.setUom(prod.getUom());
 		linea.setDimension(dim);
-		linea.setCant(Double.parseDouble(this.dimH.getText().toString())*Double.parseDouble(this.dimW.getText().toString())*Double.parseDouble(this.cantPlacas.getText().toString()));
-		linea.setCantDim(Integer.parseInt(this.cantPlacas.getText().toString()));
+		linea.setQty(Double.parseDouble(this.dimH.getText().toString())*Double.parseDouble(this.dimW.getText().toString())*Double.parseDouble(this.cantPlacas.getText().toString()));
+		linea.setQtytDim(Integer.parseInt(this.cantPlacas.getText().toString()));
 
 		Object[] prodData=new Object[1];
 		prodData[0] = prod;
