@@ -1,0 +1,186 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/RelativeLayout1"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <TextView
+        android:id="@+id/nombreProd"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="false"
+        android:layout_margin="10dp"
+        android:text="TextView"
+        android:textSize="22sp" />
+
+    <TextView
+        android:id="@+id/titleCant"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/cantPlacaUtil"
+        android:layout_marginBottom="5dp"
+        android:layout_marginTop="5dp"
+        android:layout_toRightOf="@id/nombreProd"
+        android:text="@string/listitem_quantity_plaques"
+        android:textAppearance="?android:attr/textAppearanceSmall" />
+
+    <TextView
+        android:id="@+id/cantPlacasDispo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/titleCant"
+        android:layout_below="@+id/titleCant"
+        android:layout_marginLeft="20dp"
+        android:text="999"
+        android:textAppearance="?android:attr/textAppearanceSmall" />
+
+    <TextView
+        android:id="@+id/unidades"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@id/cantPlacasDispo"
+        android:layout_marginLeft="5dp"
+        android:layout_toRightOf="@id/cantPlacasDispo"
+        android:text="@string/lbl_unidades"
+        android:textAppearance="?android:attr/textAppearanceSmall" />
+    
+    <RelativeLayout
+        android:id="@+id/dimFrmContainer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@id/titleCant"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="10dp"
+        android:layout_toRightOf="@id/titleCant" >
+
+        <TextView
+            android:id="@+id/titleDim"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginBottom="5dp"
+            android:text="@string/listitem_dimensions"
+            android:textAppearance="?android:attr/textAppearanceSmall" />
+
+        <TextView
+            android:id="@+id/dimH"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/titleDim"
+            android:text="Small Text"
+            android:textAppearance="?android:attr/textAppearanceSmall" />
+
+        <TextView
+            android:id="@+id/dimW"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/titleDim"
+            android:layout_marginLeft="46dp"
+            android:layout_toRightOf="@+id/dimH"
+            android:text="Small Text"
+            android:textAppearance="?android:attr/textAppearanceSmall" />
+
+        <TextView
+            android:id="@+id/dimSeparator"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/titleDim"
+            android:layout_marginLeft="24dp"
+            android:layout_toRightOf="@+id/dimH"
+            android:text="X"
+            android:textAppearance="?android:attr/textAppearanceSmall" />
+
+        <TextView
+            android:id="@+id/TextView02"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@+id/dimW"
+            android:layout_alignBottom="@+id/dimW"
+            android:layout_marginLeft="14dp"
+            android:layout_toRightOf="@+id/dimW"
+            android:text="X"
+            android:textAppearance="?android:attr/textAppearanceSmall" />
+
+        <TextView
+            android:id="@+id/dimT"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/titleDim"
+            android:layout_marginLeft="18dp"
+            android:layout_toRightOf="@+id/TextView02"
+            android:text="Small Text"
+            android:textAppearance="?android:attr/textAppearanceSmall" />
+
+        <TextView
+            android:id="@+id/superficieLbl"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_below="@+id/dimH"
+            android:layout_marginTop="5dp"
+            android:text="@string/listitem_superficie"
+            android:textAppearance="?android:attr/textAppearanceSmall" />
+
+        <TextView
+            android:id="@+id/dimH2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@id/superficieLbl"
+            android:layout_toRightOf="@id/superficieLbl"
+            android:layout_marginLeft="10dp"
+	        android:text="Small Text"
+            android:textAppearance="?android:attr/textAppearanceSmall" />
+        <TextView
+            android:id="@+id/TextView06"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@id/dimH2"
+            android:layout_toRightOf="@id/dimH2"
+            android:layout_marginLeft="10dp"
+            android:text="X"
+            android:textAppearance="?android:attr/textAppearanceSmall" />
+        <TextView
+            android:id="@+id/dimW2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@id/TextView06"
+            android:layout_toRightOf="@id/TextView06"
+            android:layout_marginLeft="10dp"
+            android:text="Small Text"
+            android:textAppearance="?android:attr/textAppearanceSmall" />
+
+
+
+        <TextView
+            android:id="@+id/superficie"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@id/dimW2"
+            android:layout_toRightOf="@id/dimW2"
+            android:layout_marginLeft="10dp"
+            android:text="= XXX m2" />
+
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/TextView01"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/dimFrmContainer"
+        android:layout_toRightOf="@+id/nombreProd"
+        android:text="@string/listitem_area_total"
+        android:layout_marginBottom="5dp"        
+        android:textAppearance="?android:attr/textAppearanceSmall" />
+
+    <TextView
+        android:id="@+id/suptotal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/cantPlacasDispo"
+        android:layout_below="@+id/TextView01"
+        android:text="999"
+        android:textAppearance="?android:attr/textAppearanceSmall" />
+
+</RelativeLayout>

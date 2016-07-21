@@ -1,0 +1,42 @@
+<resources>
+
+    <string name="title_activity_in_products">Ingreso de Mercaderia</string>
+    <string name="in_prod_disponibles">Productos Disponibles</string>
+    <string name="in_prod_reingreso">Es Reingreso</string>
+    <string name="in_prod_pedido">Pedido Numero</string>
+    <string name="in_prod_si">Si</string>
+    <string name="in_prod_no">No</string>
+    <string name="in_prod_proveedor">Proveedor</string>
+    <string name="in_prod_cliente">Cliente</string>
+    <string name="in_prod_largo">Largo</string>
+    <string name="in_prod_ancho">Alto/Ancho</string>
+    <string name="in_prod_unidad">m</string>
+	<string name="in_prod_espesor">Espesor</string>    
+    <string name="in_prod_btn_mas_prod">Agregar</string>
+    <string name="in_prod_btn_cerrar_pedido">Cerrar Pedido</string>
+    <string name="in_prod_title_productos">Productos a Ingresar</string>
+	<string name="in_prod_btn_scan">Escanear Producto</string>
+	<string name="in_prod_cant">Cantidad</string>
+	<string name="in_prod_tipo_dim">Tipo de formato</string>
+	<string name="in_prod_marcabacha">Marca</string>
+	<string name="in_prod_tipobacha">Tipo de Bacha</string>
+	<string name="title_porduct_search">Buscar Producto</string>    
+    <string name="re_prod_title_productos">Productos a ReIngresar</string>
+    <string name="sub_prod_title_servicios">Servicios</string>
+    <string name="sub_prod_title_productos">Productos a Remitir</string>
+    <string-array name="tipoDim">
+        <item>Placa</item>
+        <item>Recorte</item>
+        <item>Marmeta</item> 
+    </string-array>	  
+    <string-array name="espesores">
+        <item>0.007</item>        
+        <item>0.01</item>
+        <item>0.012</item>
+        <item>0.014</item>
+        <item>0.015</item>
+        <item>0.02</item>
+        <item>0.025</item>
+        <item>0.03</item> 
+    </string-array>	             
+</resources>

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+	<string name="search_bacha_title">Buscador de Bachas</string>
+	<string name="search_insumo_title">Buscador de Insumos</string>
+	<string name="search_mp_title">Buscador de Materia Prima</string>
+    <string name="search_bacha_material">Tipo de Material</string>
+    <string name="search_bacha_marca">Marca</string>
+    <string name="search_bacha_acero">Acero</string>
+    <string name="search_bacha_colocacion">Colocacion</string>
+    <string name="search_bacha_tipo">Tipo</string>
+    <string name="search_color">Color</string>
+    <string name="search_bacha_nombre">Nombre</string>    
+    <string name="search_terminado">Acabado</string>
+    <string name="search_nombre">Nombre</string>
+    <string name="search_espesor">Espesor</string>
+    <string name="search_tipo">Tipo de Material</string>
+    <string name="search_btn">Buscar</string>
+    <string name="search_product_type">Seleccionar Tipo de Producto a Buscar</string>
+    
+	   
+</resources>

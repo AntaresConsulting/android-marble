@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="lbl_prod_nombre">Nombre del Producto :</string>
+    <string name="lbl_prod_codigo">Codigo :</string>
+    <string name="lbl_prod_ean13">EAN13 :</string>
+    <string name="lbl_prod_uom">Tipo de Unidad :</string>
+    <string name="lbl_prod_desc">Descripcion :</string>
+    <string name="lbl_prod_precio">Precio :</string>
+    <string name="lbl_prod_stockR">St. Deposito :</string>
+    <string name="lbl_prod_stockF">St. Previsto :</string>
+    <string name="lbl_prod_stockI">St. Ingresando :</string>
+    <string name="lbl_prod_tipo_material">Tipo de Material :</string>
+    <string name="lbl_prod_acabado">Acabado :</string>
+    <string name="lbl_prod_espesor">Espesor :</string>
+    <string name="lbl_prod_color">Color :</string>
+    <string name="lbl_prod_marca">Marca :</string>
+    <string name="lbl_prod_bacha_tipo">Tipo de Bacha :</string>
+    <string name="lbl_prod_bacha_colocacion">Tipo de Colocacion :</string>
+    <string name="lbl_prod_bacha_acero">Tipo de Acero :</string>
+    <string name="lbl_prod_bacha_ancho">Alto/Ancho :</string>
+    <string name="lbl_prod_bacha_largo">Largo :</string>
+    <string name="lbl_prod_bacha_prof">Profundidad :</string>    
+    <string name="lbl_prod_bacha_diametro">Diametro :</string>
+    <string name="title_forstock">Producto Materias Primas</string>
+    <string name="title_expenses">Producto Insumos</string>
+    <string name="title_bachas">Producto Bachas</string>
+    <string name="title_services">Servicios</string>
+	<string name="title_add_forstock">Alta de  Materias Prima</string>
+    <string name="title_add_expenses">Alta de  Insumo</string>
+    <string name="title_add_bachas">Alta de Bacha</string>
+    <string name="title_add_services">Alta de Servicio</string>    
+    <string name="title_menu_forstock">Materias Primas</string>
+    <string name="title_menu_expenses">Insumos</string>
+    <string name="title_menu_bachas">Bachas</string>
+    <string name="title_menu_services">Servicios</string>    
+    <string name="title_clientes">Clientes</string>
+    <string name="title_suppliers">Proveedores</string>
+    <string name="title_add_products">Ingresar Productos</string>
+    <string name="title_sub_products">Restar Productos</string>    
+                    
+    <string-array name="tipoMaterial">
+        <item></item>
+        <item>Marmol</item>
+        <item>Granito</item>
+        <item>Quarzo</item>
+    </string-array>		
+    <string-array name="color">
+        <item></item>
+        <item>Blanco</item>
+        <item>Negro</item>
+        <item>Rosa</item>
+		<item>Verde</item>
+		<item>Azul</item>
+		<item>Celeste</item>
+		<item>Lila</item>
+		<item>Amarillo</item>        
+		<item>Rojo</item>
+		<item>Gris</item>
+		<item>Marron</item>
+		<item>Beige</item>    
+    </string-array>		
+    <string-array name="terminaciones">
+        <item></item>
+        <item>Lustrado</item>
+        <item>Apomazado</item>
+        <item>Flameado</item>
+        <item>Rustico</item>
+        <item>Leather</item>
+    </string-array>	
+
+</resources>

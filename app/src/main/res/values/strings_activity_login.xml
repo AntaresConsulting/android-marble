@@ -1,0 +1,23 @@
+<resources>
+
+    <string name="title_activity_login">Ingresar al Sistema</string>
+
+    <!-- Strings related to login -->
+    <string name="prompt_email">Email</string>
+    <string name="prompt_password">Contrasena</string>
+    <string name="action_forgot_password">Olvido la cotrasena</string>
+    <string name="login_progress_signing_in">Validando (…, &#8230;)</string>
+    <string name="error_invalid_email">Este Email es invalido</string>
+    <string name="error_invalid_password">La contrasena es muy corta</string>
+    <string name="error_incorrect_password">La contrasena es incorrecta</string>
+    <string name="error_field_required">Campo requerido</string>
+    <string name="server_config">Servidor</string>
+    <string name="preference_url">url_setting</string>
+	<string name="server_url">URL</string>
+	<string name="server_port">Puerto</string>
+	<string name="server_db">Base</string>
+	<string name="hint_username">usuario</string>
+	<string name="hint_pass">contrasena</string>
+	<string name="credential_user">user_id</string>	
+	<string name="credential_pass">pass</string>		
+</resources>
