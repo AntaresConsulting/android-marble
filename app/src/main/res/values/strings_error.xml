@@ -1,7 +1,4 @@
 <resources>
-
-    <string name="title_activity_login">Ingresar al Sistema</string>
-
     <!-- Strings related to login -->
     <string name="error_invalid_email">Este Email es invalido</string>
     <string name="error_invalid_password">La contrasena es muy corta</string>

@@ -30,12 +30,10 @@
     <string name="title_partner_detail">Partner Detail</string>
     <string name="title_product_list">Products</string>
     <string name="title_product_detail">Product Detail</string>
-    <string name="title_activity_in_products">Ingresar Productos</string>
     <string name="hello_world">Hello world!</string>
     <string name="action_income_save">Confirmar</string>
     <string name="action_submit">Remitir</string>
     <string name="action_add_product_save">Guardar Producto</string>
-    <string name="title_activity_out_products">OutProducts</string>
     <string name="title_activity_launcher">Anton Stock Principal</string>
     <string name="title_action_add_mp">Agregar Materia Prima</string>
     <string name="title_action_add_bacha">Agregar Bacha</string>
