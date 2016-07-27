@@ -45,9 +45,9 @@ public class AntonConstants {
 	public static final String INSU_LIST = "INSU_LIST";
 
 	
-	public static final String MARBLE_CUTTER_GROUP = "Cutter Marble";
-	public static final String MARBLE_RESP_GROUP = "Responsable Marble";
-	public static final String MARBLE_MANAGER_GROUP = "Manager Marble";
+	public static final String MARBLE_CUTTER_GROUP = "Cortador de Deposito";
+	public static final String MARBLE_RESP_GROUP = "Responsable de Deposito";
+	public static final String MARBLE_MANAGER_GROUP = "Gerente de Deposito";
 	public static final String MARBLE_ADMIN_GROUP = "Administrador Anton";
 	
 	public static final int PEDIDOS = 1;

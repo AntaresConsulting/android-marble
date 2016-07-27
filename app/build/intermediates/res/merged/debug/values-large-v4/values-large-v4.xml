@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <bool name="abc_action_bar_embed_tabs_pre_jb">true</bool>
+    <bool name="abc_config_allowActionMenuItemTextWithIcon">true</bool>
+    <bool name="abc_split_action_bar_is_narrow">false</bool>
+    <color name="actionbar_theme_color">#DC2A2A</color>
+    <color name="bg_theme_color">#F4F4EE</color>
+    <dimen name="abc_config_prefDialogWidth">440dp</dimen>
+    <dimen name="abc_search_view_text_min_width">192dip</dimen>
+    <dimen name="activity_horizontal_margin">16dp</dimen>
+    <dimen name="activity_vertical_margin">16dp</dimen>
+    <dimen name="app_text_size">22dp</dimen>
+    <item name="dialog_fixed_height_major" type="dimen">60%</item>
+    <item name="dialog_fixed_height_minor" type="dimen">90%</item>
+    <item name="dialog_fixed_width_major" type="dimen">60%</item>
+    <item name="dialog_fixed_width_minor" type="dimen">90%</item>
+    <dimen name="item_drawer_icon_dim">60dp</dimen>
+    <dimen name="item_drawer_margin">20dp</dimen>
+    <dimen name="item_drawer_text_size">24sp</dimen>
+    <dimen name="login_actionbar_height">80dp</dimen>
+    <dimen name="login_icon_height">90dp</dimen>
+    <dimen name="login_icon_width">90dp</dimen>
+    <dimen name="login_logo_height">218dp</dimen>
+    <dimen name="login_logo_top">30dp</dimen>
+    <dimen name="login_logo_width">457dp</dimen>
+    <dimen name="login_table_top">220dp</dimen>
+    <dimen name="login_textfield_width">300dp</dimen>
+    <dimen name="navigation_drawer_width">350dp</dimen>
+    <integer name="abc_max_action_buttons">4</integer>
+    <item name="activity_partner_list" type="layout">@layout/activity_partner_twopane</item>
+    <item name="activity_product_list" type="layout">@layout/activity_product_twopane</item>
+    <style name="AntonActionBar" parent="@android:style/Widget.Holo.Light.ActionBar">
+        <item name="android:background">@color/actionbar_theme_color</item>
+        <item name="android:height">@dimen/login_actionbar_height</item>        
+    </style>
+    <style name="AntonTheme" parent="Theme.AppCompat.Light">
+        <item name="android:windowBackground">@color/bg_theme_color</item>
+        <item name="android:colorBackground">@color/bg_theme_color</item>
+        <item name="android:actionBarStyle">@style/AntonActionBar</item>       
+    </style>
+    <style name="AppBaseTheme" parent="Theme.AppCompat.Light">
+        <!--
+            Theme customizations available in newer API levels can go in
+            res/values-vXX/styles.xml, while customizations related to
+            backward-compatibility can go here.
+        -->
+    </style>
+    <style name="AppTheme" parent="AppBaseTheme">
+        <!-- All customizations that are NOT specific to a particular API-level can go here. -->
+    </style>
+    <style name="LoginFormContainer">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:padding">16dp</item>
+    </style>
+    <style name="LoginTheme" parent="AntonTheme">
+        <item name="android:textSize">@dimen/app_text_size</item>
+    </style>
+    <style name="NoActionBar" parent="AntonTheme">
+	    <item name="android:windowActionBar">false</item>
+	    <item name="android:windowNoTitle">true</item>
+	</style>
+    <style name="Theme.Base.AppCompat.DialogWhenLarge" parent="Theme.Base.AppCompat.Dialog.FixedSize"/>
+    <style name="Theme.Base.AppCompat.Light.DialogWhenLarge" parent="Theme.Base.AppCompat.Dialog.Light.FixedSize"/>
+</resources>

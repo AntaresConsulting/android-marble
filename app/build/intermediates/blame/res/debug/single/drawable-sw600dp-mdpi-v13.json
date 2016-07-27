@@ -1,0 +1,154 @@
+[
+    {
+        "merged": "/home/maximo/StudioProjects/android-marble/AntonStockApp/app/build/intermediates/res/merged/debug/drawable-sw600dp-mdpi-v13/ic_main_partners.png",
+        "source": "/home/maximo/StudioProjects/android-marble/AntonStockApp/app/src/main/res/drawable-sw600dp-mdpi/ic_main_partners.png"
+    },
+    {
+        "merged": "/home/maximo/StudioProjects/android-marble/AntonStockApp/app/build/intermediates/res/merged/debug/drawable-sw600dp-mdpi-v13/ic_main_reingreso.png",
+        "source": "/home/maximo/StudioProjects/android-marble/AntonStockApp/app/src/main/res/drawable-sw600dp-mdpi/ic_main_reingreso.png"
+    },
+    {
+        "merged": "/home/maximo/StudioProjects/android-marble/AntonStockApp/app/build/intermediates/res/merged/debug/drawable-sw600dp-mdpi-v13/ic_main_outcome.png",
+        "source": "/home/maximo/StudioProjects/android-marble/AntonStockApp/app/src/main/res/drawable-sw600dp-mdpi/ic_main_outcome.png"
+    },
+    {
+        "merged": "/home/maximo/StudioProjects/android-marble/AntonStockApp/app/build/intermediates/res/merged/debug/drawable-sw600dp-mdpi-v13/ic_action_server.png",
+        "source": "/home/maximo/StudioProjects/android-marble/AntonStockApp/app/src/main/res/drawable-sw600dp-mdpi/ic_action_server.png"
+    },
+    {
+        "merged": "/home/maximo/StudioProjects/android-marble/AntonStockApp/app/build/intermediates/res/merged/debug/drawable-sw600dp-mdpi-v13/ic_action_servicios.png",
+        "source": "/home/maximo/StudioProjects/android-marble/AntonStockApp/app/src/main/res/drawable-sw600dp-mdpi/ic_action_servicios.png"
+    },
+    {
+        "merged": "/home/maximo/StudioProjects/android-marble/AntonStockApp/app/build/intermediates/res/merged/debug/drawable-sw600dp-mdpi-v13/ic_main_remito.png",
+        "source": "/home/maximo/StudioProjects/android-marble/AntonStockApp/app/src/main/res/drawable-sw600dp-mdpi/ic_main_remito.png"
+    },
+    {
+        "merged": "/home/maximo/StudioProjects/android-marble/AntonStockApp/app/build/intermediates/res/merged/debug/drawable-sw600dp-mdpi-v13/ic_common_save.png",
+        "source": "/home/maximo/StudioProjects/android-marble/AntonStockApp/app/src/main/res/drawable-sw600dp-mdpi/ic_common_save.png"
+    },
+    {
+        "merged": "/home/maximo/StudioProjects/android-marble/AntonStockApp/app/build/intermediates/res/merged/debug/drawable-sw600dp-mdpi-v13/ic_common_submit.png",
+        "source": "/home/maximo/StudioProjects/android-marble/AntonStockApp/app/src/main/res/drawable-sw600dp-mdpi/ic_common_submit.png"
+    },
+    {
+        "merged": "/home/maximo/StudioProjects/android-marble/AntonStockApp/app/build/intermediates/res/merged/debug/drawable-sw600dp-mdpi-v13/ic_main_insumo.png",
+        "source": "/home/maximo/StudioProjects/android-marble/AntonStockApp/app/src/main/res/drawable-sw600dp-mdpi/ic_main_insumo.png"
+    },
+    {
+        "merged": "/home/maximo/StudioProjects/android-marble/AntonStockApp/app/build/intermediates/res/merged/debug/drawable-sw600dp-mdpi-v13/drawer_shadow.9.png",
+        "source": "/home/maximo/StudioProjects/android-marble/AntonStockApp/app/src/main/res/drawable-sw600dp-mdpi/drawer_shadow.9.png"
+    },
+    {
+        "merged": "/home/maximo/StudioProjects/android-marble/AntonStockApp/app/build/intermediates/res/merged/debug/drawable-sw600dp-mdpi-v13/ic_common_scanner.png",
+        "source": "/home/maximo/StudioProjects/android-marble/AntonStockApp/app/src/main/res/drawable-sw600dp-mdpi/ic_common_scanner.png"
+    },
+    {
+        "merged": "/home/maximo/StudioProjects/android-marble/AntonStockApp/app/build/intermediates/res/merged/debug/drawable-sw600dp-mdpi-v13/ic_cuit.png",
+        "source": "/home/maximo/StudioProjects/android-marble/AntonStockApp/app/src/main/res/drawable-sw600dp-mdpi/ic_cuit.png"
+    },
+    {
+        "merged": "/home/maximo/StudioProjects/android-marble/AntonStockApp/app/build/intermediates/res/merged/debug/drawable-sw600dp-mdpi-v13/ic_action_bar_add.png",
+        "source": "/home/maximo/StudioProjects/android-marble/AntonStockApp/app/src/main/res/drawable-sw600dp-mdpi/ic_action_bar_add.png"
+    },
+    {
+        "merged": "/home/maximo/StudioProjects/android-marble/AntonStockApp/app/build/intermediates/res/merged/debug/drawable-sw600dp-mdpi-v13/ic_phone.png",
+        "source": "/home/maximo/StudioProjects/android-marble/AntonStockApp/app/src/main/res/drawable-sw600dp-mdpi/ic_phone.png"
+    },
+    {
+        "merged": "/home/maximo/StudioProjects/android-marble/AntonStockApp/app/build/intermediates/res/merged/debug/drawable-sw600dp-mdpi-v13/ic_user_employee.png",
+        "source": "/home/maximo/StudioProjects/android-marble/AntonStockApp/app/src/main/res/drawable-sw600dp-mdpi/ic_user_employee.png"
+    },
+    {
+        "merged": "/home/maximo/StudioProjects/android-marble/AntonStockApp/app/build/intermediates/res/merged/debug/drawable-sw600dp-mdpi-v13/ic_web.png",
+        "source": "/home/maximo/StudioProjects/android-marble/AntonStockApp/app/src/main/res/drawable-sw600dp-mdpi/ic_web.png"
+    },
+    {
+        "merged": "/home/maximo/StudioProjects/android-marble/AntonStockApp/app/build/intermediates/res/merged/debug/drawable-sw600dp-mdpi-v13/black_white_gradient.xml",
+        "source": "/home/maximo/StudioProjects/android-marble/AntonStockApp/app/src/main/res/drawable-sw600dp-mdpi/black_white_gradient.xml"
+    },
+    {
+        "merged": "/home/maximo/StudioProjects/android-marble/AntonStockApp/app/build/intermediates/res/merged/debug/drawable-sw600dp-mdpi-v13/ic_drawer.png",
+        "source": "/home/maximo/StudioProjects/android-marble/AntonStockApp/app/src/main/res/drawable-sw600dp-mdpi/ic_drawer.png"
+    },
+    {
+        "merged": "/home/maximo/StudioProjects/android-marble/AntonStockApp/app/build/intermediates/res/merged/debug/drawable-sw600dp-mdpi-v13/ic_menu_partner.png",
+        "source": "/home/maximo/StudioProjects/android-marble/AntonStockApp/app/src/main/res/drawable-sw600dp-mdpi/ic_menu_partner.png"
+    },
+    {
+        "merged": "/home/maximo/StudioProjects/android-marble/AntonStockApp/app/build/intermediates/res/merged/debug/drawable-sw600dp-mdpi-v13/ic_take_photo.png",
+        "source": "/home/maximo/StudioProjects/android-marble/AntonStockApp/app/src/main/res/drawable-sw600dp-mdpi/ic_take_photo.png"
+    },
+    {
+        "merged": "/home/maximo/StudioProjects/android-marble/AntonStockApp/app/build/intermediates/res/merged/debug/drawable-sw600dp-mdpi-v13/ic_delete_record.png",
+        "source": "/home/maximo/StudioProjects/android-marble/AntonStockApp/app/src/main/res/drawable-sw600dp-mdpi/ic_delete_record.png"
+    },
+    {
+        "merged": "/home/maximo/StudioProjects/android-marble/AntonStockApp/app/build/intermediates/res/merged/debug/drawable-sw600dp-mdpi-v13/ic_main_prodducts.png",
+        "source": "/home/maximo/StudioProjects/android-marble/AntonStockApp/app/src/main/res/drawable-sw600dp-mdpi/ic_main_prodducts.png"
+    },
+    {
+        "merged": "/home/maximo/StudioProjects/android-marble/AntonStockApp/app/build/intermediates/res/merged/debug/drawable-sw600dp-mdpi-v13/layout_bg.xml",
+        "source": "/home/maximo/StudioProjects/android-marble/AntonStockApp/app/src/main/res/drawable-sw600dp-mdpi/layout_bg.xml"
+    },
+    {
+        "merged": "/home/maximo/StudioProjects/android-marble/AntonStockApp/app/build/intermediates/res/merged/debug/drawable-sw600dp-mdpi-v13/ic_action_bachas.png",
+        "source": "/home/maximo/StudioProjects/android-marble/AntonStockApp/app/src/main/res/drawable-sw600dp-mdpi/ic_action_bachas.png"
+    },
+    {
+        "merged": "/home/maximo/StudioProjects/android-marble/AntonStockApp/app/build/intermediates/res/merged/debug/drawable-sw600dp-mdpi-v13/cliente.png",
+        "source": "/home/maximo/StudioProjects/android-marble/AntonStockApp/app/src/main/res/drawable-sw600dp-mdpi/cliente.png"
+    },
+    {
+        "merged": "/home/maximo/StudioProjects/android-marble/AntonStockApp/app/build/intermediates/res/merged/debug/drawable-sw600dp-mdpi-v13/ic_action_mp.png",
+        "source": "/home/maximo/StudioProjects/android-marble/AntonStockApp/app/src/main/res/drawable-sw600dp-mdpi/ic_action_mp.png"
+    },
+    {
+        "merged": "/home/maximo/StudioProjects/android-marble/AntonStockApp/app/build/intermediates/res/merged/debug/drawable-sw600dp-mdpi-v13/ic_action_edit.png",
+        "source": "/home/maximo/StudioProjects/android-marble/AntonStockApp/app/src/main/res/drawable-sw600dp-mdpi/ic_action_edit.png"
+    },
+    {
+        "merged": "/home/maximo/StudioProjects/android-marble/AntonStockApp/app/build/intermediates/res/merged/debug/drawable-sw600dp-mdpi-v13/ic_action_insumos.png",
+        "source": "/home/maximo/StudioProjects/android-marble/AntonStockApp/app/src/main/res/drawable-sw600dp-mdpi/ic_action_insumos.png"
+    },
+    {
+        "merged": "/home/maximo/StudioProjects/android-marble/AntonStockApp/app/build/intermediates/res/merged/debug/drawable-sw600dp-mdpi-v13/ic_common_search.png",
+        "source": "/home/maximo/StudioProjects/android-marble/AntonStockApp/app/src/main/res/drawable-sw600dp-mdpi/ic_common_search.png"
+    },
+    {
+        "merged": "/home/maximo/StudioProjects/android-marble/AntonStockApp/app/build/intermediates/res/merged/debug/drawable-sw600dp-mdpi-v13/ic_launcher.png",
+        "source": "/home/maximo/StudioProjects/android-marble/AntonStockApp/app/src/main/res/drawable-sw600dp-mdpi/ic_launcher.png"
+    },
+    {
+        "merged": "/home/maximo/StudioProjects/android-marble/AntonStockApp/app/build/intermediates/res/merged/debug/drawable-sw600dp-mdpi-v13/proveedor.png",
+        "source": "/home/maximo/StudioProjects/android-marble/AntonStockApp/app/src/main/res/drawable-sw600dp-mdpi/proveedor.png"
+    },
+    {
+        "merged": "/home/maximo/StudioProjects/android-marble/AntonStockApp/app/build/intermediates/res/merged/debug/drawable-sw600dp-mdpi-v13/ic_common_add.png",
+        "source": "/home/maximo/StudioProjects/android-marble/AntonStockApp/app/src/main/res/drawable-sw600dp-mdpi/ic_common_add.png"
+    },
+    {
+        "merged": "/home/maximo/StudioProjects/android-marble/AntonStockApp/app/build/intermediates/res/merged/debug/drawable-sw600dp-mdpi-v13/ic_main_genoe.png",
+        "source": "/home/maximo/StudioProjects/android-marble/AntonStockApp/app/src/main/res/drawable-sw600dp-mdpi/ic_main_genoe.png"
+    },
+    {
+        "merged": "/home/maximo/StudioProjects/android-marble/AntonStockApp/app/build/intermediates/res/merged/debug/drawable-sw600dp-mdpi-v13/ic_email.png",
+        "source": "/home/maximo/StudioProjects/android-marble/AntonStockApp/app/src/main/res/drawable-sw600dp-mdpi/ic_email.png"
+    },
+    {
+        "merged": "/home/maximo/StudioProjects/android-marble/AntonStockApp/app/build/intermediates/res/merged/debug/drawable-sw600dp-mdpi-v13/ic_address.png",
+        "source": "/home/maximo/StudioProjects/android-marble/AntonStockApp/app/src/main/res/drawable-sw600dp-mdpi/ic_address.png"
+    },
+    {
+        "merged": "/home/maximo/StudioProjects/android-marble/AntonStockApp/app/build/intermediates/res/merged/debug/drawable-sw600dp-mdpi-v13/ic_menu_exit.png",
+        "source": "/home/maximo/StudioProjects/android-marble/AntonStockApp/app/src/main/res/drawable-sw600dp-mdpi/ic_menu_exit.png"
+    },
+    {
+        "merged": "/home/maximo/StudioProjects/android-marble/AntonStockApp/app/build/intermediates/res/merged/debug/drawable-sw600dp-mdpi-v13/ic_main_genpm.png",
+        "source": "/home/maximo/StudioProjects/android-marble/AntonStockApp/app/src/main/res/drawable-sw600dp-mdpi/ic_main_genpm.png"
+    },
+    {
+        "merged": "/home/maximo/StudioProjects/android-marble/AntonStockApp/app/build/intermediates/res/merged/debug/drawable-sw600dp-mdpi-v13/ic_main_income.png",
+        "source": "/home/maximo/StudioProjects/android-marble/AntonStockApp/app/src/main/res/drawable-sw600dp-mdpi/ic_main_income.png"
+    }
+]

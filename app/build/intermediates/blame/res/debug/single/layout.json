@@ -1,0 +1,354 @@
+[
+    {
+        "merged": "/home/maximo/StudioProjects/android-marble/AntonStockApp/app/build/intermediates/res/merged/debug/layout/fragment_add_pmm.xml",
+        "source": "/home/maximo/StudioProjects/android-marble/AntonStockApp/app/src/main/res/layout/fragment_add_pmm.xml"
+    },
+    {
+        "merged": "/home/maximo/StudioProjects/android-marble/AntonStockApp/app/build/intermediates/res/merged/debug/layout/listitem_lp.xml",
+        "source": "/home/maximo/StudioProjects/android-marble/AntonStockApp/app/src/main/res/layout/listitem_lp.xml"
+    },
+    {
+        "merged": "/home/maximo/StudioProjects/android-marble/AntonStockApp/app/build/intermediates/res/merged/debug/layout/listitem_lp_mp.xml",
+        "source": "/home/maximo/StudioProjects/android-marble/AntonStockApp/app/src/main/res/layout/listitem_lp_mp.xml"
+    },
+    {
+        "merged": "/home/maximo/StudioProjects/android-marble/AntonStockApp/app/build/intermediates/res/merged/debug/layout/abc_action_menu_item_layout.xml",
+        "source": "/home/maximo/StudioProjects/android-marble/AntonStockApp/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/19.1.0/res/layout/abc_action_menu_item_layout.xml"
+    },
+    {
+        "merged": "/home/maximo/StudioProjects/android-marble/AntonStockApp/app/build/intermediates/res/merged/debug/layout/fragment_search_bacha.xml",
+        "source": "/home/maximo/StudioProjects/android-marble/AntonStockApp/app/src/main/res/layout/fragment_search_bacha.xml"
+    },
+    {
+        "merged": "/home/maximo/StudioProjects/android-marble/AntonStockApp/app/build/intermediates/res/merged/debug/layout/listitem_sub_product.xml",
+        "source": "/home/maximo/StudioProjects/android-marble/AntonStockApp/app/src/main/res/layout/listitem_sub_product.xml"
+    },
+    {
+        "merged": "/home/maximo/StudioProjects/android-marble/AntonStockApp/app/build/intermediates/res/merged/debug/layout/abc_screen_simple_overlay_action_mode.xml",
+        "source": "/home/maximo/StudioProjects/android-marble/AntonStockApp/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/21.0.3/res/layout/abc_screen_simple_overlay_action_mode.xml"
+    },
+    {
+        "merged": "/home/maximo/StudioProjects/android-marble/AntonStockApp/app/build/intermediates/res/merged/debug/layout/activity_partner_list.xml",
+        "source": "/home/maximo/StudioProjects/android-marble/AntonStockApp/app/src/main/res/layout/activity_partner_list.xml"
+    },
+    {
+        "merged": "/home/maximo/StudioProjects/android-marble/AntonStockApp/app/build/intermediates/res/merged/debug/layout/fragment_add_pminsumo.xml",
+        "source": "/home/maximo/StudioProjects/android-marble/AntonStockApp/app/src/main/res/layout/fragment_add_pminsumo.xml"
+    },
+    {
+        "merged": "/home/maximo/StudioProjects/android-marble/AntonStockApp/app/build/intermediates/res/merged/debug/layout/abc_action_bar_decor_include.xml",
+        "source": "/home/maximo/StudioProjects/android-marble/AntonStockApp/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/19.1.0/res/layout/abc_action_bar_decor_include.xml"
+    },
+    {
+        "merged": "/home/maximo/StudioProjects/android-marble/AntonStockApp/app/build/intermediates/res/merged/debug/layout/abc_action_bar_title_item.xml",
+        "source": "/home/maximo/StudioProjects/android-marble/AntonStockApp/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/19.1.0/res/layout/abc_action_bar_title_item.xml"
+    },
+    {
+        "merged": "/home/maximo/StudioProjects/android-marble/AntonStockApp/app/build/intermediates/res/merged/debug/layout/abc_activity_chooser_view.xml",
+        "source": "/home/maximo/StudioProjects/android-marble/AntonStockApp/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/19.1.0/res/layout/abc_activity_chooser_view.xml"
+    },
+    {
+        "merged": "/home/maximo/StudioProjects/android-marble/AntonStockApp/app/build/intermediates/res/merged/debug/layout/fragment_in_products_bachas_cli.xml",
+        "source": "/home/maximo/StudioProjects/android-marble/AntonStockApp/app/src/main/res/layout/fragment_in_products_bachas_cli.xml"
+    },
+    {
+        "merged": "/home/maximo/StudioProjects/android-marble/AntonStockApp/app/build/intermediates/res/merged/debug/layout/fragment_out_products_servicio.xml",
+        "source": "/home/maximo/StudioProjects/android-marble/AntonStockApp/app/src/main/res/layout/fragment_out_products_servicio.xml"
+    },
+    {
+        "merged": "/home/maximo/StudioProjects/android-marble/AntonStockApp/app/build/intermediates/res/merged/debug/layout/activity_product_twopane.xml",
+        "source": "/home/maximo/StudioProjects/android-marble/AntonStockApp/app/src/main/res/layout/activity_product_twopane.xml"
+    },
+    {
+        "merged": "/home/maximo/StudioProjects/android-marble/AntonStockApp/app/build/intermediates/res/merged/debug/layout/abc_action_mode_close_item.xml",
+        "source": "/home/maximo/StudioProjects/android-marble/AntonStockApp/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/19.1.0/res/layout/abc_action_mode_close_item.xml"
+    },
+    {
+        "merged": "/home/maximo/StudioProjects/android-marble/AntonStockApp/app/build/intermediates/res/merged/debug/layout/fragment_detail_insumo.xml",
+        "source": "/home/maximo/StudioProjects/android-marble/AntonStockApp/app/src/main/res/layout/fragment_detail_insumo.xml"
+    },
+    {
+        "merged": "/home/maximo/StudioProjects/android-marble/AntonStockApp/app/build/intermediates/res/merged/debug/layout/fragment_detail_product.xml",
+        "source": "/home/maximo/StudioProjects/android-marble/AntonStockApp/app/src/main/res/layout/fragment_detail_product.xml"
+    },
+    {
+        "merged": "/home/maximo/StudioProjects/android-marble/AntonStockApp/app/build/intermediates/res/merged/debug/layout/abc_action_bar_tabbar.xml",
+        "source": "/home/maximo/StudioProjects/android-marble/AntonStockApp/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/19.1.0/res/layout/abc_action_bar_tabbar.xml"
+    },
+    {
+        "merged": "/home/maximo/StudioProjects/android-marble/AntonStockApp/app/build/intermediates/res/merged/debug/layout/abc_list_menu_item_radio.xml",
+        "source": "/home/maximo/StudioProjects/android-marble/AntonStockApp/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/19.1.0/res/layout/abc_list_menu_item_radio.xml"
+    },
+    {
+        "merged": "/home/maximo/StudioProjects/android-marble/AntonStockApp/app/build/intermediates/res/merged/debug/layout/fragment_add_product_insumo.xml",
+        "source": "/home/maximo/StudioProjects/android-marble/AntonStockApp/app/src/main/res/layout/fragment_add_product_insumo.xml"
+    },
+    {
+        "merged": "/home/maximo/StudioProjects/android-marble/AntonStockApp/app/build/intermediates/res/merged/debug/layout/abc_simple_dropdown_hint.xml",
+        "source": "/home/maximo/StudioProjects/android-marble/AntonStockApp/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/21.0.3/res/layout/abc_simple_dropdown_hint.xml"
+    },
+    {
+        "merged": "/home/maximo/StudioProjects/android-marble/AntonStockApp/app/build/intermediates/res/merged/debug/layout/fragment_in_products_insumos.xml",
+        "source": "/home/maximo/StudioProjects/android-marble/AntonStockApp/app/src/main/res/layout/fragment_in_products_insumos.xml"
+    },
+    {
+        "merged": "/home/maximo/StudioProjects/android-marble/AntonStockApp/app/build/intermediates/res/merged/debug/layout/fragment_search_insumo.xml",
+        "source": "/home/maximo/StudioProjects/android-marble/AntonStockApp/app/src/main/res/layout/fragment_search_insumo.xml"
+    },
+    {
+        "merged": "/home/maximo/StudioProjects/android-marble/AntonStockApp/app/build/intermediates/res/merged/debug/layout/abc_popup_menu_item_layout.xml",
+        "source": "/home/maximo/StudioProjects/android-marble/AntonStockApp/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/19.1.0/res/layout/abc_popup_menu_item_layout.xml"
+    },
+    {
+        "merged": "/home/maximo/StudioProjects/android-marble/AntonStockApp/app/build/intermediates/res/merged/debug/layout/activity_product_type.xml",
+        "source": "/home/maximo/StudioProjects/android-marble/AntonStockApp/app/src/main/res/layout/activity_product_type.xml"
+    },
+    {
+        "merged": "/home/maximo/StudioProjects/android-marble/AntonStockApp/app/build/intermediates/res/merged/debug/layout/activity_out_products.xml",
+        "source": "/home/maximo/StudioProjects/android-marble/AntonStockApp/app/src/main/res/layout/activity_out_products.xml"
+    },
+    {
+        "merged": "/home/maximo/StudioProjects/android-marble/AntonStockApp/app/build/intermediates/res/merged/debug/layout/abc_list_menu_item_icon.xml",
+        "source": "/home/maximo/StudioProjects/android-marble/AntonStockApp/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/19.1.0/res/layout/abc_list_menu_item_icon.xml"
+    },
+    {
+        "merged": "/home/maximo/StudioProjects/android-marble/AntonStockApp/app/build/intermediates/res/merged/debug/layout/listitem_drawer.xml",
+        "source": "/home/maximo/StudioProjects/android-marble/AntonStockApp/app/src/main/res/layout/listitem_drawer.xml"
+    },
+    {
+        "merged": "/home/maximo/StudioProjects/android-marble/AntonStockApp/app/build/intermediates/res/merged/debug/layout/fragment_out_products_mp.xml",
+        "source": "/home/maximo/StudioProjects/android-marble/AntonStockApp/app/src/main/res/layout/fragment_out_products_mp.xml"
+    },
+    {
+        "merged": "/home/maximo/StudioProjects/android-marble/AntonStockApp/app/build/intermediates/res/merged/debug/layout/fragment_out_products_bacha.xml",
+        "source": "/home/maximo/StudioProjects/android-marble/AntonStockApp/app/src/main/res/layout/fragment_out_products_bacha.xml"
+    },
+    {
+        "merged": "/home/maximo/StudioProjects/android-marble/AntonStockApp/app/build/intermediates/res/merged/debug/layout/fragment_add_product_servicio.xml",
+        "source": "/home/maximo/StudioProjects/android-marble/AntonStockApp/app/src/main/res/layout/fragment_add_product_servicio.xml"
+    },
+    {
+        "merged": "/home/maximo/StudioProjects/android-marble/AntonStockApp/app/build/intermediates/res/merged/debug/layout/fragment_search_mp.xml",
+        "source": "/home/maximo/StudioProjects/android-marble/AntonStockApp/app/src/main/res/layout/fragment_search_mp.xml"
+    },
+    {
+        "merged": "/home/maximo/StudioProjects/android-marble/AntonStockApp/app/build/intermediates/res/merged/debug/layout/fragment_detail_mp.xml",
+        "source": "/home/maximo/StudioProjects/android-marble/AntonStockApp/app/src/main/res/layout/fragment_detail_mp.xml"
+    },
+    {
+        "merged": "/home/maximo/StudioProjects/android-marble/AntonStockApp/app/build/intermediates/res/merged/debug/layout/abc_action_mode_bar.xml",
+        "source": "/home/maximo/StudioProjects/android-marble/AntonStockApp/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/19.1.0/res/layout/abc_action_mode_bar.xml"
+    },
+    {
+        "merged": "/home/maximo/StudioProjects/android-marble/AntonStockApp/app/build/intermediates/res/merged/debug/layout/abc_action_bar_view_list_nav_layout.xml",
+        "source": "/home/maximo/StudioProjects/android-marble/AntonStockApp/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/19.1.0/res/layout/abc_action_bar_view_list_nav_layout.xml"
+    },
+    {
+        "merged": "/home/maximo/StudioProjects/android-marble/AntonStockApp/app/build/intermediates/res/merged/debug/layout/listitem_emple.xml",
+        "source": "/home/maximo/StudioProjects/android-marble/AntonStockApp/app/src/main/res/layout/listitem_emple.xml"
+    },
+    {
+        "merged": "/home/maximo/StudioProjects/android-marble/AntonStockApp/app/build/intermediates/res/merged/debug/layout/listitem_insumo_move.xml",
+        "source": "/home/maximo/StudioProjects/android-marble/AntonStockApp/app/src/main/res/layout/listitem_insumo_move.xml"
+    },
+    {
+        "merged": "/home/maximo/StudioProjects/android-marble/AntonStockApp/app/build/intermediates/res/merged/debug/layout/fragment_add_product_action.xml",
+        "source": "/home/maximo/StudioProjects/android-marble/AntonStockApp/app/src/main/res/layout/fragment_add_product_action.xml"
+    },
+    {
+        "merged": "/home/maximo/StudioProjects/android-marble/AntonStockApp/app/build/intermediates/res/merged/debug/layout/fragment_server_popup.xml",
+        "source": "/home/maximo/StudioProjects/android-marble/AntonStockApp/app/src/main/res/layout/fragment_server_popup.xml"
+    },
+    {
+        "merged": "/home/maximo/StudioProjects/android-marble/AntonStockApp/app/build/intermediates/res/merged/debug/layout/activity_add_product.xml",
+        "source": "/home/maximo/StudioProjects/android-marble/AntonStockApp/app/src/main/res/layout/activity_add_product.xml"
+    },
+    {
+        "merged": "/home/maximo/StudioProjects/android-marble/AntonStockApp/app/build/intermediates/res/merged/debug/layout/fragment_add_pmbacha.xml",
+        "source": "/home/maximo/StudioProjects/android-marble/AntonStockApp/app/src/main/res/layout/fragment_add_pmbacha.xml"
+    },
+    {
+        "merged": "/home/maximo/StudioProjects/android-marble/AntonStockApp/app/build/intermediates/res/merged/debug/layout/fragment_product_type.xml",
+        "source": "/home/maximo/StudioProjects/android-marble/AntonStockApp/app/src/main/res/layout/fragment_product_type.xml"
+    },
+    {
+        "merged": "/home/maximo/StudioProjects/android-marble/AntonStockApp/app/build/intermediates/res/merged/debug/layout/fragment_navigation_drawer.xml",
+        "source": "/home/maximo/StudioProjects/android-marble/AntonStockApp/app/src/main/res/layout/fragment_navigation_drawer.xml"
+    },
+    {
+        "merged": "/home/maximo/StudioProjects/android-marble/AntonStockApp/app/build/intermediates/res/merged/debug/layout/listitem_mp_out_move.xml",
+        "source": "/home/maximo/StudioProjects/android-marble/AntonStockApp/app/src/main/res/layout/listitem_mp_out_move.xml"
+    },
+    {
+        "merged": "/home/maximo/StudioProjects/android-marble/AntonStockApp/app/build/intermediates/res/merged/debug/layout/fragment_detail_bacha.xml",
+        "source": "/home/maximo/StudioProjects/android-marble/AntonStockApp/app/src/main/res/layout/fragment_detail_bacha.xml"
+    },
+    {
+        "merged": "/home/maximo/StudioProjects/android-marble/AntonStockApp/app/build/intermediates/res/merged/debug/layout/activity_submit_products.xml",
+        "source": "/home/maximo/StudioProjects/android-marble/AntonStockApp/app/src/main/res/layout/activity_submit_products.xml"
+    },
+    {
+        "merged": "/home/maximo/StudioProjects/android-marble/AntonStockApp/app/build/intermediates/res/merged/debug/layout/listitem_product.xml",
+        "source": "/home/maximo/StudioProjects/android-marble/AntonStockApp/app/src/main/res/layout/listitem_product.xml"
+    },
+    {
+        "merged": "/home/maximo/StudioProjects/android-marble/AntonStockApp/app/build/intermediates/res/merged/debug/layout/activity_reenter_products.xml",
+        "source": "/home/maximo/StudioProjects/android-marble/AntonStockApp/app/src/main/res/layout/activity_reenter_products.xml"
+    },
+    {
+        "merged": "/home/maximo/StudioProjects/android-marble/AntonStockApp/app/build/intermediates/res/merged/debug/layout/abc_screen_toolbar.xml",
+        "source": "/home/maximo/StudioProjects/android-marble/AntonStockApp/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/21.0.3/res/layout/abc_screen_toolbar.xml"
+    },
+    {
+        "merged": "/home/maximo/StudioProjects/android-marble/AntonStockApp/app/build/intermediates/res/merged/debug/layout/fragment_dimensions.xml",
+        "source": "/home/maximo/StudioProjects/android-marble/AntonStockApp/app/src/main/res/layout/fragment_dimensions.xml"
+    },
+    {
+        "merged": "/home/maximo/StudioProjects/android-marble/AntonStockApp/app/build/intermediates/res/merged/debug/layout/fragment_detail_partner.xml",
+        "source": "/home/maximo/StudioProjects/android-marble/AntonStockApp/app/src/main/res/layout/fragment_detail_partner.xml"
+    },
+    {
+        "merged": "/home/maximo/StudioProjects/android-marble/AntonStockApp/app/build/intermediates/res/merged/debug/layout/abc_expanded_menu_layout.xml",
+        "source": "/home/maximo/StudioProjects/android-marble/AntonStockApp/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/19.1.0/res/layout/abc_expanded_menu_layout.xml"
+    },
+    {
+        "merged": "/home/maximo/StudioProjects/android-marble/AntonStockApp/app/build/intermediates/res/merged/debug/layout/abc_screen_simple.xml",
+        "source": "/home/maximo/StudioProjects/android-marble/AntonStockApp/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/21.0.3/res/layout/abc_screen_simple.xml"
+    },
+    {
+        "merged": "/home/maximo/StudioProjects/android-marble/AntonStockApp/app/build/intermediates/res/merged/debug/layout/fragment_in_products_bachas_prov.xml",
+        "source": "/home/maximo/StudioProjects/android-marble/AntonStockApp/app/src/main/res/layout/fragment_in_products_bachas_prov.xml"
+    },
+    {
+        "merged": "/home/maximo/StudioProjects/android-marble/AntonStockApp/app/build/intermediates/res/merged/debug/layout/abc_action_mode_close_item_material.xml",
+        "source": "/home/maximo/StudioProjects/android-marble/AntonStockApp/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/21.0.3/res/layout/abc_action_mode_close_item_material.xml"
+    },
+    {
+        "merged": "/home/maximo/StudioProjects/android-marble/AntonStockApp/app/build/intermediates/res/merged/debug/layout/abc_action_bar_up_container.xml",
+        "source": "/home/maximo/StudioProjects/android-marble/AntonStockApp/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/21.0.3/res/layout/abc_action_bar_up_container.xml"
+    },
+    {
+        "merged": "/home/maximo/StudioProjects/android-marble/AntonStockApp/app/build/intermediates/res/merged/debug/layout/fragment_add_product_mp.xml",
+        "source": "/home/maximo/StudioProjects/android-marble/AntonStockApp/app/src/main/res/layout/fragment_add_product_mp.xml"
+    },
+    {
+        "merged": "/home/maximo/StudioProjects/android-marble/AntonStockApp/app/build/intermediates/res/merged/debug/layout/activity_partner_twopane.xml",
+        "source": "/home/maximo/StudioProjects/android-marble/AntonStockApp/app/src/main/res/layout/activity_partner_twopane.xml"
+    },
+    {
+        "merged": "/home/maximo/StudioProjects/android-marble/AntonStockApp/app/build/intermediates/res/merged/debug/layout/abc_action_bar_decor_overlay.xml",
+        "source": "/home/maximo/StudioProjects/android-marble/AntonStockApp/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/19.1.0/res/layout/abc_action_bar_decor_overlay.xml"
+    },
+    {
+        "merged": "/home/maximo/StudioProjects/android-marble/AntonStockApp/app/build/intermediates/res/merged/debug/layout/abc_action_bar_home.xml",
+        "source": "/home/maximo/StudioProjects/android-marble/AntonStockApp/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/19.1.0/res/layout/abc_action_bar_home.xml"
+    },
+    {
+        "merged": "/home/maximo/StudioProjects/android-marble/AntonStockApp/app/build/intermediates/res/merged/debug/layout/fragment_add_product_bacha.xml",
+        "source": "/home/maximo/StudioProjects/android-marble/AntonStockApp/app/src/main/res/layout/fragment_add_product_bacha.xml"
+    },
+    {
+        "merged": "/home/maximo/StudioProjects/android-marble/AntonStockApp/app/build/intermediates/res/merged/debug/layout/activity_add_oe.xml",
+        "source": "/home/maximo/StudioProjects/android-marble/AntonStockApp/app/src/main/res/layout/activity_add_oe.xml"
+    },
+    {
+        "merged": "/home/maximo/StudioProjects/android-marble/AntonStockApp/app/build/intermediates/res/merged/debug/layout/fragment_popup.xml",
+        "source": "/home/maximo/StudioProjects/android-marble/AntonStockApp/app/src/main/res/layout/fragment_popup.xml"
+    },
+    {
+        "merged": "/home/maximo/StudioProjects/android-marble/AntonStockApp/app/build/intermediates/res/merged/debug/layout/abc_list_menu_item_layout.xml",
+        "source": "/home/maximo/StudioProjects/android-marble/AntonStockApp/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/19.1.0/res/layout/abc_list_menu_item_layout.xml"
+    },
+    {
+        "merged": "/home/maximo/StudioProjects/android-marble/AntonStockApp/app/build/intermediates/res/merged/debug/layout/activity_product_list.xml",
+        "source": "/home/maximo/StudioProjects/android-marble/AntonStockApp/app/src/main/res/layout/activity_product_list.xml"
+    },
+    {
+        "merged": "/home/maximo/StudioProjects/android-marble/AntonStockApp/app/build/intermediates/res/merged/debug/layout/activity_launcher.xml",
+        "source": "/home/maximo/StudioProjects/android-marble/AntonStockApp/app/src/main/res/layout/activity_launcher.xml"
+    },
+    {
+        "merged": "/home/maximo/StudioProjects/android-marble/AntonStockApp/app/build/intermediates/res/merged/debug/layout/activity_consume_insumo.xml",
+        "source": "/home/maximo/StudioProjects/android-marble/AntonStockApp/app/src/main/res/layout/activity_consume_insumo.xml"
+    },
+    {
+        "merged": "/home/maximo/StudioProjects/android-marble/AntonStockApp/app/build/intermediates/res/merged/debug/layout/abc_search_view.xml",
+        "source": "/home/maximo/StudioProjects/android-marble/AntonStockApp/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/19.1.0/res/layout/abc_search_view.xml"
+    },
+    {
+        "merged": "/home/maximo/StudioProjects/android-marble/AntonStockApp/app/build/intermediates/res/merged/debug/layout/listitem_lp2.xml",
+        "source": "/home/maximo/StudioProjects/android-marble/AntonStockApp/app/src/main/res/layout/listitem_lp2.xml"
+    },
+    {
+        "merged": "/home/maximo/StudioProjects/android-marble/AntonStockApp/app/build/intermediates/res/merged/debug/layout/activity_in_products.xml",
+        "source": "/home/maximo/StudioProjects/android-marble/AntonStockApp/app/src/main/res/layout/activity_in_products.xml"
+    },
+    {
+        "merged": "/home/maximo/StudioProjects/android-marble/AntonStockApp/app/build/intermediates/res/merged/debug/layout/abc_activity_chooser_view_list_item.xml",
+        "source": "/home/maximo/StudioProjects/android-marble/AntonStockApp/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/19.1.0/res/layout/abc_activity_chooser_view_list_item.xml"
+    },
+    {
+        "merged": "/home/maximo/StudioProjects/android-marble/AntonStockApp/app/build/intermediates/res/merged/debug/layout/fragment_search_servicios.xml",
+        "source": "/home/maximo/StudioProjects/android-marble/AntonStockApp/app/src/main/res/layout/fragment_search_servicios.xml"
+    },
+    {
+        "merged": "/home/maximo/StudioProjects/android-marble/AntonStockApp/app/build/intermediates/res/merged/debug/layout/activity_login.xml",
+        "source": "/home/maximo/StudioProjects/android-marble/AntonStockApp/app/src/main/res/layout/activity_login.xml"
+    },
+    {
+        "merged": "/home/maximo/StudioProjects/android-marble/AntonStockApp/app/build/intermediates/res/merged/debug/layout/listitem_partner.xml",
+        "source": "/home/maximo/StudioProjects/android-marble/AntonStockApp/app/src/main/res/layout/listitem_partner.xml"
+    },
+    {
+        "merged": "/home/maximo/StudioProjects/android-marble/AntonStockApp/app/build/intermediates/res/merged/debug/layout/fragment_in_products_mp.xml",
+        "source": "/home/maximo/StudioProjects/android-marble/AntonStockApp/app/src/main/res/layout/fragment_in_products_mp.xml"
+    },
+    {
+        "merged": "/home/maximo/StudioProjects/android-marble/AntonStockApp/app/build/intermediates/res/merged/debug/layout/fragment_add_mp_action.xml",
+        "source": "/home/maximo/StudioProjects/android-marble/AntonStockApp/app/src/main/res/layout/fragment_add_mp_action.xml"
+    },
+    {
+        "merged": "/home/maximo/StudioProjects/android-marble/AntonStockApp/app/build/intermediates/res/merged/debug/layout/abc_list_menu_item_checkbox.xml",
+        "source": "/home/maximo/StudioProjects/android-marble/AntonStockApp/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/19.1.0/res/layout/abc_list_menu_item_checkbox.xml"
+    },
+    {
+        "merged": "/home/maximo/StudioProjects/android-marble/AntonStockApp/app/build/intermediates/res/merged/debug/layout/activity_detail_partner.xml",
+        "source": "/home/maximo/StudioProjects/android-marble/AntonStockApp/app/src/main/res/layout/activity_detail_partner.xml"
+    },
+    {
+        "merged": "/home/maximo/StudioProjects/android-marble/AntonStockApp/app/build/intermediates/res/merged/debug/layout/abc_action_menu_layout.xml",
+        "source": "/home/maximo/StudioProjects/android-marble/AntonStockApp/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/19.1.0/res/layout/abc_action_menu_layout.xml"
+    },
+    {
+        "merged": "/home/maximo/StudioProjects/android-marble/AntonStockApp/app/build/intermediates/res/merged/debug/layout/abc_action_bar_tab.xml",
+        "source": "/home/maximo/StudioProjects/android-marble/AntonStockApp/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/19.1.0/res/layout/abc_action_bar_tab.xml"
+    },
+    {
+        "merged": "/home/maximo/StudioProjects/android-marble/AntonStockApp/app/build/intermediates/res/merged/debug/layout/solo_photo.xml",
+        "source": "/home/maximo/StudioProjects/android-marble/AntonStockApp/app/src/main/res/layout/solo_photo.xml"
+    },
+    {
+        "merged": "/home/maximo/StudioProjects/android-marble/AntonStockApp/app/build/intermediates/res/merged/debug/layout/activity_detail_product.xml",
+        "source": "/home/maximo/StudioProjects/android-marble/AntonStockApp/app/src/main/res/layout/activity_detail_product.xml"
+    },
+    {
+        "merged": "/home/maximo/StudioProjects/android-marble/AntonStockApp/app/build/intermediates/res/merged/debug/layout/support_simple_spinner_dropdown_item.xml",
+        "source": "/home/maximo/StudioProjects/android-marble/AntonStockApp/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/19.1.0/res/layout/support_simple_spinner_dropdown_item.xml"
+    },
+    {
+        "merged": "/home/maximo/StudioProjects/android-marble/AntonStockApp/app/build/intermediates/res/merged/debug/layout/listitem_bacha_move.xml",
+        "source": "/home/maximo/StudioProjects/android-marble/AntonStockApp/app/src/main/res/layout/listitem_bacha_move.xml"
+    },
+    {
+        "merged": "/home/maximo/StudioProjects/android-marble/AntonStockApp/app/build/intermediates/res/merged/debug/layout/fragment_partner_type.xml",
+        "source": "/home/maximo/StudioProjects/android-marble/AntonStockApp/app/src/main/res/layout/fragment_partner_type.xml"
+    },
+    {
+        "merged": "/home/maximo/StudioProjects/android-marble/AntonStockApp/app/build/intermediates/res/merged/debug/layout/abc_search_dropdown_item_icons_2line.xml",
+        "source": "/home/maximo/StudioProjects/android-marble/AntonStockApp/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/19.1.0/res/layout/abc_search_dropdown_item_icons_2line.xml"
+    },
+    {
+        "merged": "/home/maximo/StudioProjects/android-marble/AntonStockApp/app/build/intermediates/res/merged/debug/layout/abc_activity_chooser_view_include.xml",
+        "source": "/home/maximo/StudioProjects/android-marble/AntonStockApp/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/19.1.0/res/layout/abc_activity_chooser_view_include.xml"
+    }
+]

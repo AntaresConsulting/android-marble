@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/RelativeLayout1"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <ImageView
+        android:id="@+id/empleImg"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:background="@color/bg_listitem_emple"
+        android:src="@drawable/ic_user_employee" />
+
+    <View
+        android:id="@+id/sepProdThumb"
+        android:layout_width="4dp"
+        android:layout_height="80dp"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="5dp"
+        android:layout_toRightOf="@id/empleImg"
+        android:background="@color/actionbar_theme_color" />
+
+    <TextView
+        android:id="@+id/nombreEmple"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="false"
+        android:layout_margin="5dp"
+        android:layout_toRightOf="@id/sepProdThumb"
+        android:text="Nombre Prod"
+        android:textSize="20sp" />
+
+    <TextView
+        android:id="@+id/cargoEmple"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/nombreEmple"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="40dp"
+        android:layout_toRightOf="@id/sepProdThumb"
+        android:text="@string/listitem_emple_cargo"
+        android:textSize="17sp" />  
+
+    <TextView
+        android:id="@+id/dptoEmple"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="false"
+        android:layout_below="@id/cargoEmple"
+        android:layout_marginLeft="40dp"
+		android:layout_marginTop="10dp"        
+		android:layout_marginRight="10dp"
+        android:layout_toRightOf="@id/sepProdThumb"
+        android:text="@string/listitem_emple_dept"
+        android:textSize="17sp" />
+    <TextView
+        android:id="@+id/cargoEmpleVal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/cargoEmple"
+        android:layout_toRightOf="@id/dptoEmple"
+        android:text="@string/listitem_emple_cargo_sd"
+        android:textSize="17sp" />      
+    <TextView
+        android:id="@+id/dptoEmpleVal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/dptoEmple"
+        android:layout_toRightOf="@id/dptoEmple"
+        android:text="@string/listitem_emple_dept_sd"
+        android:textSize="17sp" />
+    
+    <RadioButton
+        android:id="@+id/RadioButton1"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="26dp"
+        android:gravity="center_vertical"
+        android:layout_centerVertical="true"
+	     android:checked="false"
+	     android:focusable="false"
+	     android:clickable="false"
+        android:text="" />
+
+</RelativeLayout>
