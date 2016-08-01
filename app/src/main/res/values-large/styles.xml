@@ -1,22 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <!--
-        Base application theme, dependent on API level. This theme is replaced
-        by AppBaseTheme from res/values-vXX/styles.xml on newer devices.
-    -->
-    <style name="AppBaseTheme" parent="Theme.AppCompat.Light">
-        <!--
-            Theme customizations available in newer API levels can go in
-            res/values-vXX/styles.xml, while customizations related to
-            backward-compatibility can go here.
-        -->
-    </style>
-
-    <!-- Application theme. -->
-    <style name="AppTheme" parent="AppBaseTheme">
-        <!-- All customizations that are NOT specific to a particular API-level can go here. -->
-    </style>
 
     <style name="LoginFormContainer">
         <item name="android:layout_width">match_parent</item>
@@ -27,10 +11,13 @@
     <color name="bg_theme_color">#F4F4EE</color>
     <color name="actionbar_theme_color">#DC2A2A</color>
 
-    <style name="AntonTheme" parent="Theme.AppCompat.Light">
+    <style name="AntonTheme" parent="Theme.AppCompat.Light.NoActionBar">
         <item name="android:windowBackground">@color/bg_theme_color</item>
         <item name="android:colorBackground">@color/bg_theme_color</item>
-        <item name="android:actionBarStyle">@style/AntonActionBar</item>       
+        <item name="android:actionBarStyle">@style/AntonActionBar</item>
+        <item name="colorPrimary">@color/color_primary</item>
+        <item name="colorPrimaryDark">@color/color_primary_dark</item>
+        <item name="colorAccent">@color/color_accent</item>
     </style>
     <style name="LoginTheme" parent="AntonTheme">
         <item name="android:textSize">@dimen/app_text_size</item>

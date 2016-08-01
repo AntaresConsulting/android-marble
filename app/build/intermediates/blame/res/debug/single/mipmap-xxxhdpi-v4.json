@@ -1,0 +1,14 @@
+[
+    {
+        "merged": "/home/maximo/StudioProjects/android-marble/AntonStockApp/app/build/intermediates/res/merged/debug/mipmap-xxxhdpi-v4/icon_login_u.png",
+        "source": "/home/maximo/StudioProjects/android-marble/AntonStockApp/app/src/main/res/mipmap-xxxhdpi/icon_login_u.png"
+    },
+    {
+        "merged": "/home/maximo/StudioProjects/android-marble/AntonStockApp/app/build/intermediates/res/merged/debug/mipmap-xxxhdpi-v4/ic_launcher.png",
+        "source": "/home/maximo/StudioProjects/android-marble/AntonStockApp/app/src/main/res/mipmap-xxxhdpi/ic_launcher.png"
+    },
+    {
+        "merged": "/home/maximo/StudioProjects/android-marble/AntonStockApp/app/build/intermediates/res/merged/debug/mipmap-xxxhdpi-v4/icon_login_p.png",
+        "source": "/home/maximo/StudioProjects/android-marble/AntonStockApp/app/src/main/res/mipmap-xxxhdpi/icon_login_p.png"
+    }
+]

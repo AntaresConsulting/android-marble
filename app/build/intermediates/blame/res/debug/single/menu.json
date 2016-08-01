@@ -8,10 +8,6 @@
         "source": "/home/maximo/StudioProjects/android-marble/AntonStockApp/app/src/main/res/menu/add_pm.xml"
     },
     {
-        "merged": "/home/maximo/StudioProjects/android-marble/AntonStockApp/app/build/intermediates/res/merged/debug/menu/login.xml",
-        "source": "/home/maximo/StudioProjects/android-marble/AntonStockApp/app/src/main/res/menu/login.xml"
-    },
-    {
         "merged": "/home/maximo/StudioProjects/android-marble/AntonStockApp/app/build/intermediates/res/merged/debug/menu/add_oe.xml",
         "source": "/home/maximo/StudioProjects/android-marble/AntonStockApp/app/src/main/res/menu/add_oe.xml"
     },
@@ -20,8 +16,16 @@
         "source": "/home/maximo/StudioProjects/android-marble/AntonStockApp/app/src/main/res/menu/consume_insumo.xml"
     },
     {
+        "merged": "/home/maximo/StudioProjects/android-marble/AntonStockApp/app/build/intermediates/res/merged/debug/menu/menu_navview_part.xml",
+        "source": "/home/maximo/StudioProjects/android-marble/AntonStockApp/app/src/main/res/menu/menu_navview_part.xml"
+    },
+    {
         "merged": "/home/maximo/StudioProjects/android-marble/AntonStockApp/app/build/intermediates/res/merged/debug/menu/in_products.xml",
         "source": "/home/maximo/StudioProjects/android-marble/AntonStockApp/app/src/main/res/menu/in_products.xml"
+    },
+    {
+        "merged": "/home/maximo/StudioProjects/android-marble/AntonStockApp/app/build/intermediates/res/merged/debug/menu/menu_navview_prod.xml",
+        "source": "/home/maximo/StudioProjects/android-marble/AntonStockApp/app/src/main/res/menu/menu_navview_prod.xml"
     },
     {
         "merged": "/home/maximo/StudioProjects/android-marble/AntonStockApp/app/build/intermediates/res/merged/debug/menu/add_product.xml",
@@ -38,5 +42,9 @@
     {
         "merged": "/home/maximo/StudioProjects/android-marble/AntonStockApp/app/build/intermediates/res/merged/debug/menu/move_products.xml",
         "source": "/home/maximo/StudioProjects/android-marble/AntonStockApp/app/src/main/res/menu/move_products.xml"
+    },
+    {
+        "merged": "/home/maximo/StudioProjects/android-marble/AntonStockApp/app/build/intermediates/res/merged/debug/menu/menu_navview.xml",
+        "source": "/home/maximo/StudioProjects/android-marble/AntonStockApp/app/src/main/res/menu/menu_navview.xml"
     }
 ]

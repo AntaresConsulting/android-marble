@@ -108,7 +108,7 @@ public class NavigationDrawerFragment extends Fragment {
         }
         
         if(actAux  instanceof ProductListActivity){
-             dataList.add(new DrawerItem(getString(R.string.title_menu_forstock), R.drawable.ic_menu_product));
+             dataList.add(new DrawerItem(getString(R.string.title_menu_raw), R.drawable.ic_menu_product));
              dataList.add(new DrawerItem(getString(R.string.title_menu_expenses), R.drawable.ic_menu_product));
              dataList.add(new DrawerItem(getString(R.string.title_menu_bachas), R.drawable.ic_menu_product));
              dataList.add(new DrawerItem(getString(R.string.title_menu_services), R.drawable.ic_menu_product));
@@ -149,7 +149,7 @@ public class NavigationDrawerFragment extends Fragment {
         mDrawerToggle = new ActionBarDrawerToggle(
                 getActivity(),                    /* host Activity */
                 mDrawerLayout,                    /* DrawerLayout object */
-                R.drawable.ic_drawer,             /* nav drawer image to replace 'Up' caret */
+                R.drawable.ic_nav_drawer,             /* nav drawer image to replace 'Up' caret */
                 R.string.navigation_drawer_open,  /* "open drawer" description for accessibility */
                 R.string.navigation_drawer_close  /* "close drawer" description for accessibility */
         ) {

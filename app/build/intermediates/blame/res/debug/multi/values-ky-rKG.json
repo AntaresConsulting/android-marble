@@ -11,13 +11,13 @@
                     "endOffset": 154
                 },
                 "from": {
-                    "file": "/home/maximo/StudioProjects/android-marble/AntonStockApp/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/21.0.3/res/values-ky-rKG/values.xml",
+                    "file": "/home/maximo/StudioProjects/android-marble/AntonStockApp/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/24.1.1/res/values-ky-rKG/values-ky-rKG.xml",
                     "position": {
-                        "startLine": 3,
+                        "startLine": 2,
                         "startColumn": 4,
-                        "startOffset": 56,
+                        "startOffset": 55,
                         "endColumn": 103,
-                        "endOffset": 155
+                        "endOffset": 154
                     }
                 }
             },
@@ -30,13 +30,13 @@
                     "endOffset": 262
                 },
                 "from": {
-                    "file": "/home/maximo/StudioProjects/android-marble/AntonStockApp/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/21.0.3/res/values-ky-rKG/values.xml",
+                    "file": "/home/maximo/StudioProjects/android-marble/AntonStockApp/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/24.1.1/res/values-ky-rKG/values-ky-rKG.xml",
                     "position": {
-                        "startLine": 4,
+                        "startLine": 3,
                         "startColumn": 4,
-                        "startOffset": 160,
+                        "startOffset": 159,
                         "endColumn": 107,
-                        "endOffset": 263
+                        "endOffset": 262
                     }
                 }
             },
@@ -49,13 +49,13 @@
                     "endOffset": 385
                 },
                 "from": {
-                    "file": "/home/maximo/StudioProjects/android-marble/AntonStockApp/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/21.0.3/res/values-ky-rKG/values.xml",
+                    "file": "/home/maximo/StudioProjects/android-marble/AntonStockApp/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/24.1.1/res/values-ky-rKG/values-ky-rKG.xml",
                     "position": {
-                        "startLine": 5,
+                        "startLine": 4,
                         "startColumn": 4,
-                        "startOffset": 268,
+                        "startOffset": 267,
                         "endColumn": 122,
-                        "endOffset": 386
+                        "endOffset": 385
                     }
                 }
             },
@@ -68,13 +68,13 @@
                     "endOffset": 480
                 },
                 "from": {
-                    "file": "/home/maximo/StudioProjects/android-marble/AntonStockApp/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/21.0.3/res/values-ky-rKG/values.xml",
+                    "file": "/home/maximo/StudioProjects/android-marble/AntonStockApp/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/24.1.1/res/values-ky-rKG/values-ky-rKG.xml",
                     "position": {
-                        "startLine": 6,
+                        "startLine": 5,
                         "startColumn": 4,
-                        "startOffset": 391,
+                        "startOffset": 390,
                         "endColumn": 94,
-                        "endOffset": 481
+                        "endOffset": 480
                     }
                 }
             },
@@ -87,13 +87,13 @@
                     "endOffset": 599
                 },
                 "from": {
-                    "file": "/home/maximo/StudioProjects/android-marble/AntonStockApp/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/21.0.3/res/values-ky-rKG/values.xml",
+                    "file": "/home/maximo/StudioProjects/android-marble/AntonStockApp/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/24.1.1/res/values-ky-rKG/values-ky-rKG.xml",
                     "position": {
-                        "startLine": 7,
+                        "startLine": 6,
                         "startColumn": 4,
-                        "startOffset": 486,
+                        "startOffset": 485,
                         "endColumn": 118,
-                        "endOffset": 600
+                        "endOffset": 599
                     }
                 }
             },
@@ -106,13 +106,13 @@
                     "endOffset": 683
                 },
                 "from": {
-                    "file": "/home/maximo/StudioProjects/android-marble/AntonStockApp/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/21.0.3/res/values-ky-rKG/values.xml",
+                    "file": "/home/maximo/StudioProjects/android-marble/AntonStockApp/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/24.1.1/res/values-ky-rKG/values-ky-rKG.xml",
                     "position": {
-                        "startLine": 8,
+                        "startLine": 7,
                         "startColumn": 4,
-                        "startOffset": 605,
+                        "startOffset": 604,
                         "endColumn": 83,
-                        "endOffset": 684
+                        "endOffset": 683
                     }
                 }
             },
@@ -125,13 +125,13 @@
                     "endOffset": 790
                 },
                 "from": {
-                    "file": "/home/maximo/StudioProjects/android-marble/AntonStockApp/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/21.0.3/res/values-ky-rKG/values.xml",
+                    "file": "/home/maximo/StudioProjects/android-marble/AntonStockApp/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/24.1.1/res/values-ky-rKG/values-ky-rKG.xml",
                     "position": {
-                        "startLine": 9,
+                        "startLine": 8,
                         "startColumn": 4,
-                        "startOffset": 689,
+                        "startOffset": 688,
                         "endColumn": 106,
-                        "endOffset": 791
+                        "endOffset": 790
                     }
                 }
             },
@@ -144,13 +144,13 @@
                     "endOffset": 907
                 },
                 "from": {
-                    "file": "/home/maximo/StudioProjects/android-marble/AntonStockApp/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/21.0.3/res/values-ky-rKG/values.xml",
+                    "file": "/home/maximo/StudioProjects/android-marble/AntonStockApp/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/24.1.1/res/values-ky-rKG/values-ky-rKG.xml",
                     "position": {
-                        "startLine": 10,
+                        "startLine": 9,
                         "startColumn": 4,
-                        "startOffset": 796,
+                        "startOffset": 795,
                         "endColumn": 116,
-                        "endOffset": 908
+                        "endOffset": 907
                     }
                 }
             },
@@ -159,17 +159,17 @@
                     "startLine": 10,
                     "startColumn": 4,
                     "startOffset": 912,
-                    "endColumn": 109,
-                    "endOffset": 1017
+                    "endColumn": 77,
+                    "endOffset": 985
                 },
                 "from": {
-                    "file": "/home/maximo/StudioProjects/android-marble/AntonStockApp/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/21.0.3/res/values-ky-rKG/values.xml",
+                    "file": "/home/maximo/StudioProjects/android-marble/AntonStockApp/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/24.1.1/res/values-ky-rKG/values-ky-rKG.xml",
                     "position": {
-                        "startLine": 11,
+                        "startLine": 10,
                         "startColumn": 4,
-                        "startOffset": 913,
-                        "endColumn": 109,
-                        "endOffset": 1018
+                        "startOffset": 912,
+                        "endColumn": 77,
+                        "endOffset": 985
                     }
                 }
             },
@@ -177,18 +177,18 @@
                 "to": {
                     "startLine": 11,
                     "startColumn": 4,
-                    "startOffset": 1022,
-                    "endColumn": 106,
-                    "endOffset": 1124
+                    "startOffset": 990,
+                    "endColumn": 78,
+                    "endOffset": 1064
                 },
                 "from": {
-                    "file": "/home/maximo/StudioProjects/android-marble/AntonStockApp/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/21.0.3/res/values-ky-rKG/values.xml",
+                    "file": "/home/maximo/StudioProjects/android-marble/AntonStockApp/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/24.1.1/res/values-ky-rKG/values-ky-rKG.xml",
                     "position": {
-                        "startLine": 12,
+                        "startLine": 11,
                         "startColumn": 4,
-                        "startOffset": 1023,
-                        "endColumn": 106,
-                        "endOffset": 1125
+                        "startOffset": 990,
+                        "endColumn": 78,
+                        "endOffset": 1064
                     }
                 }
             },
@@ -196,18 +196,18 @@
                 "to": {
                     "startLine": 12,
                     "startColumn": 4,
-                    "startOffset": 1129,
-                    "endColumn": 97,
-                    "endOffset": 1222
+                    "startOffset": 1069,
+                    "endColumn": 80,
+                    "endOffset": 1145
                 },
                 "from": {
-                    "file": "/home/maximo/StudioProjects/android-marble/AntonStockApp/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/21.0.3/res/values-ky-rKG/values.xml",
+                    "file": "/home/maximo/StudioProjects/android-marble/AntonStockApp/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/24.1.1/res/values-ky-rKG/values-ky-rKG.xml",
                     "position": {
-                        "startLine": 13,
+                        "startLine": 12,
                         "startColumn": 4,
-                        "startOffset": 1130,
-                        "endColumn": 97,
-                        "endOffset": 1223
+                        "startOffset": 1069,
+                        "endColumn": 80,
+                        "endOffset": 1145
                     }
                 }
             },
@@ -215,18 +215,18 @@
                 "to": {
                     "startLine": 13,
                     "startColumn": 4,
-                    "startOffset": 1227,
-                    "endColumn": 105,
-                    "endOffset": 1328
+                    "startOffset": 1150,
+                    "endColumn": 109,
+                    "endOffset": 1255
                 },
                 "from": {
-                    "file": "/home/maximo/StudioProjects/android-marble/AntonStockApp/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/21.0.3/res/values-ky-rKG/values.xml",
+                    "file": "/home/maximo/StudioProjects/android-marble/AntonStockApp/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/24.1.1/res/values-ky-rKG/values-ky-rKG.xml",
                     "position": {
-                        "startLine": 14,
+                        "startLine": 13,
                         "startColumn": 4,
-                        "startOffset": 1228,
-                        "endColumn": 105,
-                        "endOffset": 1329
+                        "startOffset": 1150,
+                        "endColumn": 109,
+                        "endOffset": 1255
                     }
                 }
             },
@@ -234,18 +234,18 @@
                 "to": {
                     "startLine": 14,
                     "startColumn": 4,
-                    "startOffset": 1333,
+                    "startOffset": 1260,
                     "endColumn": 106,
-                    "endOffset": 1435
+                    "endOffset": 1362
                 },
                 "from": {
-                    "file": "/home/maximo/StudioProjects/android-marble/AntonStockApp/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/21.0.3/res/values-ky-rKG/values.xml",
+                    "file": "/home/maximo/StudioProjects/android-marble/AntonStockApp/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/24.1.1/res/values-ky-rKG/values-ky-rKG.xml",
                     "position": {
-                        "startLine": 15,
+                        "startLine": 14,
                         "startColumn": 4,
-                        "startOffset": 1334,
+                        "startOffset": 1260,
                         "endColumn": 106,
-                        "endOffset": 1436
+                        "endOffset": 1362
                     }
                 }
             },
@@ -253,18 +253,18 @@
                 "to": {
                     "startLine": 15,
                     "startColumn": 4,
-                    "startOffset": 1440,
-                    "endColumn": 100,
-                    "endOffset": 1536
+                    "startOffset": 1367,
+                    "endColumn": 97,
+                    "endOffset": 1460
                 },
                 "from": {
-                    "file": "/home/maximo/StudioProjects/android-marble/AntonStockApp/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/21.0.3/res/values-ky-rKG/values.xml",
+                    "file": "/home/maximo/StudioProjects/android-marble/AntonStockApp/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/24.1.1/res/values-ky-rKG/values-ky-rKG.xml",
                     "position": {
-                        "startLine": 16,
+                        "startLine": 15,
                         "startColumn": 4,
-                        "startOffset": 1441,
-                        "endColumn": 100,
-                        "endOffset": 1537
+                        "startOffset": 1367,
+                        "endColumn": 97,
+                        "endOffset": 1460
                     }
                 }
             },
@@ -272,18 +272,113 @@
                 "to": {
                     "startLine": 16,
                     "startColumn": 4,
-                    "startOffset": 1541,
-                    "endColumn": 123,
-                    "endOffset": 1660
+                    "startOffset": 1465,
+                    "endColumn": 105,
+                    "endOffset": 1566
                 },
                 "from": {
-                    "file": "/home/maximo/StudioProjects/android-marble/AntonStockApp/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/21.0.3/res/values-ky-rKG/values.xml",
+                    "file": "/home/maximo/StudioProjects/android-marble/AntonStockApp/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/24.1.1/res/values-ky-rKG/values-ky-rKG.xml",
+                    "position": {
+                        "startLine": 16,
+                        "startColumn": 4,
+                        "startOffset": 1465,
+                        "endColumn": 105,
+                        "endOffset": 1566
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 17,
+                    "startColumn": 4,
+                    "startOffset": 1571,
+                    "endColumn": 106,
+                    "endOffset": 1673
+                },
+                "from": {
+                    "file": "/home/maximo/StudioProjects/android-marble/AntonStockApp/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/24.1.1/res/values-ky-rKG/values-ky-rKG.xml",
                     "position": {
                         "startLine": 17,
                         "startColumn": 4,
-                        "startOffset": 1542,
+                        "startOffset": 1571,
+                        "endColumn": 106,
+                        "endOffset": 1673
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 18,
+                    "startColumn": 4,
+                    "startOffset": 1678,
+                    "endColumn": 100,
+                    "endOffset": 1774
+                },
+                "from": {
+                    "file": "/home/maximo/StudioProjects/android-marble/AntonStockApp/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/24.1.1/res/values-ky-rKG/values-ky-rKG.xml",
+                    "position": {
+                        "startLine": 18,
+                        "startColumn": 4,
+                        "startOffset": 1678,
+                        "endColumn": 100,
+                        "endOffset": 1774
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 19,
+                    "startColumn": 4,
+                    "startOffset": 1779,
+                    "endColumn": 123,
+                    "endOffset": 1898
+                },
+                "from": {
+                    "file": "/home/maximo/StudioProjects/android-marble/AntonStockApp/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/24.1.1/res/values-ky-rKG/values-ky-rKG.xml",
+                    "position": {
+                        "startLine": 19,
+                        "startColumn": 4,
+                        "startOffset": 1779,
                         "endColumn": 123,
-                        "endOffset": 1661
+                        "endOffset": 1898
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 20,
+                    "startColumn": 4,
+                    "startOffset": 1903,
+                    "endColumn": 102,
+                    "endOffset": 2001
+                },
+                "from": {
+                    "file": "/home/maximo/StudioProjects/android-marble/AntonStockApp/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/24.1.1/res/values-ky-rKG/values-ky-rKG.xml",
+                    "position": {
+                        "startLine": 20,
+                        "startColumn": 4,
+                        "startOffset": 1903,
+                        "endColumn": 102,
+                        "endOffset": 2001
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 21,
+                    "startColumn": 4,
+                    "startOffset": 2006,
+                    "endColumn": 100,
+                    "endOffset": 2102
+                },
+                "from": {
+                    "file": "/home/maximo/StudioProjects/android-marble/AntonStockApp/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/24.1.1/res/values-ky-rKG/values-ky-rKG.xml",
+                    "position": {
+                        "startLine": 21,
+                        "startColumn": 4,
+                        "startOffset": 2006,
+                        "endColumn": 100,
+                        "endOffset": 2102
                     }
                 }
             }

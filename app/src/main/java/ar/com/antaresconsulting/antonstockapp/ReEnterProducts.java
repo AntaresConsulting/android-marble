@@ -49,7 +49,7 @@ public class ReEnterProducts extends Activity implements MateriaPrimaDAO.Materia
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_reenter_products);
-		getActionBar().setDisplayHomeAsUpEnabled(true);
+		//getActionBar().setDisplayHomeAsUpEnabled(true);
 		this.productosDispo = (ListView) findViewById(R.id.productosDispo);
 		this.productosDispo.setChoiceMode(ListView.CHOICE_MODE_SINGLE);			
 		this.prodBuscaAdapter = new ArrayAdapter<BaseProduct>(this,android.R.layout.simple_list_item_single_choice);

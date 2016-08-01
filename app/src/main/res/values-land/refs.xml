@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item name="grid_col" type="integer">5</item>
+    <item name="grid_row" type="integer">2</item>
+    <item name="orientation" type="integer">0</item>
+
+</resources>

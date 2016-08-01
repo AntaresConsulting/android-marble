@@ -68,13 +68,13 @@ public class ProductDAO extends ReadAsyncTask {
 	}
 
 	public void getServicios() {
-		this.setmFilters(new Object[] { new Object[] { "categ_name", "ilike","service" } });
+		this.setmFilters(new Object[] { new Object[] { AntonConstants.RAW_FILTER_ATTR, "ilike","service" } });
 		this.execute(this.baseFields);
 		this.dataToSet = AntonConstants.SERVICIOS;
 	}
 
 	public void getServicios(String nomServ) {
-		this.setmFilters(new Object[] { new Object[] { "categ_name", "ilike","service" },new Object[] { "name", "ilike",nomServ } });
+		this.setmFilters(new Object[] { new Object[] { AntonConstants.RAW_FILTER_ATTR, "ilike","service" },new Object[] { "name", "ilike",nomServ } });
 		this.execute(this.baseFields);
 		this.dataToSet = AntonConstants.SERVICIOS;
 	}
@@ -185,7 +185,7 @@ public class ProductDAO extends ReadAsyncTask {
 	}
 	
 	public void getServiciosNames() {
-		this.setmFilters(new Object[] { new Object[] { "categ_name", "ilike","service" } });
+		this.setmFilters(new Object[] { new Object[] { AntonConstants.RAW_FILTER_ATTR, "ilike","service" } });
 		this.execute(new String[] { "id", "name"});
 		this.dataToSet = AntonConstants.SERVICIOS;
 		

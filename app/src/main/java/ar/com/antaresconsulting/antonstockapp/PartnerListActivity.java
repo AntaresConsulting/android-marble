@@ -2,10 +2,13 @@ package ar.com.antaresconsulting.antonstockapp;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.design.widget.NavigationView;
 import android.support.v4.app.NavUtils;
+import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarActivity;
+import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 
 /**
@@ -38,18 +41,29 @@ NavigationDrawerFragment.NavigationDrawerCallbacks,PartnerListFragment.Callbacks
 	private String partnerType;
 	private CharSequence mTitle;
 	private PartnerListFragment listFragment;
-	private NavigationDrawerFragment mNavigationDrawerFragment;
+
+	private Toolbar appbar;
+	private DrawerLayout drawerLayout;
+	private NavigationView navView;
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_partner_list);	
-		mNavigationDrawerFragment = (NavigationDrawerFragment) getSupportFragmentManager().findFragmentById(R.id.navigation_drawer);
-		// Set up the drawer.
-		mNavigationDrawerFragment.setUp(R.id.navigation_drawer,	(DrawerLayout) findViewById(R.id.drawer_layout));
+		setContentView(R.layout.activity_partner_list);
+
+		appbar = (Toolbar)findViewById(R.id.appbar);
+		setSupportActionBar(appbar);
+
+		getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_nav_drawer);
+		getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+		drawerLayout = (DrawerLayout)findViewById(R.id.drawer_layout);
+		NavigationView navigationView = (NavigationView)findViewById(R.id.navview);
+
 
 		listFragment = (PartnerListFragment) getFragmentManager().findFragmentById(R.id.partner_list);
 
-		getActionBar().setDisplayHomeAsUpEnabled(true);
+//		getActionBar().setDisplayHomeAsUpEnabled(true);
 		mTitle = getTitle();
 
 		if (findViewById(R.id.partner_detail_container) != null) {
@@ -62,7 +76,6 @@ NavigationDrawerFragment.NavigationDrawerCallbacks,PartnerListFragment.Callbacks
 
 	public void restoreActionBar() {
 		ActionBar actionBar = getSupportActionBar();
-		actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_STANDARD);
 		actionBar.setDisplayShowTitleEnabled(true);
 		actionBar.setTitle(mTitle);
 	}
@@ -112,7 +125,22 @@ NavigationDrawerFragment.NavigationDrawerCallbacks,PartnerListFragment.Callbacks
 			startActivity(detailIntent);
 		}
 	}
+
+
+	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
+		// Handle action bar item clicks here. The action bar will
+		// automatically handle clicks on the Home/Up button, so long
+		// as you specify a parent activity in AndroidManifest.xml.
+
+		switch(item.getItemId()) {
+			case android.R.id.home:
+				drawerLayout.openDrawer(GravityCompat.START);
+				return true;
+		}
+
 		return super.onOptionsItemSelected(item);
-	}	
+	}
+
+
 }

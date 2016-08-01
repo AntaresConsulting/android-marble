@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/menu_seccion_1"
+            android:icon="@drawable/ic_menu"
+            android:onClick="getMP"
+            android:title="@string/title_menu_raw"/>
+        <item
+            android:id="@+id/menu_seccion_2"
+            android:icon="@drawable/ic_menu"
+            android:onClick="getInsumos"
+            android:title="@string/title_menu_expenses"/>
+        <item
+            android:id="@+id/menu_seccion_3"
+            android:icon="@drawable/ic_menu"
+            android:onClick="getBachas"
+            android:title="@string/title_menu_bachas"/>
+        <item
+            android:id="@+id/menu_seccion_4"
+            android:icon="@drawable/ic_menu"
+            android:onClick="getServicios"
+            android:title="@string/title_menu_services"/>
+
+
+    </group>
+        <item
+        android:id="@+id/navigation_subheader"
+        android:title="@string/otras_opciones">
+        <menu>
+            <item
+                android:id="@+id/menu_seccion_e"
+                android:icon="@drawable/ic_exit"
+                android:onClick="returnHome"
+                android:title="@string/volver"/>
+        </menu>
+    </item>
+
+</menu>

@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <bool name="abc_action_bar_embed_tabs">false</bool>
+    <item name="grid_col" type="integer">2</item>
+    <item name="grid_row" type="integer">2</item>
+    <item name="orientation" type="integer">1</item>
+</resources>

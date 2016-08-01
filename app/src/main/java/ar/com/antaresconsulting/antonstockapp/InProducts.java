@@ -21,7 +21,7 @@ public class InProducts extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_in_products);
-		getActionBar().setDisplayHomeAsUpEnabled(true);
+		////getActionBar().setDisplayHomeAsUpEnabled(true);
 
 		if (savedInstanceState == null) {
 			getFragmentManager().beginTransaction().add(R.id.container, ProductTypeFragment.newInstance(true,true,true,false)).commit();

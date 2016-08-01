@@ -41,7 +41,7 @@ public class SubmitProducts extends Activity implements OnItemSelectedListener,P
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_submit_products);
-		getActionBar().setDisplayHomeAsUpEnabled(true);
+		//getActionBar().setDisplayHomeAsUpEnabled(true);
 		this.productosDispo = (ListView) findViewById(R.id.productosDispo);
 		this.productosDispo.setChoiceMode(ListView.CHOICE_MODE_MULTIPLE);			
 		this.prodBuscaAdapter = new ArrayAdapter<PedidoLinea>(this,android.R.layout.simple_list_item_multiple_choice);

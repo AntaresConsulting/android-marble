@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".AntonLauncherActivity">
+
+
+<ImageView
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:src="@drawable/marmol2_bg"
+        android:scaleType="centerCrop" />
+    <ImageView
+        android:id="@+id/usuarioImg"
+        android:layout_width="75dp"
+        android:layout_height="75dp"
+        android:src="@drawable/ic_no_photo"
+        android:scaleType="centerCrop"
+        android:layout_gravity="bottom|right"
+        android:layout_margin="20dp" />
+    <TextView
+        android:id="@+id/usuarioNom"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="usuario"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large.Inverse"
+        android:textStyle="bold"
+        android:layout_gravity="bottom"
+        android:layout_marginBottom="20dp"
+        android:layout_marginLeft="10dp" />
+</FrameLayout>

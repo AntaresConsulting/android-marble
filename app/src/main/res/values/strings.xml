@@ -59,5 +59,13 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="title_activity_consumo_insumo">ConsumoInsumo</string>
     <string name="title_activity_product_type">ProductTypeActivity</string>
+    <string name="salir">Salir</string>
+    <string name="mi_info">Mi Informacion</string>
+    <string name="productos">Productos</string>
+    <string name="volver">Volver</string>
+    <string name="otras_opciones" />
+    <string name="title_menu_clients">Clientes</string>
+    <string name="title_menu_suppliers">Proveedores</string>
+    <string name="contactos">Contactos</string>
 
 </resources>

@@ -27,7 +27,7 @@ public class ProductDetailActivity extends FragmentActivity {
 		setContentView(R.layout.activity_detail_product);
 
 		// Show the Up button in the action bar.
-		getActionBar().setDisplayHomeAsUpEnabled(true);
+		//getActionBar().setDisplayHomeAsUpEnabled(true);
 		if (savedInstanceState == null) {
 			// Create the detail fragment and add it to the activity
 			// using a fragment transaction.

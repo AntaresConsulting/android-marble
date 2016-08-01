@@ -13,7 +13,7 @@
         android:layout_height="250dp"
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
-        android:src="@drawable/abc_ab_share_pack_holo_dark" />
+        android:src="@drawable/ic_user_employee" />
 
     <View
         android:id="@+id/sepProdThumb"

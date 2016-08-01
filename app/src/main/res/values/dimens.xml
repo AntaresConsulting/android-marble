@@ -10,7 +10,7 @@
     -->
     <dimen name="navigation_drawer_width">240dp</dimen>
     <dimen name="login_logo_width">330dp</dimen>
-    <dimen name="login_logo_height">157dp</dimen>
+    <dimen name="login_logo_height">60dp</dimen>
     <dimen name="login_logo_top">30dp</dimen>
     <dimen name="login_table_top">170dp</dimen>
     <dimen name="login_icon_width">90dp</dimen>

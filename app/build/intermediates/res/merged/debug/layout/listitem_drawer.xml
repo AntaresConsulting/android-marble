@@ -12,7 +12,7 @@
         android:layout_height="@dimen/item_drawer_icon_dim"
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
-        android:src="@drawable/abc_ab_share_pack_holo_dark" />
+        />
 
     <TextView
         android:id="@+id/drawer_itemName"

@@ -20,11 +20,13 @@ import android.view.inputmethod.EditorInfo;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import ar.com.antaresconsulting.antonstockapp.model.dao.UserDAO;
+
 /**
  * Activity which displays a login screen to the user, offering registration as
  * well.
  */
-public class LoginActivity extends Activity implements LoginActivityInterface {
+public class LoginActivity extends Activity implements LoginActivityInterface,UserDAO.UserCallbacks {
 
 	/**
 	 * The default email to populate the email field with.
@@ -38,6 +40,8 @@ public class LoginActivity extends Activity implements LoginActivityInterface {
 	// UI references.
 	private EditText mEmailView;
 	private EditText mPasswordView;
+	private UserDAO dao;
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -81,13 +85,6 @@ public class LoginActivity extends Activity implements LoginActivityInterface {
 						doExit();
 					}
 				});		
-	}
-
-	@Override
-	public boolean onCreateOptionsMenu(Menu menu) {
-		super.onCreateOptionsMenu(menu);
-		getMenuInflater().inflate(R.menu.login, menu);
-		return true;
 	}
 
 	/**
@@ -141,7 +138,7 @@ public class LoginActivity extends Activity implements LoginActivityInterface {
 		}
 	}
 
-	public void showPopup(MenuItem v) {
+	public void showPopup(View view) {
 		ServerPopupFragment popconf = new ServerPopupFragment();
 		popconf.show(getFragmentManager(),"Server_Config");
 	}
@@ -218,10 +215,8 @@ public class LoginActivity extends Activity implements LoginActivityInterface {
 			editor.putString(getString(R.string.credential_user), this.mEmail);
 			editor.putString(getString(R.string.credential_pass), this.mPassword);
 			editor.commit();
-
-			Intent i = new Intent(this, OpenErpHolder.getInstance().getMainClass());
-			startActivity(i);
-			finish();
+			this.dao = new UserDAO(this);
+			this.dao.getUserDetail(OpenErpHolder.getInstance().getmOConn().getmUserId());
 		}
 		else{
 			String failMsg = this.getString(R.string.sCheckSettings);
@@ -246,5 +241,13 @@ public class LoginActivity extends Activity implements LoginActivityInterface {
 	@Override
 	public void setActivities() {
 		OpenErpHolder.getInstance().setMainClass(AntonLauncherActivity.class);
+	}
+
+	@Override
+	public void setUserDetail() {
+		OpenErpHolder.getInstance().getmOConn().setUsrObj(this.dao.getUserData());
+		Intent i = new Intent(this, OpenErpHolder.getInstance().getMainClass());
+		startActivity(i);
+		finish();
 	}
 }

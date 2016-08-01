@@ -11,7 +11,7 @@
         android:layout_height="100dp"
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
-        android:src="@drawable/abc_ab_share_pack_holo_dark" />
+       />
     <View
         android:id="@+id/sepProdThumb"
         android:layout_width="4dp"

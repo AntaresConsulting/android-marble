@@ -87,7 +87,7 @@ public class InsumosDAO extends ProductDAO {
 	}
 	
 	public void getInsumos(String nombreProd) {
-		this.setmFilters(new Object[] { new Object[] { "categ_name", "ilike",
+		this.setmFilters(new Object[] { new Object[] {AntonConstants.RAW_FILTER_ATTR, "ilike",
 		"input" },new Object[] { "name", "ilike",
 		nombreProd } });
 		this.execute(this.insuFilds);		

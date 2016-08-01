@@ -2,24 +2,14 @@ package ar.com.antaresconsulting.antonstockapp;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
+import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Toast;
 
-public class BaseActivity extends Activity {
-
-	@Override
-	public boolean onCreateOptionsMenu(Menu menu) {
-		super.onCreateOptionsMenu(menu);
-		getMenuInflater().inflate(R.menu.common, menu);
-		return true;
-	}
-
-	public void userInfo(MenuItem v) {
-		Toast.makeText(getApplicationContext(), "this is my Toast message!!! =)",
-				   Toast.LENGTH_LONG).show();
-	}
+public class BaseActivity extends AppCompatActivity {
 
 	public void exitApp(MenuItem v) {
 		SharedPreferences sharedPref = this.getSharedPreferences(getString(R.string.preference_setting), Context.MODE_PRIVATE);
@@ -27,5 +17,11 @@ public class BaseActivity extends Activity {
 		editor.remove(getString(R.string.credential_user)).commit();
 		editor.remove(getString(R.string.credential_pass)).commit();
 		finish();	
+	}
+	public void returnHome(MenuItem v) {
+		Intent intent = new Intent(this, AntonLauncherActivity.class);
+		intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);  //It is use to finish current activity
+		startActivity(intent);
+		this.finish();
 	}
 }

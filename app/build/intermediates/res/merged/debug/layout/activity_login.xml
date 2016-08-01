@@ -1,9 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center_horizontal"
+    android:orientation="vertical"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context=".LoginActivity">
+
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/frmContainer"
     android:layout_width="wrap_content"
     android:layout_height="fill_parent"
-    android:layout_gravity="center_vertical|center_horizontal" >
+    android:layout_gravity="center_vertical|center_horizontal">
 
     <TableLayout
         android:id="@+id/login_form"
@@ -21,7 +34,8 @@
                 android:layout_width="@dimen/login_logo_width"
                 android:layout_height="@dimen/login_logo_height"
                 android:layout_span="2"
-                android:src="@drawable/login_mobile" />
+                android:src="@drawable/login_mobile"
+                android:contentDescription="Ingreso al sistema" />
         </TableRow>
 
         <TableRow
@@ -35,21 +49,27 @@
                 android:adjustViewBounds="true"
                 android:maxHeight="@dimen/login_icon_height"
                 android:maxWidth="@dimen/login_icon_width"
-                android:src="@drawable/icon_login_u" />
+                android:src="@mipmap/icon_login_u" />
 
-            <EditText
-                android:id="@+id/edtUser"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="20dip"
-                android:layout_marginTop="5dip"
-                android:hint="@string/hint_username"
-                android:singleLine="true"
-                android:text="admin"
-                android:width="@dimen/login_textfield_width" >
+                  <android.support.design.widget.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
 
+                    <EditText
+                        android:id="@+id/edtUser"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="@string/hint_username"
+                        android:imeActionLabel="@string/login_progress_signing_in"
+                        android:imeOptions="actionUnspecified"
+                        android:inputType="textPersonName"
+                        android:maxLines="1"
+                        android:singleLine="true"
+                        android:width="@dimen/login_textfield_width" />
+
+
+                </android.support.design.widget.TextInputLayout>
                 <!-- <requestFocus /> -->
-            </EditText>
         </TableRow>
 
         <TableRow
@@ -63,18 +83,29 @@
                 android:adjustViewBounds="true"
                 android:maxHeight="90dp"
                 android:maxWidth="90dp"
-                android:src="@drawable/icon_login_p" />
+                android:src="@mipmap/icon_login_p" />
 
-            <EditText
-                android:id="@+id/edtPassword"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="5dip"
-                android:hint="@string/hint_pass"
-                android:inputType="textPassword"
-                android:singleLine="true"
-                android:text="admin"
-                android:width="@dimen/login_textfield_width" />
+
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <EditText
+                    android:id="@+id/edtPassword"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/hint_pass"
+                    android:imeActionLabel="@string/login_progress_signing_in"
+                    android:imeOptions="actionUnspecified"
+                    android:inputType="textPassword"
+                    android:maxLines="1"
+                    android:singleLine="true"
+                    android:width="@dimen/login_textfield_width"
+                    />
+
+
+            </android.support.design.widget.TextInputLayout>
+
         </TableRow>
 
         <TableLayout
@@ -88,6 +119,7 @@
 
                 <Button
                     android:id="@+id/btnLogin"
+                    style="?android:textAppearanceSmall"
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -95,12 +127,30 @@
 
                 <Button
                     android:id="@+id/btnCancel"
+                    style="?android:textAppearanceSmall"
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="@string/exit_btn" />
             </TableRow>
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center">
+
+                <Button
+                    style="?android:attr/buttonStyleSmall"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:text="Config"
+                    android:drawableLeft="@drawable/ic_action_server"
+                    android:id="@+id/action_config"
+                    android:onClick="showPopup"
+                    android:layout_span="2" />
+            </TableRow>
         </TableLayout>
     </TableLayout>
 
 </ScrollView> <!-- Login Form Ends -->
+</LinearLayout>

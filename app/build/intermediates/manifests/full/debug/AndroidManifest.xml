@@ -5,7 +5,7 @@
     android:versionName="1.0" >
 
     <uses-sdk
-        android:minSdkVersion="13"
+        android:minSdkVersion="14"
         android:targetSdkVersion="19" />
 
     <uses-permission android:name="android.permission.INTERNET" />
@@ -19,15 +19,14 @@
     <application
         android:name="ar.com.antaresconsulting.antonstockapp.AntonStockApp"
         android:allowBackup="true"
-        android:icon="@drawable/ic_launcher"
+        android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:theme="@style/AntonTheme" >
         <activity
             android:name="ar.com.antaresconsulting.antonstockapp.PartnerListActivity"
             android:configChanges="orientation|keyboardHidden"
             android:label="@string/app_name"
-            android:parentActivityName="ar.com.antaresconsulting.antonstockapp.AntonLauncherActivity"
-            android:screenOrientation="landscape" >
+            android:parentActivityName="ar.com.antaresconsulting.antonstockapp.AntonLauncherActivity" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="ar.com.antaresconsulting.antonstockapp.AntonLauncherActivity" />
@@ -35,14 +34,12 @@
         <activity
             android:name="ar.com.antaresconsulting.antonstockapp.ProductListActivity"
             android:configChanges="orientation|keyboardHidden"
-            android:label="@string/app_name"
-            android:screenOrientation="landscape" >
+            android:label="@string/app_name" >
         </activity>
         <activity
             android:name="ar.com.antaresconsulting.antonstockapp.LoginActivity"
             android:configChanges="orientation|keyboardHidden"
             android:label="@string/app_name"
-            android:screenOrientation="landscape"
             android:theme="@style/LoginTheme"
             android:windowSoftInputMode="adjustResize" >
             <intent-filter>
@@ -55,8 +52,7 @@
             android:name="ar.com.antaresconsulting.antonstockapp.PartnerDetailActivity"
             android:configChanges="orientation|keyboardHidden"
             android:label="@string/title_partner_detail"
-            android:parentActivityName="ar.com.antaresconsulting.antonstockapp.PartnerListActivity"
-            android:screenOrientation="landscape" >
+            android:parentActivityName="ar.com.antaresconsulting.antonstockapp.PartnerListActivity" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="ar.com.antaresconsulting.antonstockapp.PartnerListActivity" />
@@ -65,8 +61,7 @@
             android:name="ar.com.antaresconsulting.antonstockapp.ProductDetailActivity"
             android:configChanges="orientation|keyboardHidden"
             android:label="@string/title_product_detail"
-            android:parentActivityName="ar.com.antaresconsulting.antonstockapp.ProductListActivity"
-            android:screenOrientation="landscape" >
+            android:parentActivityName="ar.com.antaresconsulting.antonstockapp.ProductListActivity" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="ar.com.antaresconsulting.antonstockapp.ProductListActivity" />
@@ -75,8 +70,7 @@
             android:name="ar.com.antaresconsulting.antonstockapp.InProducts"
             android:configChanges="orientation|keyboardHidden"
             android:label="@string/title_activity_in_products"
-            android:parentActivityName="ar.com.antaresconsulting.antonstockapp.AntonLauncherActivity"
-            android:screenOrientation="landscape" >
+            android:parentActivityName="ar.com.antaresconsulting.antonstockapp.AntonLauncherActivity" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="ar.com.antaresconsulting.antonstockapp.AntonLauncherActivity" />
@@ -85,8 +79,7 @@
             android:name="ar.com.antaresconsulting.antonstockapp.SubmitProducts"
             android:configChanges="orientation|keyboardHidden"
             android:label="@string/title_activity_in_products"
-            android:parentActivityName="ar.com.antaresconsulting.antonstockapp.AntonLauncherActivity"
-            android:screenOrientation="portrait" >
+            android:parentActivityName="ar.com.antaresconsulting.antonstockapp.AntonLauncherActivity" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="ar.com.antaresconsulting.antonstockapp.AntonLauncherActivity" />
@@ -95,8 +88,7 @@
             android:name="ar.com.antaresconsulting.antonstockapp.ReEnterProducts"
             android:configChanges="orientation|keyboardHidden"
             android:label="@string/title_activity_in_products"
-            android:parentActivityName="ar.com.antaresconsulting.antonstockapp.AntonLauncherActivity"
-            android:screenOrientation="landscape" >
+            android:parentActivityName="ar.com.antaresconsulting.antonstockapp.AntonLauncherActivity" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="ar.com.antaresconsulting.antonstockapp.AntonLauncherActivity" />
@@ -105,8 +97,7 @@
             android:name="ar.com.antaresconsulting.antonstockapp.MoveProducts"
             android:configChanges="orientation|keyboardHidden"
             android:label="@string/title_activity_out_products"
-            android:parentActivityName="ar.com.antaresconsulting.antonstockapp.AntonLauncherActivity"
-            android:screenOrientation="landscape" >
+            android:parentActivityName="ar.com.antaresconsulting.antonstockapp.AntonLauncherActivity" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="ar.com.antaresconsulting.antonstockapp.AntonLauncherActivity" />
@@ -114,15 +105,13 @@
         <activity
             android:name="ar.com.antaresconsulting.antonstockapp.AntonLauncherActivity"
             android:configChanges="orientation|keyboardHidden"
-            android:label="@string/title_activity_launcher"
-            android:screenOrientation="landscape" >
+            android:label="@string/title_activity_launcher" >
         </activity>
         <activity
             android:name="ar.com.antaresconsulting.antonstockapp.AddProductActivity"
             android:configChanges="orientation|keyboardHidden"
             android:label="@string/title_activity_add_product"
-            android:parentActivityName="ar.com.antaresconsulting.antonstockapp.ProductListActivity"
-            android:screenOrientation="landscape" >
+            android:parentActivityName="ar.com.antaresconsulting.antonstockapp.ProductListActivity" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="ar.com.antaresconsulting.antonstockapp.ProductListActivity" />
@@ -130,8 +119,7 @@
         <activity
             android:name="ar.com.antaresconsulting.antonstockapp.ConsumeInsumo"
             android:label="@string/title_activity_consume_insumos"
-            android:parentActivityName="ar.com.antaresconsulting.antonstockapp.AntonLauncherActivity"
-            android:screenOrientation="landscape" >
+            android:parentActivityName="ar.com.antaresconsulting.antonstockapp.AntonLauncherActivity" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="ar.com.antaresconsulting.antonstockapp.AntonLauncherActivity" />
@@ -139,8 +127,7 @@
         <activity
             android:name="ar.com.antaresconsulting.antonstockapp.AddPMActivity"
             android:label="@string/title_activity_add_pm"
-            android:parentActivityName="ar.com.antaresconsulting.antonstockapp.AntonLauncherActivity"
-            android:screenOrientation="landscape" >
+            android:parentActivityName="ar.com.antaresconsulting.antonstockapp.AntonLauncherActivity" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="ar.com.antaresconsulting.antonstockapp.AntonLauncherActivity" />
@@ -148,8 +135,7 @@
         <activity
             android:name="ar.com.antaresconsulting.antonstockapp.AddOEActivity"
             android:label="@string/title_activity_add_oe"
-            android:parentActivityName="ar.com.antaresconsulting.antonstockapp.AntonLauncherActivity"
-            android:screenOrientation="landscape" >
+            android:parentActivityName="ar.com.antaresconsulting.antonstockapp.AntonLauncherActivity" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="ar.com.antaresconsulting.antonstockapp.AntonLauncherActivity" />

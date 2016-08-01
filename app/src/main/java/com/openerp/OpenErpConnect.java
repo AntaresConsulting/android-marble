@@ -33,6 +33,8 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
+import ar.com.antaresconsulting.antonstockapp.model.User;
+
 /**
  * This class provides access to basic methods in OpenObject, so you can use
  * them from an Android device. The operations supported are: <br>
@@ -69,6 +71,7 @@ public class OpenErpConnect {
     protected String mUserName;
     protected String mPassword;
     protected Integer mUserId;
+    protected User usrObj;
     protected boolean manager = false;
     protected boolean cutter = false;
     protected boolean responsable = false;
@@ -86,9 +89,16 @@ public class OpenErpConnect {
         mUserId = id;
         mUrl = new URL("http", server, port, "/xmlrpc/object");
     }
-    
-    
-    
+
+
+    public User getUsrObj() {
+        return usrObj;
+    }
+
+    public void setUsrObj(User usrObj) {
+        this.usrObj = usrObj;
+    }
+
     public String getmUserName() {
 		return mUserName;
 	}

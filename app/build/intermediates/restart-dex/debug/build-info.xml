@@ -4,27 +4,27 @@
     api-level="21"
     density="mdpi"
     format="7"
-    timestamp="13300202865322"
+    timestamp="32532920412920"
     token="8451804023735798498" >
 
     <task
         name="javac"
-        duration="762" />
+        duration="685" />
     <task
         name="instant-run-dex"
         duration="0" />
     <task
         name="instant-run-transform"
-        duration="317" />
+        duration="345" />
     <task
         name="verifier"
-        duration="41" />
+        duration="24" />
 
     <artifact
         location="/home/maximo/StudioProjects/android-marble/AntonStockApp/app/build/outputs/apk/app-debug.apk"
         type="MAIN" />
 
-    <build timestamp="13300202865322" >
+    <build timestamp="32532920412920" >
         <artifact
             location="/home/maximo/StudioProjects/android-marble/AntonStockApp/app/build/outputs/apk/app-debug.apk"
             type="MAIN" />

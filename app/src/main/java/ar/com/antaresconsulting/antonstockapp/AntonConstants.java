@@ -69,5 +69,6 @@ public class AntonConstants {
 	public static final int BACHAS_PROV = 2;
 	public static final int MIN_CHAR_LENGTH = 1;
 
+	public static final String RAW_FILTER_ATTR = "prod_type";
 
 }

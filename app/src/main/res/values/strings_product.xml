@@ -30,7 +30,7 @@
     <string name="title_add_expenses">Alta de  Insumo</string>
     <string name="title_add_bachas">Alta de Bacha</string>
     <string name="title_add_services">Alta de Servicio</string>    
-    <string name="title_menu_forstock">Materias Primas</string>
+    <string name="title_menu_raw">Materias Primas</string>
     <string name="title_menu_expenses">Insumos</string>
     <string name="title_menu_bachas">Bachas</string>
     <string name="title_menu_services">Servicios</string>    

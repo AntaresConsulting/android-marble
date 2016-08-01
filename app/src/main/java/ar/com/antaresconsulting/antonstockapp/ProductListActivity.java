@@ -20,11 +20,14 @@ import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.ShapeDrawable;
 import android.os.Bundle;
 import android.os.Environment;
+import android.support.design.widget.NavigationView;
 import android.support.v4.app.NavUtils;
+import android.support.v4.view.GravityCompat;
 import android.support.v4.view.ViewPager;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarActivity;
+import android.support.v7.widget.Toolbar;
 import android.util.Base64;
 import android.view.Gravity;
 import android.view.LayoutInflater;
@@ -54,10 +57,10 @@ import ar.com.antaresconsulting.antonstockapp.model.BaseProduct;
  * This activity also implements the required {@link ItemListFragment.Callbacks}
  * interface to listen for item selections.
  */
-public class ProductListActivity extends ActionBarActivity implements
+public class ProductListActivity extends BaseActivity implements
 		WriteAsyncTask.WriteAsyncTaskCallbacks,
-		NavigationDrawerFragment.NavigationDrawerCallbacks,
-		ProductListFragment.Callbacks {
+		ProductListFragment.Callbacks,
+		PartnerListFragment.Callbacks{
 
 	/**
 	 * Whether or not the activity is in two-pane mode, i.e. running on a tablet
@@ -74,6 +77,11 @@ public class ProductListActivity extends ActionBarActivity implements
 	private TabHost mTabHost;
 	private ViewPager mViewPager;
 	private TabsAdapter mTabsAdapter;
+
+	private Toolbar appbar;
+	private DrawerLayout drawerLayout;
+	private NavigationView navView;
+
 
 	@Override
 	public void onSaveInstanceState(Bundle savedInstanceState) {
@@ -100,16 +108,27 @@ public class ProductListActivity extends ActionBarActivity implements
 		mTabHost.setup();
 
 		mViewPager = (ViewPager) findViewById(R.id.pager);
+		appbar = (Toolbar)findViewById(R.id.appbar);
+		setSupportActionBar(appbar);
 
+		getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_nav_drawer);
+		getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+		drawerLayout = (DrawerLayout)findViewById(R.id.drawer_layout);
+		NavigationView navigationView = (NavigationView)findViewById(R.id.navview);
+
+		View headerView = navigationView.getHeaderView(0);
+		listFragment = (ProductListFragment) getFragmentManager().findFragmentById(R.id.product_list);
+
+		/*
 		mNavigationDrawerFragment = (NavigationDrawerFragment) getSupportFragmentManager()
 				.findFragmentById(R.id.navigation_drawer);
-		listFragment = (ProductListFragment) getFragmentManager()
-				.findFragmentById(R.id.product_list);
 		mTitle = this.getTitle(this.tProd);
 		// Set up the drawer.
 		mNavigationDrawerFragment.setUp(R.id.navigation_drawer,
 				(DrawerLayout) findViewById(R.id.drawer_layout));
 
+*/
 		if (findViewById(R.id.product_detail_container) != null) {
 			mTwoPane = true;
 			((ProductListFragment) getFragmentManager().findFragmentById(
@@ -202,53 +221,62 @@ public class ProductListActivity extends ActionBarActivity implements
 
 	public void restoreActionBar() {
 		ActionBar actionBar = getSupportActionBar();
-		actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_STANDARD);
 		actionBar.setDisplayShowTitleEnabled(true);
 		actionBar.setTitle(mTitle);
+		drawerLayout.closeDrawers();
 	}
 
-	@Override
-	public void onNavigationDrawerItemSelected(int position) {
-		switch (position) {
-		case 0:
-			mTitle = getString(R.string.title_forstock);
-			this.tProd = AntonConstants.MATERIA_PRIMA;
-			 if(this.myMenu != null)
-			 this.myMenu.getItem(0).setTitle(getString(R.string.title_action_add_mp));
-			this.listFragment.refreshProducts(AntonConstants.MATERIA_PRIMA);
-			break;
-		case 1:
-			mTitle = getString(R.string.title_expenses);
-			this.tProd = AntonConstants.INSUMOS;
-			 if(this.myMenu != null)
-			 this.myMenu.getItem(0).setTitle(getString(R.string.title_action_add_insumo));
-			this.listFragment.refreshProducts(AntonConstants.INSUMOS);
-			break;
-		case 2:
-			mTitle = getString(R.string.title_bachas);
-			this.tProd = AntonConstants.BACHAS;
-			if(this.myMenu != null)
-			 this.myMenu.getItem(0).setTitle(getString(R.string.title_action_add_bacha));
-			this.listFragment.refreshProducts(AntonConstants.BACHAS);
-			break;
-		case 3:
-			mTitle = getString(R.string.title_services);
-			this.tProd = AntonConstants.SERVICIOS;
-			if(this.myMenu != null)
-			 this.myMenu.getItem(0).setTitle(getString(R.string.title_action_add_servicio));
-			this.listFragment.refreshProducts(AntonConstants.SERVICIOS);
-			break;
-		default:
-			finish();
-			break;
-		}
-
+	public void getMP(MenuItem v) {
+		this.tProd = AntonConstants.MATERIA_PRIMA;
+		if(this.myMenu != null)
+			this.myMenu.getItem(0).setTitle(getString(R.string.title_action_add_mp));
+		this.listFragment.refreshProducts(AntonConstants.MATERIA_PRIMA);
 		restoreActionBar();
 	}
 
+	public void getBachas(MenuItem v) {
+		mTitle = getString(R.string.title_bachas);
+		this.tProd = AntonConstants.BACHAS;
+		if(this.myMenu != null)
+			this.myMenu.getItem(0).setTitle(getString(R.string.title_action_add_bacha));
+		this.listFragment.refreshProducts(AntonConstants.BACHAS);
+		restoreActionBar();
+	}
+
+
+	public void getServicios(MenuItem v) {
+		mTitle = getString(R.string.title_services);
+		this.tProd = AntonConstants.SERVICIOS;
+		if(this.myMenu != null)
+			this.myMenu.getItem(0).setTitle(getString(R.string.title_action_add_servicio));
+		this.listFragment.refreshProducts(AntonConstants.SERVICIOS);
+		restoreActionBar();
+	}
+
+	public void getInsumos(MenuItem v) {
+		mTitle = getString(R.string.title_expenses);
+		this.tProd = AntonConstants.INSUMOS;
+		if(this.myMenu != null)
+			this.myMenu.getItem(0).setTitle(getString(R.string.title_action_add_insumo));
+		this.listFragment.refreshProducts(AntonConstants.INSUMOS);
+		restoreActionBar();
+	}
+
+	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
+		// Handle action bar item clicks here. The action bar will
+		// automatically handle clicks on the Home/Up button, so long
+		// as you specify a parent activity in AndroidManifest.xml.
+
+		switch(item.getItemId()) {
+			case android.R.id.home:
+				drawerLayout.openDrawer(GravityCompat.START);
+				return true;
+		}
+
 		return super.onOptionsItemSelected(item);
 	}
+
 
 	public void editProduct(MenuItem view) {
 		Intent addProds = new Intent(this, AddProductActivity.class);
@@ -301,7 +329,6 @@ public class ProductListActivity extends ActionBarActivity implements
 				"Se ha guardado la foto en forma correcta!.",
 				Toast.LENGTH_SHORT);
 		tt.show();
-		this.onNavigationDrawerItemSelected(this.tProd);
 	}
 
 	public void zoomPhoto(View view) {
@@ -323,4 +350,8 @@ public class ProductListActivity extends ActionBarActivity implements
 		popupWindow.showAtLocation(popupView, Gravity.CENTER, 0, 0);
 	}
 
+	@Override
+	public void onItemSelected(String id) {
+
+	}
 }

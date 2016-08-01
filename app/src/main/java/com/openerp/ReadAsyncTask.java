@@ -100,7 +100,7 @@ public abstract  class  ReadAsyncTask extends AsyncTask<String, String, OpenErpC
 		}
 		if (this.ids != null) {
 			this.mData = oc.read(this.mModel, this.ids, this.mFields);
-			if(respCall != null){
+			if((respCall != null) && (this.mData != null)){
 				for (HashMap<String, Object> prod : this.mData) {
 					prod.put("qty_available", respCall.get(((Integer)prod.get("id")).toString()));
 				}
