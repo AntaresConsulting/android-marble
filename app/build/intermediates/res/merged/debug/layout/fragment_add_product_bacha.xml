@@ -20,7 +20,7 @@
             android:layout_marginLeft="15dp"
             android:text="@string/lbl_prod_tipo_material"
             android:textAppearance="?android:attr/textAppearanceLarge"
-            android:textSize="20sp" />
+            android:textSize="@dimen/app_text_size" />
 
         <Spinner
             android:id="@+id/tmaterial"
@@ -41,7 +41,7 @@
             android:layout_marginLeft="15dp"
             android:text="@string/lbl_prod_marca"
             android:textAppearance="?android:attr/textAppearanceLarge"
-            android:textSize="20sp" />
+            android:textSize="@dimen/app_text_size" />
 
         <Spinner
             android:id="@+id/marca"
@@ -62,7 +62,7 @@
             android:layout_marginLeft="15dp"
             android:text="@string/lbl_prod_bacha_acero"
             android:textAppearance="?android:attr/textAppearanceLarge"
-            android:textSize="20sp" />
+            android:textSize="@dimen/app_text_size" />
 
         <Spinner
             android:id="@+id/acero"
@@ -83,7 +83,7 @@
             android:layout_marginLeft="15dp"
             android:text="@string/lbl_prod_bacha_tipo"
             android:textAppearance="?android:attr/textAppearanceLarge"
-            android:textSize="20sp" />
+            android:textSize="@dimen/app_text_size" />
 
         <Spinner
             android:id="@+id/tipo"
@@ -104,7 +104,7 @@
             android:layout_marginLeft="15dp"
             android:text="@string/lbl_prod_bacha_colocacion"
             android:textAppearance="?android:attr/textAppearanceLarge"
-            android:textSize="20sp" />
+            android:textSize="@dimen/app_text_size" />
 
         <Spinner
             android:id="@+id/colocacion"
@@ -130,7 +130,7 @@
                 android:layout_marginLeft="15dp"
                 android:text="@string/lbl_prod_bacha_largo"
                 android:textAppearance="?android:attr/textAppearanceLarge"
-                android:textSize="20sp" />
+                android:textSize="@dimen/app_text_size" />
 
             <EditText
                 android:id="@+id/largo"
@@ -153,7 +153,7 @@
                 android:layout_marginLeft="15dp"
                 android:text="@string/lbl_prod_bacha_ancho"
                 android:textAppearance="?android:attr/textAppearanceLarge"
-                android:textSize="20sp" />
+                android:textSize="@dimen/app_text_size" />
 
             <EditText
                 android:id="@+id/ancho"
@@ -176,7 +176,7 @@
                 android:layout_marginLeft="15dp"
                 android:text="@string/lbl_prod_bacha_prof"
                 android:textAppearance="?android:attr/textAppearanceLarge"
-                android:textSize="20sp" />
+                android:textSize="@dimen/app_text_size" />
 
             <EditText
                 android:id="@+id/prof"
@@ -205,7 +205,7 @@
                 android:layout_marginLeft="15dp"
                 android:text="@string/lbl_prod_bacha_diametro"
                 android:textAppearance="?android:attr/textAppearanceLarge"
-                android:textSize="20sp" />
+                android:textSize="@dimen/app_text_size" />
 
             <EditText
                 android:id="@+id/diametro"

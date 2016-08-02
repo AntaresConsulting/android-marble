@@ -15,11 +15,11 @@
             android:id="@+id/lblMaterial"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="15dp"
+            android:layout_marginBottom="@dimen/detail_space"
             android:layout_marginRight="15dp"
             android:text="@string/lbl_prod_tipo_material"
             android:textAppearance="?android:attr/textAppearanceMedium"
-            android:textSize="25sp" />
+            android:textSize="@dimen/app_text_size" />
 
         <TextView
             android:id="@+id/material"
@@ -30,17 +30,17 @@
             android:layout_toRightOf="@+id/lblMaterial"
             android:text="Medium Text"
             android:textAppearance="?android:attr/textAppearanceMedium"
-            android:textSize="25sp" />
+            android:textSize="@dimen/app_text_size" />
 
         <TextView
             android:id="@+id/lblColor"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/lblMaterial"
-            android:layout_marginBottom="15dp"
+            android:layout_marginBottom="@dimen/detail_space"
             android:text="@string/lbl_prod_color"
             android:textAppearance="?android:attr/textAppearanceMedium"
-            android:textSize="25sp" />
+            android:textSize="@dimen/app_text_size" />
 
         <TextView
             android:id="@+id/color"
@@ -52,17 +52,17 @@
             android:layout_toRightOf="@+id/lblMaterial"
             android:text="Medium Text"
             android:textAppearance="?android:attr/textAppearanceMedium"
-            android:textSize="25sp" />
+            android:textSize="@dimen/app_text_size" />
 
         <TextView
             android:id="@+id/lblAcab"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/lblColor"
-            android:layout_marginBottom="15dp"
+            android:layout_marginBottom="@dimen/detail_space"
             android:text="@string/lbl_prod_acabado"
             android:textAppearance="?android:attr/textAppearanceMedium"
-            android:textSize="25sp" />
+            android:textSize="@dimen/app_text_size" />
 
         <TextView
             android:id="@+id/acabado"
@@ -74,7 +74,7 @@
             android:layout_toRightOf="@+id/lblMaterial"
             android:text="Medium Text"
             android:textAppearance="?android:attr/textAppearanceMedium"
-            android:textSize="25sp" />
+            android:textSize="@dimen/app_text_size" />
     </RelativeLayout>
 
 </ScrollView>

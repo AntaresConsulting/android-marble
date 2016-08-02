@@ -8,7 +8,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 
-public class AddPMActivity extends ActionBarActivity {
+public class AddPMActivity extends BaseActivity {
 
 
 

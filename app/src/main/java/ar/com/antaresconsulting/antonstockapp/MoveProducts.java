@@ -12,7 +12,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toast;
 
-public class MoveProducts extends ActionBarActivity {
+public class MoveProducts extends BaseActivity {
 
 	protected boolean isScanSearch = false;
 

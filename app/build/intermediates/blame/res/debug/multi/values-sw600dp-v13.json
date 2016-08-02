@@ -330,47 +330,9 @@
                     "startLine": 19,
                     "startColumn": 4,
                     "startOffset": 1233,
-                    "endColumn": 92,
-                    "endOffset": 1321
-                },
-                "from": {
-                    "file": "/home/maximo/StudioProjects/android-marble/AntonStockApp/app/src/main/res/values-sw600dp/refs.xml",
-                    "position": {
-                        "startLine": 10,
-                        "startColumn": 4,
-                        "startOffset": 314,
-                        "endColumn": 92,
-                        "endOffset": 402
-                    }
-                }
-            },
-            {
-                "to": {
-                    "startLine": 20,
-                    "startColumn": 4,
-                    "startOffset": 1326,
-                    "endColumn": 92,
-                    "endOffset": 1414
-                },
-                "from": {
-                    "file": "/home/maximo/StudioProjects/android-marble/AntonStockApp/app/src/main/res/values-sw600dp/refs.xml",
-                    "position": {
-                        "startLine": 11,
-                        "startColumn": 4,
-                        "startOffset": 407,
-                        "endColumn": 92,
-                        "endOffset": 495
-                    }
-                }
-            },
-            {
-                "to": {
-                    "startLine": 21,
-                    "startColumn": 4,
-                    "startOffset": 1419,
-                    "endLine": 24,
+                    "endLine": 22,
                     "endColumn": 12,
-                    "endOffset": 1596
+                    "endOffset": 1410
                 },
                 "from": {
                     "file": "/home/maximo/StudioProjects/android-marble/AntonStockApp/app/build/intermediates/exploded-aar/com.android.support/design/24.1.1/res/values-sw600dp-v13/values-sw600dp-v13.xml",

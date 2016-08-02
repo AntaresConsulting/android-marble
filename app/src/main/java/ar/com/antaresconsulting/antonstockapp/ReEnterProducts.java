@@ -31,7 +31,7 @@ import ar.com.antaresconsulting.antonstockapp.model.PickingMove;
 import ar.com.antaresconsulting.antonstockapp.model.SelectionObject;
 import ar.com.antaresconsulting.antonstockapp.model.dao.MateriaPrimaDAO;
 
-public class ReEnterProducts extends Activity implements MateriaPrimaDAO.MateriaPrimaCallbacks{
+public class ReEnterProducts extends BaseActivity implements MateriaPrimaDAO.MateriaPrimaCallbacks{
 	private MateriaPrimaDAO prodDao;
 	private Spinner dimTipo;
 	private ListView productos;

@@ -4,6 +4,10 @@
         "source": "/home/maximo/StudioProjects/android-marble/AntonStockApp/app/src/main/res/mipmap-xxhdpi/ic_launcher.png"
     },
     {
+        "merged": "/home/maximo/StudioProjects/android-marble/AntonStockApp/app/build/intermediates/res/merged/debug/mipmap-xxhdpi-v4/ic_action_server.png",
+        "source": "/home/maximo/StudioProjects/android-marble/AntonStockApp/app/src/main/res/mipmap-xxhdpi/ic_action_server.png"
+    },
+    {
         "merged": "/home/maximo/StudioProjects/android-marble/AntonStockApp/app/build/intermediates/res/merged/debug/mipmap-xxhdpi-v4/icon_login_p.png",
         "source": "/home/maximo/StudioProjects/android-marble/AntonStockApp/app/src/main/res/mipmap-xxhdpi/icon_login_p.png"
     },

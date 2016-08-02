@@ -14,8 +14,8 @@
 
         <ImageView
             android:id="@+id/productImg"
-            android:layout_width="200dp"
-            android:layout_height="200dp"
+            android:layout_width="@dimen/prod_img_w"
+            android:layout_height="@dimen/prod_img_h"
             android:layout_alignParentLeft="true"
             android:layout_alignParentTop="true"
             android:src="@drawable/ic_no_photo" />
@@ -24,7 +24,7 @@
             android:id="@+id/deleteBtn"
             android:layout_width="match_parent"
             android:layout_height="70dp"
-            android:layout_marginTop="200dp"
+            android:layout_marginTop="@dimen/prod_img_h"
             android:drawableLeft="@drawable/ic_take_photo"
             android:onClick="takePhoto"
             android:text="Sacar Foto" />
@@ -33,7 +33,7 @@
     <View
         android:id="@+id/sepProdThumb"
         android:layout_width="4dp"
-        android:layout_height="250dp"
+        android:layout_height="@dimen/prod_img_h"
         android:layout_alignParentTop="true"
         android:layout_marginLeft="15dp"
         android:layout_marginRight="30dp"
@@ -48,7 +48,7 @@
         android:layout_marginBottom="30dp"
         android:layout_toRightOf="@+id/sepProdThumb"
         android:text="@string/lbl_prod_nombre"
-        android:textSize="20sp" />
+        android:textSize="@dimen/app_text_size" />
 
     <EditText
         android:id="@+id/prodNombre"
@@ -60,7 +60,7 @@
         android:singleLine="true"
         android:nextFocusDown="@+id/codigoVal"
         android:text=""
-        android:textSize="20sp" />
+        android:textSize="@dimen/app_text_size" />
 
     <TableLayout
         android:id="@+id/mainDataProduct"
@@ -82,7 +82,7 @@
                 android:layout_marginLeft="15dp"
                 android:shadowColor="@color/abc_search_url_text_normal"
                 android:text="@string/lbl_prod_codigo"
-                android:textSize="20sp" />
+                android:textSize="@dimen/app_text_size" />
 
             <EditText
                 android:id="@+id/codigoVal"
@@ -93,7 +93,7 @@
                 android:singleLine="true"
                 android:shadowColor="@color/abc_search_url_text_normal"
                 android:text=""
-                android:textSize="20sp" />
+                android:textSize="@dimen/app_text_size" />
         </TableRow>
 
         <TableRow
@@ -109,7 +109,7 @@
                 android:layout_marginLeft="15dp"
                 android:shadowColor="@color/abc_search_url_text_normal"
                 android:text="@string/lbl_prod_precio"
-                android:textSize="20sp" />
+                android:textSize="@dimen/app_text_size" />
 
             <EditText
                 android:id="@+id/precioVal"
@@ -121,7 +121,7 @@
                 android:singleLine="true"
                 android:shadowColor="@color/abc_search_url_text_normal"
                 android:text=""
-                android:textSize="20sp" />
+                android:textSize="@dimen/app_text_size" />
         </TableRow>
 		
     </TableLayout>

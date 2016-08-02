@@ -27,6 +27,7 @@
             android:configChanges="orientation|keyboardHidden"
             android:label="@string/app_name"
             android:parentActivityName=".AntonLauncherActivity"
+            android:theme="@style/AntonThemeNoAction"
             >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
@@ -36,6 +37,7 @@
             android:name=".ProductListActivity"
             android:configChanges="orientation|keyboardHidden"
             android:label="@string/app_name"
+            android:theme="@style/AntonThemeNoAction"
             >
         </activity>
         <activity
@@ -113,6 +115,7 @@
             android:name=".AntonLauncherActivity"
             android:configChanges="orientation|keyboardHidden"
             android:label="@string/title_activity_launcher"
+            android:theme="@style/AntonThemeNoAction"
             >
         </activity>
         <activity

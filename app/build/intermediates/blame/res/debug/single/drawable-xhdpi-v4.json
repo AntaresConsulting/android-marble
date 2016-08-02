@@ -4,10 +4,6 @@
         "source": "/home/maximo/StudioProjects/android-marble/AntonStockApp/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/24.1.1/res/drawable-xhdpi-v4/abc_menu_hardkey_panel_mtrl_mult.9.png"
     },
     {
-        "merged": "/home/maximo/StudioProjects/android-marble/AntonStockApp/app/build/intermediates/res/merged/debug/drawable-xhdpi-v4/ic_action_server.png",
-        "source": "/home/maximo/StudioProjects/android-marble/AntonStockApp/app/src/main/res/drawable-xhdpi/ic_action_server.png"
-    },
-    {
         "merged": "/home/maximo/StudioProjects/android-marble/AntonStockApp/app/build/intermediates/res/merged/debug/drawable-xhdpi-v4/abc_ic_star_black_48dp.png",
         "source": "/home/maximo/StudioProjects/android-marble/AntonStockApp/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/24.1.1/res/drawable-xhdpi-v4/abc_ic_star_black_48dp.png"
     },
@@ -224,12 +220,12 @@
         "source": "/home/maximo/StudioProjects/android-marble/AntonStockApp/app/src/main/res/drawable-xhdpi/ic_action_insumos.png"
     },
     {
-        "merged": "/home/maximo/StudioProjects/android-marble/AntonStockApp/app/build/intermediates/res/merged/debug/drawable-xhdpi-v4/abc_tab_indicator_mtrl_alpha.9.png",
-        "source": "/home/maximo/StudioProjects/android-marble/AntonStockApp/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/24.1.1/res/drawable-xhdpi-v4/abc_tab_indicator_mtrl_alpha.9.png"
-    },
-    {
         "merged": "/home/maximo/StudioProjects/android-marble/AntonStockApp/app/build/intermediates/res/merged/debug/drawable-xhdpi-v4/ic_main_income.png",
         "source": "/home/maximo/StudioProjects/android-marble/AntonStockApp/app/src/main/res/drawable-xhdpi/ic_main_income.png"
+    },
+    {
+        "merged": "/home/maximo/StudioProjects/android-marble/AntonStockApp/app/build/intermediates/res/merged/debug/drawable-xhdpi-v4/abc_tab_indicator_mtrl_alpha.9.png",
+        "source": "/home/maximo/StudioProjects/android-marble/AntonStockApp/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/24.1.1/res/drawable-xhdpi-v4/abc_tab_indicator_mtrl_alpha.9.png"
     },
     {
         "merged": "/home/maximo/StudioProjects/android-marble/AntonStockApp/app/build/intermediates/res/merged/debug/drawable-xhdpi-v4/navheader.png",

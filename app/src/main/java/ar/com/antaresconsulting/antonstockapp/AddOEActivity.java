@@ -46,7 +46,7 @@ import ar.com.antaresconsulting.antonstockapp.model.dao.MateriaPrimaDAO;
 import ar.com.antaresconsulting.antonstockapp.model.dao.PartnerDAO;
 import ar.com.antaresconsulting.antonstockapp.model.dao.ProductDAO;
 
-public class AddOEActivity extends ActionBarActivity implements ProductDAO.ServiciosCallbacks, PartnerDAO.ClientsCallbacks, MateriaPrimaDAO.MateriaPrimaCallbacks, InsumosDAO.InsumosCallbacks, BachasDAO.BachasCallbacks,SearchMPPopupFragment.SearchProductListener,SearchInsumoPopupFragment.SearchProductListener,SearchBachaPopupFragment.SearchProductListener,SearchServiciosPopupFragment.SearchProductListener{
+public class AddOEActivity extends BaseActivity implements ProductDAO.ServiciosCallbacks, PartnerDAO.ClientsCallbacks, MateriaPrimaDAO.MateriaPrimaCallbacks, InsumosDAO.InsumosCallbacks, BachasDAO.BachasCallbacks,SearchMPPopupFragment.SearchProductListener,SearchInsumoPopupFragment.SearchProductListener,SearchBachaPopupFragment.SearchProductListener,SearchServiciosPopupFragment.SearchProductListener{
 
 	private ProductTypePopupFragment popconf;
 	private BachasDAO baDao;

@@ -23,7 +23,7 @@
         android:layout_height="match_parent"
         android:fitsSystemWindows="true"
         android:layout_gravity="start"
-        app:headerLayout="@layout/header_navview_prod"
-        app:menu="@menu/menu_navview_prod" />
+        app:headerLayout="@layout/header_navview_part"
+        app:menu="@menu/menu_navview_part" />
 
 </android.support.v4.widget.DrawerLayout>

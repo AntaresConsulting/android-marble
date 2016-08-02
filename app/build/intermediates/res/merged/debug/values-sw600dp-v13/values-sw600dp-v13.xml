@@ -17,8 +17,6 @@
     <dimen name="design_snackbar_padding_vertical_2lines">@dimen/design_snackbar_padding_vertical</dimen>
     <dimen name="design_tab_scrollable_min_width">160dp</dimen>
     <integer name="design_snackbar_text_max_lines">1</integer>
-    <item name="activity_partner_list" type="layout">@layout/activity_partner_twopane</item>
-    <item name="activity_product_list" type="layout">@layout/activity_product_twopane</item>
     <style name="Widget.Design.TabLayout" parent="Base.Widget.Design.TabLayout">
         <item name="tabGravity">center</item>
         <item name="tabMode">fixed</item>

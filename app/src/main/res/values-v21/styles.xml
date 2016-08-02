@@ -7,24 +7,67 @@
         <item name="android:padding">16dp</item>
     </style>
 
-    <color name="bg_listitem_emple">#e0ecde</color>
-    <color name="bg_theme_color">#F4F4EE</color>
-    <color name="actionbar_theme_color">#DC2A2A</color>
 
-    <style name="AntonTheme" parent="Theme.AppCompat.Light.NoActionBar">
+    <style name="AntonTheme" parent="Theme.AppCompat.Light">
         <item name="android:windowBackground">@color/bg_theme_color</item>
         <item name="android:colorBackground">@color/bg_theme_color</item>
-        <item name="android:actionBarStyle">@style/AntonActionBar</item>
         <item name="colorPrimary">@color/color_primary</item>
         <item name="colorPrimaryDark">@color/color_primary_dark</item>
         <item name="colorAccent">@color/color_accent</item>
+
+        <item name="android:actionBarStyle">@style/AntonActionBar</item>
+        <item name="android:actionBarTabTextStyle">@style/AntonActionBarTabText</item>
+        <item name="actionBarStyle">@style/AntonActionBar</item>
+        <item name="actionBarTabTextStyle">@style/AntonActionBarTabText</item>
+
+        <item name="android:actionMenuTextColor">@color/actionbar_theme_text_color</item>
+        <item name="actionMenuTextColor">@color/actionbar_theme_text_color</item>
+        <item name="android:actionMenuTextAppearance">@style/menuTextStyle</item>
+        <item name="actionMenuTextAppearance">@style/menuTextStyle</item>
     </style>
+    <style name="AntonThemeNoAction" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="android:windowBackground">@color/bg_theme_color</item>
+        <item name="android:colorBackground">@color/bg_theme_color</item>
+        <item name="colorPrimary">@color/color_primary</item>
+        <item name="colorPrimaryDark">@color/color_primary_dark</item>
+        <item name="colorAccent">@color/color_accent</item>
+
+        <item name="android:actionBarStyle">@style/AntonActionBar</item>
+        <item name="android:actionBarTabTextStyle">@style/AntonActionBarTabText</item>
+        <item name="actionBarStyle">@style/AntonActionBar</item>
+        <item name="actionBarTabTextStyle">@style/AntonActionBarTabText</item>
+
+        <item name="android:actionMenuTextColor">@color/actionbar_theme_text_color</item>
+        <item name="actionMenuTextColor">@color/actionbar_theme_text_color</item>
+        <item name="android:actionMenuTextAppearance">@style/menuTextStyle</item>
+        <item name="actionMenuTextAppearance">@style/menuTextStyle</item>
+    </style>
+
+    <style name="menuTextStyle">
+        <item name="android:textSize">@dimen/menu_text_size</item>
+        <item name="android:textColor">@color/actionbar_theme_text_color</item>
+    </style>
+
+    <style name="AntonActionBar" parent="@style/Widget.AppCompat.Light.ActionBar.Solid">
+        <item name="android:background">@color/color_primary</item>
+        <item name="android:titleTextStyle">@style/AntonActionBar.TitleTextStyle</item>
+        <!-- Support library compatibility -->
+        <item name="background">@color/color_primary</item>
+        <item name="titleTextStyle">@style/AntonActionBar.TitleTextStyle</item>
+
+    </style>
+
+    <style name="AntonActionBar.TitleTextStyle"   parent="@style/TextAppearance.AppCompat.Widget.ActionBar.Title">
+        <item name="android:textColor">@color/actionbar_theme_text_color</item>
+        <item name="android:textSize">@dimen/menu_text_size</item>
+    </style>
+
+    <style name="AntonActionBarTabText" parent="@style/Widget.AppCompat.ActionBar.TabText">
+        <item name="android:textColor">@color/actionbar_theme_text_color</item>
+    </style>
+
     <style name="LoginTheme" parent="AntonTheme">
         <item name="android:textSize">@dimen/app_text_size</item>
-    </style>
-    <style name="AntonActionBar" parent="@android:style/Widget.Holo.Light.ActionBar">
-        <item name="android:background">@color/actionbar_theme_color</item>
-        <item name="android:height">@dimen/login_actionbar_height</item>
     </style>
     <style name="NoActionBar" parent="AntonTheme">
         <item name="android:windowActionBar">false</item>
@@ -34,4 +77,5 @@
         <item name="android:windowEnterAnimation">@anim/fade_in</item>
         <item name="android:windowExitAnimation">@anim/fade_out</item>
     </style>
+
 </resources>

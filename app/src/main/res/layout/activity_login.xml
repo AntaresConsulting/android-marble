@@ -140,14 +140,15 @@
                 android:gravity="center">
 
                 <Button
-                    style="?android:attr/buttonStyleSmall"
+                    style="?android:textAppearanceSmall"
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
-                    android:text="Config"
-                    android:drawableLeft="@drawable/ic_action_server"
+                    android:text="@string/server_config"
+                    android:drawableLeft="@mipmap/ic_action_server"
                     android:id="@+id/action_config"
                     android:onClick="showPopup"
-                    android:layout_span="2" />
+                    android:layout_span="2"
+                    android:textStyle="normal" />
             </TableRow>
         </TableLayout>
     </TableLayout>

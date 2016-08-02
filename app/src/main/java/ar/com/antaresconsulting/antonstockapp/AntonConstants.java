@@ -13,8 +13,8 @@ public class AntonConstants {
 	public static final String ANTON_COMPANY_ID = "1";
 	public static final String DELIVERY_METHOD = "one";
 	public static final String DIRECT_METHOD = "direct";
-	public static final String DEFAULT_DB = "anton";
-	public static final String DEFAULT_URL = "gestion.stock";
+	public static final String DEFAULT_DB = "anton_test";
+	public static final String DEFAULT_URL = "gestion-v1.marmolesanton.com.ar";
 	public static final String DEFAULT_PORT = "80";
 	public static final String IN_PORDUCT_PROD_LOCATION_SOURCE = "7";
 	public static final String DIMENSION_WIDTH = "width";

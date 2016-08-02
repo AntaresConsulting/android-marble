@@ -1,34 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources xmlns:android="http://schemas.android.com/apk/res/android">
 
-
-    <style name="LoginFormContainer">
-        <item name="android:layout_width">match_parent</item>
-        <item name="android:layout_height">wrap_content</item>
-        <item name="android:padding">16dp</item>
-    </style>
-
-    <color name="bg_theme_color">#F4F4EE</color>
-    <color name="actionbar_theme_color">#DC2A2A</color>
-
-    <style name="AntonTheme" parent="Theme.AppCompat.Light.NoActionBar">
-        <item name="android:windowBackground">@color/bg_theme_color</item>
-        <item name="android:colorBackground">@color/bg_theme_color</item>
-        <item name="android:actionBarStyle">@style/AntonActionBar</item>
-        <item name="colorPrimary">@color/color_primary</item>
-        <item name="colorPrimaryDark">@color/color_primary_dark</item>
-        <item name="colorAccent">@color/color_accent</item>
-    </style>
-    <style name="LoginTheme" parent="AntonTheme">
-        <item name="android:textSize">@dimen/app_text_size</item>
-    </style>    
-    <style name="AntonActionBar" parent="@android:style/Widget.Holo.Light.ActionBar">
-        <item name="android:background">@color/actionbar_theme_color</item>
-        <item name="android:height">@dimen/login_actionbar_height</item>        
-    </style>
-	<style name="NoActionBar" parent="AntonTheme">
-	    <item name="android:windowActionBar">false</item>
-	    <item name="android:windowNoTitle">true</item>
-	</style>     
-	
 </resources>

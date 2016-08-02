@@ -144,12 +144,12 @@
         "source": "/home/maximo/StudioProjects/android-marble/AntonStockApp/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/24.1.1/res/layout/abc_search_view.xml"
     },
     {
-        "merged": "/home/maximo/StudioProjects/android-marble/AntonStockApp/app/build/intermediates/res/merged/debug/layout/activity_in_products.xml",
-        "source": "/home/maximo/StudioProjects/android-marble/AntonStockApp/app/src/main/res/layout/activity_in_products.xml"
-    },
-    {
         "merged": "/home/maximo/StudioProjects/android-marble/AntonStockApp/app/build/intermediates/res/merged/debug/layout/listitem_lp2.xml",
         "source": "/home/maximo/StudioProjects/android-marble/AntonStockApp/app/src/main/res/layout/listitem_lp2.xml"
+    },
+    {
+        "merged": "/home/maximo/StudioProjects/android-marble/AntonStockApp/app/build/intermediates/res/merged/debug/layout/activity_in_products.xml",
+        "source": "/home/maximo/StudioProjects/android-marble/AntonStockApp/app/src/main/res/layout/activity_in_products.xml"
     },
     {
         "merged": "/home/maximo/StudioProjects/android-marble/AntonStockApp/app/build/intermediates/res/merged/debug/layout/abc_screen_content_include.xml",

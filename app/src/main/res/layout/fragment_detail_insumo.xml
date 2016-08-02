@@ -15,7 +15,7 @@
             android:layout_marginBottom="15dp"
             android:text="@string/lbl_prod_desc"
             android:textAppearance="?android:attr/textAppearanceMedium"
-            android:textSize="25sp" />
+            android:textSize="@dimen/app_text_size" />
 
         <TextView
             android:id="@+id/insuDesc"
@@ -26,6 +26,6 @@
             android:layout_marginLeft="25dp"            
             android:text=""
             android:textAppearance="?android:attr/textAppearanceMedium"
-            android:textSize="25sp" />
+            android:textSize="@dimen/app_text_size" />
 
 </RelativeLayout>

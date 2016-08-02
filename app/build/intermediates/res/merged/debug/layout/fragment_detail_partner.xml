@@ -9,8 +9,8 @@
 
     <ImageView     
         android:id="@+id/partnerImg"
-        android:layout_width="250dp"
-        android:layout_height="250dp"
+        android:layout_width="@dimen/part_img_w"
+        android:layout_height="@dimen/part_img_h"
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
         android:src="@drawable/ic_user_employee" />
@@ -18,7 +18,7 @@
     <View
         android:id="@+id/sepProdThumb"
         android:layout_width="4dp"
-        android:layout_height="250dp"
+        android:layout_height="@dimen/part_img_h"
         android:layout_alignParentTop="true"
         android:layout_marginLeft="5dp"
         android:layout_toRightOf="@id/partnerImg"
@@ -30,14 +30,15 @@
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_marginBottom="30dp"
+        android:layout_marginLeft="30dp"
         android:layout_toRightOf="@+id/sepProdThumb"
         android:text="Nombre_Partner"
-        android:textSize="40sp" />
+        android:textSize="@dimen/part_name" />
 
     <ImageView
         android:id="@+id/icAddress"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="@dimen/part_icon_w"
+        android:layout_height="@dimen/part_icon_h"
         android:layout_below="@id/nombrePart"
         android:layout_marginLeft="50dp"
         android:layout_marginRight="30dp"
@@ -52,12 +53,12 @@
         android:layout_alignBottom="@id/icAddress"
         android:shadowColor="@color/abc_search_url_text_normal"
         android:text="Domicilio_Part"
-        android:textSize="30sp" />
+        android:textSize="@dimen/app_text_size" />
 
     <ImageView
         android:id="@+id/icEmail"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="@dimen/part_icon_w"
+        android:layout_height="@dimen/part_icon_h"
         android:layout_below="@id/domicilioPart"
         android:layout_marginLeft="50dp"
         android:layout_marginRight="30dp"
@@ -72,15 +73,15 @@
         android:layout_toRightOf="@id/icEmail"
         android:shadowColor="@color/abc_search_url_text_normal"
         android:text="Email_Part"
-        android:textSize="30sp" />
+        android:textSize="@dimen/app_text_size" />
    
     <ImageView
         android:id="@+id/icPhone"
         android:layout_marginLeft="50dp"
         android:layout_marginRight="30dp"
         android:layout_below="@id/emailPart"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="@dimen/part_icon_w"
+        android:layout_height="@dimen/part_icon_h"
         android:layout_toRightOf="@id/sepProdThumb"
         android:src="@drawable/ic_phone" />             
     <TextView
@@ -92,14 +93,14 @@
         android:layout_toRightOf="@id/icPhone"
         android:shadowColor="@color/abc_search_url_text_normal"
         android:text="Phone_Part"
-        android:textSize="30sp" />  
+        android:textSize="@dimen/app_text_size" />
     <ImageView
         android:id="@+id/icWeb"
         android:layout_marginLeft="50dp"
         android:layout_marginRight="30dp"
         android:layout_below="@id/phonePart"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="@dimen/part_icon_w"
+        android:layout_height="@dimen/part_icon_h"
         android:layout_toRightOf="@id/sepProdThumb"
         android:src="@drawable/ic_web" />            
 
@@ -112,15 +113,15 @@
         android:layout_toRightOf="@id/icWeb"
         android:shadowColor="@color/abc_search_url_text_normal"
         android:text="Web_Part"
-        android:textSize="30sp" />
+        android:textSize="@dimen/app_text_size" />
  
     <ImageView
         android:id="@+id/icCuit"
         android:layout_marginLeft="50dp"
         android:layout_marginRight="30dp"
         android:layout_below="@id/icWeb"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="@dimen/part_icon_w"
+        android:layout_height="@dimen/part_icon_h"
         android:layout_toRightOf="@id/sepProdThumb"
         android:src="@drawable/ic_cuit" />            
 
@@ -133,6 +134,6 @@
         android:layout_toRightOf="@id/icCuit"
         android:shadowColor="@color/abc_search_url_text_normal"
         android:text="CUIT_Part"
-        android:textSize="30sp" />
+        android:textSize="@dimen/app_text_size" />
 
 </RelativeLayout>

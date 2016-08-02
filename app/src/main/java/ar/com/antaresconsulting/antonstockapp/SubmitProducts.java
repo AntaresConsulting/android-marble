@@ -24,7 +24,7 @@ import ar.com.antaresconsulting.antonstockapp.model.PedidoLinea;
 import ar.com.antaresconsulting.antonstockapp.model.dao.PedidoDAO;
 import ar.com.antaresconsulting.antonstockapp.model.dao.ProductDAO;
 
-public class SubmitProducts extends Activity implements OnItemSelectedListener,PedidoDAO.PedidosCallbacks, PedidoDAO.OrdenesDeEntregaCallbacks{
+public class SubmitProducts extends BaseActivity implements OnItemSelectedListener,PedidoDAO.PedidosCallbacks, PedidoDAO.OrdenesDeEntregaCallbacks{
 	private PedidoDAO pedDao;
 
 	private Spinner pedidos;

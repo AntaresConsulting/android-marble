@@ -37,7 +37,7 @@ import ar.com.antaresconsulting.antonstockapp.model.PickingMove;
 import ar.com.antaresconsulting.antonstockapp.model.dao.EmpleadoDAO;
 import ar.com.antaresconsulting.antonstockapp.model.dao.InsumosDAO;
 
-public class ConsumeInsumo extends ActionBarActivity implements EmpleadoDAO.EmpleCallbacks, InsumosDAO.InsumosCallbacks{
+public class ConsumeInsumo extends BaseActivity implements EmpleadoDAO.EmpleCallbacks, InsumosDAO.InsumosCallbacks{
 
 	private InsumosDAO insuDao;
 	private EmpleadoDAO empleDao;

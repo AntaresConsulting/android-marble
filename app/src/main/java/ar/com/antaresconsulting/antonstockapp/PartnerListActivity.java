@@ -26,8 +26,7 @@ import android.view.MenuItem;
  * This activity also implements the required {@link ItemListFragment.Callbacks}
  * interface to listen for item selections.
  */
-public class PartnerListActivity extends ActionBarActivity implements
-NavigationDrawerFragment.NavigationDrawerCallbacks,PartnerListFragment.Callbacks {
+public class PartnerListActivity extends BaseActivity implements PartnerListFragment.Callbacks {
 
 	/**
 	 * Whether or not the activity is in two-pane mode, i.e. running on a tablet
@@ -78,32 +77,14 @@ NavigationDrawerFragment.NavigationDrawerCallbacks,PartnerListFragment.Callbacks
 		ActionBar actionBar = getSupportActionBar();
 		actionBar.setDisplayShowTitleEnabled(true);
 		actionBar.setTitle(mTitle);
+		drawerLayout.closeDrawers();
+
 	}
 	/**
 	 * Callback method from {@link ItemListFragment.Callbacks} indicating that
 	 * the item with the given ID was selected.
 	 */
-	
-	@Override
-	public void onNavigationDrawerItemSelected(int position) {
 
-		switch (position) {
-		case 0:
-			mTitle = getString(R.string.title_clientes);
-			this.listFragment.refreshPartners(CUSTOMERS);
-			break;	
-		case 1:
-			mTitle = getString(R.string.title_suppliers);
-			this.listFragment.refreshPartners(SUPPLIERS);
-			break;				
-		default:
-			finish(); 
-			break;			
-		}
-
-		restoreActionBar();
-	}
-	
 	@Override
 	public void onItemSelected(String id) {
 		if (mTwoPane) {
@@ -142,5 +123,14 @@ NavigationDrawerFragment.NavigationDrawerCallbacks,PartnerListFragment.Callbacks
 		return super.onOptionsItemSelected(item);
 	}
 
+	public void getPartners(MenuItem v) {
+		this.listFragment.refreshPartners(CUSTOMERS);
+		restoreActionBar();
+	}
+
+	public void getSuppliers(MenuItem v) {
+		this.listFragment.refreshPartners(SUPPLIERS);
+		restoreActionBar();
+	}
 
 }

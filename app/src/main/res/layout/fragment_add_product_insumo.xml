@@ -23,7 +23,7 @@
                 android:layout_marginTop="10dp"
                 android:shadowColor="@color/abc_search_url_text_normal"
                 android:text="@string/lbl_prod_uom"
-                android:textSize="20sp" />
+                android:textSize="@dimen/app_text_size" />
 
             <Spinner
                 android:id="@+id/uomVal"
@@ -48,7 +48,7 @@
         android:layout_marginTop="10dp"
         android:shadowColor="@color/abc_search_url_text_normal"
         android:text="@string/lbl_prod_desc"
-        android:textSize="20sp" />
+        android:textSize="@dimen/app_text_size" />
 
     <EditText android:text=""
         android:id="@+id/insuDesc"

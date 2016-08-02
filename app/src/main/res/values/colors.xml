@@ -3,4 +3,8 @@
     <color name="color_primary">#c7bcb2</color>
     <color name="color_primary_dark">#6c6659</color>
     <color name="color_accent">#546e7a</color>
+    <color name="bg_listitem_emple">#e0ecde</color>
+    <color name="bg_theme_color">#F4F4EE</color>
+    <color name="actionbar_theme_text_color">#fff</color>
+    <color name="actionbar_theme_color">#6c6659</color>
 </resources>

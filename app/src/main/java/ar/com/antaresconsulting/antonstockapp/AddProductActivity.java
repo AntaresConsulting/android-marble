@@ -25,7 +25,7 @@ import android.widget.ImageView;
 import android.widget.Toast;
 import ar.com.antaresconsulting.antonstockapp.model.BaseProduct;
 
-public class AddProductActivity extends ActionBarActivity implements WriteAsyncTask.WriteAsyncTaskCallbacks, AddProductsCallbacks, CreateAsyncTask.CreateAsyncTaskCallbacks {
+public class AddProductActivity extends BaseActivity implements WriteAsyncTask.WriteAsyncTaskCallbacks, AddProductsCallbacks, CreateAsyncTask.CreateAsyncTaskCallbacks {
 	private Bitmap savedThumb;
 	private ImageView containerPhoto;
 	private String encodedImage;
@@ -38,7 +38,7 @@ public class AddProductActivity extends ActionBarActivity implements WriteAsyncT
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_add_product);
-		getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+		//getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
 		Bundle b = getIntent().getExtras();
 		int tprod = b.getInt(AntonConstants.TPROD);
@@ -165,7 +165,6 @@ public class AddProductActivity extends ActionBarActivity implements WriteAsyncT
 	
 	public void restoreActionBar() {
 		ActionBar actionBar = getSupportActionBar();
-		actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_STANDARD);
 		actionBar.setDisplayShowTitleEnabled(true);
 		actionBar.setTitle(mTitle);
 	}

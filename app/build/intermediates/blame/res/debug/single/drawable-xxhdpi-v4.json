@@ -124,10 +124,6 @@
         "source": "/home/maximo/StudioProjects/android-marble/AntonStockApp/app/src/main/res/drawable-xxhdpi/ic_menu.png"
     },
     {
-        "merged": "/home/maximo/StudioProjects/android-marble/AntonStockApp/app/build/intermediates/res/merged/debug/drawable-xxhdpi-v4/ic_action_server.png",
-        "source": "/home/maximo/StudioProjects/android-marble/AntonStockApp/app/src/main/res/drawable-xxhdpi/ic_action_server.png"
-    },
-    {
         "merged": "/home/maximo/StudioProjects/android-marble/AntonStockApp/app/build/intermediates/res/merged/debug/drawable-xxhdpi-v4/ic_action_insumos.png",
         "source": "/home/maximo/StudioProjects/android-marble/AntonStockApp/app/src/main/res/drawable-xxhdpi/ic_action_insumos.png"
     },

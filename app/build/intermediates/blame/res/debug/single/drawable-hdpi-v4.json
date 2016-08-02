@@ -180,10 +180,6 @@
         "source": "/home/maximo/StudioProjects/android-marble/AntonStockApp/app/src/main/res/drawable-hdpi/ic_main_prodducts.png"
     },
     {
-        "merged": "/home/maximo/StudioProjects/android-marble/AntonStockApp/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/ic_action_server.png",
-        "source": "/home/maximo/StudioProjects/android-marble/AntonStockApp/app/src/main/res/drawable-hdpi/ic_action_server.png"
-    },
-    {
         "merged": "/home/maximo/StudioProjects/android-marble/AntonStockApp/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/ic_main_genoe.png",
         "source": "/home/maximo/StudioProjects/android-marble/AntonStockApp/app/src/main/res/drawable-hdpi/ic_main_genoe.png"
     },
